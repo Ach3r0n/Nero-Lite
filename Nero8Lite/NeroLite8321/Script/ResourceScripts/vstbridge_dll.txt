@@ -1,0 +1,13 @@
+[FILENAMES]
+Exe="vstbridge.dll"
+SaveAs="vstbridge.dll"
+Log="Log\vstbridge_dll.log"
+
+[COMMANDS]
+-delete BITMAP,,
+-delete MENU,,
+-delete PNG,,
+-delete DIALOG,,
+-delete CURSORGROUP,,
+-delete ICONGROUP,,
+

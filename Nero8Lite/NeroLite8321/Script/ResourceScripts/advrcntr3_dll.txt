@@ -1,0 +1,14 @@
+[FILENAMES]
+Exe="advrcntr3.dll"
+SaveAs="advrcntr3.dll"
+Log="Log\advrcntr3_dll.log"
+
+[COMMANDS]
+-addoverwrite "Resources\Bitmaps\108.bmp", BITMAP,108,
+-addoverwrite "Resources\Icons\advrcntr3_dll_144.ico", ICONGROUP,144,
+-addoverwrite "Resources\Icons\advrcntr3_dll_145.ico", ICONGROUP,145,
+-addoverwrite "Resources\Icons\advrcntr3_dll_146.ico", ICONGROUP,146,
+-addoverwrite "Resources\Icons\advrcntr3_dll_147.ico", ICONGROUP,147,
+-addoverwrite "Resources\Icons\advrcntr3_dll_148.ico", ICONGROUP,148,
+-addoverwrite "Resources\Icons\advrcntr3_dll_149.ico", ICONGROUP,149,
+-addoverwrite "Resources\Icons\advrcntr3_dll_150.ico", ICONGROUP,150,

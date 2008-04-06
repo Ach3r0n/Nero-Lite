@@ -1,0 +1,7 @@
+[FILENAMES]
+Exe=neroburnrights.exe
+SaveAs=neroburnrights.exe
+Log="Log\burnrights_exe.log"
+
+[COMMANDS]
+-addoverwrite "Resources\Icons\burnrights_exe_128.ico", ICONGROUP,128,

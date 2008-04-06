@@ -1,0 +1,7 @@
+[FILENAMES]
+Exe="NeroPatentActivation.exe"
+SaveAs="NeroPatentActivation.exe"
+Log="Log\npa_exe.log"
+
+[COMMANDS]
+-addoverwrite "Resources\Icons\npa_exe_128.ico", ICONGROUP,128,

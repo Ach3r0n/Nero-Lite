@@ -1,0 +1,7 @@
+[FILENAMES]
+Exe=dxenum.exe
+SaveAs=dxenum.exe
+Log="Log\dxenum_exe.log"
+
+[COMMANDS]
+-addoverwrite "Resources\Icons\dxenum_exe_128.ico", ICONGROUP,128,

@@ -1,0 +1,7 @@
+[FILENAMES]
+Exe="waveedit.exe"
+SaveAs="waveedit.exe"
+Log="Log\waveedit_exe.log"
+
+[COMMANDS]
+-addoverwrite "Resources\Icons\waveedit_exe_100.ico", ICONGROUP,100,

@@ -4,15 +4,15 @@ Name: czech; MessagesFile: compiler:Languages\Czech.isl; LicenseFile: Bin\[FILEL
 [Files]
 ;Czech
 Source: Custom\Help\NeroControlCenter_ENG.chm; DestDir: {cf}\Nero\Nero Web; Check: CheckLanguage('czech'); BeforeInstall: AddLanguage('CSY'); Flags: ignoreversion replacesameversion
-Source: Custom\Bin\Core\NeroCSY.nls; DestDir: {app}\Nero Burning ROM; Components: nero_core; Check: CheckLanguage('czech')
+Source: Custom\Bin\[FILELOCATION]Core\NeroCSY.nls; DestDir: {app}\Nero Burning ROM; Components: nero_core; Check: CheckLanguage('czech')
 Source: Bin\[FILELOCATION]Core\NeroCSY.txt; DestDir: {app}\Nero Burning ROM; Components: nero_core; Check: CheckLanguage('czech')
 Source: Bin\[FILELOCATION]Common Files\Lib\BCGCBProResCSY.nls; DestDir: {app}\Nero Burning ROM; Components: nero_core; Check: CheckLanguage('czech')
 Source: Custom\Help\NeroBurningRom_ENG.chm; DestDir: {app}\Nero Burning ROM; Components: nero_core; Check: CheckLanguage('czech'); Flags: ignoreversion replacesameversion
 Source: Custom\Help\NeroExpress_ENG.chm; DestDir: {app}\Nero Burning ROM; Components: nero_core; Check: CheckLanguage('czech'); Flags: ignoreversion replacesameversion
 #ifndef Micro
-Source: Custom\Bin\Nero CoverDesigner\CoverEd-CSY.nls; DestDir: {app}\Nero CoverDesigner; Components: nero_coverdes; Check: CheckLanguage('czech')
+Source: Custom\Bin\[FILELOCATION]Nero CoverDesigner\CoverEd-CSY.nls; DestDir: {app}\Nero CoverDesigner; Components: nero_coverdes; Check: CheckLanguage('czech')
 Source: Custom\Help\NeroCoverDesigner_ENG.chm; DestDir: {app}\Nero CoverDesigner; Components: nero_coverdes; Check: CheckLanguage('czech'); Flags: ignoreversion replacesameversion
-Source: Custom\Bin\Nero WaveEditor\WaveEdit-CSY.nls; DestDir: {app}\Nero WaveEditor; Components: nero_waveedit; Check: CheckLanguage('czech')
+Source: Custom\Bin\[FILELOCATION]Nero WaveEditor\WaveEdit-CSY.nls; DestDir: {app}\Nero WaveEditor; Components: nero_waveedit; Check: CheckLanguage('czech')
 Source: Custom\Help\NeroWaveEditor_ENG.chm; DestDir: {app}\Nero WaveEditor; Components: nero_waveedit; Check: CheckLanguage('czech'); Flags: ignoreversion replacesameversion
 Source: Custom\Help\NeroBurnRights_ENG.chm; DestDir: {app}\Nero Toolkit\Nero BurnRights; Components: nero_toolkit\nero_burnrights; Check: CheckLanguage('czech'); Flags: ignoreversion replacesameversion
 Source: Custom\Help\NeroDiscSpeed_ENG.chm; DestDir: {app}\Nero Toolkit\Nero DiscSpeed; Components: nero_toolkit\nero_discspeed; Check: CheckLanguage('czech'); Flags: ignoreversion replacesameversion

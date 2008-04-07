@@ -4,15 +4,15 @@ Name: slovenian; MessagesFile: compiler:Languages\Slovenian.isl; LicenseFile: Bi
 [Files]
 ;Slovenian
 Source: Custom\Help\NeroControlCenter_ENG.chm; DestDir: {cf}\Nero\Nero Web; Check: CheckLanguage('slovenian'); BeforeInstall: AddLanguage('SLV'); Flags: ignoreversion replacesameversion
-Source: Custom\Bin\Core\NeroSLV.nls; DestDir: {app}\Nero Burning ROM; Components: nero_core; Check: CheckLanguage('slovenian')
+Source: Custom\Bin\[FILELOCATION]Core\NeroSLV.nls; DestDir: {app}\Nero Burning ROM; Components: nero_core; Check: CheckLanguage('slovenian')
 Source: Bin\[FILELOCATION]Core\NeroSLV.txt; DestDir: {app}\Nero Burning ROM; Components: nero_core; Check: CheckLanguage('slovenian')
 Source: Bin\[FILELOCATION]Common Files\Lib\BCGCBProResSLV.nls; DestDir: {app}\Nero Burning ROM; Components: nero_core; Check: CheckLanguage('slovenian')
 Source: Custom\Help\NeroBurningRom_ENG.chm; DestDir: {app}\Nero Burning ROM; Components: nero_core; Check: CheckLanguage('slovenian'); Flags: ignoreversion replacesameversion
 Source: Custom\Help\NeroExpress_ENG.chm; DestDir: {app}\Nero Burning ROM; Components: nero_core; Check: CheckLanguage('slovenian'); Flags: ignoreversion replacesameversion
 #ifndef Micro
-Source: Custom\Bin\Nero CoverDesigner\CoverEd-SLV.nls; DestDir: {app}\Nero CoverDesigner; Components: nero_coverdes; Check: CheckLanguage('slovenian')
+Source: Custom\Bin\[FILELOCATION]Nero CoverDesigner\CoverEd-SLV.nls; DestDir: {app}\Nero CoverDesigner; Components: nero_coverdes; Check: CheckLanguage('slovenian')
 Source: Custom\Help\NeroCoverDesigner_ENG.chm; DestDir: {app}\Nero CoverDesigner; Components: nero_coverdes; Check: CheckLanguage('slovenian'); Flags: ignoreversion replacesameversion
-Source: Custom\Bin\Nero WaveEditor\WaveEdit-SLV.nls; DestDir: {app}\Nero WaveEditor; Components: nero_waveedit; Check: CheckLanguage('slovenian')
+Source: Custom\Bin\[FILELOCATION]Nero WaveEditor\WaveEdit-SLV.nls; DestDir: {app}\Nero WaveEditor; Components: nero_waveedit; Check: CheckLanguage('slovenian')
 Source: Custom\Help\NeroWaveEditor_ENG.chm; DestDir: {app}\Nero WaveEditor; Components: nero_waveedit; Check: CheckLanguage('slovenian'); Flags: ignoreversion replacesameversion
 Source: Custom\Help\NeroBurnRights_ENG.chm; DestDir: {app}\Nero Toolkit\Nero BurnRights; Components: nero_toolkit\nero_burnrights; Check: CheckLanguage('slovenian'); Flags: ignoreversion replacesameversion
 Source: Custom\Help\NeroDiscSpeed_ENG.chm; DestDir: {app}\Nero Toolkit\Nero DiscSpeed; Components: nero_toolkit\nero_discspeed; Check: CheckLanguage('slovenian'); Flags: ignoreversion replacesameversion

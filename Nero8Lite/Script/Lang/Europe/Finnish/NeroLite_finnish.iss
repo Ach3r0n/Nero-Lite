@@ -4,15 +4,15 @@ Name: finnish; MessagesFile: compiler:Languages\Finnish.isl; LicenseFile: Bin\[F
 [Files]
 ;Finnish
 Source: Custom\Help\NeroControlCenter_ENG.chm; DestDir: {cf}\Nero\Nero Web; Check: CheckLanguage('finnish'); BeforeInstall: AddLanguage('FIN'); Flags: ignoreversion replacesameversion
-Source: Custom\Bin\Core\NeroFIN.nls; DestDir: {app}\Nero Burning ROM; Components: nero_core; Check: CheckLanguage('finnish')
+Source: Custom\Bin\[FILELOCATION]Core\NeroFIN.nls; DestDir: {app}\Nero Burning ROM; Components: nero_core; Check: CheckLanguage('finnish')
 Source: Bin\[FILELOCATION]Core\NeroFIN.txt; DestDir: {app}\Nero Burning ROM; Components: nero_core; Check: CheckLanguage('finnish')
 Source: Bin\[FILELOCATION]Common Files\Lib\BCGCBProResFIN.nls; DestDir: {app}\Nero Burning ROM; Components: nero_core; Check: CheckLanguage('finnish')
 Source: Custom\Help\NeroBurningRom_ENG.chm; DestDir: {app}\Nero Burning ROM; Components: nero_core; Check: CheckLanguage('finnish'); Flags: ignoreversion replacesameversion
 Source: Custom\Help\NeroExpress_ENG.chm; DestDir: {app}\Nero Burning ROM; Components: nero_core; Check: CheckLanguage('finnish'); Flags: ignoreversion replacesameversion
 #ifndef Micro
-Source: Custom\Bin\Nero CoverDesigner\CoverEd-FIN.nls; DestDir: {app}\Nero CoverDesigner; Components: nero_coverdes; Check: CheckLanguage('finnish')
+Source: Custom\Bin\[FILELOCATION]Nero CoverDesigner\CoverEd-FIN.nls; DestDir: {app}\Nero CoverDesigner; Components: nero_coverdes; Check: CheckLanguage('finnish')
 Source: Custom\Help\NeroCoverDesigner_ENG.chm; DestDir: {app}\Nero CoverDesigner; Components: nero_coverdes; Check: CheckLanguage('finnish'); Flags: ignoreversion replacesameversion
-Source: Custom\Bin\Nero WaveEditor\WaveEdit-FIN.nls; DestDir: {app}\Nero WaveEditor; Components: nero_waveedit; Check: CheckLanguage('finnish')
+Source: Custom\Bin\[FILELOCATION]Nero WaveEditor\WaveEdit-FIN.nls; DestDir: {app}\Nero WaveEditor; Components: nero_waveedit; Check: CheckLanguage('finnish')
 Source: Custom\Help\NeroWaveEditor_ENG.chm; DestDir: {app}\Nero WaveEditor; Components: nero_waveedit; Check: CheckLanguage('finnish'); Flags: ignoreversion replacesameversion
 Source: Custom\Help\NeroBurnRights_ENG.chm; DestDir: {app}\Nero Toolkit\Nero BurnRights; Components: nero_toolkit\nero_burnrights; Check: CheckLanguage('finnish'); Flags: ignoreversion replacesameversion
 Source: Custom\Help\NeroDiscSpeed_ENG.chm; DestDir: {app}\Nero Toolkit\Nero DiscSpeed; Components: nero_toolkit\nero_discspeed; Check: CheckLanguage('finnish'); Flags: ignoreversion replacesameversion

@@ -1,9 +1,21 @@
 @echo off
-setlocal enabledelayedexpansion
+setlocal enabledelayedexpansion enableextensions
 title Micromize...
 ::push to script dir
 pushd ..
+::get Nero Version
+call Include\getNeroVersion.cmd
 
+::merge version specific files
+echo %neroversion%
+pause
+if %neroversion% LSS 8 (
+copy /y Resources\Bitmaps\Nero7\*.bmp Resources\Bitmaps\
+copy /y ResourceScripts\Nero7\*.txt ResourceScripts\
+) else (
+copy /y Resources\Bitmaps\Nero8\*.bmp Resources\Bitmaps\
+copy /y ResourceScripts\Nero8\*.txt ResourceScripts\
+)
 echo Micromize:
 
 ::MSI FilePaths
@@ -15,13 +27,23 @@ set NeroCore.MsiFilePath=^[FILELOCATION^]Core
 set CoverDesigner.MsiFilePath=^[FILELOCATION^]Nero CoverDesigner
 set WaveEditor.MsiFilePath=^[FILELOCATION^]Nero WaveEditor
 set BurnRights.MsiFilePath=^[FILELOCATION^]\Nero BurnRights
-set DiscSpeed.MsiFilePath=^[FILELOCATION^]\Nero CD-DVD Speed
-set DriveSpeed.MsiFilePath=^[FILELOCATION^]\Nero Toolkit DriveSpeed
+if %neroversion% LSS 8 (
+	set CDSpeed.MsiFilePath=^[FILELOCATION^]\Nero CD-DVD Speed
+	set DriveSpeed.MsiFilePath=^[FILELOCATION^]\Nero DriveSpeed
+) else (
+	set DiscSpeed.MsiFilePath=^[FILELOCATION^]\Nero CD-DVD Speed
+	set DriveSpeed.MsiFilePath=^[FILELOCATION^]\Nero Toolkit DriveSpeed
+)
 set InfoTool.MsiFilePath=^[FILELOCATION^]\Nero InfoTool
 
 ::Nero shared files
-call :MICROMIZE advrcntr3.dll "%CommonFiles.MsiFilePath%" english
-call :MICROMIZE advrcntr3.dll "%CommonFiles.MsiFilePath%"
+if %neroversion% LSS 8 (
+	call :MICROMIZE advrcntr2.dll "%CommonFiles.MsiFilePath%" english
+	call :MICROMIZE advrcntr2.dll "%CommonFiles.MsiFilePath%"
+) else (
+	call :MICROMIZE advrcntr3.dll "%CommonFiles.MsiFilePath%" english
+	call :MICROMIZE advrcntr3.dll "%CommonFiles.MsiFilePath%"
+)
 call :MICROMIZE neropatentactivation.exe "%CommonFiles.MsiFilePath%"
 call :MICROMIZE nerofiledialog.dll "%HomeComponents.MsiFilePath%" english
 call :MICROMIZE nerofiledialog.dll "%HomeComponents.MsiFilePath%"
@@ -55,7 +77,11 @@ call :MICROMIZE *.nls "%WaveEditor.MsiFilePath%"
 ::Nero Toolkit
 call :MICROMIZE neroburnrights.cpl "%BurnRights.MsiFilePath%"
 call :MICROMIZE neroburnrights.exe "%BurnRights.MsiFilePath%"
-call :MICROMIZE discspeed.exe "%DiscSpeed.MsiFilePath%"
+if %neroversion% LSS 8 (
+	call :MICROMIZE cdspeed.exe "%CDSpeed.MsiFilePath%"
+) else (
+	call :MICROMIZE discspeed.exe "%DiscSpeed.MsiFilePath%"
+)
 call :MICROMIZE drivespeed.exe "%DriveSpeed.MsiFilePath%"
 call :MICROMIZE infotool.exe "%InfoTool.MsiFilePath%"
 
@@ -117,7 +143,7 @@ copy /y "..\Bin\%filepath%\%filename%" ".\%filename%" > NUL
 ..\Tools\Reshack\ResHacker.exe -script "ResourceScripts\%resscript%" > NUL
 if not errorlevel 0 goto :RESHACKPROBLEM
 call Include\signfile.cmd "%filename%" > NUL
-if not errorlevel 0 goto :SIGNINGPROBLEM
+if not errorlevel 0 call :CHECKFILE
 move /y "%filename%" "..\Custom\Bin\%outputpath%" > NUL
 goto :EOF
 
@@ -126,7 +152,17 @@ echo Error reshacking file %filename%
 pause
 goto :EOF
 
+:CHECKFILE
+if %neroversion% LSS 8 (
+	if not %filename%==cdspeed.exe (
+		goto :SIGNINGPROBLEM
+	)
+) else (
+	goto :SIGNINGPROBLEM
+)
+GOTO :EOF
+
 :SIGNINGPROBLEM
 echo Error signing file %filename%
 pause
-goto :EOF
+GOTO :EOF	

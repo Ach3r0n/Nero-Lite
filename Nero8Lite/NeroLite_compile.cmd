@@ -1,6 +1,10 @@
 @echo off
 setlocal enabledelayedexpansion
-set neroversion=8.3.2.1
+::push to script dir
+pushd Script
+::get Nero Version
+call Include\getNeroVersion.cmd
+popd
 
 ::set path to inno setup
 for /f "tokens=3 skip=3 delims=	" %%i in (
@@ -21,6 +25,5 @@ if not exist "!InnoSetupPath!" set InnoSetupPath="%programfiles%\Inno Setup\Inno
 	popd
 	del %%i
 )
-popd
 pause
 exit

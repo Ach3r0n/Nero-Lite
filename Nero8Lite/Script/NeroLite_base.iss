@@ -105,7 +105,12 @@ SignedUninstaller=false
 SignedUninstallerDir=.\Setup
 
 [Languages]
+#ifdef Nero8
+Name: english; MessagesFile: compiler:Default.isl; LicenseFile: Bin\[FILELOCATION]Target\Data\Setup\EULA_eng.rtf
+#endif
+#ifdef Nero7
 Name: english; MessagesFile: compiler:Default.isl; LicenseFile: Bin\[FILELOCATION]Target\Setup\EULA_eng.rtf
+#endif
 
 [Files]
 ;Hack to fix Final Wizard Dialog Bitmap (ISSI bug)

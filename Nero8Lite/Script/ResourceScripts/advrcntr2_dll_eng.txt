@@ -1,0 +1,18 @@
+[FILENAMES]
+Exe="advrcntr2.dll"
+SaveAs="advrcntr2.dll"
+Log="Log\advrcntr2_dll_eng.log"
+
+[COMMANDS]
+-delete DICTIONARY,,
+-addoverwrite "Resources\Bitmaps\108.bmp", BITMAP,108,
+-addoverwrite "Resources\Bitmaps\Nero7\110.bmp", BITMAP,110,
+-addoverwrite "Resources\Bitmaps\Nero7\118.bmp", BITMAP,118,
+-addoverwrite "Resources\Bitmaps\Nero7\589.bmp", BITMAP,589,
+-addoverwrite "Resources\Icons\advrcntr2_dll_144.ico", ICONGROUP,144,
+-addoverwrite "Resources\Icons\advrcntr2_dll_145.ico", ICONGROUP,145,
+-addoverwrite "Resources\Icons\advrcntr2_dll_146.ico", ICONGROUP,146,
+-addoverwrite "Resources\Icons\advrcntr2_dll_147.ico", ICONGROUP,147,
+-addoverwrite "Resources\Icons\advrcntr2_dll_148.ico", ICONGROUP,148,
+-addoverwrite "Resources\Icons\advrcntr2_dll_149.ico", ICONGROUP,149,
+-addoverwrite "Resources\Icons\advrcntr2_dll_150.ico", ICONGROUP,150,

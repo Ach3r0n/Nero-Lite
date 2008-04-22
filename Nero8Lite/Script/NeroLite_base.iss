@@ -7,43 +7,58 @@
 
 [ISSI]
 #define ISSI_IncludePath ReadReg(HKLM, "Software\Microsoft\Windows\CurrentVersion\Uninstall\Inno Setup Script Includes_is1","InstallLocation", GetEnv("ProgramFiles") + "\Inno Setup\ISSI")
+
+;Detect Nero Version
+#define NeroVersion GetFileVersion("Bin\[FILELOCATION]Core\nero.exe")
+#ifdef NeroVersion
+	#define NeroMajorVersion Int(Copy(NeroVersion,1,1))
+#endif
+#if NeroMajorVersion == 7
+	#define Nero7
+	#define RegPublisherName "Ahead"
+#else
+	#define Nero8
+	#define RegPublisherName "Nero"
+#endif
+
 #define ISSI_UseMyInitializeWizard
 #define ISSI_WizardSmallBitmapImage_x 206
-#define ISSI_WizardSmallBitmapImage "Setup\nerotopbar.bmp"
-#define ISSI_WizardBitmapImage "Setup\nerosidebarbig.bmp"
+#define ISSI_WizardSmallBitmapImage "Setup\Nero" + str(NeroMajorVersion) + "\nerotopbar.bmp"
+#define ISSI_WizardBitmapImage "Setup\Nero" + str(NeroMajorVersion) + "\nerosidebarbig.bmp"
 #define ISSI_WizardBitmapImage_x 190
-#define ISSI_WizardBitmapImage2 "Setup\nerosidebarbig.bmp"
-#define ISSI_WizardBitmapImage2_x 190
 #define ISSI_URL
 #define ISSI_URLText
 
-;Detect Nero Lite / Micro
+
+#sub ProcessFoundFile
+	#define public LocaleIncludeFileName Lowercase(FindGetFileName(FindHandle))
+#endsub
+
+;Detect generated include filename
 #define FindHandle
 #define FindResult
 #define Mask "Script\Include\NeroLite_*_*.iss"
 
-#sub ProcessFoundFile
-  #define public LocaleIncludeFileName Lowercase(FindGetFileName(FindHandle))
-#endsub
-
 #for {FindHandle = FindResult = FindFirst(Mask, 0); FindResult; FindResult = FindNext(FindHandle)} ProcessFoundFile
-
-
-;Manually override setuptype
-#ifndef LocaleIncludeFileName
-	#define Lite
-	#define NeroSetupLocale "english"
-#else
-	#define NeroSetupLocale Copy(LocaleIncludeFileName, 10, RPos("_", LocaleIncludeFileName) - 10)
-	#if Pos("_lite", LocaleIncludeFileName) != 0
-		#define Lite
-	#else
-		#define Micro
-	#endif
+#if FindHandle
+	#expr FindClose(FindHandle)
 #endif
 
+;Set language and setuptype
+	#ifndef LocaleIncludeFileName
+		#define Lite
+		#define NeroSetupLocale "english"
+	#else
+		#define NeroSetupLocale Copy(LocaleIncludeFileName, 10, RPos("_", LocaleIncludeFileName) - 10)
+		#if Pos("_lite", LocaleIncludeFileName) != 0
+			#define Lite
+		#else
+			#define Micro
+		#endif
+	#endif
+
+
 #ifdef Lite
-	#define Lite
 	#define NeroSetupType "Lite"
 	#define nero_coverdes "nero_coverdes"
 	#define nero_waveedit "nero_waveedit"
@@ -58,13 +73,10 @@
 	#define nero_waveedit
 #endif
 
-;Set Nero version
-#define NeroVersion "8.3.2.1"
-
 [Setup]
-AppName=Nero 8 {#NeroSetupType}
-AppId=Nero8Lite
-AppVerName=Nero 8 {#NeroSetupType} {#NeroVersion}
+AppName=Nero {#NeroMajorVersion} {#NeroSetupType}
+AppId=Nero{#NeroMajorVersion}Lite
+AppVerName=Nero {#NeroMajorVersion} {#NeroSetupType} {#NeroVersion}
 AppVersion={#NeroVersion}
 AppPublisher=Updatepack.nl
 AppPublisherURL=http://updatepack.nl
@@ -73,51 +85,67 @@ DefaultGroupName=Nero
 AllowNoIcons=true
 OutputBaseFilename=Nero-{#NeroVersion}_{#NeroSetupLocale}_{#Lowercase(NeroSetupType)}
 OutputDir=.\Output
-SetupIconFile=Setup\nerosetup.ico
+SetupIconFile=Script\Resources\Icons\Nero{#NeroMajorVersion}\nps_dll_128.ico
 UninstallDisplayIcon={cf}\Nero\Nero Web\nps.dll
 Compression=lzma/max
 ShowLanguageDialog=yes
 ShowUndisplayableLanguages=no
-VersionInfoVersion=1.16.0.2
+VersionInfoVersion=1.16.1.0
 VersionInfoProductName=Nero {#NeroSetupType}
 VersionInfoProductVersion={#NeroVersion}
 VersionInfoCompany=Updatepack.nl
-VersionInfoDescription=Nero 8 {#NeroSetupType}
+VersionInfoDescription=Nero {#NeroMajorVersion} {#NeroSetupType}
 VersionInfoCopyright=Klaas Nekeman
 UserInfoPage=false
 ChangesAssociations=true
 FlatComponentsList=false
 SolidCompression=true
 MinVersion=0,5.0.2195sp3
-SignedUninstaller=true
+SignedUninstaller=false
 SignedUninstallerDir=.\Setup
 
 [Languages]
-Name: english; MessagesFile: compiler:Default.isl; LicenseFile: Bin\[FILELOCATION]Target\Data\Setup\EULA_eng.rtf
+Name: english; MessagesFile: compiler:Default.isl; LicenseFile: Bin\[FILELOCATION]Target\Setup\EULA_eng.rtf
 
 [Files]
-; NOTE: Don't use "Flags: ignoreversion" on any shared system files
-
-;SQLite 3.5.7
-Source: Setup\sqlite3.dll; DestDir: {tmp}; Flags: dontcopy
-
-;VC++2005 SP1 redistributable (NOTE: .NET 2.0SP1 VC++ redist does not work)
-Source: Setup\vcredist.msi; DestDir: {tmp}; Flags: dontcopy
-
 ;Hack to fix Final Wizard Dialog Bitmap (ISSI bug)
-Source: Setup\nerosidebarbig.bmp; DestDir: {tmp}; DestName: WizardBitmapImage2.bmp; Flags: ignoreversion dontcopy noencryption
+Source: Setup\Nero{#NeroMajorVersion}\nerosidebarbig.bmp; DestDir: {tmp}; DestName: WizardBitmapImage2.bmp; Flags: ignoreversion dontcopy noencryption
 
-;GDI+
-Source: Bin\[FILELOCATION]Redist\gdiplus.dll; DestDir: {cf}\Nero\Lib; Components: nero_core; Flags: sharedfile uninsnosharedfileprompt; OnlyBelowVersion: 0,5.01.2600
+;SQLite 3.5.8
+Source: Setup\sqlite3.dll; DestDir: {tmp}; Flags: dontcopy
 
 ;AutoIT activate utility
 Source: Setup\configlicense.exe; DestDir: {tmp}; Flags: dontcopy
 
+#ifdef Nero7
+;MFC71 Redistributable
+Source: Bin\[FILELOCATION]Redist\mfc71.dll; DestDir: {sys}; Flags: sharedfile restartreplace uninsneveruninstall
+Source: Bin\[FILELOCATION]Redist\mfc71u.dll; DestDir: {sys}; Flags: sharedfile restartreplace uninsneveruninstall
+Source: Bin\[FILELOCATION]Redist\msvcp71.dll; DestDir: {sys}; Flags: sharedfile restartreplace uninsneveruninstall
+Source: Bin\[FILELOCATION]Redist\msvcr71.dll; DestDir: {sys}; Flags: sharedfile restartreplace uninsneveruninstall
+#endif
+
+#ifdef Nero8
+;VC++2005 SP1 redistributable (NOTE: .NET 2.0SP1 VC++ redist does not work)
+Source: Setup\vcredist.msi; DestDir: {tmp}; Flags: dontcopy
+#endif
+
+;GDI+
+Source: Bin\[FILELOCATION]Redist\gdiplus.dll; DestDir: {cf}\Nero\Lib; Components: nero_core; Flags: sharedfile uninsnosharedfileprompt; OnlyBelowVersion: 0,5.01.2600
+
 ;BCGControlBar library
+#ifdef Nero7
+Source: Bin\[FILELOCATION]Redist\BCGCBPRO86071.dll; DestDir: {cf}\Nero\Lib; Components: nero_core; Flags: sharedfile uninsnosharedfileprompt
+Source: Bin\[FILELOCATION]Redist\BCGCBPRO860un71.dll; DestDir: {cf}\Nero\Lib; Components: nero_core; Flags: sharedfile uninsnosharedfileprompt
+Source: Bin\[FILELOCATION]Redist\BCGCBPRO860un71.dll; DestDir: {app}\Nero Burning ROM; Components: nero_core; Flags: sharedfile uninsnosharedfileprompt
+#endif
+#ifdef Nero8
 Source: Bin\[FILELOCATION]Redist\BCGCBPRO86080.dll; DestDir: {cf}\Nero\Lib; Components: nero_core; Flags: sharedfile uninsnosharedfileprompt
 Source: Bin\[FILELOCATION]Redist\BCGCBPRO860u80.dll; DestDir: {cf}\Nero\Lib; Components: nero_core; Flags: sharedfile uninsnosharedfileprompt
-Source: Bin\[FILELOCATION]Redist\BCGPOleAcc.dll; DestDir: {cf}\Nero\Lib; Components: nero_core; Flags: sharedfile uninsnosharedfileprompt
 Source: Bin\[FILELOCATION]Redist\BCGCBPRO860u80.dll; DestDir: {app}\Nero Burning ROM; Components: nero_core; Flags: sharedfile uninsnosharedfileprompt
+#endif
+Source: Bin\[FILELOCATION]Redist\BCGPOleAcc.dll; DestDir: {cf}\Nero\Lib; Components: nero_core; Flags: sharedfile uninsnosharedfileprompt
+
 
 ;Pegasus Imaging Support
 Source: Bin\[FILELOCATION]Redist\imagX7.dll; DestDir: {sys}; Flags: sharedfile uninsnosharedfileprompt; Components: nero_core\nero_videocd {#emit nero_coverdes}
@@ -129,24 +157,41 @@ Source: Bin\[FILELOCATION]Redist\TwnLib4.dll; DestDir: {sys}; Flags: sharedfile 
 
 ;Nero Toolkit
 #ifndef Micro
+#ifdef Nero7
+Source: Custom\Bin\[FILELOCATION]\Nero CD-DVD Speed\CDSpeed.exe; DestDir: {app}\Nero Toolkit\Nero CD-DVD Speed; Components: nero_toolkit\nero_cdspeed
+Source: Custom\Bin\[FILELOCATION]\Nero DriveSpeed\DriveSpeed.exe; DestDir: {app}\Nero Toolkit\Nero DriveSpeed; Components: nero_toolkit\nero_drivespeed
+#endif
+#ifdef Nero8
 Source: Custom\Bin\[FILELOCATION]\Nero CD-DVD Speed\DiscSpeed.exe; DestDir: {app}\Nero Toolkit\Nero DiscSpeed; Components: nero_toolkit\nero_discspeed
 Source: Custom\Bin\[FILELOCATION]\Nero Toolkit DriveSpeed\DriveSpeed.exe; DestDir: {app}\Nero Toolkit\Nero DriveSpeed; Components: nero_toolkit\nero_drivespeed
+#endif
 Source: Custom\Bin\[FILELOCATION]\Nero InfoTool\InfoTool.exe; DestDir: {app}\Nero Toolkit\Nero InfoTool; Components: nero_toolkit\nero_infotool
 Source: Custom\Bin\[FILELOCATION]\Nero BurnRights\NeroBurnRights.exe; DestDir: {app}\Nero Toolkit\Nero BurnRights; Components: nero_toolkit\nero_burnrights
 Source: Bin\[FILELOCATION]\Nero BurnRights\NeroCo.dll; DestDir: {app}\Nero Toolkit\Nero BurnRights; Components: nero_toolkit\nero_burnrights
 #endif
 
 ;Nero Anti-Virus database (Copy from AllUsers\Nero\DrWeb)
-#ifndef Micro
-Source: Custom\DrWeb\*; DestDir: {commonappdata}\Nero\DrWeb; Components: nero_core\anti_virus
-#endif
+;#ifndef Micro
+;Source: Custom\DrWeb\*; DestDir: {commonappdata}\Nero\DrWeb; Components: nero_core\anti_virus
+;#endif
 
 ;Nero Product Activation
 #ifdef Micro_English
+	#ifdef Nero7
+Source: Custom\Bin\[FILELOCATION]Common Files\Lib\NT\English\AdvrCntr2.dll; DestDir: {cf}\Nero\Lib; Flags: restartreplace regserver sharedfile uninsnosharedfileprompt
+	#endif
+	#ifdef Nero8
 Source: Custom\Bin\[FILELOCATION]Common Files\Lib\NT\English\AdvrCntr3.dll; DestDir: {cf}\Nero\Lib; Flags: restartreplace regserver sharedfile uninsnosharedfileprompt
+	#endif
 #else
+	#ifdef Nero7
+Source: Custom\Bin\[FILELOCATION]Common Files\Lib\NT\AdvrCntr2.dll; DestDir: {cf}\Nero\Lib; Flags: restartreplace regserver sharedfile uninsnosharedfileprompt
+	#endif
+	#ifdef Nero8
 Source: Custom\Bin\[FILELOCATION]Common Files\Lib\NT\AdvrCntr3.dll; DestDir: {cf}\Nero\Lib; Flags: restartreplace regserver sharedfile uninsnosharedfileprompt
+	#endif
 #endif
+
 ;Installation databases
 Source: Setup\NeroInst.db; DestDir: {cf}\Nero\Lib; Flags: restartreplace
 Source: Setup\Rollback.db; DestDir: {cf}\Nero\Lib; Flags: onlyifdoesntexist restartreplace
@@ -155,10 +200,17 @@ Source: Custom\Bin\[FILELOCATION]Common Files\Lib\NT\NeroPatentActivation.exe; D
 Source: Bin\[FILELOCATION]Common Files\Lib\NT\btc-bar.gif; DestDir: {cf}\Nero\Lib; Components: nero_core\nero_videocd
 Source: Bin\[FILELOCATION]Common Files\Lib\NT\logo.gif; DestDir: {cf}\Nero\Lib; Components: nero_core\nero_videocd
 Source: Bin\[FILELOCATION]Common Files\Lib\NT\patentactivationfax.htm; DestDir: {cf}\Nero\Lib; Components: nero_core\nero_videocd
+#ifdef Nero8
 Source: Bin\[FILELOCATION]Common Files\Lib\NT\NeroAPIGlueLayerUnicode.dll; DestDir: {cf}\Nero\Lib; Flags: sharedfile uninsnosharedfileprompt
+#endif
 
 ;Nero Lib
+#ifdef Nero7
+Source: Bin\[FILELOCATION]Common Files\Lib\ShellManager.dll; DestDir: {cf}\Nero\Lib; Flags: regserver sharedfile uninsnosharedfileprompt; Components: nero_core
+#endif
+#ifdef Nero8
 Source: Bin\[FILELOCATION]Common Files\Lib\ShellManager3.dll; DestDir: {cf}\Nero\Lib; Flags: regserver sharedfile uninsnosharedfileprompt; Components: nero_core
+#endif
 Source: Bin\[FILELOCATION]Common Files\Lib\DriveLocker.dll; DestDir: {cf}\Nero\Lib; Flags: regserver sharedfile uninsnosharedfileprompt; Components: nero_core
 Source: Bin\[FILELOCATION]\Common Files\Lib\NeroVMRModules.dll; DestDir: {cf}\Nero\Lib; Flags: sharedfile uninsnosharedfileprompt; Components: nero_core
 
@@ -175,10 +227,22 @@ Source: Bin\[FILELOCATION]Nero Home Components\NT\NeroFileDialogVista.dll; DestD
 
 ;Nero Control Center
 #ifdef Micro_English
+#ifdef Nero8
 Source: Custom\Bin\[FILELOCATION]\Setup\English\nps.dll; DestDir: {cf}\Nero\Nero Web; Flags: restartreplace
+#endif
+#ifdef Nero7
+;Use patched nps.dll (fix Nero Help Path)
+Source: Custom\Patch\English\nps.dll; DestDir: {cf}\Nero\Nero Web; Flags: restartreplace
+#endif
 Source: Custom\Bin\[FILELOCATION]\English\SetupX.exe; DestDir: {cf}\Nero\Nero Web; Flags: restartreplace
 #else
+#ifdef Nero8
 Source: Custom\Bin\[FILELOCATION]\Setup\nps.dll; DestDir: {cf}\Nero\Nero Web; Flags: restartreplace
+#endif
+#ifdef Nero7
+;Use patched nps.dll (fix Nero Help Path)
+Source: Custom\Patch\nps.dll; DestDir: {cf}\Nero\Nero Web; Flags: restartreplace
+#endif
 Source: Custom\Bin\[FILELOCATION]\SetupX.exe; DestDir: {cf}\Nero\Nero Web; Flags: restartreplace
 #endif
 
@@ -238,6 +302,10 @@ Source: Bin\[FILELOCATION]\Common Files\DSFilter\NeVideo.ax; DestDir: {cf}\Nero\
 Source: Bin\[FILELOCATION]\Common Files\Lib\NeEm2a.dll; DestDir: {cf}\Nero\Lib; Components: nero_core\nero_videocd; Flags: sharedfile uninsnosharedfileprompt
 Source: Bin\[FILELOCATION]\Common Files\Lib\NeEm2v.dll; DestDir: {cf}\Nero\Lib; Components: nero_core\nero_videocd; Flags: sharedfile uninsnosharedfileprompt
 Source: Bin\[FILELOCATION]\Common Files\Lib\uNeroMediaCon.dll; DestDir: {cf}\Nero\Lib; Components: nero_core\nero_videocd; Flags: sharedfile uninsnosharedfileprompt
+#ifdef Nero7
+Source: Bin\[FILELOCATION]\Common Files\DSFilter\NDParser.ax; DestDir: {cf}\Nero\DSFilter; Flags: regserver sharedfile uninsnosharedfileprompt; Components: nero_core\nero_videocd
+Source: Bin\[FILELOCATION]\Common Files\DSFilter\NeRender.ax; DestDir: {cf}\Nero\DSFilter; Flags: regserver sharedfile uninsnosharedfileprompt; Components: nero_core\nero_videocd
+#endif
 
 ;Note: CoverEdCtrl.ocx necessary for LabelFlash and VCD/SVCD support
 #ifndef Micro
@@ -249,7 +317,13 @@ Source: Custom\Bin\[FILELOCATION]Nero CoverDesigner\CoverEdCtrl.ocx; DestDir: {c
 #endif
 
 ;Nero Audio Plugin Manager
+#ifdef Nero8
 Source: Bin\[FILELOCATION]Common Files\AudioPlugins\AudioPluginMgr.dll; DestDir: {cf}\Nero\AudioPlugins\Mgr; Components: nero_core\nero_audioplugins {#emit nero_waveedit}
+#endif
+#ifdef Nero7
+Source: Bin\[FILELOCATION]Common Files\AudioPlugins\AudioPluginMgr.dll; DestDir: {app}\Nero Burning ROM; Components: nero_core\nero_audioplugins {#emit nero_waveedit}
+#endif
+
 
 ;Nero Audio Plugins - AC3
 Source: Bin\[FILELOCATION]Common Files\AudioPlugins\AC3.dll; DestDir: {cf}\Nero\AudioPlugins; Components: nero_core\nero_audioplugins {#emit nero_waveedit}; Flags: sharedfile uninsnosharedfileprompt
@@ -263,6 +337,10 @@ Source: Bin\[FILELOCATION]Common Files\AudioPlugins\Audible.dll; DestDir: {cf}\N
 
 ;Nero Audio Plugins - MP3+Pro
 Source: Bin\[FILELOCATION]Common Files\AudioPlugins\mp3PRO.dll; DestDir: {cf}\Nero\AudioPlugins; Components: nero_core\nero_audioplugins {#emit nero_waveedit}; Flags: sharedfile uninsnosharedfileprompt
+#ifdef Nero7
+Source: Bin\[FILELOCATION]Common Files\AudioPlugins\mp3PRO_dmo.dll; DestDir: {cf}\Nero\AudioPlugins; Components: nero_core\nero_audioplugins {#emit nero_waveedit}; Flags: sharedfile uninsnosharedfileprompt
+Source: Bin\[FILELOCATION]Common Files\AudioPlugins\mp3PRO_hlp.dll; DestDir: {cf}\Nero\AudioPlugins; Components: nero_core\nero_audioplugins {#emit nero_waveedit}; Flags: sharedfile uninsnosharedfileprompt
+#endif
 
 ;Nero Audio Plugins - Ogg Vorbis
 Source: Bin\[FILELOCATION]Common Files\AudioPlugins\ogg.dll; DestDir: {cf}\Nero\AudioPlugins; Components: nero_core\nero_audioplugins {#emit nero_waveedit}; Flags: sharedfile uninsnosharedfileprompt
@@ -320,7 +398,12 @@ Name: {commonappdata}\Nero\DrWeb; Components: nero_core
 ;Nero Toolkit
 #ifndef Micro
 Name: {group}\Extra\Nero BurnRights; Filename: {app}\Nero Toolkit\Nero BurnRights\neroburnrights.exe; Components: nero_toolkit\nero_burnrights
+#ifdef Nero7
+Name: {group}\Extra\Nero CD-DVD Speed; Filename: {app}\Nero Toolkit\Nero CD-DVD Speed\cdspeed.exe; Components: nero_toolkit\nero_cdspeed
+#endif
+#ifdef Nero8
 Name: {group}\Extra\Nero DiscSpeed; Filename: {app}\Nero Toolkit\Nero DiscSpeed\discspeed.exe; Components: nero_toolkit\nero_discspeed
+#endif
 Name: {group}\Extra\Nero DriveSpeed; Filename: {app}\Nero Toolkit\Nero DriveSpeed\drivespeed.exe; Components: nero_toolkit\nero_drivespeed
 Name: {group}\Extra\Nero InfoTool; Filename: {app}\Nero Toolkit\Nero InfoTool\infotool.exe; Components: nero_toolkit\nero_infotool
 #endif
@@ -343,46 +426,56 @@ Name: {group}\Nero CoverDesigner; Filename: {app}\Nero CoverDesigner\CoverDes.ex
 Name: {group}\Nero WaveEditor; Filename: {app}\Nero WaveEditor\waveedit.exe; Components: nero_waveedit
 #endif
 
+#ifdef Nero7
+;Nero ProductSetup
+Name: {group}\Setup\Nero ProductSetup; Filename: {cf}\Nero\Nero Web\SetupX.exe; Parameters: "MODE=""update"""; IconFilename: {cf}\Nero\Nero Web\nps.dll; IconIndex: 0
+#endif
+#ifdef Nero8
 ;Nero ControlCenter
 Name: {group}\Setup\Nero ControlCenter; Filename: {cf}\Nero\Nero Web\SetupX.exe; Parameters: "MODE=""update"""; IconFilename: {cf}\Nero\Nero Web\nps.dll; IconIndex: 0
-
+#endif
 [Registry]
 ;Registration Details
-Root: HKCU; Subkey: Software\Nero; ValueType: none; Flags: uninsdeletekey
-Root: HKLM; Subkey: Software\Nero; ValueType: none; Flags: uninsdeletekeyifempty
-Root: HKLM; Subkey: Software\Nero\Installation; ValueType: none; Flags: uninsdeletekeyifempty
-Root: HKLM; Subkey: Software\Nero\Installation\Families; ValueType: none; Flags: uninsdeletekeyifempty
-Root: HKLM; Subkey: Software\Nero\Installation\Families\Nero 8; ValueType: none; Flags: uninsdeletekey
-Root: HKLM; Subkey: Software\Nero\Installation\Families\Nero 8; ValueType: string; ValueName: ProductCode; ValueData: Nero 8 {#NeroSetupType}; Flags: uninsdeletevalue
-Root: HKLM; Subkey: Software\Nero\Installation\Families\Nero 8; ValueType: string; ValueName: ProductVersion; ValueData: {#NeroVersion}; Flags: uninsdeletevalue
-Root: HKLM; Subkey: Software\Nero\Installation\Families\Nero 8\Info; ValueType: string; ValueName: User; ValueData: {code:getName}; Flags: uninsdeletevalue
-Root: HKLM; Subkey: Software\Nero\Installation\Families\Nero 8\Info; ValueType: string; ValueName: Company; ValueData: {code:getOrganisation}; Flags: uninsdeletevalue
-Root: HKLM; Subkey: Software\Nero\Installation\Families\Nero 8\Info; ValueType: string; ValueName: EulaAccepted; ValueData: 1; Flags: uninsdeletevalue
-Root: HKLM; Subkey: Software\Nero\Installation\Families\Nero 8\Info; ValueType: string; ValueName: MissingFilesState; ValueData: 0; Flags: uninsdeletevalue
-Root: HKLM; Subkey: Software\Nero\Installation\Settings; ValueType: dword; ValueName: AutomaticUpdate; ValueData: 0; Flags: uninsdeletekey
-Root: HKLM; Subkey: Software\Nero\Installation\Settings; ValueType: dword; ValueName: DONOTRUNSETUPX; ValueData: 0; Flags: uninsdeletekey
+Root: HKLM; Subkey: Software\{#RegPublisherName}; ValueType: none; Flags: uninsdeletekeyifempty
+Root: HKLM; Subkey: Software\{#RegPublisherName}\Installation; ValueType: none; Flags: uninsdeletekeyifempty
+Root: HKLM; Subkey: Software\{#RegPublisherName}\Installation\Families; ValueType: none; Flags: uninsdeletekeyifempty
+Root: HKLM; Subkey: Software\{#RegPublisherName}\Installation\Families\Nero {#NeroMajorVersion}; ValueType: none; Flags: uninsdeletekey
+Root: HKLM; Subkey: Software\{#RegPublisherName}\Installation\Families\Nero {#NeroMajorVersion}; ValueType: string; ValueName: ProductCode; ValueData: Nero {#NeroMajorVersion} {#NeroSetupType}; Flags: uninsdeletevalue
+Root: HKLM; Subkey: Software\{#RegPublisherName}\Installation\Families\Nero {#NeroMajorVersion}; ValueType: string; ValueName: ProductVersion; ValueData: {#NeroVersion}; Flags: uninsdeletevalue
+Root: HKLM; Subkey: Software\{#RegPublisherName}\Installation\Families\Nero {#NeroMajorVersion}\Info; ValueType: string; ValueName: User; ValueData: {code:getName}; Flags: uninsdeletevalue
+Root: HKLM; Subkey: Software\{#RegPublisherName}\Installation\Families\Nero {#NeroMajorVersion}\Info; ValueType: string; ValueName: Company; ValueData: {code:getOrganisation}; Flags: uninsdeletevalue
+Root: HKLM; Subkey: Software\{#RegPublisherName}\Installation\Families\Nero {#NeroMajorVersion}\Info; ValueType: string; ValueName: EulaAccepted; ValueData: 1; Flags: uninsdeletevalue
+Root: HKLM; Subkey: Software\{#RegPublisherName}\Installation\Families\Nero {#NeroMajorVersion}\Info; ValueType: string; ValueName: MissingFilesState; ValueData: 0; Flags: uninsdeletevalue
+Root: HKLM; Subkey: Software\{#RegPublisherName}\Installation\Settings; ValueType: dword; ValueName: AutomaticUpdate; ValueData: 0; Flags: uninsdeletekey
+Root: HKLM; Subkey: Software\{#RegPublisherName}\Installation\Settings; ValueType: dword; ValueName: DONOTRUNSETUPX; ValueData: 0; Flags: uninsdeletekey
 
 ;Windows Vista Compatibility
-Root: HKLM; Subkey: Software\Nero\Installation\Info; ValueType: dword; ValueName: OS_MajorVersion; ValueData: 6; Flags: uninsdeletekey; MinVersion: 0,6.0
-Root: HKLM; Subkey: Software\Nero\Installation\Info; ValueType: dword; ValueName: OS_MinorVersion; ValueData: 0; Flags: uninsdeletekey; MinVersion: 0,6.0
+Root: HKLM; Subkey: Software\{#RegPublisherName}\Installation\Info; ValueType: dword; ValueName: OS_MajorVersion; ValueData: 6; Flags: uninsdeletekey; MinVersion: 0,6.0
+Root: HKLM; Subkey: Software\{#RegPublisherName}\Installation\Info; ValueType: dword; ValueName: OS_MinorVersion; ValueData: 0; Flags: uninsdeletekey; MinVersion: 0,6.0
 
+#ifdef Nero8
 ;Nero Burning Rom - Tweaks (Note tweaks get only installed for current user)
-Root: HKCU; Subkey: Software\Nero\Nero8\Nero - Burning Rom\General; ValueType: dword; ValueName: bShowAllCompilationTypes; ValueData: 1; Components: nero_core; Flags: uninsdeletekey
-Root: HKCU; Subkey: Software\Nero\Nero8\Nero - Burning Rom\Recorder; ValueType: dword; ValueName: ShowSingleRecorderSpeed; ValueData: 1; Components: nero_core; Flags: uninsdeletekey
-;Nero Burning Rom - Sounds disabled by default
-Root: HKCU; Subkey: Software\Nero\Nero8\Nero - Burning Rom\General; ValueName: CdChangeCheck; ValueData: 0; ValueType: dword; Components: nero_core; Flags: uninsdeletekey
-Root: HKCU; Subkey: Software\Nero\Nero8\Nero - Burning Rom\General; ValueName: CdFailCheck; ValueData: 0; ValueType: dword; Components: nero_core; Flags: uninsdeletekey
-Root: HKCU; Subkey: Software\Nero\Nero8\Nero - Burning Rom\General; ValueName: CdSuccessCheck; ValueData: 0; ValueType: dword; Components: nero_core; Flags: uninsdeletekey
+Root: HKCU; Subkey: Software\{#RegPublisherName}\Nero8\Nero - Burning Rom\General; ValueType: dword; ValueName: bShowAllCompilationTypes; ValueData: 1; Components: nero_core; Flags: uninsdeletekey
+Root: HKCU; Subkey: Software\{#RegPublisherName}\Nero8\Nero - Burning Rom\Recorder; ValueType: dword; ValueName: ShowSingleRecorderSpeed; ValueData: 1; Components: nero_core; Flags: uninsdeletekey
 
 ;Nero CoverDesigner
 #ifndef Micro
-Root: HKLM; Subkey: Software\Nero\Nero8\Cover Designer; ValueType: none; Components: nero_coverdes; Flags: uninsdeletekey
-Root: HKLM; Subkey: Software\Nero\Nero8\Cover Designer\DefaultSettings; ValueType: string; ValueName: DocTemplates; ValueData: {app}\Nero CoverDesigner\Templates; Components: nero_coverdes; Flags: uninsdeletekey
-Root: HKCU; Subkey: Software\Nero\Nero8\Cover Designer\DefaultSettings; ValueType: string; ValueName: DocTemplates; ValueData: {app}\Nero CoverDesigner\Templates; Components: nero_coverdes; Flags: uninsdeletekey
-Root: HKLM; Subkey: Software\Nero\Nero8\Cover Designer\DefaultSettings; ValueType: string; ValueName: Docs; ValueData: {commondocs}; Components: nero_coverdes; Flags: uninsdeletekey
-Root: HKCU; Subkey: Software\Nero\Nero8\Cover Designer\DefaultSettings; ValueType: string; ValueName: Docs; ValueData: {userdocs}; Components: nero_coverdes; Flags: uninsdeletekey
-Root: HKLM; Subkey: Software\Nero\Nero8\Cover Designer\DefaultSettings; ValueType: string; ValueName: ImportFiles; ValueData: {commondocs}; Components: nero_coverdes; Flags: uninsdeletekey
-Root: HKCU; Subkey: Software\Nero\Nero8\Cover Designer\DefaultSettings; ValueType: string; ValueName: ImportFiles; ValueData: {userdocs}; Components: nero_coverdes; Flags: uninsdeletekey
+Root: HKLM; Subkey: Software\{#RegPublisherName}\Nero8\Cover Designer; ValueType: none; Components: nero_coverdes; Flags: uninsdeletekey
+Root: HKLM; Subkey: Software\{#RegPublisherName}\Nero8\Cover Designer\DefaultSettings; ValueType: string; ValueName: DocTemplates; ValueData: {app}\Nero CoverDesigner\Templates; Components: nero_coverdes; Flags: uninsdeletekey
+Root: HKCU; Subkey: Software\{#RegPublisherName}\Nero8\Cover Designer\DefaultSettings; ValueType: string; ValueName: DocTemplates; ValueData: {app}\Nero CoverDesigner\Templates; Components: nero_coverdes; Flags: uninsdeletekey
+Root: HKLM; Subkey: Software\{#RegPublisherName}\Nero8\Cover Designer\DefaultSettings; ValueType: string; ValueName: Docs; ValueData: {commondocs}; Components: nero_coverdes; Flags: uninsdeletekey
+Root: HKCU; Subkey: Software\{#RegPublisherName}\Nero8\Cover Designer\DefaultSettings; ValueType: string; ValueName: Docs; ValueData: {userdocs}; Components: nero_coverdes; Flags: uninsdeletekey
+Root: HKLM; Subkey: Software\{#RegPublisherName}\Nero8\Cover Designer\DefaultSettings; ValueType: string; ValueName: ImportFiles; ValueData: {commondocs}; Components: nero_coverdes; Flags: uninsdeletekey
+Root: HKCU; Subkey: Software\{#RegPublisherName}\Nero8\Cover Designer\DefaultSettings; ValueType: string; ValueName: ImportFiles; ValueData: {userdocs}; Components: nero_coverdes; Flags: uninsdeletekey
+#endif
+#endif
+
+;Nero CoverDesigner
+#ifdef Nero7
+#ifndef Micro
+Root: HKLM; Subkey: Software\{#RegPublisherName}\Cover Designer; ValueType: none; Components: nero_coverdes; Flags: uninsdeletekey
+Root: HKLM; Subkey: Software\{#RegPublisherName}\Cover Designer\DefaultSettings; ValueType: string; ValueName: DocTemplates; ValueData: {app}\Nero CoverDesigner\Templates; Components: nero_coverdes; Flags: uninsdeletekey
+#endif
 #endif
 
 ;Application paths - Hack to access CoverDesigner from Nero Express
@@ -393,19 +486,24 @@ Root: HKLM; Subkey: Software\Microsoft\Windows\CurrentVersion\App Paths\NCoverEd
 
 ;Nero WaveEditor
 #ifndef Micro
-Root: HKLM; Subkey: Software\Nero\Shared\AudioEffects\DXPlugins; ValueName: DXEnum; ValueData: {app}\Nero WaveEditor\; ValueType: string; Components: nero_waveedit; Flags: uninsdeletekey
-Root: HKLM; SubKey: Software\Nero\Shared\AudioEffects; ValueType: string; ValueName: {{71CD24C5-9704-4D1F-86E8-F1E7AE677E43}; ValueData: Audio Effects; Flags: uninsdeletekey
-Root: HKLM; SubKey: Software\Nero\Shared\AudioEffects; ValueType: string; ValueName: {{6D32D183-28B4-4253-9858-A3F12C62CE66}; ValueData: DirectX Effects; Flags: uninsdeletekey
-Root: HKLM; SubKey: Software\Nero\Shared\AudioEffects; ValueType: string; ValueName: {{F1F60FDD-97EA-43F1-920F-6EE61F32F435}; ValueData: VST Effects; Flags: uninsdeletekey
+Root: HKLM; Subkey: Software\{#RegPublisherName}\Shared\AudioEffects\DXPlugins; ValueName: DXEnum; ValueData: {app}\Nero WaveEditor\; ValueType: string; Components: nero_waveedit; Flags: uninsdeletekey
+Root: HKLM; SubKey: Software\{#RegPublisherName}\Shared\AudioEffects; ValueType: string; ValueName: {{71CD24C5-9704-4D1F-86E8-F1E7AE677E43}; ValueData: Audio Effects; Flags: uninsdeletekey
+Root: HKLM; SubKey: Software\{#RegPublisherName}\Shared\AudioEffects; ValueType: string; ValueName: {{6D32D183-28B4-4253-9858-A3F12C62CE66}; ValueData: DirectX Effects; Flags: uninsdeletekey
+Root: HKLM; SubKey: Software\{#RegPublisherName}\Shared\AudioEffects; ValueType: string; ValueName: {{F1F60FDD-97EA-43F1-920F-6EE61F32F435}; ValueData: VST Effects; Flags: uninsdeletekey
 #endif
 
 ;Nero Shared Settings
-Root: HKLM; Subkey: Software\Nero\Shared; ValueType: string; ValueName: AudioPlugin; ValueData: {cf}\Nero\AudioPlugins; Components: nero_core; Flags: uninsdeletekey
-Root: HKLM; Subkey: Software\Nero\Shared; ValueType: string; ValueName: DriveLocker; ValueData: {cf}\Nero\Lib\DriveLocker.dll; Components: nero_core; Flags: uninsdeletekey
-Root: HKLM; Subkey: Software\Nero\Shared; ValueType: string; ValueName: Lib; ValueData: {cf}\Nero\Lib; Components: nero_core; Flags: uninsdeletekey
-Root: HKLM; Subkey: Software\Nero\Shared; ValueType: string; ValueName: AudioPluginManager; ValueData: {cf}\Nero\AudioPlugins\Mgr; Components: nero_core\nero_audioplugins {#emit nero_waveedit}; Flags: uninsdeletekey
+Root: HKLM; Subkey: Software\{#RegPublisherName}\Shared; ValueType: string; ValueName: AudioPlugin; ValueData: {cf}\Nero\AudioPlugins; Components: nero_core; Flags: uninsdeletekey
+Root: HKLM; Subkey: Software\{#RegPublisherName}\Shared; ValueType: string; ValueName: DriveLocker; ValueData: {cf}\Nero\Lib\DriveLocker.dll; Components: nero_core; Flags: uninsdeletekey
+Root: HKLM; Subkey: Software\{#RegPublisherName}\Shared; ValueType: string; ValueName: Lib; ValueData: {cf}\Nero\Lib; Components: nero_core; Flags: uninsdeletekey
+#ifdef Nero8
+Root: HKLM; Subkey: Software\{#RegPublisherName}\Shared; ValueType: string; ValueName: AudioPluginManager; ValueData: {cf}\Nero\AudioPlugins\Mgr; Components: nero_core\nero_audioplugins {#emit nero_waveedit}; Flags: uninsdeletekey
+#endif
+#ifdef Nero7
+Root: HKLM; Subkey: Software\{#RegPublisherName}\Shared; ValueType: string; ValueName: AudioPluginManager; ValueData: {app}\Nero Burning ROM; Components: nero_core\nero_audioplugins {#emit nero_waveedit}; Flags: uninsdeletekey
+#endif
 #ifndef Micro
-Root: HKLM; Subkey: Software\Nero\Shared32; ValueType: string; ValueName: LLS; ValueData: {app}\Nero Burning ROM\LLS.dll; Components: nero_coverdes; Flags: uninsdeletekey
+Root: HKLM; Subkey: Software\{#RegPublisherName}\Shared32; ValueType: string; ValueName: LLS; ValueData: {app}\Nero Burning ROM\LLS.dll; Components: nero_coverdes; Flags: uninsdeletekey
 #endif
 
 ;Application paths - Nero Burning Rom
@@ -439,135 +537,135 @@ Root: HKLM; Subkey: Software\Classes\Applications\nero.exe\SupportedTypes; Value
 Root: HKLM; Subkey: Software\Classes\Applications\nero.exe\SupportedTypes; ValueType: string; ValueName: .nrw; Components: nero_core; Flags: uninsdeletekey
 Root: HKLM; Subkey: Software\Classes\Applications\nero.exe\SupportedTypes; ValueType: string; ValueName: .nsd; Components: nero_core; Flags: uninsdeletekey
 
-Root: HKLM; SubKey: Software\Classes\.cue; ValueType: string; ValueData: NeroBurningROM.Files8.cue; Flags: uninsdeletekeyifempty uninsdeletevalue; Components: nero_core; Tasks: imagefile_assoc
-Root: HKLM; SubKey: Software\Classes\.cue\OpenWithProgIDs; ValueType: string; ValueName: NeroBurningROM.Files8.cue; Flags: uninsdeletekeyifempty uninsdeletevalue; Components: nero_core
+Root: HKLM; SubKey: Software\Classes\.cue; ValueType: string; ValueData: NeroBurningROM.Files{#NeroMajorVersion}.cue; Flags: uninsdeletekeyifempty uninsdeletevalue; Components: nero_core; Tasks: imagefile_assoc
+Root: HKLM; SubKey: Software\Classes\.cue\OpenWithProgIDs; ValueType: string; ValueName: NeroBurningROM.Files{#NeroMajorVersion}.cue; Flags: uninsdeletekeyifempty uninsdeletevalue; Components: nero_core
 Root: HKLM; SubKey: Software\Classes\.cue; Flags: uninsdeletekeyifempty
-Root: HKLM; SubKey: Software\Classes\NeroBurningROM.Files8.cue; ValueType: string; ValueData: {cm:CUE_Description}; Flags: uninsdeletekey; Components: nero_core
-Root: HKLM; SubKey: Software\Classes\NeroBurningROM.Files8.cue; ValueType: string; ValueData: {cm:CUE_Description}; ValueName: FriendlyTypeName; Components: nero_core; Flags: uninsdeletekey
-Root: HKLM; Subkey: Software\Classes\NeroBurningROM.Files8.cue\DefaultIcon; ValueType: expandsz; ValueData: {app}\Nero Burning ROM\nero.exe,5; Flags: uninsdeletekey; Components: nero_core
-Root: HKLM; SubKey: Software\Classes\NeroBurningROM.Files8.cue\Shell\Open\Command; ValueType: expandsz; ValueData: """{app}\Nero Burning ROM\nero.exe"" ""%1"""; Flags: uninsdeletekey; Components: nero_core
+Root: HKLM; SubKey: Software\Classes\NeroBurningROM.Files{#NeroMajorVersion}.cue; ValueType: string; ValueData: {cm:CUE_Description}; Flags: uninsdeletekey; Components: nero_core
+Root: HKLM; SubKey: Software\Classes\NeroBurningROM.Files{#NeroMajorVersion}.cue; ValueType: string; ValueData: {cm:CUE_Description}; ValueName: FriendlyTypeName; Components: nero_core; Flags: uninsdeletekey
+Root: HKLM; Subkey: Software\Classes\NeroBurningROM.Files{#NeroMajorVersion}.cue\DefaultIcon; ValueType: expandsz; ValueData: {app}\Nero Burning ROM\nero.exe,5; Flags: uninsdeletekey; Components: nero_core
+Root: HKLM; SubKey: Software\Classes\NeroBurningROM.Files{#NeroMajorVersion}.cue\Shell\Open\Command; ValueType: expandsz; ValueData: """{app}\Nero Burning ROM\nero.exe"" ""%1"""; Flags: uninsdeletekey; Components: nero_core
 
-Root: HKLM; SubKey: Software\Classes\.img; ValueType: string; ValueData: NeroBurningROM.Files8.img; Flags: uninsdeletekeyifempty uninsdeletevalue; Components: nero_core; Tasks: imagefile_assoc
-Root: HKLM; SubKey: Software\Classes\.img\OpenWithProgIDs; ValueType: string; ValueName: NeroBurningROM.Files8.img; Flags: uninsdeletekeyifempty uninsdeletevalue; Components: nero_core
+Root: HKLM; SubKey: Software\Classes\.img; ValueType: string; ValueData: NeroBurningROM.Files{#NeroMajorVersion}.img; Flags: uninsdeletekeyifempty uninsdeletevalue; Components: nero_core; Tasks: imagefile_assoc
+Root: HKLM; SubKey: Software\Classes\.img\OpenWithProgIDs; ValueType: string; ValueName: NeroBurningROM.Files{#NeroMajorVersion}.img; Flags: uninsdeletekeyifempty uninsdeletevalue; Components: nero_core
 Root: HKLM; SubKey: Software\Classes\.img; Flags: uninsdeletekeyifempty
-Root: HKLM; SubKey: Software\Classes\NeroBurningROM.Files8.img; ValueType: string; ValueData: {cm:IMG_Description}; Flags: uninsdeletekey; Components: nero_core
-Root: HKLM; SubKey: Software\Classes\NeroBurningROM.Files8.img; ValueType: string; ValueData: {cm:IMG_Description}; ValueName: FriendlyTypeName; Flags: uninsdeletekey; Components: nero_core
-Root: HKLM; SubKey: Software\Classes\NeroBurningROM.Files8.img\DefaultIcon; ValueType: expandsz; ValueData: {app}\Nero Burning ROM\nero.exe,5; Flags: uninsdeletekey; Components: nero_core
-Root: HKLM; SubKey: Software\Classes\NeroBurningROM.Files8.img\Shell\Open\Command; ValueType: expandsz; ValueData: """{app}\Nero Burning ROM\nero.exe"" ""%1"""; Flags: uninsdeletekey; Components: nero_core
+Root: HKLM; SubKey: Software\Classes\NeroBurningROM.Files{#NeroMajorVersion}.img; ValueType: string; ValueData: {cm:IMG_Description}; Flags: uninsdeletekey; Components: nero_core
+Root: HKLM; SubKey: Software\Classes\NeroBurningROM.Files{#NeroMajorVersion}.img; ValueType: string; ValueData: {cm:IMG_Description}; ValueName: FriendlyTypeName; Flags: uninsdeletekey; Components: nero_core
+Root: HKLM; SubKey: Software\Classes\NeroBurningROM.Files{#NeroMajorVersion}.img\DefaultIcon; ValueType: expandsz; ValueData: {app}\Nero Burning ROM\nero.exe,5; Flags: uninsdeletekey; Components: nero_core
+Root: HKLM; SubKey: Software\Classes\NeroBurningROM.Files{#NeroMajorVersion}.img\Shell\Open\Command; ValueType: expandsz; ValueData: """{app}\Nero Burning ROM\nero.exe"" ""%1"""; Flags: uninsdeletekey; Components: nero_core
 
-Root: HKLM; SubKey: Software\Classes\.iso; ValueType: string; ValueData: NeroBurningROM.Files8.iso; Components: nero_core; Flags: uninsdeletekeyifempty uninsdeletevalue; Tasks: imagefile_assoc
-Root: HKLM; SubKey: Software\Classes\.iso\OpenWithProgIDs; ValueType: string; ValueName: NeroBurningROM.Files8.iso; Flags: uninsdeletekeyifempty uninsdeletevalue; Components: nero_core
+Root: HKLM; SubKey: Software\Classes\.iso; ValueType: string; ValueData: NeroBurningROM.Files{#NeroMajorVersion}.iso; Components: nero_core; Flags: uninsdeletekeyifempty uninsdeletevalue; Tasks: imagefile_assoc
+Root: HKLM; SubKey: Software\Classes\.iso\OpenWithProgIDs; ValueType: string; ValueName: NeroBurningROM.Files{#NeroMajorVersion}.iso; Flags: uninsdeletekeyifempty uninsdeletevalue; Components: nero_core
 Root: HKLM; SubKey: Software\Classes\.iso; Flags: uninsdeletekeyifempty
-Root: HKLM; SubKey: Software\Classes\NeroBurningROM.Files8.iso; ValueType: string; ValueData: {cm:ISO_Description}; Flags: uninsdeletekey; Components: nero_core
-Root: HKLM; SubKey: Software\Classes\NeroBurningROM.Files8.iso; ValueType: string; ValueData: {cm:ISO_Description}; ValueName: FriendlyTypeName; Flags: uninsdeletekey; Components: nero_core
-Root: HKLM; SubKey: Software\Classes\NeroBurningROM.Files8.iso\DefaultIcon; ValueType: expandsz; ValueData: {app}\Nero Burning ROM\nero.exe,5; Flags: uninsdeletekey; Components: nero_core
-Root: HKLM; SubKey: Software\Classes\NeroBurningROM.Files8.iso\Shell\Open\Command; ValueType: expandsz; ValueData: """{app}\Nero Burning ROM\nero.exe"" ""%1"""; Flags: uninsdeletekey; Components: nero_core
+Root: HKLM; SubKey: Software\Classes\NeroBurningROM.Files{#NeroMajorVersion}.iso; ValueType: string; ValueData: {cm:ISO_Description}; Flags: uninsdeletekey; Components: nero_core
+Root: HKLM; SubKey: Software\Classes\NeroBurningROM.Files{#NeroMajorVersion}.iso; ValueType: string; ValueData: {cm:ISO_Description}; ValueName: FriendlyTypeName; Flags: uninsdeletekey; Components: nero_core
+Root: HKLM; SubKey: Software\Classes\NeroBurningROM.Files{#NeroMajorVersion}.iso\DefaultIcon; ValueType: expandsz; ValueData: {app}\Nero Burning ROM\nero.exe,5; Flags: uninsdeletekey; Components: nero_core
+Root: HKLM; SubKey: Software\Classes\NeroBurningROM.Files{#NeroMajorVersion}.iso\Shell\Open\Command; ValueType: expandsz; ValueData: """{app}\Nero Burning ROM\nero.exe"" ""%1"""; Flags: uninsdeletekey; Components: nero_core
 
-Root: HKLM; SubKey: Software\Classes\.nab; ValueType: string; ValueData: NeroBurningROM.Files8.nab; Components: nero_core; Flags: uninsdeletekey
-Root: HKLM; SubKey: Software\Classes\NeroBurningROM.Files8.nab; ValueType: string; ValueData: {cm:NAB_Description}; Flags: uninsdeletekey; Components: nero_core
-Root: HKLM; SubKey: Software\Classes\NeroBurningROM.Files8.nab; ValueType: string; ValueData: {cm:NAB_Description}; ValueName: FriendlyTypeName; Flags: uninsdeletekey; Components: nero_core
-Root: HKLM; SubKey: Software\Classes\NeroBurningROM.Files8.nab\DefaultIcon; ValueType: expandsz; ValueData: {app}\Nero Burning ROM\nero.exe,17; Flags: uninsdeletekey; Components: nero_core
-Root: HKLM; SubKey: Software\Classes\NeroBurningROM.Files8.nab\Shell\Open\Command; ValueType: expandsz; ValueData: """{app}\Nero Burning ROM\nero.exe"" ""%1"""; Flags: uninsdeletekey; Components: nero_core
-Root: HKLM; SubKey: Software\Classes\.nhf; ValueType: string; ValueData: NeroBurningROM.Files8.nhf; Components: nero_core; Flags: uninsdeletekey
-Root: HKLM; SubKey: Software\Classes\NeroBurningROM.Files8.nhf; ValueType: string; ValueData: {cm:NHF_Description}; Flags: uninsdeletekey; Components: nero_core
-Root: HKLM; SubKey: Software\Classes\NeroBurningROM.Files8.nhf; ValueType: string; ValueData: {cm:NHF_Description}; ValueName: FriendlyTypeName; Flags: uninsdeletekey; Components: nero_core
-Root: HKLM; SubKey: Software\Classes\NeroBurningROM.Files8.nhf\DefaultIcon; ValueType: expandsz; ValueData: {app}\Nero Burning ROM\nero.exe,3; Flags: uninsdeletekey; Components: nero_core
-Root: HKLM; SubKey: Software\Classes\NeroBurningROM.Files8.nhf\Shell\Open\Command; ValueType: expandsz; ValueData: """{app}\Nero Burning ROM\nero.exe"" ""%1"""; Flags: uninsdeletekey; Components: nero_core
-Root: HKLM; SubKey: Software\Classes\.nhv; ValueType: string; ValueData: NeroBurningROM.Files8.nhv; Components: nero_core; Flags: uninsdeletekey
-Root: HKLM; SubKey: Software\Classes\NeroBurningROM.Files8.nhv; ValueType: string; ValueData: {cm:NHV_Description}; Flags: uninsdeletekey; Components: nero_core
-Root: HKLM; SubKey: Software\Classes\NeroBurningROM.Files8.nhv; ValueType: string; ValueData: {cm:NHV_Description}; ValueName: FriendlyTypeName; Flags: uninsdeletekey; Components: nero_core
-Root: HKLM; SubKey: Software\Classes\NeroBurningROM.Files8.nhv\DefaultIcon; ValueType: expandsz; ValueData: {app}\Nero Burning ROM\nero.exe,8; Flags: uninsdeletekey; Components: nero_core
-Root: HKLM; SubKey: Software\Classes\NeroBurningROM.Files8.nhv\Shell\Open\Command; ValueType: expandsz; ValueData: """{app}\Nero Burning ROM\nero.exe"" ""%1"""; Flags: uninsdeletekey; Components: nero_core
-Root: HKLM; SubKey: Software\Classes\.nmd; ValueType: string; ValueData: NeroBurningROM.Files8.nmd; Components: nero_core; Flags: uninsdeletekey
-Root: HKLM; SubKey: Software\Classes\NeroBurningROM.Files8.nmd; ValueType: string; ValueData: {cm:NMD_Description}; Flags: uninsdeletekey; Components: nero_core
-Root: HKLM; SubKey: Software\Classes\NeroBurningROM.Files8.nmd; ValueType: string; ValueData: {cm:NMD_Description}; ValueName: FriendlyTypeName; Flags: uninsdeletekey; Components: nero_core
-Root: HKLM; SubKey: Software\Classes\NeroBurningROM.Files8.nmd\DefaultIcon; ValueType: expandsz; ValueData: {app}\Nero Burning ROM\nero.exe,8; Flags: uninsdeletekey; Components: nero_core
-Root: HKLM; SubKey: Software\Classes\NeroBurningROM.Files8.nmd\Shell\Open\Command; ValueType: expandsz; ValueData: """{app}\Nero Burning ROM\nero.exe"" ""%1"""; Flags: uninsdeletekey; Components: nero_core
-Root: HKLM; SubKey: Software\Classes\.nr3; ValueType: string; ValueData: NeroBurningROM.Files8.nr3; Components: nero_core; Flags: uninsdeletekey
-Root: HKLM; SubKey: Software\Classes\NeroBurningROM.Files8.nr3; ValueType: string; ValueData: {cm:NR3_Description}; Flags: uninsdeletekey; Components: nero_core
-Root: HKLM; SubKey: Software\Classes\NeroBurningROM.Files8.nr3; ValueType: string; ValueData: {cm:NR3_Description}; ValueName: FriendlyTypeName; Flags: uninsdeletekey; Components: nero_core
-Root: HKLM; SubKey: Software\Classes\NeroBurningROM.Files8.nr3\DefaultIcon; ValueType: expandsz; ValueData: {app}\Nero Burning ROM\nero.exe,15; Flags: uninsdeletekey; Components: nero_core
-Root: HKLM; SubKey: Software\Classes\NeroBurningROM.Files8.nr3\Shell\Open\Command; ValueType: expandsz; ValueData: """{app}\Nero Burning ROM\nero.exe"" ""%1"""; Flags: uninsdeletekey; Components: nero_core
-Root: HKLM; SubKey: Software\Classes\.nr4; ValueType: string; ValueData: NeroBurningROM.Files8.nr4; Components: nero_core; Flags: uninsdeletekey
-Root: HKLM; SubKey: Software\Classes\NeroBurningROM.Files8.nr4; ValueType: string; ValueData: {cm:NR4_Description}; Flags: uninsdeletekey; Components: nero_core
-Root: HKLM; SubKey: Software\Classes\NeroBurningROM.Files8.nr4; ValueType: string; ValueData: {cm:NR4_Description}; ValueName: FriendlyTypeName; Flags: uninsdeletekey; Components: nero_core
-Root: HKLM; SubKey: Software\Classes\NeroBurningROM.Files8.nr4\DefaultIcon; ValueType: expandsz; ValueData: {app}\Nero Burning ROM\nero.exe,18; Flags: uninsdeletekey; Components: nero_core
-Root: HKLM; SubKey: Software\Classes\NeroBurningROM.Files8.nr4\Shell\Open\Command; ValueType: expandsz; ValueData: """{app}\Nero Burning ROM\nero.exe"" ""%1"""; Flags: uninsdeletekey; Components: nero_core
-Root: HKLM; SubKey: Software\Classes\.nra; ValueType: string; ValueData: NeroBurningROM.Files8.nra; Components: nero_core; Flags: uninsdeletekey
-Root: HKLM; SubKey: Software\Classes\NeroBurningROM.Files8.nra; ValueType: string; ValueData: {cm:NRA_Description}; Flags: uninsdeletekey; Components: nero_core
-Root: HKLM; SubKey: Software\Classes\NeroBurningROM.Files8.nra; ValueType: string; ValueData: {cm:NRA_Description}; ValueName: FriendlyTypeName; Flags: uninsdeletekey; Components: nero_core
-Root: HKLM; SubKey: Software\Classes\NeroBurningROM.Files8.nra\DefaultIcon; ValueType: expandsz; ValueData: {app}\Nero Burning ROM\nero.exe,4; Flags: uninsdeletekey; Components: nero_core
-Root: HKLM; SubKey: Software\Classes\NeroBurningROM.Files8.nra\Shell\Open\Command; ValueType: expandsz; ValueData: """{app}\Nero Burning ROM\nero.exe"" ""%1"""; Flags: uninsdeletekey; Components: nero_core
-Root: HKLM; SubKey: Software\Classes\.nrb; ValueType: string; ValueData: NeroBurningROM.Files8.nrb; Components: nero_core; Flags: uninsdeletekey
-Root: HKLM; SubKey: Software\Classes\NeroBurningROM.Files8.nrb; ValueType: string; ValueData: {cm:NRB_Description}; Flags: uninsdeletekey; Components: nero_core
-Root: HKLM; SubKey: Software\Classes\NeroBurningROM.Files8.nrb; ValueType: string; ValueData: {cm:NRB_Description}; ValueName: FriendlyTypeName; Flags: uninsdeletekey; Components: nero_core
-Root: HKLM; SubKey: Software\Classes\NeroBurningROM.Files8.nrb\DefaultIcon; ValueType: expandsz; ValueData: {app}\Nero Burning ROM\nero.exe,2; Flags: uninsdeletekey; Components: nero_core
-Root: HKLM; SubKey: Software\Classes\NeroBurningROM.Files8.nrb\Shell\Open\Command; ValueType: expandsz; ValueData: """{app}\Nero Burning ROM\nero.exe"" ""%1"""; Flags: uninsdeletekey; Components: nero_core
-Root: HKLM; SubKey: Software\Classes\.nrc; ValueType: string; ValueData: NeroBurningROM.Files8.nrc; Components: nero_core; Flags: uninsdeletekey
-Root: HKLM; SubKey: Software\Classes\NeroBurningROM.Files8.nrc; ValueType: string; ValueData: {cm:NRC_Description}; Flags: uninsdeletekey; Components: nero_core
-Root: HKLM; SubKey: Software\Classes\NeroBurningROM.Files8.nrc; ValueType: string; ValueData: {cm:NRC_Description}; ValueName: FriendlyTypeName; Flags: uninsdeletekey; Components: nero_core
-Root: HKLM; SubKey: Software\Classes\NeroBurningROM.Files8.nrc\DefaultIcon; ValueType: expandsz; ValueData: {app}\Nero Burning ROM\nero.exe,2; Flags: uninsdeletekey; Components: nero_core
-Root: HKLM; SubKey: Software\Classes\NeroBurningROM.Files8.nrc\Shell\Open\Command; ValueType: expandsz; ValueData: """{app}\Nero Burning ROM\nero.exe"" ""%1"""; Flags: uninsdeletekey; Components: nero_core
-Root: HKLM; SubKey: Software\Classes\.nrd; ValueType: string; ValueData: NeroBurningROM.Files8.nrd; Components: nero_core; Flags: uninsdeletekey
-Root: HKLM; SubKey: Software\Classes\NeroBurningROM.Files8.nrd; ValueType: string; ValueData: {cm:NRD_Description}; Flags: uninsdeletekey; Components: nero_core
-Root: HKLM; SubKey: Software\Classes\NeroBurningROM.Files8.nrd; ValueType: string; ValueData: {cm:NRD_Description}; ValueName: FriendlyTypeName; Flags: uninsdeletekey; Components: nero_core
-Root: HKLM; SubKey: Software\Classes\NeroBurningROM.Files8.nrd\DefaultIcon; ValueType: expandsz; ValueData: {app}\Nero Burning ROM\nero.exe,8; Flags: uninsdeletekey; Components: nero_core
-Root: HKLM; SubKey: Software\Classes\NeroBurningROM.Files8.nrd\Shell\Open\Command; ValueType: expandsz; ValueData: """{app}\Nero Burning ROM\nero.exe"" ""%1"""; Flags: uninsdeletekey; Components: nero_core
-Root: HKLM; SubKey: Software\Classes\.nre; ValueType: string; ValueData: NeroBurningROM.Files8.nre; Components: nero_core; Flags: uninsdeletekey
-Root: HKLM; SubKey: Software\Classes\NeroBurningROM.Files8.nre; ValueType: string; ValueData: {cm:NRE_Description}; Flags: uninsdeletekey; Components: nero_core
-Root: HKLM; SubKey: Software\Classes\NeroBurningROM.Files8.nre; ValueType: string; ValueData: {cm:NRE_Description}; ValueName: FriendlyTypeName; Flags: uninsdeletekey; Components: nero_core
-Root: HKLM; SubKey: Software\Classes\NeroBurningROM.Files8.nre\DefaultIcon; ValueType: expandsz; ValueData: {app}\Nero Burning ROM\nero.exe,17; Flags: uninsdeletekey; Components: nero_core
-Root: HKLM; SubKey: Software\Classes\NeroBurningROM.Files8.nre\Shell\Open\Command; ValueType: expandsz; ValueData: """{app}\Nero Burning ROM\nero.exe"" ""%1"""; Flags: uninsdeletekey; Components: nero_core
-Root: HKLM; SubKey: Software\Classes\.nrg; ValueType: string; ValueData: NeroBurningROM.Files8.nrg; Components: nero_core; Flags: uninsdeletekey
-Root: HKLM; SubKey: Software\Classes\NeroBurningROM.Files8.nrg; ValueType: string; ValueData: {cm:NRG_Description}; Flags: uninsdeletekey; Components: nero_core
-Root: HKLM; SubKey: Software\Classes\NeroBurningROM.Files8.nrg; ValueType: string; ValueData: {cm:NRG_Description}; ValueName: FriendlyTypeName; Flags: uninsdeletekey; Components: nero_core
-Root: HKLM; SubKey: Software\Classes\NeroBurningROM.Files8.nrg\DefaultIcon; ValueType: expandsz; ValueData: {app}\Nero Burning ROM\nero.exe,5; Flags: uninsdeletekey; Components: nero_core
-Root: HKLM; SubKey: Software\Classes\NeroBurningROM.Files8.nrg\Shell\Open\Command; ValueType: expandsz; ValueData: """{app}\Nero Burning ROM\nero.exe"" ""%1"""; Flags: uninsdeletekey; Components: nero_core
-Root: HKLM; SubKey: Software\Classes\.nrh; ValueType: string; ValueData: NeroBurningROM.Files8.nrh; Components: nero_core; Flags: uninsdeletekey
-Root: HKLM; SubKey: Software\Classes\NeroBurningROM.Files8.nrh; ValueType: string; ValueData: {cm:NRH_Description}; Flags: uninsdeletekey; Components: nero_core
-Root: HKLM; SubKey: Software\Classes\NeroBurningROM.Files8.nrh; ValueType: string; ValueData: {cm:NRH_Description}; ValueName: FriendlyTypeName; Flags: uninsdeletekey; Components: nero_core
-Root: HKLM; SubKey: Software\Classes\NeroBurningROM.Files8.nrh\DefaultIcon; ValueType: expandsz; ValueData: {app}\Nero Burning ROM\nero.exe,3; Flags: uninsdeletekey; Components: nero_core
-Root: HKLM; SubKey: Software\Classes\NeroBurningROM.Files8.nrh\Shell\Open\Command; ValueType: expandsz; ValueData: """{app}\Nero Burning ROM\nero.exe"" ""%1"""; Flags: uninsdeletekey; Components: nero_core
-Root: HKLM; SubKey: Software\Classes\.nri; ValueType: string; ValueData: NeroBurningROM.Files8.nri; Components: nero_core; Flags: uninsdeletekey
-Root: HKLM; SubKey: Software\Classes\NeroBurningROM.Files8.nri; ValueType: string; ValueData: {cm:NRI_Description}; Flags: uninsdeletekey; Components: nero_core
-Root: HKLM; SubKey: Software\Classes\NeroBurningROM.Files8.nri; ValueType: string; ValueData: {cm:NRI_Description}; ValueName: FriendlyTypeName; Flags: uninsdeletekey; Components: nero_core
-Root: HKLM; SubKey: Software\Classes\NeroBurningROM.Files8.nri\DefaultIcon; ValueType: expandsz; ValueData: {app}\Nero Burning ROM\nero.exe,2; Flags: uninsdeletekey; Components: nero_core
-Root: HKLM; SubKey: Software\Classes\NeroBurningROM.Files8.nri\Shell\Open\Command; ValueType: expandsz; ValueData: """{app}\Nero Burning ROM\nero.exe"" ""%1"""; Flags: uninsdeletekey; Components: nero_core
-Root: HKLM; SubKey: Software\Classes\.nrj; ValueType: string; ValueData: NeroBurningROM.Files8.nrj; Components: nero_core; Flags: uninsdeletekey
-Root: HKLM; SubKey: Software\Classes\NeroBurningROM.Files8.nrj; ValueType: string; ValueData: {cm:NRJ_Description}; Flags: uninsdeletekey; Components: nero_core
-Root: HKLM; SubKey: Software\Classes\NeroBurningROM.Files8.nrj; ValueType: string; ValueData: {cm:NRJ_Description}; ValueName: FriendlyTypeName; Flags: uninsdeletekey; Components: nero_core
-Root: HKLM; SubKey: Software\Classes\NeroBurningROM.Files8.nrj\DefaultIcon; ValueType: expandsz; ValueData: {app}\Nero Burning ROM\nero.exe,4; Flags: uninsdeletekey; Components: nero_core
-Root: HKLM; SubKey: Software\Classes\NeroBurningROM.Files8.nrj\Shell\Open\Command; ValueType: expandsz; ValueData: """{app}\Nero Burning ROM\nero.exe"" ""%1"""; Flags: uninsdeletekey; Components: nero_core
-Root: HKLM; SubKey: Software\Classes\.nrm; ValueType: string; ValueData: NeroBurningROM.Files8.nrm; Components: nero_core; Flags: uninsdeletekey
-Root: HKLM; SubKey: Software\Classes\NeroBurningROM.Files8.nrm; ValueType: string; ValueData: {cm:NRM_Description}; Flags: uninsdeletekey; Components: nero_core
-Root: HKLM; SubKey: Software\Classes\NeroBurningROM.Files8.nrm; ValueType: string; ValueData: {cm:NRM_Description}; ValueName: FriendlyTypeName; Flags: uninsdeletekey; Components: nero_core
-Root: HKLM; SubKey: Software\Classes\NeroBurningROM.Files8.nrm\DefaultIcon; ValueType: expandsz; ValueData: {app}\Nero Burning ROM\nero.exe,7; Flags: uninsdeletekey; Components: nero_core
-Root: HKLM; SubKey: Software\Classes\NeroBurningROM.Files8.nrm\Shell\Open\Command; ValueType: expandsz; ValueData: """{app}\Nero Burning ROM\nero.exe"" ""%1"""; Flags: uninsdeletekey; Components: nero_core
-Root: HKLM; SubKey: Software\Classes\.nrs; ValueType: string; ValueData: NeroBurningROM.Files8.nrs; Components: nero_core; Flags: uninsdeletekey
-Root: HKLM; SubKey: Software\Classes\NeroBurningROM.Files8.nrs; ValueType: string; ValueData: {cm:NRS_Description}; Flags: uninsdeletekey; Components: nero_core
-Root: HKLM; SubKey: Software\Classes\NeroBurningROM.Files8.nrs; ValueType: string; ValueData: {cm:NRS_Description}; ValueName: FriendlyTypeName; Flags: uninsdeletekey; Components: nero_core
-Root: HKLM; SubKey: Software\Classes\NeroBurningROM.Files8.nrs\DefaultIcon; ValueType: expandsz; ValueData: {app}\Nero Burning ROM\nero.exe,2; Flags: uninsdeletekey; Components: nero_core
-Root: HKLM; SubKey: Software\Classes\NeroBurningROM.Files8.nrs\Shell\Open\Command; ValueType: expandsz; ValueData: """{app}\Nero Burning ROM\nero.exe"" ""%1"""; Flags: uninsdeletekey; Components: nero_core
-Root: HKLM; SubKey: Software\Classes\.nru; ValueType: string; ValueData: NeroBurningROM.Files8.nru; Components: nero_core; Flags: uninsdeletekey
-Root: HKLM; SubKey: Software\Classes\NeroBurningROM.Files8.nru; ValueType: string; ValueData: {cm:NRU_Description}; Flags: uninsdeletekey; Components: nero_core
-Root: HKLM; SubKey: Software\Classes\NeroBurningROM.Files8.nru; ValueType: string; ValueData: {cm:NRU_Description}; ValueName: FriendlyTypeName; Flags: uninsdeletekey; Components: nero_core
-Root: HKLM; SubKey: Software\Classes\NeroBurningROM.Files8.nru\DefaultIcon; ValueType: expandsz; ValueData: {app}\Nero Burning ROM\nero.exe,2; Flags: uninsdeletekey; Components: nero_core
-Root: HKLM; SubKey: Software\Classes\NeroBurningROM.Files8.nru\Shell\Open\Command; ValueType: expandsz; ValueData: """{app}\Nero Burning ROM\nero.exe"" ""%1"""; Flags: uninsdeletekey; Components: nero_core
-Root: HKLM; SubKey: Software\Classes\.nrv; ValueType: string; ValueData: NeroBurningROM.Files8.nrv; Components: nero_core; Flags: uninsdeletekey
-Root: HKLM; SubKey: Software\Classes\NeroBurningROM.Files8.nrv; ValueType: string; ValueData: {cm:NRV_Description}; Flags: uninsdeletekey; Components: nero_core
-Root: HKLM; SubKey: Software\Classes\NeroBurningROM.Files8.nrv; ValueType: string; ValueData: {cm:NRV_Description}; ValueName: FriendlyTypeName; Flags: uninsdeletekey; Components: nero_core
-Root: HKLM; SubKey: Software\Classes\NeroBurningROM.Files8.nrv\DefaultIcon; ValueType: expandsz; ValueData: {app}\Nero Burning ROM\nero.exe,8; Flags: uninsdeletekey; Components: nero_core
-Root: HKLM; SubKey: Software\Classes\NeroBurningROM.Files8.nrv\Shell\Open\Command; ValueType: expandsz; ValueData: """{app}\Nero Burning ROM\nero.exe"" ""%1"""; Flags: uninsdeletekey; Components: nero_core
-Root: HKLM; SubKey: Software\Classes\.nrw; ValueType: string; ValueData: NeroBurningROM.Files8.nrw; Components: nero_core; Flags: uninsdeletekey
-Root: HKLM; SubKey: Software\Classes\NeroBurningROM.Files8.nrw; ValueType: string; ValueData: {cm:NRW_Description}; Flags: uninsdeletekey; Components: nero_core
-Root: HKLM; SubKey: Software\Classes\NeroBurningROM.Files8.nrw; ValueType: string; ValueData: {cm:NRW_Description}; ValueName: FriendlyTypeName; Flags: uninsdeletekey; Components: nero_core
-Root: HKLM; SubKey: Software\Classes\NeroBurningROM.Files8.nrw\DefaultIcon; ValueType: expandsz; ValueData: {app}\Nero Burning ROM\nero.exe,16; Flags: uninsdeletekey; Components: nero_core
-Root: HKLM; SubKey: Software\Classes\NeroBurningROM.Files8.nrw\Shell\Open\Command; ValueType: expandsz; ValueData: """{app}\Nero Burning ROM\nero.exe"" ""%1"""; Flags: uninsdeletekey; Components: nero_core
-Root: HKLM; SubKey: Software\Classes\.nsd; ValueType: string; ValueData: NeroBurningROM.Files8.nsd; Components: nero_core; Flags: uninsdeletekey
-Root: HKLM; SubKey: Software\Classes\NeroBurningROM.Files8.nsd; ValueType: string; ValueData: {cm:NSD_Description}; Flags: uninsdeletekey; Components: nero_core
-Root: HKLM; SubKey: Software\Classes\NeroBurningROM.Files8.nsd; ValueType: string; ValueData: {cm:NSD_Description}; ValueName: FriendlyTypeName; Flags: uninsdeletekey; Components: nero_core
-Root: HKLM; SubKey: Software\Classes\NeroBurningROM.Files8.nsd\DefaultIcon; ValueType: expandsz; ValueData: {app}\Nero Burning ROM\nero.exe,8; Flags: uninsdeletekey; Components: nero_core
-Root: HKLM; SubKey: Software\Classes\NeroBurningROM.Files8.nsd\Shell\Open\Command; ValueType: expandsz; ValueData: """{app}\Nero Burning ROM\nero.exe"" ""%1"""; Flags: uninsdeletekey; Components: nero_core
+Root: HKLM; SubKey: Software\Classes\.nab; ValueType: string; ValueData: NeroBurningROM.Files{#NeroMajorVersion}.nab; Components: nero_core; Flags: uninsdeletekey
+Root: HKLM; SubKey: Software\Classes\NeroBurningROM.Files{#NeroMajorVersion}.nab; ValueType: string; ValueData: {cm:NAB_Description}; Flags: uninsdeletekey; Components: nero_core
+Root: HKLM; SubKey: Software\Classes\NeroBurningROM.Files{#NeroMajorVersion}.nab; ValueType: string; ValueData: {cm:NAB_Description}; ValueName: FriendlyTypeName; Flags: uninsdeletekey; Components: nero_core
+Root: HKLM; SubKey: Software\Classes\NeroBurningROM.Files{#NeroMajorVersion}.nab\DefaultIcon; ValueType: expandsz; ValueData: {app}\Nero Burning ROM\nero.exe,17; Flags: uninsdeletekey; Components: nero_core
+Root: HKLM; SubKey: Software\Classes\NeroBurningROM.Files{#NeroMajorVersion}.nab\Shell\Open\Command; ValueType: expandsz; ValueData: """{app}\Nero Burning ROM\nero.exe"" ""%1"""; Flags: uninsdeletekey; Components: nero_core
+Root: HKLM; SubKey: Software\Classes\.nhf; ValueType: string; ValueData: NeroBurningROM.Files{#NeroMajorVersion}.nhf; Components: nero_core; Flags: uninsdeletekey
+Root: HKLM; SubKey: Software\Classes\NeroBurningROM.Files{#NeroMajorVersion}.nhf; ValueType: string; ValueData: {cm:NHF_Description}; Flags: uninsdeletekey; Components: nero_core
+Root: HKLM; SubKey: Software\Classes\NeroBurningROM.Files{#NeroMajorVersion}.nhf; ValueType: string; ValueData: {cm:NHF_Description}; ValueName: FriendlyTypeName; Flags: uninsdeletekey; Components: nero_core
+Root: HKLM; SubKey: Software\Classes\NeroBurningROM.Files{#NeroMajorVersion}.nhf\DefaultIcon; ValueType: expandsz; ValueData: {app}\Nero Burning ROM\nero.exe,3; Flags: uninsdeletekey; Components: nero_core
+Root: HKLM; SubKey: Software\Classes\NeroBurningROM.Files{#NeroMajorVersion}.nhf\Shell\Open\Command; ValueType: expandsz; ValueData: """{app}\Nero Burning ROM\nero.exe"" ""%1"""; Flags: uninsdeletekey; Components: nero_core
+Root: HKLM; SubKey: Software\Classes\.nhv; ValueType: string; ValueData: NeroBurningROM.Files{#NeroMajorVersion}.nhv; Components: nero_core; Flags: uninsdeletekey
+Root: HKLM; SubKey: Software\Classes\NeroBurningROM.Files{#NeroMajorVersion}.nhv; ValueType: string; ValueData: {cm:NHV_Description}; Flags: uninsdeletekey; Components: nero_core
+Root: HKLM; SubKey: Software\Classes\NeroBurningROM.Files{#NeroMajorVersion}.nhv; ValueType: string; ValueData: {cm:NHV_Description}; ValueName: FriendlyTypeName; Flags: uninsdeletekey; Components: nero_core
+Root: HKLM; SubKey: Software\Classes\NeroBurningROM.Files{#NeroMajorVersion}.nhv\DefaultIcon; ValueType: expandsz; ValueData: {app}\Nero Burning ROM\nero.exe,8; Flags: uninsdeletekey; Components: nero_core
+Root: HKLM; SubKey: Software\Classes\NeroBurningROM.Files{#NeroMajorVersion}.nhv\Shell\Open\Command; ValueType: expandsz; ValueData: """{app}\Nero Burning ROM\nero.exe"" ""%1"""; Flags: uninsdeletekey; Components: nero_core
+Root: HKLM; SubKey: Software\Classes\.nmd; ValueType: string; ValueData: NeroBurningROM.Files{#NeroMajorVersion}.nmd; Components: nero_core; Flags: uninsdeletekey
+Root: HKLM; SubKey: Software\Classes\NeroBurningROM.Files{#NeroMajorVersion}.nmd; ValueType: string; ValueData: {cm:NMD_Description}; Flags: uninsdeletekey; Components: nero_core
+Root: HKLM; SubKey: Software\Classes\NeroBurningROM.Files{#NeroMajorVersion}.nmd; ValueType: string; ValueData: {cm:NMD_Description}; ValueName: FriendlyTypeName; Flags: uninsdeletekey; Components: nero_core
+Root: HKLM; SubKey: Software\Classes\NeroBurningROM.Files{#NeroMajorVersion}.nmd\DefaultIcon; ValueType: expandsz; ValueData: {app}\Nero Burning ROM\nero.exe,8; Flags: uninsdeletekey; Components: nero_core
+Root: HKLM; SubKey: Software\Classes\NeroBurningROM.Files{#NeroMajorVersion}.nmd\Shell\Open\Command; ValueType: expandsz; ValueData: """{app}\Nero Burning ROM\nero.exe"" ""%1"""; Flags: uninsdeletekey; Components: nero_core
+Root: HKLM; SubKey: Software\Classes\.nr3; ValueType: string; ValueData: NeroBurningROM.Files{#NeroMajorVersion}.nr3; Components: nero_core; Flags: uninsdeletekey
+Root: HKLM; SubKey: Software\Classes\NeroBurningROM.Files{#NeroMajorVersion}.nr3; ValueType: string; ValueData: {cm:NR3_Description}; Flags: uninsdeletekey; Components: nero_core
+Root: HKLM; SubKey: Software\Classes\NeroBurningROM.Files{#NeroMajorVersion}.nr3; ValueType: string; ValueData: {cm:NR3_Description}; ValueName: FriendlyTypeName; Flags: uninsdeletekey; Components: nero_core
+Root: HKLM; SubKey: Software\Classes\NeroBurningROM.Files{#NeroMajorVersion}.nr3\DefaultIcon; ValueType: expandsz; ValueData: {app}\Nero Burning ROM\nero.exe,15; Flags: uninsdeletekey; Components: nero_core
+Root: HKLM; SubKey: Software\Classes\NeroBurningROM.Files{#NeroMajorVersion}.nr3\Shell\Open\Command; ValueType: expandsz; ValueData: """{app}\Nero Burning ROM\nero.exe"" ""%1"""; Flags: uninsdeletekey; Components: nero_core
+Root: HKLM; SubKey: Software\Classes\.nr4; ValueType: string; ValueData: NeroBurningROM.Files{#NeroMajorVersion}.nr4; Components: nero_core; Flags: uninsdeletekey
+Root: HKLM; SubKey: Software\Classes\NeroBurningROM.Files{#NeroMajorVersion}.nr4; ValueType: string; ValueData: {cm:NR4_Description}; Flags: uninsdeletekey; Components: nero_core
+Root: HKLM; SubKey: Software\Classes\NeroBurningROM.Files{#NeroMajorVersion}.nr4; ValueType: string; ValueData: {cm:NR4_Description}; ValueName: FriendlyTypeName; Flags: uninsdeletekey; Components: nero_core
+Root: HKLM; SubKey: Software\Classes\NeroBurningROM.Files{#NeroMajorVersion}.nr4\DefaultIcon; ValueType: expandsz; ValueData: {app}\Nero Burning ROM\nero.exe,18; Flags: uninsdeletekey; Components: nero_core
+Root: HKLM; SubKey: Software\Classes\NeroBurningROM.Files{#NeroMajorVersion}.nr4\Shell\Open\Command; ValueType: expandsz; ValueData: """{app}\Nero Burning ROM\nero.exe"" ""%1"""; Flags: uninsdeletekey; Components: nero_core
+Root: HKLM; SubKey: Software\Classes\.nra; ValueType: string; ValueData: NeroBurningROM.Files{#NeroMajorVersion}.nra; Components: nero_core; Flags: uninsdeletekey
+Root: HKLM; SubKey: Software\Classes\NeroBurningROM.Files{#NeroMajorVersion}.nra; ValueType: string; ValueData: {cm:NRA_Description}; Flags: uninsdeletekey; Components: nero_core
+Root: HKLM; SubKey: Software\Classes\NeroBurningROM.Files{#NeroMajorVersion}.nra; ValueType: string; ValueData: {cm:NRA_Description}; ValueName: FriendlyTypeName; Flags: uninsdeletekey; Components: nero_core
+Root: HKLM; SubKey: Software\Classes\NeroBurningROM.Files{#NeroMajorVersion}.nra\DefaultIcon; ValueType: expandsz; ValueData: {app}\Nero Burning ROM\nero.exe,4; Flags: uninsdeletekey; Components: nero_core
+Root: HKLM; SubKey: Software\Classes\NeroBurningROM.Files{#NeroMajorVersion}.nra\Shell\Open\Command; ValueType: expandsz; ValueData: """{app}\Nero Burning ROM\nero.exe"" ""%1"""; Flags: uninsdeletekey; Components: nero_core
+Root: HKLM; SubKey: Software\Classes\.nrb; ValueType: string; ValueData: NeroBurningROM.Files{#NeroMajorVersion}.nrb; Components: nero_core; Flags: uninsdeletekey
+Root: HKLM; SubKey: Software\Classes\NeroBurningROM.Files{#NeroMajorVersion}.nrb; ValueType: string; ValueData: {cm:NRB_Description}; Flags: uninsdeletekey; Components: nero_core
+Root: HKLM; SubKey: Software\Classes\NeroBurningROM.Files{#NeroMajorVersion}.nrb; ValueType: string; ValueData: {cm:NRB_Description}; ValueName: FriendlyTypeName; Flags: uninsdeletekey; Components: nero_core
+Root: HKLM; SubKey: Software\Classes\NeroBurningROM.Files{#NeroMajorVersion}.nrb\DefaultIcon; ValueType: expandsz; ValueData: {app}\Nero Burning ROM\nero.exe,2; Flags: uninsdeletekey; Components: nero_core
+Root: HKLM; SubKey: Software\Classes\NeroBurningROM.Files{#NeroMajorVersion}.nrb\Shell\Open\Command; ValueType: expandsz; ValueData: """{app}\Nero Burning ROM\nero.exe"" ""%1"""; Flags: uninsdeletekey; Components: nero_core
+Root: HKLM; SubKey: Software\Classes\.nrc; ValueType: string; ValueData: NeroBurningROM.Files{#NeroMajorVersion}.nrc; Components: nero_core; Flags: uninsdeletekey
+Root: HKLM; SubKey: Software\Classes\NeroBurningROM.Files{#NeroMajorVersion}.nrc; ValueType: string; ValueData: {cm:NRC_Description}; Flags: uninsdeletekey; Components: nero_core
+Root: HKLM; SubKey: Software\Classes\NeroBurningROM.Files{#NeroMajorVersion}.nrc; ValueType: string; ValueData: {cm:NRC_Description}; ValueName: FriendlyTypeName; Flags: uninsdeletekey; Components: nero_core
+Root: HKLM; SubKey: Software\Classes\NeroBurningROM.Files{#NeroMajorVersion}.nrc\DefaultIcon; ValueType: expandsz; ValueData: {app}\Nero Burning ROM\nero.exe,2; Flags: uninsdeletekey; Components: nero_core
+Root: HKLM; SubKey: Software\Classes\NeroBurningROM.Files{#NeroMajorVersion}.nrc\Shell\Open\Command; ValueType: expandsz; ValueData: """{app}\Nero Burning ROM\nero.exe"" ""%1"""; Flags: uninsdeletekey; Components: nero_core
+Root: HKLM; SubKey: Software\Classes\.nrd; ValueType: string; ValueData: NeroBurningROM.Files{#NeroMajorVersion}.nrd; Components: nero_core; Flags: uninsdeletekey
+Root: HKLM; SubKey: Software\Classes\NeroBurningROM.Files{#NeroMajorVersion}.nrd; ValueType: string; ValueData: {cm:NRD_Description}; Flags: uninsdeletekey; Components: nero_core
+Root: HKLM; SubKey: Software\Classes\NeroBurningROM.Files{#NeroMajorVersion}.nrd; ValueType: string; ValueData: {cm:NRD_Description}; ValueName: FriendlyTypeName; Flags: uninsdeletekey; Components: nero_core
+Root: HKLM; SubKey: Software\Classes\NeroBurningROM.Files{#NeroMajorVersion}.nrd\DefaultIcon; ValueType: expandsz; ValueData: {app}\Nero Burning ROM\nero.exe,8; Flags: uninsdeletekey; Components: nero_core
+Root: HKLM; SubKey: Software\Classes\NeroBurningROM.Files{#NeroMajorVersion}.nrd\Shell\Open\Command; ValueType: expandsz; ValueData: """{app}\Nero Burning ROM\nero.exe"" ""%1"""; Flags: uninsdeletekey; Components: nero_core
+Root: HKLM; SubKey: Software\Classes\.nre; ValueType: string; ValueData: NeroBurningROM.Files{#NeroMajorVersion}.nre; Components: nero_core; Flags: uninsdeletekey
+Root: HKLM; SubKey: Software\Classes\NeroBurningROM.Files{#NeroMajorVersion}.nre; ValueType: string; ValueData: {cm:NRE_Description}; Flags: uninsdeletekey; Components: nero_core
+Root: HKLM; SubKey: Software\Classes\NeroBurningROM.Files{#NeroMajorVersion}.nre; ValueType: string; ValueData: {cm:NRE_Description}; ValueName: FriendlyTypeName; Flags: uninsdeletekey; Components: nero_core
+Root: HKLM; SubKey: Software\Classes\NeroBurningROM.Files{#NeroMajorVersion}.nre\DefaultIcon; ValueType: expandsz; ValueData: {app}\Nero Burning ROM\nero.exe,17; Flags: uninsdeletekey; Components: nero_core
+Root: HKLM; SubKey: Software\Classes\NeroBurningROM.Files{#NeroMajorVersion}.nre\Shell\Open\Command; ValueType: expandsz; ValueData: """{app}\Nero Burning ROM\nero.exe"" ""%1"""; Flags: uninsdeletekey; Components: nero_core
+Root: HKLM; SubKey: Software\Classes\.nrg; ValueType: string; ValueData: NeroBurningROM.Files{#NeroMajorVersion}.nrg; Components: nero_core; Flags: uninsdeletekey
+Root: HKLM; SubKey: Software\Classes\NeroBurningROM.Files{#NeroMajorVersion}.nrg; ValueType: string; ValueData: {cm:NRG_Description}; Flags: uninsdeletekey; Components: nero_core
+Root: HKLM; SubKey: Software\Classes\NeroBurningROM.Files{#NeroMajorVersion}.nrg; ValueType: string; ValueData: {cm:NRG_Description}; ValueName: FriendlyTypeName; Flags: uninsdeletekey; Components: nero_core
+Root: HKLM; SubKey: Software\Classes\NeroBurningROM.Files{#NeroMajorVersion}.nrg\DefaultIcon; ValueType: expandsz; ValueData: {app}\Nero Burning ROM\nero.exe,5; Flags: uninsdeletekey; Components: nero_core
+Root: HKLM; SubKey: Software\Classes\NeroBurningROM.Files{#NeroMajorVersion}.nrg\Shell\Open\Command; ValueType: expandsz; ValueData: """{app}\Nero Burning ROM\nero.exe"" ""%1"""; Flags: uninsdeletekey; Components: nero_core
+Root: HKLM; SubKey: Software\Classes\.nrh; ValueType: string; ValueData: NeroBurningROM.Files{#NeroMajorVersion}.nrh; Components: nero_core; Flags: uninsdeletekey
+Root: HKLM; SubKey: Software\Classes\NeroBurningROM.Files{#NeroMajorVersion}.nrh; ValueType: string; ValueData: {cm:NRH_Description}; Flags: uninsdeletekey; Components: nero_core
+Root: HKLM; SubKey: Software\Classes\NeroBurningROM.Files{#NeroMajorVersion}.nrh; ValueType: string; ValueData: {cm:NRH_Description}; ValueName: FriendlyTypeName; Flags: uninsdeletekey; Components: nero_core
+Root: HKLM; SubKey: Software\Classes\NeroBurningROM.Files{#NeroMajorVersion}.nrh\DefaultIcon; ValueType: expandsz; ValueData: {app}\Nero Burning ROM\nero.exe,3; Flags: uninsdeletekey; Components: nero_core
+Root: HKLM; SubKey: Software\Classes\NeroBurningROM.Files{#NeroMajorVersion}.nrh\Shell\Open\Command; ValueType: expandsz; ValueData: """{app}\Nero Burning ROM\nero.exe"" ""%1"""; Flags: uninsdeletekey; Components: nero_core
+Root: HKLM; SubKey: Software\Classes\.nri; ValueType: string; ValueData: NeroBurningROM.Files{#NeroMajorVersion}.nri; Components: nero_core; Flags: uninsdeletekey
+Root: HKLM; SubKey: Software\Classes\NeroBurningROM.Files{#NeroMajorVersion}.nri; ValueType: string; ValueData: {cm:NRI_Description}; Flags: uninsdeletekey; Components: nero_core
+Root: HKLM; SubKey: Software\Classes\NeroBurningROM.Files{#NeroMajorVersion}.nri; ValueType: string; ValueData: {cm:NRI_Description}; ValueName: FriendlyTypeName; Flags: uninsdeletekey; Components: nero_core
+Root: HKLM; SubKey: Software\Classes\NeroBurningROM.Files{#NeroMajorVersion}.nri\DefaultIcon; ValueType: expandsz; ValueData: {app}\Nero Burning ROM\nero.exe,2; Flags: uninsdeletekey; Components: nero_core
+Root: HKLM; SubKey: Software\Classes\NeroBurningROM.Files{#NeroMajorVersion}.nri\Shell\Open\Command; ValueType: expandsz; ValueData: """{app}\Nero Burning ROM\nero.exe"" ""%1"""; Flags: uninsdeletekey; Components: nero_core
+Root: HKLM; SubKey: Software\Classes\.nrj; ValueType: string; ValueData: NeroBurningROM.Files{#NeroMajorVersion}.nrj; Components: nero_core; Flags: uninsdeletekey
+Root: HKLM; SubKey: Software\Classes\NeroBurningROM.Files{#NeroMajorVersion}.nrj; ValueType: string; ValueData: {cm:NRJ_Description}; Flags: uninsdeletekey; Components: nero_core
+Root: HKLM; SubKey: Software\Classes\NeroBurningROM.Files{#NeroMajorVersion}.nrj; ValueType: string; ValueData: {cm:NRJ_Description}; ValueName: FriendlyTypeName; Flags: uninsdeletekey; Components: nero_core
+Root: HKLM; SubKey: Software\Classes\NeroBurningROM.Files{#NeroMajorVersion}.nrj\DefaultIcon; ValueType: expandsz; ValueData: {app}\Nero Burning ROM\nero.exe,4; Flags: uninsdeletekey; Components: nero_core
+Root: HKLM; SubKey: Software\Classes\NeroBurningROM.Files{#NeroMajorVersion}.nrj\Shell\Open\Command; ValueType: expandsz; ValueData: """{app}\Nero Burning ROM\nero.exe"" ""%1"""; Flags: uninsdeletekey; Components: nero_core
+Root: HKLM; SubKey: Software\Classes\.nrm; ValueType: string; ValueData: NeroBurningROM.Files{#NeroMajorVersion}.nrm; Components: nero_core; Flags: uninsdeletekey
+Root: HKLM; SubKey: Software\Classes\NeroBurningROM.Files{#NeroMajorVersion}.nrm; ValueType: string; ValueData: {cm:NRM_Description}; Flags: uninsdeletekey; Components: nero_core
+Root: HKLM; SubKey: Software\Classes\NeroBurningROM.Files{#NeroMajorVersion}.nrm; ValueType: string; ValueData: {cm:NRM_Description}; ValueName: FriendlyTypeName; Flags: uninsdeletekey; Components: nero_core
+Root: HKLM; SubKey: Software\Classes\NeroBurningROM.Files{#NeroMajorVersion}.nrm\DefaultIcon; ValueType: expandsz; ValueData: {app}\Nero Burning ROM\nero.exe,7; Flags: uninsdeletekey; Components: nero_core
+Root: HKLM; SubKey: Software\Classes\NeroBurningROM.Files{#NeroMajorVersion}.nrm\Shell\Open\Command; ValueType: expandsz; ValueData: """{app}\Nero Burning ROM\nero.exe"" ""%1"""; Flags: uninsdeletekey; Components: nero_core
+Root: HKLM; SubKey: Software\Classes\.nrs; ValueType: string; ValueData: NeroBurningROM.Files{#NeroMajorVersion}.nrs; Components: nero_core; Flags: uninsdeletekey
+Root: HKLM; SubKey: Software\Classes\NeroBurningROM.Files{#NeroMajorVersion}.nrs; ValueType: string; ValueData: {cm:NRS_Description}; Flags: uninsdeletekey; Components: nero_core
+Root: HKLM; SubKey: Software\Classes\NeroBurningROM.Files{#NeroMajorVersion}.nrs; ValueType: string; ValueData: {cm:NRS_Description}; ValueName: FriendlyTypeName; Flags: uninsdeletekey; Components: nero_core
+Root: HKLM; SubKey: Software\Classes\NeroBurningROM.Files{#NeroMajorVersion}.nrs\DefaultIcon; ValueType: expandsz; ValueData: {app}\Nero Burning ROM\nero.exe,2; Flags: uninsdeletekey; Components: nero_core
+Root: HKLM; SubKey: Software\Classes\NeroBurningROM.Files{#NeroMajorVersion}.nrs\Shell\Open\Command; ValueType: expandsz; ValueData: """{app}\Nero Burning ROM\nero.exe"" ""%1"""; Flags: uninsdeletekey; Components: nero_core
+Root: HKLM; SubKey: Software\Classes\.nru; ValueType: string; ValueData: NeroBurningROM.Files{#NeroMajorVersion}.nru; Components: nero_core; Flags: uninsdeletekey
+Root: HKLM; SubKey: Software\Classes\NeroBurningROM.Files{#NeroMajorVersion}.nru; ValueType: string; ValueData: {cm:NRU_Description}; Flags: uninsdeletekey; Components: nero_core
+Root: HKLM; SubKey: Software\Classes\NeroBurningROM.Files{#NeroMajorVersion}.nru; ValueType: string; ValueData: {cm:NRU_Description}; ValueName: FriendlyTypeName; Flags: uninsdeletekey; Components: nero_core
+Root: HKLM; SubKey: Software\Classes\NeroBurningROM.Files{#NeroMajorVersion}.nru\DefaultIcon; ValueType: expandsz; ValueData: {app}\Nero Burning ROM\nero.exe,2; Flags: uninsdeletekey; Components: nero_core
+Root: HKLM; SubKey: Software\Classes\NeroBurningROM.Files{#NeroMajorVersion}.nru\Shell\Open\Command; ValueType: expandsz; ValueData: """{app}\Nero Burning ROM\nero.exe"" ""%1"""; Flags: uninsdeletekey; Components: nero_core
+Root: HKLM; SubKey: Software\Classes\.nrv; ValueType: string; ValueData: NeroBurningROM.Files{#NeroMajorVersion}.nrv; Components: nero_core; Flags: uninsdeletekey
+Root: HKLM; SubKey: Software\Classes\NeroBurningROM.Files{#NeroMajorVersion}.nrv; ValueType: string; ValueData: {cm:NRV_Description}; Flags: uninsdeletekey; Components: nero_core
+Root: HKLM; SubKey: Software\Classes\NeroBurningROM.Files{#NeroMajorVersion}.nrv; ValueType: string; ValueData: {cm:NRV_Description}; ValueName: FriendlyTypeName; Flags: uninsdeletekey; Components: nero_core
+Root: HKLM; SubKey: Software\Classes\NeroBurningROM.Files{#NeroMajorVersion}.nrv\DefaultIcon; ValueType: expandsz; ValueData: {app}\Nero Burning ROM\nero.exe,8; Flags: uninsdeletekey; Components: nero_core
+Root: HKLM; SubKey: Software\Classes\NeroBurningROM.Files{#NeroMajorVersion}.nrv\Shell\Open\Command; ValueType: expandsz; ValueData: """{app}\Nero Burning ROM\nero.exe"" ""%1"""; Flags: uninsdeletekey; Components: nero_core
+Root: HKLM; SubKey: Software\Classes\.nrw; ValueType: string; ValueData: NeroBurningROM.Files{#NeroMajorVersion}.nrw; Components: nero_core; Flags: uninsdeletekey
+Root: HKLM; SubKey: Software\Classes\NeroBurningROM.Files{#NeroMajorVersion}.nrw; ValueType: string; ValueData: {cm:NRW_Description}; Flags: uninsdeletekey; Components: nero_core
+Root: HKLM; SubKey: Software\Classes\NeroBurningROM.Files{#NeroMajorVersion}.nrw; ValueType: string; ValueData: {cm:NRW_Description}; ValueName: FriendlyTypeName; Flags: uninsdeletekey; Components: nero_core
+Root: HKLM; SubKey: Software\Classes\NeroBurningROM.Files{#NeroMajorVersion}.nrw\DefaultIcon; ValueType: expandsz; ValueData: {app}\Nero Burning ROM\nero.exe,16; Flags: uninsdeletekey; Components: nero_core
+Root: HKLM; SubKey: Software\Classes\NeroBurningROM.Files{#NeroMajorVersion}.nrw\Shell\Open\Command; ValueType: expandsz; ValueData: """{app}\Nero Burning ROM\nero.exe"" ""%1"""; Flags: uninsdeletekey; Components: nero_core
+Root: HKLM; SubKey: Software\Classes\.nsd; ValueType: string; ValueData: NeroBurningROM.Files{#NeroMajorVersion}.nsd; Components: nero_core; Flags: uninsdeletekey
+Root: HKLM; SubKey: Software\Classes\NeroBurningROM.Files{#NeroMajorVersion}.nsd; ValueType: string; ValueData: {cm:NSD_Description}; Flags: uninsdeletekey; Components: nero_core
+Root: HKLM; SubKey: Software\Classes\NeroBurningROM.Files{#NeroMajorVersion}.nsd; ValueType: string; ValueData: {cm:NSD_Description}; ValueName: FriendlyTypeName; Flags: uninsdeletekey; Components: nero_core
+Root: HKLM; SubKey: Software\Classes\NeroBurningROM.Files{#NeroMajorVersion}.nsd\DefaultIcon; ValueType: expandsz; ValueData: {app}\Nero Burning ROM\nero.exe,8; Flags: uninsdeletekey; Components: nero_core
+Root: HKLM; SubKey: Software\Classes\NeroBurningROM.Files{#NeroMajorVersion}.nsd\Shell\Open\Command; ValueType: expandsz; ValueData: """{app}\Nero Burning ROM\nero.exe"" ""%1"""; Flags: uninsdeletekey; Components: nero_core
 
 ;Application paths - Hack to access CoverDesigner from Nero Express
 #ifndef Micro
@@ -585,21 +683,21 @@ Root: HKLM; Subkey: Software\Classes\Applications\coverdes.exe\SupportedTypes; V
 #endif
 
 #ifndef Micro
-Root: HKLM; SubKey: Software\Classes\.cdc; ValueType: string; ValueData: CoverDesigner.Files8.cdc; Flags: uninsdeletekey; Components: nero_coverdes
-Root: HKLM; SubKey: Software\Classes\CoverDesigner.Files8.cdc; ValueType: string; ValueData: {cm:CDC_Description}; Flags: uninsdeletekey; Components: nero_coverdes
-Root: HKLM; SubKey: Software\Classes\CoverDesigner.Files8.cdc; ValueType: string; ValueData: {cm:CDC_Description}; Components: nero_coverdes; ValueName: FriendlyTypeName; Flags: uninsdeletekey
-Root: HKLM; SubKey: Software\Classes\CoverDesigner.Files8.cdc\Shell\Open\Command; ValueType: expandsz; ValueData: """{app}\Nero CoverDesigner\CoverDes.exe"" ""%1"""; Flags: uninsdeletekey; Components: nero_coverdes
-Root: HKLM; Subkey: Software\Classes\CoverDesigner.Files8.cdc\DefaultIcon; ValueType: expandsz; ValueData: {app}\Nero CoverDesigner\CoverDes.exe,1; Flags: uninsdeletekey; Components: nero_coverdes
-Root: HKLM; SubKey: Software\Classes\.ncd; ValueType: string; ValueData: CoverDesigner.Files8.ncd; Flags: uninsdeletekey; Components: nero_coverdes
-Root: HKLM; SubKey: Software\Classes\CoverDesigner.Files8.ncd; ValueType: string; ValueData: {cm:NCD_Description}; Flags: uninsdeletekey; Components: nero_coverdes
-Root: HKLM; SubKey: Software\Classes\CoverDesigner.Files8.ncd; ValueType: string; ValueData: {cm:NCD_Description}; Components: nero_coverdes; ValueName: FriendlyTypeName; Flags: uninsdeletekey
-Root: HKLM; Subkey: Software\Classes\CoverDesigner.Files8.ncd\DefaultIcon; ValueType: expandsz; ValueData: {app}\Nero CoverDesigner\CoverDes.exe,1; Flags: uninsdeletekey; Components: nero_coverdes
-Root: HKLM; SubKey: Software\Classes\CoverDesigner.Files8.ncd\Shell\Open\Command; ValueType: expandsz; ValueData: """{app}\Nero CoverDesigner\CoverDes.exe"" ""%1"""; Flags: uninsdeletekey; Components: nero_coverdes
-Root: HKLM; SubKey: Software\Classes\.nct; ValueType: string; ValueData: CoverDesigner.Files8.nct; Flags: uninsdeletekey; Components: nero_coverdes
-Root: HKLM; SubKey: Software\Classes\CoverDesigner.Files8.nct; ValueType: string; ValueData: {cm:NCT_Description}; Flags: uninsdeletekey; Components: nero_coverdes
-Root: HKLM; SubKey: Software\Classes\CoverDesigner.Files8.nct; ValueType: string; ValueData: {cm:NCT_Description}; Components: nero_coverdes; ValueName: FriendlyTypeName; Flags: uninsdeletekey
-Root: HKLM; SubKey: Software\Classes\CoverDesigner.Files8.nct\Shell\Open\Command; ValueType: expandsz; ValueData: """{app}\Nero CoverDesigner\CoverDes.exe"" ""%1"""; Flags: uninsdeletekey; Components: nero_coverdes
-Root: HKLM; Subkey: Software\Classes\CoverDesigner.Files8.nct\DefaultIcon; ValueType: expandsz; ValueData: {app}\Nero CoverDesigner\CoverDes.exe,1; Flags: uninsdeletekey; Components: nero_coverdes
+Root: HKLM; SubKey: Software\Classes\.cdc; ValueType: string; ValueData: CoverDesigner.Files{#NeroMajorVersion}.cdc; Flags: uninsdeletekey; Components: nero_coverdes
+Root: HKLM; SubKey: Software\Classes\CoverDesigner.Files{#NeroMajorVersion}.cdc; ValueType: string; ValueData: {cm:CDC_Description}; Flags: uninsdeletekey; Components: nero_coverdes
+Root: HKLM; SubKey: Software\Classes\CoverDesigner.Files{#NeroMajorVersion}.cdc; ValueType: string; ValueData: {cm:CDC_Description}; Components: nero_coverdes; ValueName: FriendlyTypeName; Flags: uninsdeletekey
+Root: HKLM; SubKey: Software\Classes\CoverDesigner.Files{#NeroMajorVersion}.cdc\Shell\Open\Command; ValueType: expandsz; ValueData: """{app}\Nero CoverDesigner\CoverDes.exe"" ""%1"""; Flags: uninsdeletekey; Components: nero_coverdes
+Root: HKLM; Subkey: Software\Classes\CoverDesigner.Files{#NeroMajorVersion}.cdc\DefaultIcon; ValueType: expandsz; ValueData: {app}\Nero CoverDesigner\CoverDes.exe,1; Flags: uninsdeletekey; Components: nero_coverdes
+Root: HKLM; SubKey: Software\Classes\.ncd; ValueType: string; ValueData: CoverDesigner.Files{#NeroMajorVersion}.ncd; Flags: uninsdeletekey; Components: nero_coverdes
+Root: HKLM; SubKey: Software\Classes\CoverDesigner.Files{#NeroMajorVersion}.ncd; ValueType: string; ValueData: {cm:NCD_Description}; Flags: uninsdeletekey; Components: nero_coverdes
+Root: HKLM; SubKey: Software\Classes\CoverDesigner.Files{#NeroMajorVersion}.ncd; ValueType: string; ValueData: {cm:NCD_Description}; Components: nero_coverdes; ValueName: FriendlyTypeName; Flags: uninsdeletekey
+Root: HKLM; Subkey: Software\Classes\CoverDesigner.Files{#NeroMajorVersion}.ncd\DefaultIcon; ValueType: expandsz; ValueData: {app}\Nero CoverDesigner\CoverDes.exe,1; Flags: uninsdeletekey; Components: nero_coverdes
+Root: HKLM; SubKey: Software\Classes\CoverDesigner.Files{#NeroMajorVersion}.ncd\Shell\Open\Command; ValueType: expandsz; ValueData: """{app}\Nero CoverDesigner\CoverDes.exe"" ""%1"""; Flags: uninsdeletekey; Components: nero_coverdes
+Root: HKLM; SubKey: Software\Classes\.nct; ValueType: string; ValueData: CoverDesigner.Files{#NeroMajorVersion}.nct; Flags: uninsdeletekey; Components: nero_coverdes
+Root: HKLM; SubKey: Software\Classes\CoverDesigner.Files{#NeroMajorVersion}.nct; ValueType: string; ValueData: {cm:NCT_Description}; Flags: uninsdeletekey; Components: nero_coverdes
+Root: HKLM; SubKey: Software\Classes\CoverDesigner.Files{#NeroMajorVersion}.nct; ValueType: string; ValueData: {cm:NCT_Description}; Components: nero_coverdes; ValueName: FriendlyTypeName; Flags: uninsdeletekey
+Root: HKLM; SubKey: Software\Classes\CoverDesigner.Files{#NeroMajorVersion}.nct\Shell\Open\Command; ValueType: expandsz; ValueData: """{app}\Nero CoverDesigner\CoverDes.exe"" ""%1"""; Flags: uninsdeletekey; Components: nero_coverdes
+Root: HKLM; Subkey: Software\Classes\CoverDesigner.Files{#NeroMajorVersion}.nct\DefaultIcon; ValueType: expandsz; ValueData: {app}\Nero CoverDesigner\CoverDes.exe,1; Flags: uninsdeletekey; Components: nero_coverdes
 #endif
 
 [UninstallDelete]
@@ -614,15 +712,20 @@ Name: {commonappdata}\Nero\DrWeb; Type: dirifempty
 BeveledLabel=©2008 Klaas Nekeman
 
 [CustomMessages]
-issiUrl=http://updatepack.nl
-issiUrlText=Updatepack.nl
+#ifdef Nero8
 ;Evaluation Serial (March 2008)
 EvalSerial=8K24-6229-0105-7CE0-502X-M7K1-7C60
+#endif
+#ifdef Nero7
+EvalSerial=
+#endif
+issiUrl=http://updatepack.nl
+issiUrlText=Updatepack.nl
 ;English
 ;Setup Wizard - Registration dialog
 english.CustomFormCaption=Customer Information
 english.CustomFormDescription=Please enter your information.
-english.RegistrationInfo=Please personalize your copy of Nero 8 by entering your name and%nyour serial number.
+english.RegistrationInfo=Please personalize your copy of Nero {#NeroMajorVersion} by entering your name and%nyour serial number.
 english.RegistrationWelcome=Thanks for purchasing your copy of Nero.
 english.RegistrationWelcomeCaption=Welcome to Nero
 english.RegistrationCaption=Registration
@@ -698,9 +801,9 @@ english.AssocImageFileExt=Associate Nero with standard CD-Image files
 ;Nero Burning ROM
 Name: nero_core; Description: Nero Burning ROM; Types: compact full
 ;Anti-Virus libraries
-#ifndef Micro
-Name: nero_core\anti_virus; Description: Nero Anti-Virus; Types: full; Flags: dontinheritcheck
-#endif
+;#ifndef Micro
+;Name: nero_core\anti_virus; Description: Nero Anti-Virus; Types: full; Flags: dontinheritcheck
+;#endif
 
 ;Nero Audio Plugins
 Name: nero_core\nero_audioplugins; Description: Nero Audio Plug-ins; Types: compact full
@@ -727,7 +830,12 @@ Name: nero_waveedit; Description: Nero WaveEditor; Types: full; Languages:
 #ifndef Micro
 Name: nero_toolkit; Description: Nero Toolkit; Types: full
 Name: nero_toolkit\nero_burnrights; Description: Nero BurnRights; Types: full
+#ifdef Nero7
+Name: nero_toolkit\nero_cdspeed; Description: Nero CD-DVD Speed; Types: full
+#endif
+#ifdef Nero8
 Name: nero_toolkit\nero_discspeed; Description: Nero DiscSpeed; Types: full
+#endif
 Name: nero_toolkit\nero_drivespeed; Description: Nero DriveSpeed; Types: full
 Name: nero_toolkit\nero_infotool; Description: Nero InfoTool; Types: full
 #endif
@@ -786,8 +894,14 @@ procedure AddLanguage(langid: String);
 var
 	s, ValueData:	String;
 begin
+#ifdef Nero8
 	if RegQueryStringValue(HKLM,'Software\Nero\Nero8\Shared',
 		'InstalledLanguages', ValueData) then
+#endif
+#ifdef Nero7
+	if RegQueryStringValue(HKLM,'Software\Ahead\Installation\Families\Nero 7\Languages',
+		'Installed', ValueData) then
+#endif
 	begin
 		if pos(langid, ValueData) = 0 then
 			begin
@@ -800,8 +914,14 @@ begin
 			exit;
 	end
 	s := s + langid + ';';
+#ifdef Nero8
 	RegWriteStringValue(HKLM,'Software\Nero\Nero8\Shared',
 		'InstalledLanguages', s);
+#endif
+#ifdef Nero7
+	RegWriteStringValue(HKLM,'Software\Ahead\Installation\Families\Nero 7\Languages',
+		'Installed', s);
+#endif
 end;
 
 function CheckLanguage(lang_select: String): Boolean;
@@ -845,7 +965,12 @@ begin
 			Repeat
 				query := 'INSERT OR REPLACE INTO MsiAction VALUES(' +
 							InttoStr(i) + ',' +
+				#ifdef Nero8
 							'65,' +
+				#endif
+				#ifdef Nero7
+							'8,' +
+				#endif
 							InttoStr(FileId[i]) + ',' +
 							'"' + FileName[i] + '",' +
 							'"' + FilePath + '\' + FileName[i] + '")';
@@ -863,11 +988,14 @@ end;
 procedure CurStepChanged(CurStep: TSetupStep);
 var
 	ResultCode: Integer;
+#ifdef Nero8
 	UnattendedFlag: String;
+#endif
 begin
 	case CurStep of
 	ssInstall:
 		begin
+		#ifdef Nero8
 			//Install VC2005SP1 Redist if necessary
 			if MsiQueryProductState('{7299052b-02a4-4627-81f2-1818da5d550d}') <> 5 then
 				begin
@@ -879,6 +1007,7 @@ begin
 					Exec('msiexec.exe', '/i "' + ExpandConstant('{tmp}') + '\vcredist.msi" ' + UnattendedFlag, '', SW_SHOW, ewWaitUntilTerminated, ResultCode);
 					BringToFrontAndRestore();
 				end;
+		#endif
 			NeroPath := ExpandConstant('{app}');
 			Update_ProductDB();
 		end;
@@ -887,7 +1016,7 @@ begin
 			//Run activation utility if necessary
 			ExtractTemporaryFile('configlicense.exe');
 			if CheckSerialIsNew() then
-				Exec(ExpandConstant('{tmp}\configlicense.exe'), ExpandConstant('{code:getSerial}'), '', SW_SHOW, ewWaitUntilTerminated, ResultCode);
+				Exec(ExpandConstant('{tmp}\configlicense.exe'), ExpandConstant('{code:getSerial}') + ' {#NeroMajorVersion}', '', SW_SHOW, ewWaitUntilTerminated, ResultCode);
 			FinishedInstall := True;
 		end;
 	end;
@@ -895,12 +1024,14 @@ end;
 
 procedure ISSI_InitializeWizard();
 begin
+#ifdef Nero8
 	//Detect Windows Installer 2
 	if not IsMsiRequiredVersion(2,0) then
 		begin
-			MsgBox('Nero 8 {#NeroSetupType} requires Microsoft Windows Installer 2.0 or newer to be installed first.', mbError, mb_OK);
+			MsgBox('Nero {#NeroMajorVersion} {#NeroSetupType} requires Microsoft Windows Installer 2.0 or newer to be installed first.', mbError, mb_OK);
 			Abort();
 		end;
+#endif
 	//Set global vars
 	CommonNeroPath := ExpandConstant('{cf}') + '\Nero';
 	ActivationPath := CommonNeroPath + '\Lib';

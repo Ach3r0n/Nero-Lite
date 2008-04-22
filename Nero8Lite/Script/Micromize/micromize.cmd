@@ -7,17 +7,15 @@ pushd ..
 call Include\getNeroVersion.cmd
 
 ::merge version specific files
-echo %neroversion%
-pause
 if %neroversion% LSS 8 (
-copy /y Resources\Bitmaps\Nero7\*.bmp Resources\Bitmaps\
-copy /y ResourceScripts\Nero7\*.txt ResourceScripts\
+copy /y ResourceScripts\Nero7\*.txt ResourceScripts\ > NUL
 ) else (
-copy /y Resources\Bitmaps\Nero8\*.bmp Resources\Bitmaps\
-copy /y ResourceScripts\Nero8\*.txt ResourceScripts\
+copy /y ResourceScripts\Nero8\*.txt ResourceScripts\ > NUL
 )
 echo Micromize:
 
+::File patches
+set PatchPath=..\Patch
 ::MSI FilePaths
 set CommonFiles.MsiFilePath=^[FILELOCATION^]Common Files\Lib\NT
 set HomeComponents.MsiFilePath=^[FILELOCATION^]Nero Home Components\NT
@@ -49,8 +47,13 @@ call :MICROMIZE nerofiledialog.dll "%HomeComponents.MsiFilePath%" english
 call :MICROMIZE nerofiledialog.dll "%HomeComponents.MsiFilePath%"
 
 ::Nero ControlCenter
+if %neroversion% LSS 8 (
+call :MICROMIZE nps.dll "%PatchPath%" english
+call :MICROMIZE nps.dll "%PatchPath%"
+) else (
 call :MICROMIZE nps.dll "%NeroSetup.MsiFilePath%" english
 call :MICROMIZE nps.dll "%NeroSetup.MsiFilePath%"
+)
 call :MICROMIZE setupx.exe "%SetupX.MsiFilePath%" english
 call :MICROMIZE setupx.exe "%SetupX.MsiFilePath%"
 

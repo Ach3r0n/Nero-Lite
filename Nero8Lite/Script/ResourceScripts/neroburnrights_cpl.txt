@@ -1,7 +1,0 @@
-[FILENAMES]
-Exe=neroburnrights.cpl
-SaveAs=neroburnrights.cpl
-Log="Log\burnrights_cpl.log"
-
-[COMMANDS]
--addoverwrite "Resources\Icons\burnrights_cpl_2001.ico", ICONGROUP,2001,

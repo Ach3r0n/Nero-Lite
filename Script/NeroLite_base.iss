@@ -90,7 +90,7 @@ UninstallDisplayIcon={cf}\Nero\Nero Web\nps.dll
 Compression=lzma/max
 ShowLanguageDialog=yes
 ShowUndisplayableLanguages=no
-VersionInfoVersion=1.16.1.0
+VersionInfoVersion=1.16.1.1
 VersionInfoProductName=Nero {#NeroSetupType}
 VersionInfoProductVersion={#NeroVersion}
 VersionInfoCompany=Updatepack.nl
@@ -492,9 +492,11 @@ Root: HKLM; Subkey: Software\Microsoft\Windows\CurrentVersion\App Paths\NCoverEd
 ;Nero WaveEditor
 #ifndef Micro
 Root: HKLM; Subkey: Software\{#RegPublisherName}\Shared\AudioEffects\DXPlugins; ValueName: DXEnum; ValueData: {app}\Nero WaveEditor\; ValueType: string; Components: nero_waveedit; Flags: uninsdeletekey
+#ifdef Nero8
 Root: HKLM; SubKey: Software\{#RegPublisherName}\Shared\AudioEffects; ValueType: string; ValueName: {{71CD24C5-9704-4D1F-86E8-F1E7AE677E43}; ValueData: Audio Effects; Flags: uninsdeletekey
 Root: HKLM; SubKey: Software\{#RegPublisherName}\Shared\AudioEffects; ValueType: string; ValueName: {{6D32D183-28B4-4253-9858-A3F12C62CE66}; ValueData: DirectX Effects; Flags: uninsdeletekey
 Root: HKLM; SubKey: Software\{#RegPublisherName}\Shared\AudioEffects; ValueType: string; ValueName: {{F1F60FDD-97EA-43F1-920F-6EE61F32F435}; ValueData: VST Effects; Flags: uninsdeletekey
+#endif
 #endif
 
 ;Nero Shared Settings

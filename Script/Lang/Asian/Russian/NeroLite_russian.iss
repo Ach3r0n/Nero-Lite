@@ -1,9 +1,19 @@
 [Languages]
-Name: russian; MessagesFile: compiler:Languages\Russian.isl; LicenseFile: Bin\[FILELOCATION]Target\Data\Setup\EULA_eng.rtf
+#ifdef Nero8
+Name: russian; MessagesFile: compiler:Languages\Russian.isl; LicenseFile: Bin\[FILELOCATION]Target\Data\Setup\EULA_ene.rtf
+#endif
+#ifdef Nero7
+Name: russian; MessagesFile: compiler:Languages\Russian.isl; LicenseFile: Bin\[FILELOCATION]Target\Setup\EULA_ene.rtf
+#endif
 
 [Files]
 ;Russian
+#ifdef Nero8
 Source: Custom\Help\NeroControlCenter_ENG.chm; DestDir: {cf}\Nero\Nero Web; Check: CheckLanguage('russian'); BeforeInstall: AddLanguage('RUS'); Flags: ignoreversion replacesameversion
+#endif
+#ifdef Nero7
+Source: Custom\Help\NeroControlCenter_ENG.chm; DestName: NeroProductSetup_ENG.chm; DestDir: {cf}\Nero\Nero Web; Check: CheckLanguage('russian'); BeforeInstall: AddLanguage('RUS'); Flags: ignoreversion replacesameversion
+#endif
 Source: Custom\Bin\[FILELOCATION]Core\NeroRUS.nls; DestDir: {app}\Nero Burning ROM; Components: nero_core; Check: CheckLanguage('russian')
 Source: Bin\[FILELOCATION]Core\NeroRUS.txt; DestDir: {app}\Nero Burning ROM; Components: nero_core; Check: CheckLanguage('russian')
 Source: Bin\[FILELOCATION]Common Files\Lib\BCGCBProResRUS.nls; DestDir: {app}\Nero Burning ROM; Components: nero_core; Check: CheckLanguage('russian')
@@ -15,12 +25,29 @@ Source: Custom\Help\NeroCoverDesigner_ENG.chm; DestDir: {app}\Nero CoverDesigner
 Source: Custom\Bin\[FILELOCATION]Nero WaveEditor\WaveEdit-RUS.nls; DestDir: {app}\Nero WaveEditor; Components: nero_waveedit; Check: CheckLanguage('russian')
 Source: Custom\Help\NeroWaveEditor_ENG.chm; DestDir: {app}\Nero WaveEditor; Components: nero_waveedit; Check: CheckLanguage('russian'); Flags: ignoreversion replacesameversion
 Source: Custom\Help\NeroBurnRights_ENG.chm; DestDir: {app}\Nero Toolkit\Nero BurnRights; Components: nero_toolkit\nero_burnrights; Check: CheckLanguage('russian'); Flags: ignoreversion replacesameversion
+	#ifdef Nero8
 Source: Custom\Help\NeroDiscSpeed_ENG.chm; DestDir: {app}\Nero Toolkit\Nero DiscSpeed; Components: nero_toolkit\nero_discspeed; Check: CheckLanguage('russian'); Flags: ignoreversion replacesameversion
+	#endif
+	#ifdef Nero7
+Source: Custom\Help\NeroDiscSpeed_ENG.chm; DestName: CDSpeed_ENG.chm; DestDir: {app}\Nero Toolkit\Nero CD-DVD Speed; Components: nero_toolkit\nero_cdspeed; Check: CheckLanguage('russian'); Flags: ignoreversion replacesameversion
+	#endif
 #endif
 
 [Registry]
 ;Russian
+#ifdef Nero8
 Root: HKLM; Subkey: Software\Nero\Nero8\Shared; ValueType: string; ValueName: FamilyLanguage; ValueData: RUS; Languages: russian; Flags: uninsdeletekey
+#endif
+#ifdef Nero7
+Root: HKCU; Subkey: Software\Ahead\Nero - Burning Rom\General; ValueType: string; ValueName: Language; ValueData: RUS; Components: nero_core; Languages: russian; Flags: uninsdeletekey
+Root: HKCU; Subkey: Software\Ahead\Shared; ValueType: string; ValueName: Language; ValueData: RUS; Languages: russian; Flags: uninsdeletekey deletekey
+	#ifndef Micro
+Root: HKCU; Subkey: Software\Ahead\CDSpeed\General; ValueType: string; ValueName: Language; ValueData: RUS; Components: nero_toolkit\nero_cdspeed; Languages: russian; Flags: uninsdeletekey
+Root: HKCU; Subkey: Software\Ahead\DriveSpeed\General; ValueType: string; ValueName: Language; ValueData: RUS; Components: nero_toolkit\nero_drivespeed; Languages: russian; Flags: uninsdeletekey
+Root: HKCU; Subkey: Software\Ahead\InfoTool\General; ValueType: string; ValueName: Language; ValueData: RUS; Components: nero_toolkit\nero_infotool; Languages: russian; Flags: uninsdeletekey
+Root: HKCU; Subkey: Software\Ahead\Nero WaveEditor\General; ValueType: string; ValueName: Language; ValueData: RUS; Components: nero_waveedit; Languages: russian; Flags: uninsdeletekey
+	#endif
+#endif
 
 [Components]
 ;Russian
@@ -31,7 +58,7 @@ Name: nero_lang\russian; Description: {cm:Comp_Nero_lang_russian}; Languages: no
 ;Setup Wizard - Registration dialog
 russian.CustomFormCaption=Информация о потребителе
 russian.CustomFormDescription=Пожалуйста, введите информацию о себе.
-russian.RegistrationInfo=Персонализируйте Вашу копию Nero 8 введя свое имя и%nсвой серийный номер.
+russian.RegistrationInfo=Персонализируйте Вашу копию Nero {#NeroMajorVersion} введя свое имя и%nсвой серийный номер.
 russian.RegistrationWelcome=Спасибо за приобретение Вашей копии  Nero.
 russian.RegistrationWelcomeCaption=Добро пожаловать в Nero
 russian.RegistrationCaption=Регистрация

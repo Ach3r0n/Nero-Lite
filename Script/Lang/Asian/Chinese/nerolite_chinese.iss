@@ -1,10 +1,21 @@
 [Languages]
-Name: chinese_simpl; MessagesFile: compiler:Languages\chinesesimpl.isl; LicenseFile: Bin\[FILELOCATION]Target\Data\Setup\EULA_chs.rtf
-Name: chinese_trad; MessagesFile: compiler:Languages\chinesetrad.isl; LicenseFile: Bin\[FILELOCATION]Target\Data\Setup\EULA_cht.rtf
+#ifdef Nero8
+Name: chinese_simpl; MessagesFile: compiler:Languages\ChineseSimpl.isl; LicenseFile: Bin\[FILELOCATION]Target\Data\Setup\EULA_chs.rtf
+Name: chinese_trad; MessagesFile: compiler:Languages\ChineseTrad.isl; LicenseFile: Bin\[FILELOCATION]Target\Data\Setup\EULA_cht.rtf
+#endif
+#ifdef Nero7
+Name: chinese_simpl; MessagesFile: compiler:Languages\ChineseSimpl.isl; LicenseFile: Bin\[FILELOCATION]Target\Setup\EULA_chs.rtf
+Name: chinese_trad; MessagesFile: compiler:Languages\ChineseTrad.isl; LicenseFile: Bin\[FILELOCATION]Target\Setup\EULA_cht.rtf
+#endif
 
 [Files]
 ;Chinese (Simpl.)
+#ifdef Nero8
 Source: Custom\Help\NeroControlCenter_CHS.chm; DestDir: {cf}\Nero\Nero Web; Check: CheckLanguage('chinese_simpl'); BeforeInstall: AddLanguage('CHS'); Flags: ignoreversion replacesameversion
+#endif
+#ifdef Nero7
+Source: Custom\Help\NeroControlCenter_CHS.chm; DestName: NeroProductSetup_CHS.chm; DestDir: {cf}\Nero\Nero Web; Check: CheckLanguage('chinese_simpl'); BeforeInstall: AddLanguage('CHS'); Flags: ignoreversion replacesameversion
+#endif
 Source: Custom\Bin\[FILELOCATION]Core\NeroCHS.nls; DestDir: {app}\Nero Burning ROM; Components: nero_core; Check: CheckLanguage('chinese_simpl')
 Source: Bin\[FILELOCATION]Core\NeroCHS.txt; DestDir: {app}\Nero Burning ROM; Components: nero_core; Check: CheckLanguage('chinese_simpl')
 Source: Bin\[FILELOCATION]Common Files\Lib\BCGCBProResCHS.nls; DestDir: {app}\Nero Burning ROM; Components: nero_core; Check: CheckLanguage('chinese_simpl')
@@ -16,10 +27,21 @@ Source: Custom\Help\NeroCoverDesigner_CHS.chm; DestDir: {app}\Nero CoverDesigner
 Source: Custom\Bin\[FILELOCATION]Nero WaveEditor\WaveEdit-CHS.nls; DestDir: {app}\Nero WaveEditor; Components: nero_waveedit; Check: CheckLanguage('chinese_simpl')
 Source: Custom\Help\NeroWaveEditor_CHS.chm; DestDir: {app}\Nero WaveEditor; Components: nero_waveedit; Check: CheckLanguage('chinese_simpl'); Flags: ignoreversion replacesameversion
 Source: Custom\Help\NeroBurnRights_CHS.chm; DestDir: {app}\Nero Toolkit\Nero BurnRights; Components: nero_toolkit\nero_burnrights; Check: CheckLanguage('chinese_simpl'); Flags: ignoreversion replacesameversion
+	#ifdef Nero8
 Source: Custom\Help\NeroDiscSpeed_CHS.chm; DestDir: {app}\Nero Toolkit\Nero DiscSpeed; Components: nero_toolkit\nero_discspeed; Check: CheckLanguage('chinese_simpl'); Flags: ignoreversion replacesameversion
+	#endif
+	#ifdef Nero7
+Source: Custom\Help\NeroDiscSpeed_CHS.chm; DestName: CDSpeed_CHS.chm; DestDir: {app}\Nero Toolkit\Nero CD-DVD Speed; Components: nero_toolkit\nero_cdspeed; Check: CheckLanguage('chinese_simpl'); Flags: ignoreversion replacesameversion
+	#endif
 #endif
+
 ;Chinese (Trad.)
+#ifdef Nero8
 Source: Custom\Help\NeroControlCenter_CHT.chm; DestDir: {cf}\Nero\Nero Web; Check: CheckLanguage('chinese_trad'); BeforeInstall: AddLanguage('CHT'); Flags: ignoreversion replacesameversion
+#endif
+#ifdef Nero7
+Source: Custom\Help\NeroControlCenter_CHT.chm; DestName: NeroProductSetup_CHT.chm; DestDir: {cf}\Nero\Nero Web; Check: CheckLanguage('chinese_trad'); BeforeInstall: AddLanguage('CHT'); Flags: ignoreversion replacesameversion
+#endif
 Source: Custom\Bin\[FILELOCATION]Core\NeroCHT.nls; DestDir: {app}\Nero Burning ROM; Components: nero_core; Check: CheckLanguage('chinese_trad')
 Source: Bin\[FILELOCATION]Core\NeroCHT.txt; DestDir: {app}\Nero Burning ROM; Components: nero_core; Check: CheckLanguage('chinese_trad')
 Source: Bin\[FILELOCATION]Common Files\Lib\BCGCBProResCHT.nls; DestDir: {app}\Nero Burning ROM; Components: nero_core; Check: CheckLanguage('chinese_trad')
@@ -31,14 +53,45 @@ Source: Custom\Help\NeroCoverDesigner_CHT.chm; DestDir: {app}\Nero CoverDesigner
 Source: Custom\Bin\[FILELOCATION]Nero WaveEditor\WaveEdit-CHT.nls; DestDir: {app}\Nero WaveEditor; Components: nero_waveedit; Check: CheckLanguage('chinese_trad')
 Source: Custom\Help\NeroWaveEditor_CHT.chm; DestDir: {app}\Nero WaveEditor; Components: nero_waveedit; Check: CheckLanguage('chinese_trad'); Flags: ignoreversion replacesameversion
 Source: Custom\Help\NeroBurnRights_CHT.chm; DestDir: {app}\Nero Toolkit\Nero BurnRights; Components: nero_toolkit\nero_burnrights; Check: CheckLanguage('chinese_trad'); Flags: ignoreversion replacesameversion
+	#ifdef Nero8
 Source: Custom\Help\NeroDiscSpeed_CHT.chm; DestDir: {app}\Nero Toolkit\Nero DiscSpeed; Components: nero_toolkit\nero_discspeed; Check: CheckLanguage('chinese_trad'); Flags: ignoreversion replacesameversion
+	#endif
+	#ifdef Nero7
+Source: Custom\Help\NeroDiscSpeed_CHT.chm; DestName: CDSpeed_CHT.chm; DestDir: {app}\Nero Toolkit\Nero CD-DVD Speed; Components: nero_toolkit\nero_cdspeed; Check: CheckLanguage('chinese_trad'); Flags: ignoreversion replacesameversion
+	#endif
 #endif
 
 [Registry]
 ;Chinese (Simpl.)
+#ifdef Nero8
 Root: HKLM; Subkey: Software\Nero\Nero8\Shared; ValueType: string; ValueName: FamilyLanguage; ValueData: CHS; Languages: chinese_simpl; Flags: uninsdeletekey
+#endif
+#ifdef Nero7
+Root: HKCU; Subkey: Software\Ahead\Nero - Burning Rom\General; ValueType: string; ValueName: Language; ValueData: CHS; Components: nero_core; Languages: chinese_simpl; Flags: uninsdeletekey
+Root: HKCU; Subkey: Software\Ahead\Shared; ValueType: string; ValueName: Language; ValueData: CHS; Languages: chinese_simpl; Flags: uninsdeletekey deletekey
+	#ifndef Micro
+Root: HKCU; Subkey: Software\Ahead\CDSpeed\General; ValueType: string; ValueName: Language; ValueData: CHS; Components: nero_toolkit\nero_cdspeed; Languages: chinese_simpl; Flags: uninsdeletekey
+Root: HKCU; Subkey: Software\Ahead\DriveSpeed\General; ValueType: string; ValueName: Language; ValueData: CHS; Components: nero_toolkit\nero_drivespeed; Languages: chinese_simpl; Flags: uninsdeletekey
+Root: HKCU; Subkey: Software\Ahead\InfoTool\General; ValueType: string; ValueName: Language; ValueData: CHS; Components: nero_toolkit\nero_infotool; Languages: chinese_simpl; Flags: uninsdeletekey
+Root: HKCU; Subkey: Software\Ahead\Nero WaveEditor\General; ValueType: string; ValueName: Language; ValueData: CHS; Components: nero_waveedit; Languages: chinese_simpl; Flags: uninsdeletekey
+	#endif
+#endif
+
 ;Chinese (Trad.)
 Root: HKLM; Subkey: Software\Nero\Nero8\Shared; ValueType: string; ValueName: FamilyLanguage; ValueData: CHT; Languages: chinese_trad; Flags: uninsdeletekey
+#ifdef Nero8
+Root: HKLM; Subkey: Software\Nero\Nero8\Shared; ValueType: string; ValueName: FamilyLanguage; ValueData: CHT; Languages: chinese_trad; Flags: uninsdeletekey
+#endif
+#ifdef Nero7
+Root: HKCU; Subkey: Software\Ahead\Nero - Burning Rom\General; ValueType: string; ValueName: Language; ValueData: CHT; Components: nero_core; Languages: chinese_trad; Flags: uninsdeletekey
+Root: HKCU; Subkey: Software\Ahead\Shared; ValueType: string; ValueName: Language; ValueData: CHT; Languages: chinese_trad; Flags: uninsdeletekey deletekey
+	#ifndef Micro
+Root: HKCU; Subkey: Software\Ahead\CDSpeed\General; ValueType: string; ValueName: Language; ValueData: CHT; Components: nero_toolkit\nero_cdspeed; Languages: chinese_trad; Flags: uninsdeletekey
+Root: HKCU; Subkey: Software\Ahead\DriveSpeed\General; ValueType: string; ValueName: Language; ValueData: CHT; Components: nero_toolkit\nero_drivespeed; Languages: chinese_trad; Flags: uninsdeletekey
+Root: HKCU; Subkey: Software\Ahead\InfoTool\General; ValueType: string; ValueName: Language; ValueData: CHT; Components: nero_toolkit\nero_infotool; Languages: chinese_trad; Flags: uninsdeletekey
+Root: HKCU; Subkey: Software\Ahead\Nero WaveEditor\General; ValueType: string; ValueName: Language; ValueData: CHT; Components: nero_waveedit; Languages: chinese_trad; Flags: uninsdeletekey
+	#endif
+#endif
 
 [Components]
 ;Chinese (Simpl.)
@@ -51,7 +104,7 @@ Name: nero_lang\chinese_trad; Description: {cm:Comp_Nero_lang_chinese_trad}; Lan
 ;Setup Wizard - Registration dialog
 chinese_simpl.CustomFormCaption=用户信息
 chinese_simpl.CustomFormDescription=请输入您的信息。
-chinese_simpl.RegistrationInfo=请个性化您的 Nero 8 副本，方法是输入您的姓名和序列号。
+chinese_simpl.RegistrationInfo=请个性化您的 Nero {#NeroMajorVersion} 副本，方法是输入您的姓名和序列号。
 chinese_simpl.RegistrationWelcome=感谢您购买 Nero 副本。
 chinese_simpl.RegistrationWelcomeCaption=欢迎使用 Nero
 chinese_simpl.RegistrationCaption=注册
@@ -98,6 +151,7 @@ chinese_simpl.Comp_Nero_Sounds=声音
 ;Setup register filetypes
 chinese_simpl.FileAssociations=注册文件类型:
 chinese_simpl.AssocImageFileExt=将标准的映像文件关联到 Nero
+
 ;Chinese (Trad.)
 ;Setup Wizard - Registration dialog
 chinese_trad.CustomFormCaption=め戈癟

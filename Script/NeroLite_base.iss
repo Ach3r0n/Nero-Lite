@@ -101,7 +101,7 @@ ChangesAssociations=true
 FlatComponentsList=false
 SolidCompression=true
 MinVersion=0,5.0.2195sp3
-SignedUninstaller=false
+SignedUninstaller=true
 SignedUninstallerDir=.\Setup
 
 [Languages]

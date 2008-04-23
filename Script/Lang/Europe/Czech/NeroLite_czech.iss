@@ -1,9 +1,19 @@
 [Languages]
+#ifdef Nero8
 Name: czech; MessagesFile: compiler:Languages\Czech.isl; LicenseFile: Bin\[FILELOCATION]Target\Data\Setup\EULA_ene.rtf
+#endif
+#ifdef Nero7
+Name: czech; MessagesFile: compiler:Languages\Czech.isl; LicenseFile: Bin\[FILELOCATION]Target\Setup\EULA_ene.rtf
+#endif
 
 [Files]
 ;Czech
+#ifdef Nero8
 Source: Custom\Help\NeroControlCenter_ENG.chm; DestDir: {cf}\Nero\Nero Web; Check: CheckLanguage('czech'); BeforeInstall: AddLanguage('CSY'); Flags: ignoreversion replacesameversion
+#endif
+#ifdef Nero7
+Source: Custom\Help\NeroControlCenter_ENG.chm; DestName: NeroProductSetup_ENG.chm; DestDir: {cf}\Nero\Nero Web; Check: CheckLanguage('czech'); BeforeInstall: AddLanguage('CSY'); Flags: ignoreversion replacesameversion
+#endif
 Source: Custom\Bin\[FILELOCATION]Core\NeroCSY.nls; DestDir: {app}\Nero Burning ROM; Components: nero_core; Check: CheckLanguage('czech')
 Source: Bin\[FILELOCATION]Core\NeroCSY.txt; DestDir: {app}\Nero Burning ROM; Components: nero_core; Check: CheckLanguage('czech')
 Source: Bin\[FILELOCATION]Common Files\Lib\BCGCBProResCSY.nls; DestDir: {app}\Nero Burning ROM; Components: nero_core; Check: CheckLanguage('czech')
@@ -15,12 +25,27 @@ Source: Custom\Help\NeroCoverDesigner_ENG.chm; DestDir: {app}\Nero CoverDesigner
 Source: Custom\Bin\[FILELOCATION]Nero WaveEditor\WaveEdit-CSY.nls; DestDir: {app}\Nero WaveEditor; Components: nero_waveedit; Check: CheckLanguage('czech')
 Source: Custom\Help\NeroWaveEditor_ENG.chm; DestDir: {app}\Nero WaveEditor; Components: nero_waveedit; Check: CheckLanguage('czech'); Flags: ignoreversion replacesameversion
 Source: Custom\Help\NeroBurnRights_ENG.chm; DestDir: {app}\Nero Toolkit\Nero BurnRights; Components: nero_toolkit\nero_burnrights; Check: CheckLanguage('czech'); Flags: ignoreversion replacesameversion
+	#ifdef Nero8
 Source: Custom\Help\NeroDiscSpeed_ENG.chm; DestDir: {app}\Nero Toolkit\Nero DiscSpeed; Components: nero_toolkit\nero_discspeed; Check: CheckLanguage('czech'); Flags: ignoreversion replacesameversion
+	#endif
 #endif
 
 [Registry]
 ;Czech
 Root: HKLM; Subkey: Software\Nero\Nero8\Shared; ValueType: string; ValueName: FamilyLanguage; ValueData: CSY; Languages: czech; Flags: uninsdeletekey
+#ifdef Nero8
+Root: HKLM; Subkey: Software\Nero\Nero8\Shared; ValueType: string; ValueName: FamilyLanguage; ValueData: CSY; Languages: czech; Flags: uninsdeletekey
+#endif
+#ifdef Nero7
+Root: HKCU; Subkey: Software\Ahead\Nero - Burning Rom\General; ValueType: string; ValueName: Language; ValueData: CSY; Components: nero_core; Languages: czech; Flags: uninsdeletekey
+Root: HKCU; Subkey: Software\Ahead\Shared; ValueType: string; ValueName: Language; ValueData: CSY; Languages: czech; Flags: uninsdeletekey deletekey
+	#ifndef Micro
+Root: HKCU; Subkey: Software\Ahead\CDSpeed\General; ValueType: string; ValueName: Language; ValueData: CSY; Components: nero_toolkit\nero_cdspeed; Languages: czech; Flags: uninsdeletekey
+Root: HKCU; Subkey: Software\Ahead\DriveSpeed\General; ValueType: string; ValueName: Language; ValueData: CSY; Components: nero_toolkit\nero_drivespeed; Languages: czech; Flags: uninsdeletekey
+Root: HKCU; Subkey: Software\Ahead\InfoTool\General; ValueType: string; ValueName: Language; ValueData: CSY; Components: nero_toolkit\nero_infotool; Languages: czech; Flags: uninsdeletekey
+Root: HKCU; Subkey: Software\Ahead\Nero WaveEditor\General; ValueType: string; ValueName: Language; ValueData: CSY; Components: nero_waveedit; Languages: czech; Flags: uninsdeletekey
+	#endif
+#endif
 
 [Components]
 ;Czech
@@ -31,7 +56,7 @@ Name: nero_lang\czech; Description: {cm:Comp_Nero_lang_czech}; Languages: not cz
 ;Setup Wizard - Registration dialog
 czech.CustomFormCaption=Zákaznícké informace
 czech.CustomFormDescription=Vložte, prosím, vaše informace.
-czech.RegistrationInfo=Upravte, prosím, svoji kopii Nero 8 zadáním vašeho jména a%nsériového císla.
+czech.RegistrationInfo=Upravte, prosím, svoji kopii Nero {#NeroMajorVersion} zadáním vašeho jména a%nsériového císla.
 czech.RegistrationWelcome=Dekujeme vám za zakoupení kopie Nero.
 czech.RegistrationWelcomeCaption=Nero - Vítejte...
 czech.RegistrationCaption=Registrace

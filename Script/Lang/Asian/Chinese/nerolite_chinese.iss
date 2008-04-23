@@ -30,9 +30,6 @@ Source: Custom\Help\NeroBurnRights_CHS.chm; DestDir: {app}\Nero Toolkit\Nero Bur
 	#ifdef Nero8
 Source: Custom\Help\NeroDiscSpeed_CHS.chm; DestDir: {app}\Nero Toolkit\Nero DiscSpeed; Components: nero_toolkit\nero_discspeed; Check: CheckLanguage('chinese_simpl'); Flags: ignoreversion replacesameversion
 	#endif
-	#ifdef Nero7
-Source: Custom\Help\NeroDiscSpeed_CHS.chm; DestName: CDSpeed_CHS.chm; DestDir: {app}\Nero Toolkit\Nero CD-DVD Speed; Components: nero_toolkit\nero_cdspeed; Check: CheckLanguage('chinese_simpl'); Flags: ignoreversion replacesameversion
-	#endif
 #endif
 
 ;Chinese (Trad.)
@@ -55,9 +52,6 @@ Source: Custom\Help\NeroWaveEditor_CHT.chm; DestDir: {app}\Nero WaveEditor; Comp
 Source: Custom\Help\NeroBurnRights_CHT.chm; DestDir: {app}\Nero Toolkit\Nero BurnRights; Components: nero_toolkit\nero_burnrights; Check: CheckLanguage('chinese_trad'); Flags: ignoreversion replacesameversion
 	#ifdef Nero8
 Source: Custom\Help\NeroDiscSpeed_CHT.chm; DestDir: {app}\Nero Toolkit\Nero DiscSpeed; Components: nero_toolkit\nero_discspeed; Check: CheckLanguage('chinese_trad'); Flags: ignoreversion replacesameversion
-	#endif
-	#ifdef Nero7
-Source: Custom\Help\NeroDiscSpeed_CHT.chm; DestName: CDSpeed_CHT.chm; DestDir: {app}\Nero Toolkit\Nero CD-DVD Speed; Components: nero_toolkit\nero_cdspeed; Check: CheckLanguage('chinese_trad'); Flags: ignoreversion replacesameversion
 	#endif
 #endif
 

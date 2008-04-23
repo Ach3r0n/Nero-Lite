@@ -1,9 +1,19 @@
 [Languages]
+#ifdef Nero8
 Name: italian; MessagesFile: compiler:Languages\Italian.isl; LicenseFile: Bin\[FILELOCATION]Target\Data\Setup\EULA_ita.rtf
+#endif
+#ifdef Nero7
+Name: italian; MessagesFile: compiler:Languages\Italian.isl; LicenseFile: Bin\[FILELOCATION]Target\Setup\EULA_ita.rtf
+#endif
 
 [Files]
 ;Italian
+#ifdef Nero8
 Source: Custom\Help\NeroControlCenter_ITA.chm; DestDir: {cf}\Nero\Nero Web; Check: CheckLanguage('italian'); BeforeInstall: AddLanguage('ITA'); Flags: ignoreversion replacesameversion
+#endif
+#ifdef Nero7
+Source: Custom\Help\NeroControlCenter_ITA.chm; DestName: NeroProductSetup_ITA.chm;  DestDir: {cf}\Nero\Nero Web; Check: CheckLanguage('italian'); BeforeInstall: AddLanguage('ITA'); Flags: ignoreversion replacesameversion
+#endif
 Source: Custom\Bin\[FILELOCATION]Core\NeroITA.nls; DestDir: {app}\Nero Burning ROM; Components: nero_core; Check: CheckLanguage('italian')
 Source: Bin\[FILELOCATION]Core\NeroITA.txt; DestDir: {app}\Nero Burning ROM; Components: nero_core; Check: CheckLanguage('italian')
 Source: Bin\[FILELOCATION]Common Files\Lib\BCGCBProResITA.nls; DestDir: {app}\Nero Burning ROM; Components: nero_core; Check: CheckLanguage('italian')
@@ -15,12 +25,27 @@ Source: Custom\Help\NeroCoverDesigner_ITA.chm; DestDir: {app}\Nero CoverDesigner
 Source: Custom\Bin\[FILELOCATION]Nero WaveEditor\WaveEdit-ITA.nls; DestDir: {app}\Nero WaveEditor; Components: nero_waveedit; Check: CheckLanguage('italian')
 Source: Custom\Help\NeroWaveEditor_ITA.chm; DestDir: {app}\Nero WaveEditor; Components: nero_waveedit; Check: CheckLanguage('italian'); Flags: ignoreversion replacesameversion
 Source: Custom\Help\NeroBurnRights_ITA.chm; DestDir: {app}\Nero Toolkit\Nero BurnRights; Components: nero_toolkit\nero_burnrights; Check: CheckLanguage('italian'); Flags: ignoreversion replacesameversion
+	#ifdef Nero8
 Source: Custom\Help\NeroDiscSpeed_ITA.chm; DestDir: {app}\Nero Toolkit\Nero DiscSpeed; Components: nero_toolkit\nero_discspeed; Check: CheckLanguage('italian'); Flags: ignoreversion replacesameversion
+	#endif
 #endif
 
 [Registry]
 ;Italian
 Root: HKLM; Subkey: Software\Nero\Nero8\Shared; ValueType: string; ValueName: FamilyLanguage; ValueData: ITA; Languages: italian; Flags: uninsdeletekey
+#ifdef Nero8
+Root: HKLM; Subkey: Software\Nero\Nero8\Shared; ValueType: string; ValueName: FamilyLanguage; ValueData: ITA; Languages: italian; Flags: uninsdeletekey
+#endif
+#ifdef Nero7
+Root: HKCU; Subkey: Software\Ahead\Nero - Burning Rom\General; ValueType: string; ValueName: Language; ValueData: ITA; Components: nero_core; Languages: italian; Flags: uninsdeletekey
+Root: HKCU; Subkey: Software\Ahead\Shared; ValueType: string; ValueName: Language; ValueData: ITA; Languages: italian; Flags: uninsdeletekey deletekey
+	#ifndef Micro
+Root: HKCU; Subkey: Software\Ahead\CDSpeed\General; ValueType: string; ValueName: Language; ValueData: ITA; Components: nero_toolkit\nero_cdspeed; Languages: italian; Flags: uninsdeletekey
+Root: HKCU; Subkey: Software\Ahead\DriveSpeed\General; ValueType: string; ValueName: Language; ValueData: ITA; Components: nero_toolkit\nero_drivespeed; Languages: italian; Flags: uninsdeletekey
+Root: HKCU; Subkey: Software\Ahead\InfoTool\General; ValueType: string; ValueName: Language; ValueData: ITA; Components: nero_toolkit\nero_infotool; Languages: italian; Flags: uninsdeletekey
+Root: HKCU; Subkey: Software\Ahead\Nero WaveEditor\General; ValueType: string; ValueName: Language; ValueData: ITA; Components: nero_waveedit; Languages: italian; Flags: uninsdeletekey
+	#endif
+#endif
 
 [Components]
 ;Italian
@@ -31,7 +56,7 @@ Name: nero_lang\italian; Description: {cm:Comp_Nero_lang_italian}; Languages: no
 ;Setup Wizard - Registration dialog
 italian.CustomFormCaption=Informazioni proprietario
 italian.CustomFormDescription=Per favore inserisci le tue informazioni.
-italian.RegistrationInfo=Per favore personalizza la tua copia di Nero 8 inserendo il tuo nome ed%nil tuo numero di serie.
+italian.RegistrationInfo=Per favore personalizza la tua copia di Nero {#NeroMajorVersion} inserendo il tuo nome ed%nil tuo numero di serie.
 italian.RegistrationWelcome=Grazie per aver acquistato la tua copia di Nero.
 italian.RegistrationWelcomeCaption=Benvenuto a Nero
 italian.RegistrationCaption=Registrazione

@@ -15,9 +15,6 @@ Source: Custom\Help\NeroBurnRights_ENG.chm; DestDir: {app}\Nero Toolkit\Nero Bur
 	#ifdef Nero8
 Source: Custom\Help\NeroDiscSpeed_ENG.chm; DestDir: {app}\Nero Toolkit\Nero DiscSpeed; Components: nero_toolkit\nero_discspeed; Check: CheckLanguage('english'); Flags: ignoreversion replacesameversion
 	#endif
-	#ifdef Nero7
-Source: Custom\Help\NeroDiscSpeed_ENG.chm; DestName: CDSpeed_ENG.chm; DestDir: {app}\Nero Toolkit\Nero CD-DVD Speed; Components: nero_toolkit\nero_cdspeed; Check: CheckLanguage('english'); Flags: ignoreversion replacesameversion
-	#endif
 #endif
 
 [Registry]

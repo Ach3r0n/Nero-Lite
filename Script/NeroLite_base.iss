@@ -164,6 +164,7 @@ Source: Bin\[FILELOCATION]Redist\TwnLib4.dll; DestDir: {sys}; Flags: sharedfile 
 #ifndef Micro
 #ifdef Nero7
 Source: Custom\Bin\[FILELOCATION]\Nero CD-DVD Speed\CDSpeed.exe; DestDir: {app}\Nero Toolkit\Nero CD-DVD Speed; Components: nero_toolkit\nero_cdspeed
+Source: Custom\Help\CDSpeed_eng.chm; DestDir: {app}\Nero Toolkit\Nero CD-DVD Speed; Components: nero_toolkit\nero_cdspeed
 Source: Custom\Bin\[FILELOCATION]\Nero DriveSpeed\DriveSpeed.exe; DestDir: {app}\Nero Toolkit\Nero DriveSpeed; Components: nero_toolkit\nero_drivespeed
 #endif
 #ifdef Nero8

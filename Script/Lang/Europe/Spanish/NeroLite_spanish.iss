@@ -1,13 +1,24 @@
 [Languages]
-Name: spanish; MessagesFile: compiler:Languages\spanish.isl; LicenseFile: Bin\[FILELOCATION]Target\Data\Setup\EULA_ESP.rtf
-Name: spanish_latin_american; MessagesFile: compiler:Languages\spanish.isl; LicenseFile: Bin\[FILELOCATION]Target\Data\Setup\EULA_ESM.rtf
+#ifdef Nero8
+Name: spanish; MessagesFile: compiler:Languages\Spanish.isl; LicenseFile: Bin\[FILELOCATION]Target\Data\Setup\EULA_esp.rtf
+Name: spanish_latin_american; MessagesFile: compiler:Languages\Spanish.isl; LicenseFile: Bin\[FILELOCATION]Target\Setup\EULA_esm.rtf
+#endif
+#ifdef Nero7
+Name: spanish; MessagesFile: compiler:Languages\Spanish.isl; LicenseFile: Bin\[FILELOCATION]Target\Data\Setup\EULA_esp.rtf
+Name: spanish_latin_american; MessagesFile: compiler:Languages\Spanish.isl; LicenseFile: Bin\[FILELOCATION]Target\Setup\EULA_esm.rtf
+#endif
 
 [LangOptions]
 spanish_latin_american.LanguageName=Espa<00F1>ol (Latino Americano)
 
 [Files]
 ;Spanish
+#ifdef Nero8
 Source: Custom\Help\NeroControlCenter_ESP.chm; DestDir: {cf}\Nero\Nero Web; Check: CheckLanguage('spanish'); BeforeInstall: AddLanguage('ESP'); Flags: ignoreversion replacesameversion
+#endif
+#ifdef Nero7
+Source: Custom\Help\NeroControlCenter_ESP.chm; DestName: NeroProductSetup_ESP.chm; DestDir: {cf}\Nero\Nero Web; Check: CheckLanguage('spanish'); BeforeInstall: AddLanguage('ESP'); Flags: ignoreversion replacesameversion
+#endif
 Source: Bin\[FILELOCATION]Core\NeroESP.txt; DestDir: {app}\Nero Burning ROM; Components: nero_core; Check: CheckLanguage('spanish')
 Source: Custom\Bin\[FILELOCATION]Core\NeroESP.nls; DestDir: {app}\Nero Burning ROM; Components: nero_core; Check: CheckLanguage('spanish')
 Source: Bin\[FILELOCATION]Common Files\Lib\BCGCBProResESP.nls; DestDir: {app}\Nero Burning ROM; Components: nero_core; Check: CheckLanguage('spanish')
@@ -19,11 +30,18 @@ Source: Custom\Help\NeroCoverDesigner_ESP.chm; DestDir: {app}\Nero CoverDesigner
 Source: Custom\Bin\[FILELOCATION]Nero WaveEditor\WaveEdit-ESP.nls; DestDir: {app}\Nero WaveEditor; Components: nero_waveedit; Check: CheckLanguage('spanish')
 Source: Custom\Help\NeroWaveEditor_ESP.chm; DestDir: {app}\Nero WaveEditor; Components: nero_waveedit; Check: CheckLanguage('spanish'); Flags: ignoreversion replacesameversion
 Source: Custom\Help\NeroBurnRights_ESP.chm; DestDir: {app}\Nero Toolkit\Nero BurnRights; Components: nero_toolkit\nero_burnrights; Check: CheckLanguage('spanish'); Flags: ignoreversion replacesameversion
+	#ifdef Nero8
 Source: Custom\Help\NeroDiscSpeed_ESP.chm; DestDir: {app}\Nero Toolkit\Nero DiscSpeed; Components: nero_toolkit\nero_discspeed; Check: CheckLanguage('spanish'); Flags: ignoreversion replacesameversion
+	#endif
 #endif
 
 ;Spanish Latin American
+#ifdef Nero8
 Source: Custom\Help\NeroControlCenter_ESP.chm; DestDir: {cf}\Nero\Nero Web; Check: CheckLanguage('spanish_latin_american'); BeforeInstall: AddLanguage('ESL'); Flags: ignoreversion replacesameversion
+#endif
+#ifdef Nero7
+Source: Custom\Help\NeroControlCenter_ESP.chm; DestName: NeroProductSetup_ESP.chm; DestDir: {cf}\Nero\Nero Web; Check: CheckLanguage('spanish_latin_american'); BeforeInstall: AddLanguage('ESL'); Flags: ignoreversion replacesameversion
+#endif
 Source: Bin\[FILELOCATION]Core\NeroESL.txt; DestDir: {app}\Nero Burning ROM; Components: nero_core; Check: CheckLanguage('spanish_latin_american')
 Source: Custom\Bin\[FILELOCATION]Core\NeroESL.nls; DestDir: {app}\Nero Burning ROM; Components: nero_core; Check: CheckLanguage('spanish_latin_american')
 Source: Bin\[FILELOCATION]Common Files\Lib\BCGCBProResESL.nls; DestDir: {app}\Nero Burning ROM; Components: nero_core; Check: CheckLanguage('spanish_latin_american')
@@ -35,14 +53,41 @@ Source: Custom\Help\NeroCoverDesigner_ESP.chm; DestDir: {app}\Nero CoverDesigner
 Source: Custom\Bin\[FILELOCATION]Nero WaveEditor\WaveEdit-ESL.nls; DestDir: {app}\Nero WaveEditor; Components: nero_waveedit; Check: CheckLanguage('spanish_latin_american')
 Source: Custom\Help\NeroWaveEditor_ESP.chm; DestDir: {app}\Nero WaveEditor; Components: nero_waveedit; Check: CheckLanguage('spanish_latin_american'); Flags: ignoreversion replacesameversion
 Source: Custom\Help\NeroBurnRights_ESP.chm; DestDir: {app}\Nero Toolkit\Nero BurnRights; Components: nero_toolkit\nero_burnrights; Check: CheckLanguage('spanish_latin_american'); Flags: ignoreversion replacesameversion
+	#ifdef Nero8
 Source: Custom\Help\NeroDiscSpeed_ESP.chm; DestDir: {app}\Nero Toolkit\Nero DiscSpeed; Components: nero_toolkit\nero_discspeed; Check: CheckLanguage('spanish_latin_american'); Flags: ignoreversion replacesameversion
+	#endif
 #endif
 
 [Registry]
 ;Spanish
+#ifdef Nero8
 Root: HKLM; Subkey: Software\Nero\Nero8\Shared; ValueType: string; ValueName: FamilyLanguage; ValueData: ESP; Languages: spanish; Flags: uninsdeletekey
+#endif
+#ifdef Nero7
+Root: HKCU; Subkey: Software\Ahead\Nero - Burning Rom\General; ValueType: string; ValueName: Language; ValueData: ESP; Components: nero_core; Languages: spanish; Flags: uninsdeletekey
+Root: HKCU; Subkey: Software\Ahead\Shared; ValueType: string; ValueName: Language; ValueData: ESP; Languages: spanish; Flags: uninsdeletekey deletekey
+	#ifndef Micro
+Root: HKCU; Subkey: Software\Ahead\CDSpeed\General; ValueType: string; ValueName: Language; ValueData: ESP; Components: nero_toolkit\nero_cdspeed; Languages: spanish; Flags: uninsdeletekey
+Root: HKCU; Subkey: Software\Ahead\DriveSpeed\General; ValueType: string; ValueName: Language; ValueData: ESP; Components: nero_toolkit\nero_drivespeed; Languages: spanish; Flags: uninsdeletekey
+Root: HKCU; Subkey: Software\Ahead\InfoTool\General; ValueType: string; ValueName: Language; ValueData: ESP; Components: nero_toolkit\nero_infotool; Languages: spanish; Flags: uninsdeletekey
+Root: HKCU; Subkey: Software\Ahead\Nero WaveEditor\General; ValueType: string; ValueName: Language; ValueData: ESP; Components: nero_waveedit; Languages: spanish; Flags: uninsdeletekey
+	#endif
+#endif
+
 ;Spanish Latin American
+#ifdef Nero8
 Root: HKLM; Subkey: Software\Nero\Nero8\Shared; ValueType: string; ValueName: FamilyLanguage; ValueData: ESL; Languages: spanish_latin_american; Flags: uninsdeletekey
+#endif
+#ifdef Nero7
+Root: HKCU; Subkey: Software\Ahead\Nero - Burning Rom\General; ValueType: string; ValueName: Language; ValueData: ESL; Components: nero_core; Languages: spanish_latin_american; Flags: uninsdeletekey
+Root: HKCU; Subkey: Software\Ahead\Shared; ValueType: string; ValueName: Language; ValueData: ESL; Languages: spanish_latin_american; Flags: uninsdeletekey deletekey
+	#ifndef Micro
+Root: HKCU; Subkey: Software\Ahead\CDSpeed\General; ValueType: string; ValueName: Language; ValueData: ESL; Components: nero_toolkit\nero_cdspeed; Languages: spanish_latin_american; Flags: uninsdeletekey
+Root: HKCU; Subkey: Software\Ahead\DriveSpeed\General; ValueType: string; ValueName: Language; ValueData: ESL; Components: nero_toolkit\nero_drivespeed; Languages: spanish_latin_american; Flags: uninsdeletekey
+Root: HKCU; Subkey: Software\Ahead\InfoTool\General; ValueType: string; ValueName: Language; ValueData: ESL; Components: nero_toolkit\nero_infotool; Languages: spanish_latin_american; Flags: uninsdeletekey
+Root: HKCU; Subkey: Software\Ahead\Nero WaveEditor\General; ValueType: string; ValueName: Language; ValueData: ESL; Components: nero_waveedit; Languages: spanish_latin_american; Flags: uninsdeletekey
+	#endif
+#endif
 
 [Components]
 ;Spanish
@@ -55,7 +100,7 @@ Name: nero_lang\spanish_latin_american; Description: {cm:Comp_Nero_lang_spanish_
 ;Setup Wizard - Registration dialog
 spanish.CustomFormCaption=Información de Cliente
 spanish.CustomFormDescription=Por favor introduzca sus datos.
-spanish.RegistrationInfo=Por favor personalice su copia de Nero 8 introduciendo su nombre y%nsu número de serie a continuación.
+spanish.RegistrationInfo=Por favor personalice su copia de Nero {#NeroMajorVersion} introduciendo su nombre y%nsu número de serie a continuación.
 spanish.RegistrationWelcome=Gracias por comprar su copia de Nero.
 spanish.RegistrationWelcomeCaption=Bienvenido a Nero
 spanish.RegistrationCaption=Registro

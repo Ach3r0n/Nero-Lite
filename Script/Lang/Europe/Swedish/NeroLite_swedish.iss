@@ -1,9 +1,19 @@
 [Languages]
+#ifdef Nero8
 Name: swedish; MessagesFile: compiler:Languages\Swedish.isl; LicenseFile: Bin\[FILELOCATION]Target\Data\Setup\EULA_sve.rtf
+#endif
+#ifdef Nero7
+Name: swedish; MessagesFile: compiler:Languages\Swedish.isl; LicenseFile: Bin\[FILELOCATION]Target\Setup\EULA_sve.rtf
+#endif
 
 [Files]
 ;Swedish
+#ifdef Nero8
 Source: Custom\Help\NeroControlCenter_SVE.chm; DestDir: {cf}\Nero\Nero Web; Check: CheckLanguage('swedish'); BeforeInstall: AddLanguage('SVE'); Flags: ignoreversion replacesameversion
+#endif
+#ifdef Nero7
+Source: Custom\Help\NeroControlCenter_SVE.chm; DestName: NeroProductSetup_SVE.chm; DestDir: {cf}\Nero\Nero Web; Check: CheckLanguage('swedish'); BeforeInstall: AddLanguage('SVE'); Flags: ignoreversion replacesameversion
+#endif
 Source: Custom\Bin\[FILELOCATION]Core\NeroSVE.nls; DestDir: {app}\Nero Burning ROM; Components: nero_core; Check: CheckLanguage('swedish')
 Source: Bin\[FILELOCATION]Core\NeroSVE.txt; DestDir: {app}\Nero Burning ROM; Components: nero_core; Check: CheckLanguage('swedish')
 Source: Bin\[FILELOCATION]Common Files\Lib\BCGCBProResSVE.nls; DestDir: {app}\Nero Burning ROM; Components: nero_core; Check: CheckLanguage('swedish')
@@ -15,12 +25,26 @@ Source: Custom\Help\NeroCoverDesigner_SVE.chm; DestDir: {app}\Nero CoverDesigner
 Source: Custom\Bin\[FILELOCATION]Nero WaveEditor\WaveEdit-SVE.nls; DestDir: {app}\Nero WaveEditor; Components: nero_waveedit; Check: CheckLanguage('swedish')
 Source: Custom\Help\NeroWaveEditor_SVE.chm; DestDir: {app}\Nero WaveEditor; Components: nero_waveedit; Check: CheckLanguage('swedish'); Flags: ignoreversion replacesameversion
 Source: Custom\Help\NeroBurnRights_ENG.chm; DestDir: {app}\Nero Toolkit\Nero BurnRights; Components: nero_toolkit\nero_burnrights; Check: CheckLanguage('swedish'); Flags: ignoreversion replacesameversion
+	#ifdef Nero8
 Source: Custom\Help\NeroDiscSpeed_SVE.chm; DestDir: {app}\Nero Toolkit\Nero DiscSpeed; Components: nero_toolkit\nero_discspeed; Check: CheckLanguage('swedish'); Flags: ignoreversion replacesameversion
+	#endif
 #endif
 
 [Registry]
 ;Swedish
+#ifdef Nero8
 Root: HKLM; Subkey: Software\Nero\Nero8\Shared; ValueType: string; ValueName: FamilyLanguage; ValueData: SVE; Languages: swedish; Flags: uninsdeletekey
+#endif
+#ifdef Nero7
+Root: HKCU; Subkey: Software\Ahead\Nero - Burning Rom\General; ValueType: string; ValueName: Language; ValueData: SVE; Components: nero_core; Languages: swedish; Flags: uninsdeletekey
+Root: HKCU; Subkey: Software\Ahead\Shared; ValueType: string; ValueName: Language; ValueData: SVE; Languages: swedish; Flags: uninsdeletekey deletekey
+	#ifndef Micro
+Root: HKCU; Subkey: Software\Ahead\CDSpeed\General; ValueType: string; ValueName: Language; ValueData: SVE; Components: nero_toolkit\nero_cdspeed; Languages: swedish; Flags: uninsdeletekey
+Root: HKCU; Subkey: Software\Ahead\DriveSpeed\General; ValueType: string; ValueName: Language; ValueData: SVE; Components: nero_toolkit\nero_drivespeed; Languages: swedish; Flags: uninsdeletekey
+Root: HKCU; Subkey: Software\Ahead\InfoTool\General; ValueType: string; ValueName: Language; ValueData: SVE; Components: nero_toolkit\nero_infotool; Languages: swedish; Flags: uninsdeletekey
+Root: HKCU; Subkey: Software\Ahead\Nero WaveEditor\General; ValueType: string; ValueName: Language; ValueData: SVE; Components: nero_waveedit; Languages: swedish; Flags: uninsdeletekey
+	#endif
+#endif
 
 [Components]
 ;Swedish
@@ -31,7 +55,7 @@ Name: nero_lang\swedish; Description: {cm:Comp_Nero_lang_swedish}; Languages: no
 ;Setup Wizard - Registration dialog
 swedish.CustomFormCaption=Personlig information
 swedish.CustomFormDescription=Ange dina uppgifter.
-swedish.RegistrationInfo=Ange personlig information (namn och serienummer) för din version%n av Nero 8.
+swedish.RegistrationInfo=Ange personlig information (namn och serienummer) för din version%n av Nero {#NeroMajorVersion}.
 swedish.RegistrationWelcome=Tack för ditt köp av en kopia av Nero.
 swedish.RegistrationWelcomeCaption=Välkommen till Nero
 swedish.RegistrationCaption=Registrering

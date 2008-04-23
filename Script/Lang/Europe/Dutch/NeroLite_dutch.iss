@@ -1,9 +1,19 @@
 [Languages]
+#ifdef Nero8
 Name: dutch; MessagesFile: compiler:Languages\Dutch.isl; LicenseFile: Bin\[FILELOCATION]Target\Data\Setup\EULA_nld.rtf
+#endif
+#ifdef Nero7
+Name: dutch; MessagesFile: compiler:Languages\Dutch.isl; LicenseFile: Bin\[FILELOCATION]Target\Setup\EULA_nld.rtf
+#endif
 
 [Files]
 ;Dutch
+#ifdef Nero8
 Source: Custom\Help\NeroControlCenter_NLD.chm; DestDir: {cf}\Nero\Nero Web; Check: CheckLanguage('dutch'); BeforeInstall: AddLanguage('NLD'); Flags: ignoreversion replacesameversion
+#endif
+#ifdef Nero7
+Source: Custom\Help\NeroControlCenter_NLD.chm; DestName: NeroProductSetup_NLD.chm; DestDir: {cf}\Nero\Nero Web; Check: CheckLanguage('dutch'); BeforeInstall: AddLanguage('NLD'); Flags: ignoreversion replacesameversion
+#endif
 Source: Custom\Bin\[FILELOCATION]Core\NeroNLD.nls; DestDir: {app}\Nero Burning ROM; Components: nero_core; Check: CheckLanguage('dutch')
 Source: Bin\[FILELOCATION]Core\NeroNLD.txt; DestDir: {app}\Nero Burning ROM; Components: nero_core; Check: CheckLanguage('dutch')
 Source: Bin\[FILELOCATION]Common Files\Lib\BCGCBProResNLD.nls; DestDir: {app}\Nero Burning ROM; Components: nero_core; Check: CheckLanguage('dutch')
@@ -15,12 +25,26 @@ Source: Custom\Help\NeroCoverDesigner_NLD.chm; DestDir: {app}\Nero CoverDesigner
 Source: Custom\Bin\[FILELOCATION]Nero WaveEditor\WaveEdit-NLD.nls; DestDir: {app}\Nero WaveEditor; Components: nero_waveedit; Check: CheckLanguage('dutch')
 Source: Custom\Help\NeroWaveEditor_NLD.chm; DestDir: {app}\Nero WaveEditor; Components: nero_waveedit; Check: CheckLanguage('dutch'); Flags: ignoreversion replacesameversion
 Source: Custom\Help\NeroBurnRights_NLD.chm; DestDir: {app}\Nero Toolkit\Nero BurnRights; Components: nero_toolkit\nero_burnrights; Check: CheckLanguage('dutch'); Flags: ignoreversion replacesameversion
+	#ifdef Nero8
 Source: Custom\Help\NeroDiscSpeed_NLD.chm; DestDir: {app}\Nero Toolkit\Nero DiscSpeed; Components: nero_toolkit\nero_discspeed; Check: CheckLanguage('dutch'); Flags: ignoreversion replacesameversion
+	#endif
 #endif
 
 [Registry]
 ;Dutch
+#ifdef Nero8
 Root: HKLM; Subkey: Software\Nero\Nero8\Shared; ValueType: string; ValueName: FamilyLanguage; ValueData: NLD; Languages: dutch; Flags: uninsdeletekey
+#endif
+#ifdef Nero7
+Root: HKCU; Subkey: Software\Ahead\Nero - Burning Rom\General; ValueType: string; ValueName: Language; ValueData: NLD; Components: nero_core; Languages: dutch; Flags: uninsdeletekey
+Root: HKCU; Subkey: Software\Ahead\Shared; ValueType: string; ValueName: Language; ValueData: NLD; Languages: dutch; Flags: uninsdeletekey deletekey
+	#ifndef Micro
+Root: HKCU; Subkey: Software\Ahead\CDSpeed\General; ValueType: string; ValueName: Language; ValueData: NLD; Components: nero_toolkit\nero_cdspeed; Languages: dutch; Flags: uninsdeletekey
+Root: HKCU; Subkey: Software\Ahead\DriveSpeed\General; ValueType: string; ValueName: Language; ValueData: NLD; Components: nero_toolkit\nero_drivespeed; Languages: dutch; Flags: uninsdeletekey
+Root: HKCU; Subkey: Software\Ahead\InfoTool\General; ValueType: string; ValueName: Language; ValueData: NLD; Components: nero_toolkit\nero_infotool; Languages: dutch; Flags: uninsdeletekey
+Root: HKCU; Subkey: Software\Ahead\Nero WaveEditor\General; ValueType: string; ValueName: Language; ValueData: NLD; Components: nero_waveedit; Languages: dutch; Flags: uninsdeletekey
+	#endif
+#endif
 
 [Components]
 ;Dutch
@@ -31,7 +55,7 @@ Name: nero_lang\dutch; Description: {cm:Comp_Nero_lang_dutch}; Languages: not du
 ;Setup Wizard - Registration dialog
 dutch.CustomFormCaption=Klantgegevens
 dutch.CustomFormDescription=Geef de benodigde gebruikersgegevens op.
-dutch.RegistrationInfo=Registreer uw exemplaar van Nero 8 door uw naam en%nserienummer in te voeren.
+dutch.RegistrationInfo=Registreer uw exemplaar van Nero {#NeroMajorVersion} door uw naam en%nserienummer in te voeren.
 dutch.RegistrationWelcome=Bedankt voor de aankoop van uw exemplaar van Nero.
 dutch.RegistrationWelcomeCaption=Welkom bij Nero
 dutch.RegistrationCaption=Registratie

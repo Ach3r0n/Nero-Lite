@@ -1,15 +1,22 @@
 #NoTrayIcon
 #RequireAdmin
-Opt("TrayIconDebug", 1)
-Opt("WinSearchChildren", 1)
-Opt("WinTextMatchMode", 2) ;
+;Windows Text Quick mode
+Opt("WinTextMatchMode", 2)
+;Advanced Title Match mode
 Opt("WinTitleMatchMode", 4)
 
 ;Check commandline
-If $CmdLine[0] = 0  Then
+If Not $CmdLine[0] = 2  Then
 		Exit
 	Else
 		$serial = $CmdLine[1]
+		$neroversion = $CmdLine[2]
+EndIf
+	
+if $neroversion = 7 Then
+	$nerotitle = "Nero ProductSetup"
+Else
+	$nerotitle = "Nero ControlCenter"
 EndIf
 
 ;Detect if another instance of Nero ControlCenter is running
@@ -18,7 +25,7 @@ If ProcessExists("SetupX.exe") Then
 EndIf
 
 ;Read path of Nero
-$apppath = RegRead("HKLM\Software\Microsoft\Windows\CurrentVersion\Uninstall\Nero8Lite_is1","Inno Setup: App Path")
+$apppath = RegRead("HKLM\Software\Microsoft\Windows\CurrentVersion\Uninstall\Nero"&$neroversion&"Lite_is1","Inno Setup: App Path")
 If @error then
 	$apppath = @ProgramFilesDir & "\Nero"
 EndIf
@@ -26,7 +33,7 @@ EndIf
 ;Run Nero ControlCenter
 $pid = Run(@CommonFilesDir & "\Nero\Nero Web\SetupX.exe MODE=""update""", "", @SW_HIDE)
 If not @error then
-	If WinWait("[TITLE:Nero ControlCenter; CLASS:#32770]", "", 10) Then
+	If WinWait("[TITLE:"&$nerotitle&"; CLASS:#32770]", "", 10) Then
 		$ncc_handle = WinGetHandle("[LAST]")
 		WinSetState($ncc_handle, "", @SW_HIDE)
 		$dif = 0
@@ -46,7 +53,7 @@ If not @error then
 		$begin = TimerInit()
 		While $dif <= 10000
 			Sleep(10)
-			$controlhandle = ControlGetHandle("[TITLE:Nero ControlCenter; CLASS:#32770]", "", 10008)
+			$controlhandle = ControlGetHandle("[TITLE:"&$nerotitle&"; CLASS:#32770]", "", 10008)
 			If not @error Then
 				$license_handle = WinGetHandle("[LAST]")
 				WinSetState($license_handle, "", @SW_HIDE)
@@ -62,8 +69,14 @@ If not @error then
 		$begin = TimerInit()
 		While $dif <= 2000
 			Sleep(10)
+			;If updateprompt is visible close window
+			If ControlCommand("[CLASS:#32770]", "", 1033, "IsVisible") Then
+				If WinGetProcess("[LAST]") = $pid Then
+						ControlClick("[LAST]", "", "[CLASS:Button; INSTANCE:1]")
+					ExitLoop
+				EndIf
 			;If serial is expired wait until window is closed manually
-			If ControlCommand("[CLASS:#32770]", "", 1035, "IsVisible") Then
+			ElseIf ControlCommand("[CLASS:#32770]", "", 1035, "IsVisible") Then
 				If WinGetProcess("[LAST]") = $pid Then
 					Do 
 						sleep(100)
@@ -92,4 +105,8 @@ Exit
 
 Func CloseNeroSetup()
 	ProcessClose("SetupX.exe")
+	;Don't ask to update Nero components on startup
+	If	$neroversion = 7 Then
+		RegWrite("HKLM\Software\Ahead\Installation\Families\Nero 7\Info", "MissingFilesState", "REG_SZ", "0")
+	EndIf
 EndFunc

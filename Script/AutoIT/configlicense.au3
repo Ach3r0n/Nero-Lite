@@ -39,7 +39,6 @@ If not @error then
 		$dif = 0
 		$begin = TimerInit()
 		While $dif <= 10000
-			Sleep(10)
 			$controlhandle = ControlGetHandle($ncc_handle, "", "[CLASS:Button; INSTANCE:12]")
 			If not @error Then
 				ControlClick($controlhandle, "", "")
@@ -52,7 +51,6 @@ If not @error then
 		$dif = 0
 		$begin = TimerInit()
 		While $dif <= 10000
-			Sleep(10)
 			$controlhandle = ControlGetHandle("[TITLE:"&$nerotitle&"; CLASS:#32770]", "", 10008)
 			If not @error Then
 				$license_handle = WinGetHandle("[LAST]")
@@ -60,18 +58,26 @@ If not @error then
 				ControlSetText($license_handle, "", $controlhandle, $serial)
 				ControlClick($license_handle, "", "[CLASS:Button; INSTANCE:1]")
 				ExitLoop
+			Else
+				Sleep(10)
 			EndIf
 			$dif = TimerDiff($begin)
 		WEnd
+		
+		;Close Nero Update Prompt if exists
+		If ControlCommand("[TITLE:"&$nerotitle&"; [CLASS:#32770]", "", 15018, "IsVisible") Then
+			WinSetState("[LAST]", "", @SW_HIDE)
+			ControlClick("[LAST]", "", 15011)
+		EndIf
 		
 		;If error is detected wait until window is closed manually
 		$dif = 0
 		$begin = TimerInit()
 		While $dif <= 2000
-			Sleep(10)
 			;If updateprompt is visible close window
 			If ControlCommand("[CLASS:#32770]", "", 1033, "IsVisible") Then
 				If WinGetProcess("[LAST]") = $pid Then
+						WinSetState("[LAST]", "", @SW_HIDE)
 						ControlClick("[LAST]", "", "[CLASS:Button; INSTANCE:1]")
 					ExitLoop
 				EndIf
@@ -91,6 +97,8 @@ If not @error then
 					Until ControlCommand("[LAST]", "", 10021, "IsVisible") = 0
 					ExitLoop
 				EndIf
+			Else
+				Sleep(10)
 			EndIf
 			$dif = TimerDiff($begin)
 		WEnd

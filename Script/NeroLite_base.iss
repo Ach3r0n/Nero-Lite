@@ -363,7 +363,7 @@ Source: Bin\[FILELOCATION]Common Files\AudioPlugins\msaxp.dll; DestDir: {cf}\Ner
 ;Nero Audio Plugins - Nero Digital
 Source: Bin\[FILELOCATION]Common Files\Lib\ndaudio.dll; DestDir: {cf}\Nero\Lib; Components: nero_core\nero_audioplugins {#emit nero_waveedit}; Flags: sharedfile uninsnosharedfileprompt
 Source: Bin\[FILELOCATION]Common Files\Lib\NeroIPP.dll; DestDir: {cf}\Nero\Lib; Components: nero_core\nero_audioplugins {#emit nero_waveedit}; Flags: sharedfile uninsnosharedfileprompt
-Source: Bin\[FILELOCATION]Common Files\Lib\NeroDigitalExt.dll; DestDir: {cf}\Nero\Lib; Components: nero_core\nero_audioplugins {#emit nero_waveedit}; Flags: regserver sharedfile uninsnosharedfileprompt
+Source: Bin\[FILELOCATION]Common Files\Lib\NeroDigitalExt.dll; DestDir: {cf}\Nero\Lib; Components: nero_core\nero_audioplugins {#emit nero_waveedit}; Flags: restartreplace regserver sharedfile uninsnosharedfileprompt
 Source: Bin\[FILELOCATION]Common Files\AudioPlugins\NeroDigital.dll; DestDir: {cf}\Nero\AudioPlugins; Components: nero_core\nero_audioplugins {#emit nero_waveedit}; Flags: sharedfile uninsnosharedfileprompt
 
 ;Nero Audio Plugins - Lame MP3 Encoder

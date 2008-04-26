@@ -38,7 +38,7 @@ If not @error then
 		WinSetState($ncc_handle, "", @SW_HIDE)
 		$dif = 0
 		$begin = TimerInit()
-		While $dif <= 10000
+		While $dif <= 2000
 			$controlhandle = ControlGetHandle($ncc_handle, "", "[CLASS:Button; INSTANCE:12]")
 			If not @error Then
 				ControlClick($controlhandle, "", "")
@@ -50,7 +50,7 @@ If not @error then
 		;Detect add license dialog
 		$dif = 0
 		$begin = TimerInit()
-		While $dif <= 10000
+		While $dif <= 2000
 			$controlhandle = ControlGetHandle("[TITLE:"&$nerotitle&"; CLASS:#32770]", "", 10008)
 			If not @error Then
 				$license_handle = WinGetHandle("[LAST]")
@@ -73,7 +73,7 @@ If not @error then
 		;If error is detected wait until window is closed manually
 		$dif = 0
 		$begin = TimerInit()
-		While $dif <= 2000
+		While $dif <= 10000
 			;If updateprompt is visible close window
 			If ControlCommand("[CLASS:#32770]", "", 1033, "IsVisible") Then
 				If Not ControlCommand("[CLASS:#32770]", "", "[CLASS:Static; INSTANCE:1; ID:1033]", "IsVisible") Then

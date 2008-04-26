@@ -76,10 +76,12 @@ If not @error then
 		While $dif <= 2000
 			;If updateprompt is visible close window
 			If ControlCommand("[CLASS:#32770]", "", 1033, "IsVisible") Then
-				If WinGetProcess("[LAST]") = $pid Then
+				If Not ControlCommand("[CLASS:#32770]", "", "[CLASS:Static; INSTANCE:1; ID:1033]", "IsVisible") Then
+					If WinGetProcess("[LAST]") = $pid Then
 						WinSetState("[LAST]", "", @SW_HIDE)
 						ControlClick("[LAST]", "", "[CLASS:Button; INSTANCE:1]")
-					ExitLoop
+						ExitLoop
+					EndIf
 				EndIf
 			;If serial is expired wait until window is closed manually
 			ElseIf ControlCommand("[CLASS:#32770]", "", 1035, "IsVisible") Then

@@ -53,7 +53,7 @@ begin
 		end
 	else
 		begin
-			S := Edit3.Text
+			S := Edit3.Text;
 			StringChangeEx(S, ' ', '', False);
 			if (Length(S) > 0) and (CompareText(Edit3.Text, getNeroInfo(getSerialValueName())) <> 0) then
 				Result := True

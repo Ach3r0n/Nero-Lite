@@ -5,6 +5,7 @@ Log="Log\advrcntr3_dll_eng.log"
 
 [COMMANDS]
 -delete DICTIONARY,,
+-addoverwrite "Resources\Bitmaps\Nero8\589.png", PNG,589,
 -addoverwrite "Resources\Bitmaps\108.bmp", BITMAP,108,
 -addoverwrite "Resources\Icons\advrcntr3_dll_144.ico", ICONGROUP,144,
 -addoverwrite "Resources\Icons\advrcntr3_dll_145.ico", ICONGROUP,145,

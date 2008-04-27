@@ -35,7 +35,6 @@ Log="Log\drivespeed_exe.log"
 -delete BITMAP,LANG_TRK,
 -addoverwrite "Resources\Bitmaps\Nero8\158.bmp", BITMAP,158,
 -delete PNG,,
--delete DIALOG,IDD_AHEAD_ABOUTBOX,
 -delete DIALOG,IDD_AHEAD_LINKSDIALOG,
 -delete DIALOG,IDD_AHEAD_SPLASHSCREEN,
 -delete DIALOG,LLSPRINTPREVIEW,

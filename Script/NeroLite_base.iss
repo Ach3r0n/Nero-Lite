@@ -459,6 +459,11 @@ Root: HKLM; Subkey: Software\{#RegPublisherName}\Installation\Settings; ValueTyp
 Root: HKLM; Subkey: Software\{#RegPublisherName}\Installation\Info; ValueType: dword; ValueName: OS_MajorVersion; ValueData: 6; Flags: uninsdeletekey; MinVersion: 0,6.0
 Root: HKLM; Subkey: Software\{#RegPublisherName}\Installation\Info; ValueType: dword; ValueName: OS_MinorVersion; ValueData: 0; Flags: uninsdeletekey; MinVersion: 0,6.0
 
+#ifdef Nero7
+Root: HKLM; Subkey: Software\{#RegPublisherName}\Nero - Burning Rom; ValueType: none; Flags: uninsdeletekey; Components: nero_core
+Root: HKCU; Subkey: Software\{#RegPublisherName}\Nero - Burning Rom; ValueType: none; Flags: uninsdeletekey; Components: nero_core
+#endif
+
 #ifdef Nero8
 ;Nero Burning Rom - Tweaks (Note tweaks get only installed for current user)
 Root: HKCU; Subkey: Software\{#RegPublisherName}\Nero8\Nero - Burning Rom\General; ValueType: dword; ValueName: bShowAllCompilationTypes; ValueData: 1; Components: nero_core; Flags: uninsdeletekey

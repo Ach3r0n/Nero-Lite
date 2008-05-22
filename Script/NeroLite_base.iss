@@ -116,7 +116,7 @@ Name: english; MessagesFile: compiler:Default.isl; LicenseFile: Bin\[FILELOCATIO
 ;Hack to fix Final Wizard Dialog Bitmap (ISSI bug)
 Source: Setup\Nero{#NeroMajorVersion}\nerosidebarbig.bmp; DestDir: {tmp}; DestName: WizardBitmapImage2.bmp; Flags: ignoreversion dontcopy noencryption
 
-;SQLite 3.5.8
+;SQLite 3.5.9
 Source: Setup\sqlite3.dll; DestDir: {tmp}; Flags: dontcopy
 
 ;AutoIT activate utility

@@ -1,5 +1,5 @@
-#NoTrayIcon
 #RequireAdmin
+#NoTrayIcon
 ;Windows Text Quick mode
 Opt("WinTextMatchMode", 2)
 ;Advanced Title Match mode
@@ -64,44 +64,29 @@ If not @error then
 			$dif = TimerDiff($begin)
 		WEnd
 		
-		;Close Nero Update Prompt if exists
-		If ControlCommand("[TITLE:"&$nerotitle&"; [CLASS:#32770]", "", 15018, "IsVisible") Then
-			WinSetState("[LAST]", "", @SW_HIDE)
-			ControlClick("[LAST]", "", 15011)
-		EndIf
-		
-		;If error is detected wait until window is closed manually
+		;Dialog handling
 		$dif = 0
 		$begin = TimerInit()
 		While $dif <= 10000
-			;If updateprompt is visible close window
-			If ControlCommand("[CLASS:#32770]", "", 1033, "IsVisible") Then
-				If Not ControlCommand("[CLASS:#32770]", "", "[CLASS:Static; INSTANCE:1; ID:1033]", "IsVisible") Then
-					If WinGetProcess("[LAST]") = $pid Then
-						WinSetState("[LAST]", "", @SW_HIDE)
-						ControlClick("[LAST]", "", "[CLASS:Button; INSTANCE:1]")
-						ExitLoop
-					EndIf
-				EndIf
-			;If serial is expired wait until window is closed manually
-			ElseIf ControlCommand("[CLASS:#32770]", "", 1035, "IsVisible") Then
-				If WinGetProcess("[LAST]") = $pid Then
-					Do 
-						sleep(100)
-					Until ControlCommand("[LAST]", "", 1035, "IsVisible") = 0
+			Select
+				;additional features prompt
+				Case ControlCommand("[CLASS:#32770]", "", 1033, "IsVisible") AND Not ControlCommand("[CLASS:#32770]", "", "[CLASS:Static; INSTANCE:1; ID:1033]", "IsVisible")
+					$features_handle = WinGetHandle("[LAST]")
+					WinSetState($features_handle, "", @SW_HIDE)
+					ControlClick($features_handle, "", "[CLASS:Button; INSTANCE:1]")
+				;Update Prompt
+				Case ControlCommand("[TITLE:"&$nerotitle&"; [CLASS:#32770]", "", 15018, "IsVisible")
+					$update_handle = WinGetHandle("[LAST]")
+					WinSetState($update_handle, "", @SW_HIDE)
+					ControlClick($update_handle, "", "[CLASS:Button; INSTANCE:2]")
+					WinSetState($ncc_handle, "", @SW_HIDE)
+				;If serial is expired, already exists or invalid wait until window is closed manually
+				Case ControlCommand("[CLASS:#32770]", "", 1035, "IsVisible") OR ControlCommand("[CLASS:#32770]", "", 10021, "IsVisible")
+					Do
+						Sleep(100)
+					Until Not ControlGetHandle("[LAST]", "", 1035) AND Not ControlGetHandle("[LAST]", "", 10021)
 					ExitLoop
-				EndIf
-			;If invalid serial wait until window is closed manually
-			ElseIf ControlCommand("[CLASS:#32770]", "", 10021, "IsVisible") Then
-				If WinGetProcess("[LAST]") = $pid Then
-					Do 
-						sleep(100)
-					Until ControlCommand("[LAST]", "", 10021, "IsVisible") = 0
-					ExitLoop
-				EndIf
-			Else
-				Sleep(10)
-			EndIf
+			EndSelect
 			$dif = TimerDiff($begin)
 		WEnd
 	EndIf

@@ -7,7 +7,7 @@ for /f "tokens=3 skip=3 delims=	" %%i in (
 ) do (
 	set InnoSetupPath=%%i
 )
-if not exist "%InnoSetupPath%" set InnoSetupPath="%programfiles%\Inno Setup\Inno Setup 5"
+if not exist "%InnoSetupPath%" set InnoSetupPath=%programfiles%\Inno Setup\Inno Setup 5
 
 pushd ".\Lang\Asian"
 ::generate asian include file
@@ -27,7 +27,7 @@ pushd ".."
 copy /y Script\Lang\Asian\NeroLite_asian.iss Script\Include\NeroLite_asian_lite.iss > NUL
 copy /y Script\NeroLite_base.iss NeroLite_main.iss > NUL
 
-start /B /WAIT "PreProcessing - NeroLite_asian_lite.iss" /low "%InnoSetupPath%\iscc.exe" "NeroLite_main.iss" /dLite > NUL
+start /B /WAIT "PreProcessing - NeroLite_asian_lite.iss" /low "%InnoSetupPath%\iscc.exe" "NeroLite_main.iss" /dLite /dNeroVersion=%neroversion% > NUL
 
 echo.
 del /f /q NeroLite_main.iss > NUL
@@ -35,7 +35,7 @@ del /f /q NeroLite_main.iss > NUL
 copy /y Script\Lang\Asian\NeroLite_asian.iss Script\Include\NeroLite_asian_micro.iss > NUL
 copy /y Script\NeroLite_base.iss NeroLite_main.iss > NUL
 
-start /B /WAIT "PreProcessing - NeroLite_asian_micro.iss" /low "%InnoSetupPath%\iscc.exe" "NeroLite_main.iss" /dMicro > NUL
+start /B /WAIT "PreProcessing - NeroLite_asian_micro.iss" /low "%InnoSetupPath%\iscc.exe" "NeroLite_main.iss" /dMicro /dNeroVersion=%neroversion% > NUL
 
 echo.
 del /f /q NeroLite_main.iss > NUL

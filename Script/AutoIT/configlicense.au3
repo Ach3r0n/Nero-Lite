@@ -84,8 +84,12 @@ If not @error then
 				Case ControlCommand("[CLASS:#32770]", "", 1035, "IsVisible") OR ControlCommand("[CLASS:#32770]", "", 10021, "IsVisible")
 					Do
 						Sleep(100)
-					Until Not ControlGetHandle("[LAST]", "", 1035) AND Not ControlGetHandle("[LAST]", "", 10021)
+						$dif = TimerDiff($begin)
+					Until Not ControlGetHandle("[LAST]", "", 1035) AND Not ControlGetHandle("[LAST]", "", 10021) OR $dif > 10000
 					ExitLoop
+				Case Else
+					;Wait one second to write key
+					If $dif > 1000 Then ExitLoop
 			EndSelect
 			$dif = TimerDiff($begin)
 		WEnd

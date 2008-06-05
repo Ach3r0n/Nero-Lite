@@ -1,10 +1,9 @@
 @echo off
 setlocal enabledelayedexpansion enableextensions
 title Micromize...
-::push to script dir
-pushd ..
-::get Nero Version
-call Include\getNeroVersion.cmd
+
+::push to subdirectory
+pushd Custom
 
 ::merge version specific files
 if %neroversion% LSS 8 (
@@ -15,7 +14,7 @@ copy /y ResourceScripts\Nero8\*.txt ResourceScripts\ > NUL
 echo Micromize:
 
 ::File patches
-set PatchPath=..\Patch
+set PatchPath=Patch
 ::MSI FilePaths
 set CommonFiles.MsiFilePath=^[FILELOCATION^]Common Files\Lib\NT
 set HomeComponents.MsiFilePath=^[FILELOCATION^]Nero Home Components\NT
@@ -90,9 +89,7 @@ call :MICROMIZE infotool.exe "%InfoTool.MsiFilePath%"
 
 echo Done.
 echo.
-pause
 goto :EOF
-
 
 :MICROMIZE
 set filename=%~1
@@ -139,20 +136,17 @@ if "%~3"=="english" (
 )
 
 ::create directories if not exist
-if not exist .\Log md Log > NUL
-if not exist "..\Custom\Bin\%outputpath%" md "..\Custom\Bin\%outputpath%"
-
-copy /y "..\Bin\%filepath%\%filename%" ".\%filename%" > NUL
+if not exist "Log" md "Log" > NUL
+if not exist "Bin\%outputpath%" md "Bin\%outputpath%"
+copy /y "..\Bin\%filepath%\%filename%" "%filename%" > NUL
 ..\Tools\Reshack\ResHacker.exe -script "ResourceScripts\%resscript%" > NUL
-if not errorlevel 0 goto :RESHACKPROBLEM
-call Include\signfile.cmd "%filename%" > NUL
+if not errorlevel 0 call :RESHACKPROBLEM
+::push to project directory
+pushd ..
+call Script\Include\signfile.cmd "Custom\%filename%" > NUL
+popd
 if not errorlevel 0 call :CHECKFILE
-move /y "%filename%" "..\Custom\Bin\%outputpath%" > NUL
-goto :EOF
-
-:RESHACKPROBLEM
-echo Error reshacking file %filename%
-pause
+move /y "%filename%" "Bin\%outputpath%" > NUL
 goto :EOF
 
 :CHECKFILE
@@ -165,7 +159,14 @@ if %neroversion% LSS 8 (
 )
 GOTO :EOF
 
+:RESHACKPROBLEM
+echo Error reshacking file %filename%
+pause
+goto :EOF
+
 :SIGNINGPROBLEM
 echo Error signing file %filename%
 pause
-GOTO :EOF	
+GOTO :EOF
+
+popd

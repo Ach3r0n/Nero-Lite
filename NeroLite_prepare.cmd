@@ -1,9 +1,6 @@
 @echo off
-::push to script dir
-pushd Script
 ::get Nero Version
-call Include\getNeroVersion.cmd
-popd
+call Script\Include\getNeroVersion.cmd
 
 Tools\7-zip\7za x -y %nero_setup%.exe -o"%TEMP%\Nero%neroversion:.=%"
 echo.
@@ -18,4 +15,7 @@ msiexec /a "%TEMP%\Nero%neroversion:.=%\Data\nero.msi" TARGETDIR="%CD%\Bin" /qb-
 msiexec /a "%TEMP%\Nero%neroversion:.=%\Cab\nero.msi" TARGETDIR="%CD%\Bin" /qb-!
 )
 rd /s /q "%TEMP%\Nero%neroversion:.=%"
+
+::micromize Nero files
+call Script\Include\micromize.cmd
 pause

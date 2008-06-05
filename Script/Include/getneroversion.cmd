@@ -1,5 +1,5 @@
-IF EXIST ..\Nero-*_all_*.exe (
-	FOR /f %%i in ('dir /b ..\Nero-*_all_*.exe') DO (
+IF EXIST Nero-*_???_*.exe (
+	FOR /f %%i in ('dir /b Nero-*_???_*.exe') DO (
 		set nero_setup=%%~ni
 		CALL :extract
 	)

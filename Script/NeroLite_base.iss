@@ -90,7 +90,7 @@ UninstallDisplayIcon={cf}\Nero\Nero Web\nps.dll
 Compression=lzma/max
 ShowLanguageDialog=yes
 ShowUndisplayableLanguages=no
-VersionInfoVersion=1.16.1.2
+VersionInfoVersion=1.17.0.0
 VersionInfoProductName=Nero {#NeroSetupType}
 VersionInfoProductVersion={#NeroVersion}
 VersionInfoCompany=Updatepack.nl
@@ -726,8 +726,8 @@ BeveledLabel=©2008 Klaas Nekeman
 
 [CustomMessages]
 #ifdef Nero8
-;Evaluation Serial (March 2008)
-EvalSerial=8K24-6229-0105-7CE0-502X-M7K1-7C60
+;Evaluation Serial (June 2008)
+EvalSerial=8K24-022C-1105-EKK5-5000-000E-KKEE
 #endif
 #ifdef Nero7
 EvalSerial=

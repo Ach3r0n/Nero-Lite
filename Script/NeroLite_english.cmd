@@ -1,9 +1,6 @@
 @echo off
 title Preprocessing...
 
-::get Nero Version
-call Include\getNeroVersion.cmd
-
 ::set path to inno setup
 for /f "tokens=3 skip=3 delims=	" %%i in (
 	'reg query "HKLM\Software\Microsoft\Windows\CurrentVersion\Uninstall\Inno Setup 5_is1" /v "Inno Setup: App Path"'
@@ -13,6 +10,10 @@ for /f "tokens=3 skip=3 delims=	" %%i in (
 if not exist "%InnoSetupPath%" set InnoSetupPath=%programfiles%\Inno Setup\Inno Setup 5
 
 pushd ".."
+
+::get Nero Version
+call Script\Include\getNeroVersion.cmd
+
 ::generate English Lite Setup Script
 copy /y Script\Lang\English\NeroLite_english.iss Script\Include\NeroLite_english_lite.iss > NUL
 copy /y Script\NeroLite_base.iss NeroLite_main.iss > NUL

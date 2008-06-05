@@ -1,8 +1,7 @@
 @echo off
-"%programfiles%\AutoIt3\Aut2Exe\Aut2Exe.exe" /in configlicense.au3 /out "..\..\Setup\configlicense.exe" /nopack
-::push to script dir
-pushd ..
-call "Include\signfile.cmd" "..\Setup\configlicense.exe"
+pushd ..\..
+"%programfiles%\AutoIt3\Aut2Exe\Aut2Exe.exe" /in "Script\AutoIT\configlicense.au3" /out "Setup\configlicense.exe" /nopack
+call "Script\Include\signfile.cmd" "Setup\configlicense.exe"
 popd
 pause
 exit

@@ -33,4 +33,6 @@ shortcut /a:c /f:"%Programs%\Inno Setup\Essential Pascal.lnk" /t:"%programfiles%
 for /f "tokens=3 skip=3 delims=	" %%i in ('reg query "HKLM\Software\Microsoft\Windows\CurrentVersion\Explorer\Shell Folders" /v "Common Programs"') do set CommonPrograms=%%i
 rd /s /q "%CommonPrograms%\Inno Setup Script Includes\"
 rd /s /q "%CommonPrograms%\ISTool\"
+for /f "tokens=3 skip=3 delims=	" %%i in ('reg query "HKCU\Software\Microsoft\Windows\CurrentVersion\Explorer\Shell Folders" /v "Desktop"') do set Desktop=%%i
+del /f /q "%Desktop%\Inno Setup Form Designer.lnk"
 exit

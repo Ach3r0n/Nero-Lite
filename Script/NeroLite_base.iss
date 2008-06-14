@@ -458,6 +458,9 @@ Root: HKLM; Subkey: Software\{#RegPublisherName}\Installation\Families\Nero {#Ne
 Root: HKLM; Subkey: Software\{#RegPublisherName}\Installation\Families\Nero {#NeroMajorVersion}\Info; ValueType: string; ValueName: MissingFilesState; ValueData: 0; Flags: uninsdeletevalue
 Root: HKLM; Subkey: Software\{#RegPublisherName}\Installation\Settings; ValueType: dword; ValueName: AutomaticUpdate; ValueData: 0; Flags: uninsdeletekey
 Root: HKLM; Subkey: Software\{#RegPublisherName}\Installation\Settings; ValueType: dword; ValueName: DONOTRUNSETUPX; ValueData: 0; Flags: uninsdeletekey
+Root: HKLM; Subkey: Software\{#RegPublisherName}\Installation\Settings; ValueType: dword; ValueName: LastAutomaticUpdateCheck; ValueData: $ffffffff; Flags: uninsdeletekey
+Root: HKLM; Subkey: Software\{#RegPublisherName}\Installation\Settings; ValueType: dword; ValueName: LastUpdateCheck; ValueData: $ffffffff; Flags: uninsdeletekey
+
 
 ;Windows Vista Compatibility
 Root: HKLM; Subkey: Software\{#RegPublisherName}\Installation\Info; ValueType: dword; ValueName: OS_MajorVersion; ValueData: 6; Flags: uninsdeletekey; MinVersion: 0,6.0

@@ -69,28 +69,29 @@ If not @error then
 		$begin = TimerInit()
 		While $dif <= 10000
 			Select
-				;additional features prompt
-				Case ControlCommand("[CLASS:#32770]", "", 1033, "IsVisible") AND Not ControlCommand("[CLASS:#32770]", "", "[CLASS:Static; INSTANCE:1; ID:1033]", "IsVisible")
+				;Additional features prompt / Serial already exists
+				Case ControlCommand("[CLASS:#32770]", "", 1035, "IsVisible")
 					$features_handle = WinGetHandle("[LAST]")
 					WinSetState($features_handle, "", @SW_HIDE)
 					ControlClick($features_handle, "", "[CLASS:Button; INSTANCE:1]")
 				;Update Prompt
-				Case ControlCommand("[TITLE:"&$nerotitle&"; [CLASS:#32770]", "", 15018, "IsVisible")
+				Case ControlCommand("[CLASS:#32770]", "", 15011, "IsVisible")
 					$update_handle = WinGetHandle("[LAST]")
 					WinSetState($update_handle, "", @SW_HIDE)
 					ControlClick($update_handle, "", "[CLASS:Button; INSTANCE:2]")
 					WinSetState($ncc_handle, "", @SW_HIDE)
-				;If serial is expired, already exists or invalid wait until window is closed manually
-				Case ControlCommand("[CLASS:#32770]", "", 1035, "IsVisible") OR ControlCommand("[CLASS:#32770]", "", 10021, "IsVisible")
+				;If serial is expired, or invalid wait until window is closed manually
+				Case ControlCommand("[CLASS:#32770]", "", 15009, "IsVisible")
 					Do
 						Sleep(100)
 						$dif = TimerDiff($begin)
-					Until Not ControlGetHandle("[LAST]", "", 1035) AND Not ControlGetHandle("[LAST]", "", 10021) OR $dif > 10000
+					Until Not ControlGetHandle("[LAST]", "", 15009) OR $dif > 10000
 					ExitLoop
 				Case Else
-					;Wait one second to write key
+					;Wait to write key
 					If $dif > 1000 Then ExitLoop
 			EndSelect
+
 			$dif = TimerDiff($begin)
 		WEnd
 	EndIf

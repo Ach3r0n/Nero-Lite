@@ -733,8 +733,8 @@ BeveledLabel=©2008 Klaas Nekeman
 
 [CustomMessages]
 #ifdef Nero8
-;Evaluation Serial (June 2008)
-EvalSerial=8K24-022C-1105-EKK5-5000-000E-KKEE
+;Evaluation Serial (July 2008)
+EvalSerial=8K24-0230-0105-7K60-5043-87M4-54K9
 #endif
 #ifdef Nero7
 EvalSerial=

@@ -532,21 +532,21 @@ Root: HKLM; Subkey: Software\Classes\Applications\nero.exe\Shell\Open\Command; V
 
 ;Public file types
 Root: HKLM; SubKey: Software\Classes\.cue; ValueType: string; ValueData: NeroBurningROM.Files{#NeroMajorVersion}.cue; Flags: uninsdeletekeyifempty uninsdeletevalue; Components: nero_core; Tasks: imagefile_assoc
-Root: HKLM; SubKey: Software\Classes\.cue\OpenWithProgIDs; ValueType: string; ValueName: NeroBurningROM.Files{#NeroMajorVersion}.cue; Flags: uninsdeletekeyifempty uninsdeletevalue; Components: nero_core
+Root: HKLM; SubKey: Software\Classes\.cue\OpenWithProgids; ValueType: binary; ValueName: NeroBurningROM.Files{#NeroMajorVersion}.cue; Flags: uninsdeletekeyifempty uninsdeletevalue; Components: nero_core
 Root: HKLM; SubKey: Software\Classes\.cue; Flags: uninsdeletekeyifempty
 Root: HKLM; SubKey: Software\Classes\NeroBurningROM.Files{#NeroMajorVersion}.cue; ValueType: string; ValueData: {cm:CUE_Description}; Flags: uninsdeletekey; Components: nero_core
 Root: HKLM; SubKey: Software\Classes\NeroBurningROM.Files{#NeroMajorVersion}.cue; ValueType: string; ValueData: {cm:CUE_Description}; ValueName: FriendlyTypeName; Components: nero_core; Flags: uninsdeletekey
 Root: HKLM; Subkey: Software\Classes\NeroBurningROM.Files{#NeroMajorVersion}.cue\DefaultIcon; ValueType: expandsz; ValueData: {app}\Nero Burning ROM\nero.exe,5; Flags: uninsdeletekey; Components: nero_core
 Root: HKLM; SubKey: Software\Classes\NeroBurningROM.Files{#NeroMajorVersion}.cue\Shell\Open\Command; ValueType: expandsz; ValueData: """{app}\Nero Burning ROM\nero.exe"" ""%1"""; Flags: uninsdeletekey; Components: nero_core
 Root: HKLM; SubKey: Software\Classes\.img; ValueType: string; ValueData: NeroBurningROM.Files{#NeroMajorVersion}.img; Flags: uninsdeletekeyifempty uninsdeletevalue; Components: nero_core; Tasks: imagefile_assoc
-Root: HKLM; SubKey: Software\Classes\.img\OpenWithProgIDs; ValueType: string; ValueName: NeroBurningROM.Files{#NeroMajorVersion}.img; Flags: uninsdeletekeyifempty uninsdeletevalue; Components: nero_core
+Root: HKLM; SubKey: Software\Classes\.img\OpenWithProgids; ValueType: binary; ValueName: NeroBurningROM.Files{#NeroMajorVersion}.img; Flags: uninsdeletekeyifempty uninsdeletevalue; Components: nero_core
 Root: HKLM; SubKey: Software\Classes\.img; Flags: uninsdeletekeyifempty
 Root: HKLM; SubKey: Software\Classes\NeroBurningROM.Files{#NeroMajorVersion}.img; ValueType: string; ValueData: {cm:IMG_Description}; Flags: uninsdeletekey; Components: nero_core
 Root: HKLM; SubKey: Software\Classes\NeroBurningROM.Files{#NeroMajorVersion}.img; ValueType: string; ValueData: {cm:IMG_Description}; ValueName: FriendlyTypeName; Flags: uninsdeletekey; Components: nero_core
 Root: HKLM; SubKey: Software\Classes\NeroBurningROM.Files{#NeroMajorVersion}.img\DefaultIcon; ValueType: expandsz; ValueData: {app}\Nero Burning ROM\nero.exe,5; Flags: uninsdeletekey; Components: nero_core
 Root: HKLM; SubKey: Software\Classes\NeroBurningROM.Files{#NeroMajorVersion}.img\Shell\Open\Command; ValueType: expandsz; ValueData: """{app}\Nero Burning ROM\nero.exe"" ""%1"""; Flags: uninsdeletekey; Components: nero_core
 Root: HKLM; SubKey: Software\Classes\.iso; ValueType: string; ValueData: NeroBurningROM.Files{#NeroMajorVersion}.iso; Components: nero_core; Flags: uninsdeletekeyifempty uninsdeletevalue; Tasks: imagefile_assoc
-Root: HKLM; SubKey: Software\Classes\.iso\OpenWithProgIDs; ValueType: string; ValueName: NeroBurningROM.Files{#NeroMajorVersion}.iso; Flags: uninsdeletekeyifempty uninsdeletevalue; Components: nero_core
+Root: HKLM; SubKey: Software\Classes\.iso\OpenWithProgids; ValueType: binary; ValueName: NeroBurningROM.Files{#NeroMajorVersion}.iso; Flags: uninsdeletekeyifempty uninsdeletevalue; Components: nero_core
 Root: HKLM; SubKey: Software\Classes\.iso; Flags: uninsdeletekeyifempty
 Root: HKLM; SubKey: Software\Classes\NeroBurningROM.Files{#NeroMajorVersion}.iso; ValueType: string; ValueData: {cm:ISO_Description}; Flags: uninsdeletekey; Components: nero_core
 Root: HKLM; SubKey: Software\Classes\NeroBurningROM.Files{#NeroMajorVersion}.iso; ValueType: string; ValueData: {cm:ISO_Description}; ValueName: FriendlyTypeName; Flags: uninsdeletekey; Components: nero_core

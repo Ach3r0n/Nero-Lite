@@ -2,8 +2,6 @@
 #NoTrayIcon
 ;Windows Text Quick mode
 Opt("WinTextMatchMode", 2)
-;Advanced Title Match mode
-Opt("WinTitleMatchMode", 4)
 
 ;Check commandline
 If Not $CmdLine[0] = 2  Then

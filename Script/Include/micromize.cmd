@@ -160,13 +160,12 @@ if %neroversion% LSS 8 (
 GOTO :EOF
 
 :RESHACKPROBLEM
-echo Error reshacking file %filename%
+echo Error: failed reshacking file %filename%
 pause
 goto :EOF
 
 :SIGNINGPROBLEM
-echo Error signing file %filename%
-pause
+echo Warning: failed signing file %filename%
 GOTO :EOF
 
 popd

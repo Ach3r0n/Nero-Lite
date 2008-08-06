@@ -25,12 +25,11 @@ begin
 				begin
 				#ifdef Nero7
 					if Pos('C',ValueData) = 2 then
-						Result := ValueName[i];
 				#endif
 				#ifdef Nero8
 					if Pos('K',ValueData) = 2 then
-						Result := ValueName[i];
 				#endif
+					Result := ValueName[i];
 				end
 			end
 	end
@@ -47,9 +46,7 @@ begin
 			UserSerial := getNeroInfo(getSerialValueName());
 			StringChangeEx(UserSerial, '-', '', False);
 			if CompareText(UserSerial, EvalSerial) <> 0 then
-				Result := True
-			else
-				Result := False;
+                Result := True;
 		end
 	else
 		begin
@@ -57,11 +54,7 @@ begin
 			StringChangeEx(S, ' ', '', False);
 			if (Length(S) > 0) and (CompareText(Edit3.Text, getNeroInfo(getSerialValueName())) <> 0) then
 				Result := True
-			else
-				begin
-					if Length(Edit3.Text) = 0 then
-						RegDeleteValue(HKLM,'Software\{#RegPublisherName}\Installation\Families\Nero {#NeroMajorVersion}\Info',getSerialValueName());
-					Result := False;
-				end
+			else if Length(Edit3.Text) = 0 then
+				RegDeleteValue(HKLM,'Software\{#RegPublisherName}\Installation\Families\Nero {#NeroMajorVersion}\Info',getSerialValueName());
 		end
 end;

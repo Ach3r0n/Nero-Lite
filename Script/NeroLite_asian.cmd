@@ -28,16 +28,14 @@ call Script\Include\getNeroVersion.cmd
 
 ::generate Asian Lite Setup Script
 copy /y Script\Lang\Asian\NeroLite_asian.iss Script\Include\NeroLite_asian_lite.iss > NUL
-copy /y Script\NeroLite_base.iss NeroLite_main.iss > NUL
-
+copy /y Script\Include\defines.iss + Script\NeroLite_base.iss NeroLite_main.iss > NUL
 start /B /WAIT "PreProcessing - NeroLite_asian_lite.iss" /low "%InnoSetupPath%\iscc.exe" "NeroLite_main.iss" /dLite /dNeroVersion=%neroversion% > NUL
 
 echo.
 del /f /q NeroLite_main.iss > NUL
 ::generate Asian Micro Setup Script
 copy /y Script\Lang\Asian\NeroLite_asian.iss Script\Include\NeroLite_asian_micro.iss > NUL
-copy /y Script\NeroLite_base.iss NeroLite_main.iss > NUL
-
+copy /y Script\Include\defines.iss + Script\NeroLite_base.iss NeroLite_main.iss > NUL
 start /B /WAIT "PreProcessing - NeroLite_asian_micro.iss" /low "%InnoSetupPath%\iscc.exe" "NeroLite_main.iss" /dMicro /dNeroVersion=%neroversion% > NUL
 
 echo.

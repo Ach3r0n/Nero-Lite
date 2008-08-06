@@ -5,108 +5,39 @@
 ;Copyright (C) 2008 - Klaas Nekeman
 ;
 
-[ISSI]
-#define ISSI_IncludePath ReadReg(HKLM, "Software\Microsoft\Windows\CurrentVersion\Uninstall\Inno Setup Script Includes_is1","InstallLocation", GetEnv("ProgramFiles") + "\Inno Setup\ISSI")
-
-;Detect Nero Version
-#ifndef NeroVersion
-	#define NeroVersion GetFileVersion("Bin\[FILELOCATION]Core\nero.exe")
-#endif
-
-#ifdef NeroVersion
-	#define NeroMajorVersion Int(Copy(NeroVersion,1,1))
-#endif
-
-#if NeroMajorVersion == 7
-	#define Nero7
-	#define RegPublisherName "Ahead"
-#else
-	#define Nero8
-	#define RegPublisherName "Nero"
-#endif
-
-#define ISSI_UseMyInitializeWizard
-#define ISSI_WizardSmallBitmapImage_x 206
-#define ISSI_WizardSmallBitmapImage "Setup\Nero" + str(NeroMajorVersion) + "\nerotopbar.bmp"
-#define ISSI_WizardBitmapImage "Setup\Nero" + str(NeroMajorVersion) + "\nerosidebarbig.bmp"
-#define ISSI_WizardBitmapImage_x 190
-#define ISSI_URL
-#define ISSI_URLText
-
-
-#sub ProcessFoundFile
-	#define public LocaleIncludeFileName Lowercase(FindGetFileName(FindHandle))
-#endsub
-
-;Detect generated include filename
-#define FindHandle
-#define FindResult
-#define Mask "Script\Include\NeroLite_*_*.iss"
-
-#for {FindHandle = FindResult = FindFirst(Mask, 0); FindResult; FindResult = FindNext(FindHandle)} ProcessFoundFile
-#if FindHandle
-	#expr FindClose(FindHandle)
-#endif
-
-;Set language and setuptype
-	#ifndef LocaleIncludeFileName
-		#define Lite
-		#define NeroSetupLocale "english"
-	#else
-		#define NeroSetupLocale Copy(LocaleIncludeFileName, 10, RPos("_", LocaleIncludeFileName) - 10)
-		#if Pos("_lite", LocaleIncludeFileName) != 0
-			#define Lite
-		#else
-			#define Micro
-		#endif
-	#endif
-
-
-#ifdef Lite
-	#define NeroSetupType "Lite"
-	#define nero_coverdes "nero_coverdes"
-	#define nero_waveedit "nero_waveedit"
-#endif
-
-#ifdef Micro
-	#if NeroSetupLocale == "english"
-		#define Micro_English
-	#endif
-	#define NeroSetupType "Micro"
-	#define nero_coverdes
-	#define nero_waveedit
-#endif
-
 [Setup]
-AppName=Nero {#NeroMajorVersion} {#NeroSetupType}
+AllowNoIcons=true
 AppId=Nero{#NeroMajorVersion}Lite
+AppName=Nero {#NeroMajorVersion} {#NeroSetupType}
+AppCopyright=Nero
+AppPublisher=UpdatePack.nl
+AppPublisherURL=http://updatepack.nl
 AppVerName=Nero {#NeroMajorVersion} {#NeroSetupType} {#NeroVersion}
 AppVersion={#NeroVersion}
-AppPublisher=Updatepack.nl
-AppPublisherURL=http://updatepack.nl
+ChangesAssociations=true
+Compression=lzma
 DefaultDirName={pf}\Nero
 DefaultGroupName=Nero
-AllowNoIcons=true
+FlatComponentsList=false
+InternalCompressLevel=max
+MinVersion=0,5.0.2195sp3
 OutputBaseFilename=Nero-{#NeroVersion}_{#NeroSetupLocale}_{#Lowercase(NeroSetupType)}
 OutputDir=.\Output
 SetupIconFile=Custom\Resources\Icons\Nero{#NeroMajorVersion}\nps_dll_128.ico
-UninstallDisplayIcon={cf}\Nero\Nero Web\nps.dll
-Compression=lzma/max
 ShowLanguageDialog=yes
 ShowUndisplayableLanguages=no
-VersionInfoVersion=1.17.0.2
-VersionInfoProductName=Nero {#NeroSetupType}
-VersionInfoProductVersion={#NeroVersion}
-VersionInfoCompany=Updatepack.nl
-VersionInfoDescription=Nero {#NeroMajorVersion} {#NeroSetupType}
-VersionInfoCopyright=Klaas Nekeman
-UserInfoPage=false
-ChangesAssociations=true
-FlatComponentsList=false
-SolidCompression=true
-MinVersion=0,5.0.2195sp3
 SignedUninstaller=true
 SignedUninstallerDir=.\Setup
+SolidCompression=true
+UninstallDisplayIcon={cf}\Nero\Nero Web\nps.dll
+UninstallDisplayName=Nero {#NeroMajorVersion} {#NeroSetupType}
+UserInfoPage=false
+VersionInfoCompany=UpdatePack.nl
+VersionInfoCopyright=Klaas Nekeman
+VersionInfoDescription=Nero {#NeroMajorVersion} {#NeroSetupType}
+VersionInfoProductName=Nero {#NeroSetupType}
+VersionInfoProductVersion={#NeroVersion}
+VersionInfoVersion=1.17.0.2
 
 [Languages]
 #ifdef Nero8
@@ -235,23 +166,23 @@ Source: Bin\[FILELOCATION]Nero Home Components\NT\NeroFileDialogVista.dll; DestD
 
 ;Nero Control Center
 #ifdef Micro_English
-#ifdef Nero8
-Source: Custom\Bin\[FILELOCATION]\Setup\English\nps.dll; DestDir: {cf}\Nero\Nero Web; Flags: restartreplace
-#endif
-#ifdef Nero7
+	; Source: Custom\Bin\[FILELOCATION]\English\SetupX.exe; DestDir: {cf}\Nero\Nero Web; Flags: restartreplace
+	#ifdef Nero8
+		; Source: Custom\Bin\[FILELOCATION]\Setup\English\nps.dll; DestDir: {cf}\Nero\Nero Web; Flags: restartreplace
+	#endif
+	#ifdef Nero7
 ;Use patched nps.dll (fix Nero Help Path)
-Source: Custom\Patch\English\nps.dll; DestDir: {cf}\Nero\Nero Web; Flags: restartreplace
-#endif
-Source: Custom\Bin\[FILELOCATION]\English\SetupX.exe; DestDir: {cf}\Nero\Nero Web; Flags: restartreplace
+		; Source: Custom\Patch\English\nps.dll; DestDir: {cf}\Nero\Nero Web; Flags: restartreplace
+	#endif
 #else
-#ifdef Nero8
-Source: Custom\Bin\[FILELOCATION]\Setup\nps.dll; DestDir: {cf}\Nero\Nero Web; Flags: restartreplace
-#endif
-#ifdef Nero7
+	; Source: Custom\Bin\[FILELOCATION]\SetupX.exe; DestDir: {cf}\Nero\Nero Web; Flags: restartreplace
+	#ifdef Nero8
+		; Source: Custom\Bin\[FILELOCATION]\Setup\nps.dll; DestDir: {cf}\Nero\Nero Web; Flags: restartreplace
+	#endif
+	#ifdef Nero7
 ;Use patched nps.dll (fix Nero Help Path)
-Source: Custom\Patch\nps.dll; DestDir: {cf}\Nero\Nero Web; Flags: restartreplace
-#endif
-Source: Custom\Bin\[FILELOCATION]\SetupX.exe; DestDir: {cf}\Nero\Nero Web; Flags: restartreplace
+		; Source: Custom\Patch\nps.dll; DestDir: {cf}\Nero\Nero Web; Flags: restartreplace
+	#endif
 #endif
 
 ;Nero Core
@@ -702,7 +633,7 @@ EvalSerial=8K24-0230-0105-7K60-5043-87M4-54K9
 EvalSerial=
 #endif
 issiUrl=http://updatepack.nl
-issiUrlText=Updatepack.nl
+issiUrlText=UpdatePack.nl
 ;English
 ;Setup Wizard - Registration dialog
 english.CustomFormCaption=Customer Information

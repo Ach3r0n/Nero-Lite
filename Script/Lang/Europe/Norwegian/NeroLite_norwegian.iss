@@ -9,24 +9,24 @@ Name: norwegian; MessagesFile: compiler:Languages\Norwegian.isl; LicenseFile: Bi
 [Files]
 ;Norwegian
 #ifdef Nero8
-Source: Custom\Help\NeroControlCenter_ENG.chm; DestDir: {cf}\Nero\Nero Web; Check: CheckLanguage('norwegian'); BeforeInstall: AddLanguage('NOR'); Flags: ignoreversion replacesameversion
+Source: Custom\Help\NeroControlCenter_ENG.chm; DestDir: {cf}\Nero\Nero Web; Check: CheckLanguage('norwegian'); BeforeInstall: AddLanguage('NOR');
 #endif
 #ifdef Nero7
-Source: Custom\Help\NeroControlCenter_ENG.chm; DestName: NeroProductSetup_ENG.chm; DestDir: {cf}\Nero\Nero Web; Check: CheckLanguage('norwegian'); BeforeInstall: AddLanguage('NOR'); Flags: ignoreversion replacesameversion
+Source: Custom\Help\NeroControlCenter_ENG.chm; DestName: NeroProductSetup_ENG.chm; DestDir: {cf}\Nero\Nero Web; Check: CheckLanguage('norwegian'); BeforeInstall: AddLanguage('NOR');
 #endif
 Source: Custom\Bin\[FILELOCATION]Core\NeroNOR.nls; DestDir: {app}\Nero Burning ROM; Components: nero_core; Check: CheckLanguage('norwegian')
 Source: Bin\[FILELOCATION]Core\NeroNOR.txt; DestDir: {app}\Nero Burning ROM; Components: nero_core; Check: CheckLanguage('norwegian')
 Source: Bin\[FILELOCATION]Common Files\Lib\BCGCBProResNOR.nls; DestDir: {app}\Nero Burning ROM; Components: nero_core; Check: CheckLanguage('norwegian')
-Source: Custom\Help\NeroBurningRom_ENG.chm; DestDir: {app}\Nero Burning ROM; Components: nero_core; Check: CheckLanguage('norwegian'); Flags: ignoreversion replacesameversion
-Source: Custom\Help\NeroExpress_ENG.chm; DestDir: {app}\Nero Burning ROM; Components: nero_core; Check: CheckLanguage('norwegian'); Flags: ignoreversion replacesameversion
+Source: Custom\Help\NeroBurningRom_ENG.chm; DestDir: {app}\Nero Burning ROM; Components: nero_core; Check: CheckLanguage('norwegian');
+Source: Custom\Help\NeroExpress_ENG.chm; DestDir: {app}\Nero Burning ROM; Components: nero_core; Check: CheckLanguage('norwegian');
 #ifndef Micro
 Source: Custom\Bin\[FILELOCATION]Nero CoverDesigner\CoverEd-NOR.nls; DestDir: {app}\Nero CoverDesigner; Components: nero_coverdes; Check: CheckLanguage('norwegian')
-Source: Custom\Help\NeroCoverDesigner_ENG.chm; DestDir: {app}\Nero CoverDesigner; Components: nero_coverdes; Check: CheckLanguage('norwegian'); Flags: ignoreversion replacesameversion
+Source: Custom\Help\NeroCoverDesigner_ENG.chm; DestDir: {app}\Nero CoverDesigner; Components: nero_coverdes; Check: CheckLanguage('norwegian');
 Source: Custom\Bin\[FILELOCATION]Nero WaveEditor\WaveEdit-NOR.nls; DestDir: {app}\Nero WaveEditor; Components: nero_waveedit; Check: CheckLanguage('norwegian')
-Source: Custom\Help\NeroWaveEditor_ENG.chm; DestDir: {app}\Nero WaveEditor; Components: nero_waveedit; Check: CheckLanguage('norwegian'); Flags: ignoreversion replacesameversion
-Source: Custom\Help\NeroBurnRights_ENG.chm; DestDir: {app}\Nero Toolkit\Nero BurnRights; Components: nero_toolkit\nero_burnrights; Check: CheckLanguage('norwegian'); Flags: ignoreversion replacesameversion
+Source: Custom\Help\NeroWaveEditor_ENG.chm; DestDir: {app}\Nero WaveEditor; Components: nero_waveedit; Check: CheckLanguage('norwegian');
+Source: Custom\Help\NeroBurnRights_ENG.chm; DestDir: {app}\Nero Toolkit\Nero BurnRights; Components: nero_toolkit\nero_burnrights; Check: CheckLanguage('norwegian');
 	#ifdef Nero8
-Source: Custom\Help\NeroDiscSpeed_ENG.chm; DestDir: {app}\Nero Toolkit\Nero DiscSpeed; Components: nero_toolkit\nero_discspeed; Check: CheckLanguage('norwegian'); Flags: ignoreversion replacesameversion
+Source: Custom\Help\NeroDiscSpeed_ENG.chm; DestDir: {app}\Nero Toolkit\Nero DiscSpeed; Components: nero_toolkit\nero_discspeed; Check: CheckLanguage('norwegian');
 	#endif
 #endif
 

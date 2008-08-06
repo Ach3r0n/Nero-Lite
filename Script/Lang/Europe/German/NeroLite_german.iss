@@ -9,24 +9,24 @@ Name: german; MessagesFile: compiler:Languages\German.isl; LicenseFile: Bin\[FIL
 [Files]
 ;German
 #ifdef Nero8
-Source: Custom\Help\NeroControlCenter_DEU.chm; DestDir: {cf}\Nero\Nero Web; Check: CheckLanguage('german'); BeforeInstall: AddLanguage('DEU'); Flags: ignoreversion replacesameversion
+Source: Custom\Help\NeroControlCenter_DEU.chm; DestDir: {cf}\Nero\Nero Web; Check: CheckLanguage('german'); BeforeInstall: AddLanguage('DEU');
 #endif
 #ifdef Nero7
-Source: Custom\Help\NeroControlCenter_DEU.chm; DestName: NeroProductSetup_DEU.chm; DestDir: {cf}\Nero\Nero Web; Check: CheckLanguage('german'); BeforeInstall: AddLanguage('DEU'); Flags: ignoreversion replacesameversion
+Source: Custom\Help\NeroControlCenter_DEU.chm; DestName: NeroProductSetup_DEU.chm; DestDir: {cf}\Nero\Nero Web; Check: CheckLanguage('german'); BeforeInstall: AddLanguage('DEU');
 #endif
 Source: Custom\Bin\[FILELOCATION]Core\NeroDEU.nls; DestDir: {app}\Nero Burning ROM; Components: nero_core; Check: CheckLanguage('german')
 Source: Bin\[FILELOCATION]Core\NeroDEU.txt; DestDir: {app}\Nero Burning ROM; Components: nero_core; Check: CheckLanguage('german')
 Source: Bin\[FILELOCATION]Common Files\Lib\BCGCBProResDEU.nls; DestDir: {app}\Nero Burning ROM; Components: nero_core; Check: CheckLanguage('german')
-Source: Custom\Help\NeroBurningRom_DEU.chm; DestDir: {app}\Nero Burning ROM; Components: nero_core; Check: CheckLanguage('german'); Flags: ignoreversion replacesameversion
-Source: Custom\Help\NeroExpress_DEU.chm; DestDir: {app}\Nero Burning ROM; Components: nero_core; Check: CheckLanguage('german'); Flags: ignoreversion replacesameversion
+Source: Custom\Help\NeroBurningRom_DEU.chm; DestDir: {app}\Nero Burning ROM; Components: nero_core; Check: CheckLanguage('german');
+Source: Custom\Help\NeroExpress_DEU.chm; DestDir: {app}\Nero Burning ROM; Components: nero_core; Check: CheckLanguage('german');
 #ifndef Micro
 Source: Custom\Bin\[FILELOCATION]Nero CoverDesigner\CoverEd-DEU.nls; DestDir: {app}\Nero CoverDesigner; Components: nero_coverdes; Check: CheckLanguage('german')
-Source: Custom\Help\NeroCoverDesigner_DEU.chm; DestDir: {app}\Nero CoverDesigner; Components: nero_coverdes; Check: CheckLanguage('german'); Flags: ignoreversion replacesameversion
+Source: Custom\Help\NeroCoverDesigner_DEU.chm; DestDir: {app}\Nero CoverDesigner; Components: nero_coverdes; Check: CheckLanguage('german');
 Source: Custom\Bin\[FILELOCATION]Nero WaveEditor\WaveEdit-DEU.nls; DestDir: {app}\Nero WaveEditor; Components: nero_waveedit; Check: CheckLanguage('german')
-Source: Custom\Help\NeroWaveEditor_DEU.chm; DestDir: {app}\Nero WaveEditor; Components: nero_waveedit; Check: CheckLanguage('german'); Flags: ignoreversion replacesameversion
-Source: Custom\Help\NeroBurnRights_DEU.chm; DestDir: {app}\Nero Toolkit\Nero BurnRights; Components: nero_toolkit\nero_burnrights; Check: CheckLanguage('german'); Flags: ignoreversion replacesameversion
+Source: Custom\Help\NeroWaveEditor_DEU.chm; DestDir: {app}\Nero WaveEditor; Components: nero_waveedit; Check: CheckLanguage('german');
+Source: Custom\Help\NeroBurnRights_DEU.chm; DestDir: {app}\Nero Toolkit\Nero BurnRights; Components: nero_toolkit\nero_burnrights; Check: CheckLanguage('german');
 	#ifdef Nero8
-Source: Custom\Help\NeroDiscSpeed_DEU.chm; DestDir: {app}\Nero Toolkit\Nero DiscSpeed; Components: nero_toolkit\nero_discspeed; Check: CheckLanguage('german'); Flags: ignoreversion replacesameversion
+Source: Custom\Help\NeroDiscSpeed_DEU.chm; DestDir: {app}\Nero Toolkit\Nero DiscSpeed; Components: nero_toolkit\nero_discspeed; Check: CheckLanguage('german');
 	#endif
 #endif
 

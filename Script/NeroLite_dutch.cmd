@@ -17,13 +17,13 @@ call Script\Include\getNeroVersion.cmd
 
 ::generate Dutch Lite Setup Script
 copy /y Script\Lang\Europe\Dutch\NeroLite_dutch.iss Script\Include\NeroLite_dutch_lite.iss > NUL
-copy /y Script\NeroLite_base.iss NeroLite_main.iss > NUL
+copy /y Script\Include\defines.iss + Script\NeroLite_base.iss NeroLite_main.iss > NUL
 start /B /WAIT "PreProcessing - NeroLite_dutch_lite.iss" /low "%InnoSetupPath%\iscc.exe" "NeroLite_main.iss" /dLite /dNeroVersion=%neroversion% > NUL
 echo.
 del /f /q NeroLite_main.iss > NUL
 ::generate Dutch Micro Setup Script
 copy /y Script\Lang\Europe\Dutch\NeroLite_dutch.iss Script\Include\NeroLite_dutch_micro.iss > NUL
-copy /y Script\NeroLite_base.iss NeroLite_main.iss > NUL
+copy /y Script\Include\defines.iss + Script\NeroLite_base.iss NeroLite_main.iss > NUL
 start /B /WAIT "PreProcessing - NeroLite_dutch_micro.iss" /low "%InnoSetupPath%\iscc.exe" "NeroLite_main.iss" /dMicro /dNeroVersion=%neroversion% > NUL
 echo.
 del /f /q NeroLite_main.iss > NUL

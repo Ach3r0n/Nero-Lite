@@ -28,13 +28,13 @@ call Script\Include\getNeroVersion.cmd
 
 ::generate European Lite Setup Script
 copy /y Script\Lang\Europe\NeroLite_europe.iss Script\Include\NeroLite_europe_lite.iss > NUL
-copy /y Script\NeroLite_base.iss NeroLite_main.iss > NUL
+copy /y Script\Include\defines.iss + Script\NeroLite_base.iss NeroLite_main.iss > NUL
 start /B /WAIT "PreProcessing - NeroLite_europe_lite.iss" /low "%InnoSetupPath%\iscc.exe" "NeroLite_main.iss" /dLite /dNeroVersion=%neroversion% > NUL
 echo.
 del /f /q NeroLite_main.iss > NUL
 ::generate European Micro Setup Script
 copy /y Script\Lang\Europe\NeroLite_europe.iss Script\Include\NeroLite_europe_micro.iss > NUL
-copy /y Script\NeroLite_base.iss NeroLite_main.iss > NUL
+copy /y Script\Include\defines.iss + Script\NeroLite_base.iss NeroLite_main.iss > NUL
 start /B /WAIT "PreProcessing - NeroLite_europe_micro.iss" /low "%InnoSetupPath%\iscc.exe" "NeroLite_main.iss" /dMicro /dNeroVersion=%neroversion% > NUL
 echo.
 del /f /q NeroLite_main.iss > NUL

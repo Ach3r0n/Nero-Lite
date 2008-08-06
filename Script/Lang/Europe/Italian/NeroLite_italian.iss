@@ -9,24 +9,24 @@ Name: italian; MessagesFile: compiler:Languages\Italian.isl; LicenseFile: Bin\[F
 [Files]
 ;Italian
 #ifdef Nero8
-Source: Custom\Help\NeroControlCenter_ITA.chm; DestDir: {cf}\Nero\Nero Web; Check: CheckLanguage('italian'); BeforeInstall: AddLanguage('ITA'); Flags: ignoreversion replacesameversion
+Source: Custom\Help\NeroControlCenter_ITA.chm; DestDir: {cf}\Nero\Nero Web; Check: CheckLanguage('italian'); BeforeInstall: AddLanguage('ITA');
 #endif
 #ifdef Nero7
-Source: Custom\Help\NeroControlCenter_ITA.chm; DestName: NeroProductSetup_ITA.chm;  DestDir: {cf}\Nero\Nero Web; Check: CheckLanguage('italian'); BeforeInstall: AddLanguage('ITA'); Flags: ignoreversion replacesameversion
+Source: Custom\Help\NeroControlCenter_ITA.chm; DestName: NeroProductSetup_ITA.chm;  DestDir: {cf}\Nero\Nero Web; Check: CheckLanguage('italian'); BeforeInstall: AddLanguage('ITA');
 #endif
 Source: Custom\Bin\[FILELOCATION]Core\NeroITA.nls; DestDir: {app}\Nero Burning ROM; Components: nero_core; Check: CheckLanguage('italian')
 Source: Bin\[FILELOCATION]Core\NeroITA.txt; DestDir: {app}\Nero Burning ROM; Components: nero_core; Check: CheckLanguage('italian')
 Source: Bin\[FILELOCATION]Common Files\Lib\BCGCBProResITA.nls; DestDir: {app}\Nero Burning ROM; Components: nero_core; Check: CheckLanguage('italian')
-Source: Custom\Help\NeroBurningRom_ITA.chm; DestDir: {app}\Nero Burning ROM; Components: nero_core; Check: CheckLanguage('italian'); Flags: ignoreversion replacesameversion
-Source: Custom\Help\NeroExpress_ITA.chm; DestDir: {app}\Nero Burning ROM; Components: nero_core; Check: CheckLanguage('italian'); Flags: ignoreversion replacesameversion
+Source: Custom\Help\NeroBurningRom_ITA.chm; DestDir: {app}\Nero Burning ROM; Components: nero_core; Check: CheckLanguage('italian');
+Source: Custom\Help\NeroExpress_ITA.chm; DestDir: {app}\Nero Burning ROM; Components: nero_core; Check: CheckLanguage('italian');
 #ifndef Micro
 Source: Custom\Bin\[FILELOCATION]Nero CoverDesigner\CoverEd-ITA.nls; DestDir: {app}\Nero CoverDesigner; Components: nero_coverdes; Check: CheckLanguage('italian')
-Source: Custom\Help\NeroCoverDesigner_ITA.chm; DestDir: {app}\Nero CoverDesigner; Components: nero_coverdes; Check: CheckLanguage('italian'); Flags: ignoreversion replacesameversion
+Source: Custom\Help\NeroCoverDesigner_ITA.chm; DestDir: {app}\Nero CoverDesigner; Components: nero_coverdes; Check: CheckLanguage('italian');
 Source: Custom\Bin\[FILELOCATION]Nero WaveEditor\WaveEdit-ITA.nls; DestDir: {app}\Nero WaveEditor; Components: nero_waveedit; Check: CheckLanguage('italian')
-Source: Custom\Help\NeroWaveEditor_ITA.chm; DestDir: {app}\Nero WaveEditor; Components: nero_waveedit; Check: CheckLanguage('italian'); Flags: ignoreversion replacesameversion
-Source: Custom\Help\NeroBurnRights_ITA.chm; DestDir: {app}\Nero Toolkit\Nero BurnRights; Components: nero_toolkit\nero_burnrights; Check: CheckLanguage('italian'); Flags: ignoreversion replacesameversion
+Source: Custom\Help\NeroWaveEditor_ITA.chm; DestDir: {app}\Nero WaveEditor; Components: nero_waveedit; Check: CheckLanguage('italian');
+Source: Custom\Help\NeroBurnRights_ITA.chm; DestDir: {app}\Nero Toolkit\Nero BurnRights; Components: nero_toolkit\nero_burnrights; Check: CheckLanguage('italian');
 	#ifdef Nero8
-Source: Custom\Help\NeroDiscSpeed_ITA.chm; DestDir: {app}\Nero Toolkit\Nero DiscSpeed; Components: nero_toolkit\nero_discspeed; Check: CheckLanguage('italian'); Flags: ignoreversion replacesameversion
+Source: Custom\Help\NeroDiscSpeed_ITA.chm; DestDir: {app}\Nero Toolkit\Nero DiscSpeed; Components: nero_toolkit\nero_discspeed; Check: CheckLanguage('italian');
 	#endif
 #endif
 

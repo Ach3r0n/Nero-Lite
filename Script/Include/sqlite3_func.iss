@@ -17,3 +17,4 @@ function sqlite3_exec(
 		ErrMsg:			integer
 		): integer;
 	external 'sqlite3_exec@files:sqlite3.dll cdecl';
+

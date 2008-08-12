@@ -166,22 +166,22 @@ Source: Bin\[FILELOCATION]Nero Home Components\NT\NeroFileDialogVista.dll; DestD
 
 ;Nero Control Center
 #ifdef Micro_English
-	; Source: Custom\Bin\[FILELOCATION]\English\SetupX.exe; DestDir: {cf}\Nero\Nero Web; Flags: restartreplace
+Source: Custom\Bin\[FILELOCATION]\English\SetupX.exe; DestDir: {cf}\Nero\Nero Web; Flags: restartreplace
 	#ifdef Nero8
-		; Source: Custom\Bin\[FILELOCATION]\Setup\English\nps.dll; DestDir: {cf}\Nero\Nero Web; Flags: restartreplace
+Source: Custom\Bin\[FILELOCATION]\Setup\English\nps.dll; DestDir: {cf}\Nero\Nero Web; Flags: restartreplace
 	#endif
 	#ifdef Nero7
 ;Use patched nps.dll (fix Nero Help Path)
-		; Source: Custom\Patch\English\nps.dll; DestDir: {cf}\Nero\Nero Web; Flags: restartreplace
+Source: Custom\Patch\English\nps.dll; DestDir: {cf}\Nero\Nero Web; Flags: restartreplace
 	#endif
 #else
-	; Source: Custom\Bin\[FILELOCATION]\SetupX.exe; DestDir: {cf}\Nero\Nero Web; Flags: restartreplace
+Source: Custom\Bin\[FILELOCATION]\SetupX.exe; DestDir: {cf}\Nero\Nero Web; Flags: restartreplace
 	#ifdef Nero8
-		; Source: Custom\Bin\[FILELOCATION]\Setup\nps.dll; DestDir: {cf}\Nero\Nero Web; Flags: restartreplace
+Source: Custom\Bin\[FILELOCATION]\Setup\nps.dll; DestDir: {cf}\Nero\Nero Web; Flags: restartreplace
 	#endif
 	#ifdef Nero7
 ;Use patched nps.dll (fix Nero Help Path)
-		; Source: Custom\Patch\nps.dll; DestDir: {cf}\Nero\Nero Web; Flags: restartreplace
+Source: Custom\Patch\nps.dll; DestDir: {cf}\Nero\Nero Web; Flags: restartreplace
 	#endif
 #endif
 
@@ -295,7 +295,7 @@ Source: Bin\[FILELOCATION]Common Files\AudioPlugins\msaxp.dll; DestDir: {cf}\Ner
 ;Nero Audio Plugins - Nero Digital
 Source: Bin\[FILELOCATION]Common Files\Lib\ndaudio.dll; DestDir: {cf}\Nero\Lib; Components: nero_core\nero_audioplugins {#emit nero_waveedit}; Flags: sharedfile uninsnosharedfileprompt
 Source: Bin\[FILELOCATION]Common Files\Lib\NeroIPP.dll; DestDir: {cf}\Nero\Lib; Components: nero_core\nero_audioplugins {#emit nero_waveedit}; Flags: sharedfile uninsnosharedfileprompt
-Source: Bin\[FILELOCATION]Common Files\Lib\NeroDigitalExt.dll; DestDir: {cf}\Nero\Lib; Components: nero_core\nero_audioplugins {#emit nero_waveedit}; Flags: restartreplace regserver sharedfile uninsnosharedfileprompt
+Source: Bin\[FILELOCATION]Common Files\Lib\NeroDigitalExt.dll; DestDir: {cf}\Nero\Lib; Components: nero_core\nero_audioplugins {#emit nero_waveedit}; Flags: restartreplace regserver sharedfile uninsrestartdelete uninsnosharedfileprompt
 Source: Bin\[FILELOCATION]Common Files\AudioPlugins\NeroDigital.dll; DestDir: {cf}\Nero\AudioPlugins; Components: nero_core\nero_audioplugins {#emit nero_waveedit}; Flags: sharedfile uninsnosharedfileprompt
 
 ;Nero Audio Plugins - Lame MP3 Encoder
@@ -618,8 +618,8 @@ Name: {cf}\Nero\Lib\NeroInst.db; Type: files
 Name: {cf}\Nero\Lib\Rollback.db; Type: files
 Name: {cf}\Nero\Lib; Type: dirifempty
 Name: {cf}\Nero; Type: dirifempty
-Name: {commonappdata}\Nero\DrWeb\*; Type: files
-Name: {commonappdata}\Nero\DrWeb; Type: dirifempty
+Name: {commonappdata}\Nero; Type: filesandordirs
+Name: {%USERPROFILE}\nro.log; Type: filesandordirs
 
 [Messages]
 BeveledLabel=©2008 Klaas Nekeman
@@ -798,6 +798,7 @@ ActivationPath: String;
 CommonNeroPath: String;
 RollbackDB: String;
 NeroPath: String;
+NeroLogPath: String;
 
 #include "Script\Include\activation.iss"
 #include "Script\Include\sqlite3_func.iss"
@@ -956,7 +957,6 @@ begin
 	CustomForm_CreatePage(wpWelcome);
 end;
 
-
 procedure DeinitializeSetup();
 begin
 	//Cleanup if setup is aborted
@@ -967,6 +967,10 @@ begin
 			if RemoveDir(ActivationPath) then
 					RemoveDir(CommonNeroPath);
 		end;
+	//Cleanup setup logs
+	NeroLogPath := ExpandConstant('{%USERPROFILE}') + '\nro.log'
+	if DirExists(NeroLogPath) then
+		DelTree(NeroLogPath, True, True, True);
 end;
 
 #include ISSI_IncludePath+"\_issi.isi"

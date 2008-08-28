@@ -167,7 +167,11 @@ Source: Bin\[FILELOCATION]Nero Home Components\NT\NeroFileDialogVista.dll; DestD
 ;Nero Control Center
 #ifdef Micro_English
 Source: Custom\Bin\[FILELOCATION]\English\SetupX.exe; DestDir: {cf}\{#RegPublisherName}\Nero Web; Flags: restartreplace
+	#ifdef Nero8
 Source: Custom\Bin\[FILELOCATION]\Setup\English\nps.dll; DestDir: {cf}\{#RegPublisherName}\Nero Web; Flags: restartreplace
+	#else
+Source: Custom\Bin\[FILELOCATION]\Setup\nps.dll; DestDir: {cf}\{#RegPublisherName}\Nero Web; Flags: restartreplace\
+	#endif
 #else
 Source: Custom\Bin\[FILELOCATION]\SetupX.exe; DestDir: {cf}\{#RegPublisherName}\Nero Web; Flags: restartreplace
 Source: Custom\Bin\[FILELOCATION]\Setup\nps.dll; DestDir: {cf}\{#RegPublisherName}\Nero Web; Flags: restartreplace

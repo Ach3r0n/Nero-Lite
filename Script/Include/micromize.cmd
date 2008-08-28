@@ -44,7 +44,9 @@ call :MICROMIZE nerofiledialog.dll "%HomeComponents.MsiFilePath%" english
 call :MICROMIZE nerofiledialog.dll "%HomeComponents.MsiFilePath%"
 
 ::Nero ControlCenter
-call :MICROMIZE nps.dll "%NeroSetup.MsiFilePath%" english
+if %neroversion% GEQ 8 (
+	call :MICROMIZE nps.dll "%NeroSetup.MsiFilePath%" english
+)
 call :MICROMIZE nps.dll "%NeroSetup.MsiFilePath%"
 call :MICROMIZE setupx.exe "%SetupX.MsiFilePath%" english
 call :MICROMIZE setupx.exe "%SetupX.MsiFilePath%"

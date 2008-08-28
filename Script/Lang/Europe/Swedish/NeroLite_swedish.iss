@@ -9,10 +9,10 @@ Name: swedish; MessagesFile: compiler:Languages\Swedish.isl; LicenseFile: Bin\[F
 [Files]
 ;Swedish
 #ifdef Nero8
-Source: Custom\Help\NeroControlCenter_SVE.chm; DestDir: {cf}\Nero\Nero Web; Check: CheckLanguage('swedish'); BeforeInstall: AddLanguage('SVE');
+Source: Custom\Help\NeroControlCenter_SVE.chm; DestDir: {cf}\{#RegPublisherName}\Nero Web; Check: CheckLanguage('swedish'); BeforeInstall: AddLanguage('SVE');
 #endif
 #ifdef Nero7
-Source: Custom\Help\NeroControlCenter_SVE.chm; DestName: NeroProductSetup_SVE.chm; DestDir: {cf}\Nero\Nero Web; Check: CheckLanguage('swedish'); BeforeInstall: AddLanguage('SVE');
+Source: Custom\Help\NeroControlCenter_SVE.chm; DestName: NeroProductSetup_SVE.chm; DestDir: {cf}\{#RegPublisherName}\Nero Web; Check: CheckLanguage('swedish'); BeforeInstall: AddLanguage('SVE');
 #endif
 Source: Custom\Bin\[FILELOCATION]Core\NeroSVE.nls; DestDir: {app}\Nero Burning ROM; Components: nero_core; Check: CheckLanguage('swedish')
 Source: Bin\[FILELOCATION]Core\NeroSVE.txt; DestDir: {app}\Nero Burning ROM; Components: nero_core; Check: CheckLanguage('swedish')

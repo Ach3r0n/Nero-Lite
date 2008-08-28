@@ -13,8 +13,6 @@ copy /y ResourceScripts\Nero8\*.txt ResourceScripts\ > NUL
 )
 echo Micromize:
 
-::File patches
-set PatchPath=..\Patch
 ::MSI FilePaths
 set CommonFiles.MsiFilePath=^[FILELOCATION^]Common Files\Lib\NT
 set HomeComponents.MsiFilePath=^[FILELOCATION^]Nero Home Components\NT
@@ -46,13 +44,8 @@ call :MICROMIZE nerofiledialog.dll "%HomeComponents.MsiFilePath%" english
 call :MICROMIZE nerofiledialog.dll "%HomeComponents.MsiFilePath%"
 
 ::Nero ControlCenter
-if %neroversion% LSS 8 (
-call :MICROMIZE nps.dll "%PatchPath%" english
-call :MICROMIZE nps.dll "%PatchPath%"
-) else (
 call :MICROMIZE nps.dll "%NeroSetup.MsiFilePath%" english
 call :MICROMIZE nps.dll "%NeroSetup.MsiFilePath%"
-)
 call :MICROMIZE setupx.exe "%SetupX.MsiFilePath%" english
 call :MICROMIZE setupx.exe "%SetupX.MsiFilePath%"
 

@@ -9,10 +9,10 @@ Name: dutch; MessagesFile: compiler:Languages\Dutch.isl; LicenseFile: Bin\[FILEL
 [Files]
 ;Dutch
 #ifdef Nero8
-Source: Custom\Help\NeroControlCenter_NLD.chm; DestDir: {cf}\Nero\Nero Web; Check: CheckLanguage('dutch'); BeforeInstall: AddLanguage('NLD');
+Source: Custom\Help\NeroControlCenter_NLD.chm; DestDir: {cf}\{#RegPublisherName}\Nero Web; Check: CheckLanguage('dutch'); BeforeInstall: AddLanguage('NLD');
 #endif
 #ifdef Nero7
-Source: Custom\Help\NeroControlCenter_NLD.chm; DestName: NeroProductSetup_NLD.chm; DestDir: {cf}\Nero\Nero Web; Check: CheckLanguage('dutch'); BeforeInstall: AddLanguage('NLD');
+Source: Custom\Help\NeroControlCenter_NLD.chm; DestName: NeroProductSetup_NLD.chm; DestDir: {cf}\{#RegPublisherName}\Nero Web; Check: CheckLanguage('dutch'); BeforeInstall: AddLanguage('NLD');
 #endif
 Source: Custom\Bin\[FILELOCATION]Core\NeroNLD.nls; DestDir: {app}\Nero Burning ROM; Components: nero_core; Check: CheckLanguage('dutch')
 Source: Bin\[FILELOCATION]Core\NeroNLD.txt; DestDir: {app}\Nero Burning ROM; Components: nero_core; Check: CheckLanguage('dutch')

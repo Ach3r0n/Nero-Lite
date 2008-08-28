@@ -9,10 +9,10 @@ Name: norwegian; MessagesFile: compiler:Languages\Norwegian.isl; LicenseFile: Bi
 [Files]
 ;Norwegian
 #ifdef Nero8
-Source: Custom\Help\NeroControlCenter_ENG.chm; DestDir: {cf}\Nero\Nero Web; Check: CheckLanguage('norwegian'); BeforeInstall: AddLanguage('NOR');
+Source: Custom\Help\NeroControlCenter_ENG.chm; DestDir: {cf}\{#RegPublisherName}\Nero Web; Check: CheckLanguage('norwegian'); BeforeInstall: AddLanguage('NOR');
 #endif
 #ifdef Nero7
-Source: Custom\Help\NeroControlCenter_ENG.chm; DestName: NeroProductSetup_ENG.chm; DestDir: {cf}\Nero\Nero Web; Check: CheckLanguage('norwegian'); BeforeInstall: AddLanguage('NOR');
+Source: Custom\Help\NeroControlCenter_ENG.chm; DestName: NeroProductSetup_ENG.chm; DestDir: {cf}\{#RegPublisherName}\Nero Web; Check: CheckLanguage('norwegian'); BeforeInstall: AddLanguage('NOR');
 #endif
 Source: Custom\Bin\[FILELOCATION]Core\NeroNOR.nls; DestDir: {app}\Nero Burning ROM; Components: nero_core; Check: CheckLanguage('norwegian')
 Source: Bin\[FILELOCATION]Core\NeroNOR.txt; DestDir: {app}\Nero Burning ROM; Components: nero_core; Check: CheckLanguage('norwegian')

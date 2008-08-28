@@ -9,10 +9,10 @@ Name: slovak; MessagesFile: compiler:Languages\Slovak.isl; LicenseFile: Bin\[FIL
 [Files]
 ;Slovak
 #ifdef Nero8
-Source: Custom\Help\NeroControlCenter_ENG.chm; DestDir: {cf}\Nero\Nero Web; Check: CheckLanguage('slovak'); BeforeInstall: AddLanguage('SKY');
+Source: Custom\Help\NeroControlCenter_ENG.chm; DestDir: {cf}\{#RegPublisherName}\Nero Web; Check: CheckLanguage('slovak'); BeforeInstall: AddLanguage('SKY');
 #endif
 #ifdef Nero7
-Source: Custom\Help\NeroControlCenter_ENG.chm; DestName: NeroProductSetup_ENG.chm; DestDir: {cf}\Nero\Nero Web; Check: CheckLanguage('slovak'); BeforeInstall: AddLanguage('SKY');
+Source: Custom\Help\NeroControlCenter_ENG.chm; DestName: NeroProductSetup_ENG.chm; DestDir: {cf}\{#RegPublisherName}\Nero Web; Check: CheckLanguage('slovak'); BeforeInstall: AddLanguage('SKY');
 #endif
 Source: Custom\Bin\[FILELOCATION]Core\NeroSKY.nls; DestDir: {app}\Nero Burning ROM; Components: nero_core; Check: CheckLanguage('slovak')
 Source: Bin\[FILELOCATION]Core\NeroSKY.txt; DestDir: {app}\Nero Burning ROM; Components: nero_core; Check: CheckLanguage('slovak')

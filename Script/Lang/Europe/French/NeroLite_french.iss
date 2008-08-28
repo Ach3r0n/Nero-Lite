@@ -9,10 +9,10 @@ Name: french; MessagesFile: compiler:Languages\French.isl; LicenseFile: Bin\[FIL
 [Files]
 ;French
 #ifdef Nero8
-Source: Custom\Help\NeroControlCenter_FRA.chm; DestDir: {cf}\Nero\Nero Web; Check: CheckLanguage('french'); BeforeInstall: AddLanguage('FRA');
+Source: Custom\Help\NeroControlCenter_FRA.chm; DestDir: {cf}\{#RegPublisherName}\Nero Web; Check: CheckLanguage('french'); BeforeInstall: AddLanguage('FRA');
 #endif
 #ifdef Nero7
-Source: Custom\Help\NeroControlCenter_FRA.chm; DestName: NeroProductSetup_FRA.chm; DestDir: {cf}\Nero\Nero Web; Check: CheckLanguage('french'); BeforeInstall: AddLanguage('FRA');
+Source: Custom\Help\NeroControlCenter_FRA.chm; DestName: NeroProductSetup_FRA.chm; DestDir: {cf}\{#RegPublisherName}\Nero Web; Check: CheckLanguage('french'); BeforeInstall: AddLanguage('FRA');
 #endif
 Source: Custom\Bin\[FILELOCATION]Core\NeroFRA.nls; DestDir: {app}\Nero Burning ROM; Components: nero_core; Check: CheckLanguage('french')
 Source: Bin\[FILELOCATION]Core\NeroFRA.txt; DestDir: {app}\Nero Burning ROM; Components: nero_core; Check: CheckLanguage('french')

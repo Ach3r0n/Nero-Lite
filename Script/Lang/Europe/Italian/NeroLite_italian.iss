@@ -9,10 +9,10 @@ Name: italian; MessagesFile: compiler:Languages\Italian.isl; LicenseFile: Bin\[F
 [Files]
 ;Italian
 #ifdef Nero8
-Source: Custom\Help\NeroControlCenter_ITA.chm; DestDir: {cf}\Nero\Nero Web; Check: CheckLanguage('italian'); BeforeInstall: AddLanguage('ITA');
+Source: Custom\Help\NeroControlCenter_ITA.chm; DestDir: {cf}\{#RegPublisherName}\Nero Web; Check: CheckLanguage('italian'); BeforeInstall: AddLanguage('ITA');
 #endif
 #ifdef Nero7
-Source: Custom\Help\NeroControlCenter_ITA.chm; DestName: NeroProductSetup_ITA.chm;  DestDir: {cf}\Nero\Nero Web; Check: CheckLanguage('italian'); BeforeInstall: AddLanguage('ITA');
+Source: Custom\Help\NeroControlCenter_ITA.chm; DestName: NeroProductSetup_ITA.chm;  DestDir: {cf}\{#RegPublisherName}\Nero Web; Check: CheckLanguage('italian'); BeforeInstall: AddLanguage('ITA');
 #endif
 Source: Custom\Bin\[FILELOCATION]Core\NeroITA.nls; DestDir: {app}\Nero Burning ROM; Components: nero_core; Check: CheckLanguage('italian')
 Source: Bin\[FILELOCATION]Core\NeroITA.txt; DestDir: {app}\Nero Burning ROM; Components: nero_core; Check: CheckLanguage('italian')

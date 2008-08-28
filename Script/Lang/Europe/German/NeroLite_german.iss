@@ -9,10 +9,10 @@ Name: german; MessagesFile: compiler:Languages\German.isl; LicenseFile: Bin\[FIL
 [Files]
 ;German
 #ifdef Nero8
-Source: Custom\Help\NeroControlCenter_DEU.chm; DestDir: {cf}\Nero\Nero Web; Check: CheckLanguage('german'); BeforeInstall: AddLanguage('DEU');
+Source: Custom\Help\NeroControlCenter_DEU.chm; DestDir: {cf}\{#RegPublisherName}\Nero Web; Check: CheckLanguage('german'); BeforeInstall: AddLanguage('DEU');
 #endif
 #ifdef Nero7
-Source: Custom\Help\NeroControlCenter_DEU.chm; DestName: NeroProductSetup_DEU.chm; DestDir: {cf}\Nero\Nero Web; Check: CheckLanguage('german'); BeforeInstall: AddLanguage('DEU');
+Source: Custom\Help\NeroControlCenter_DEU.chm; DestName: NeroProductSetup_DEU.chm; DestDir: {cf}\{#RegPublisherName}\Nero Web; Check: CheckLanguage('german'); BeforeInstall: AddLanguage('DEU');
 #endif
 Source: Custom\Bin\[FILELOCATION]Core\NeroDEU.nls; DestDir: {app}\Nero Burning ROM; Components: nero_core; Check: CheckLanguage('german')
 Source: Bin\[FILELOCATION]Core\NeroDEU.txt; DestDir: {app}\Nero Burning ROM; Components: nero_core; Check: CheckLanguage('german')

@@ -11,10 +11,10 @@ Name: chinese_trad; MessagesFile: compiler:Languages\ChineseTrad.isl; LicenseFil
 [Files]
 ;Chinese (Simpl.)
 #ifdef Nero8
-Source: Custom\Help\NeroControlCenter_CHS.chm; DestDir: {cf}\Nero\Nero Web; Check: CheckLanguage('chinese_simpl'); BeforeInstall: AddLanguage('CHS');
+Source: Custom\Help\NeroControlCenter_CHS.chm; DestDir: {cf}\{#RegPublisherName}\Nero Web; Check: CheckLanguage('chinese_simpl'); BeforeInstall: AddLanguage('CHS');
 #endif
 #ifdef Nero7
-Source: Custom\Help\NeroControlCenter_CHS.chm; DestName: NeroProductSetup_CHS.chm; DestDir: {cf}\Nero\Nero Web; Check: CheckLanguage('chinese_simpl'); BeforeInstall: AddLanguage('CHS');
+Source: Custom\Help\NeroControlCenter_CHS.chm; DestName: NeroProductSetup_CHS.chm; DestDir: {cf}\{#RegPublisherName}\Nero Web; Check: CheckLanguage('chinese_simpl'); BeforeInstall: AddLanguage('CHS');
 #endif
 Source: Custom\Bin\[FILELOCATION]Core\NeroCHS.nls; DestDir: {app}\Nero Burning ROM; Components: nero_core; Check: CheckLanguage('chinese_simpl')
 Source: Bin\[FILELOCATION]Core\NeroCHS.txt; DestDir: {app}\Nero Burning ROM; Components: nero_core; Check: CheckLanguage('chinese_simpl')
@@ -34,10 +34,10 @@ Source: Custom\Help\NeroDiscSpeed_CHS.chm; DestDir: {app}\Nero Toolkit\Nero Disc
 
 ;Chinese (Trad.)
 #ifdef Nero8
-Source: Custom\Help\NeroControlCenter_CHT.chm; DestDir: {cf}\Nero\Nero Web; Check: CheckLanguage('chinese_trad'); BeforeInstall: AddLanguage('CHT');
+Source: Custom\Help\NeroControlCenter_CHT.chm; DestDir: {cf}\{#RegPublisherName}\Nero Web; Check: CheckLanguage('chinese_trad'); BeforeInstall: AddLanguage('CHT');
 #endif
 #ifdef Nero7
-Source: Custom\Help\NeroControlCenter_CHT.chm; DestName: NeroProductSetup_CHT.chm; DestDir: {cf}\Nero\Nero Web; Check: CheckLanguage('chinese_trad'); BeforeInstall: AddLanguage('CHT');
+Source: Custom\Help\NeroControlCenter_CHT.chm; DestName: NeroProductSetup_CHT.chm; DestDir: {cf}\{#RegPublisherName}\Nero Web; Check: CheckLanguage('chinese_trad'); BeforeInstall: AddLanguage('CHT');
 #endif
 Source: Custom\Bin\[FILELOCATION]Core\NeroCHT.nls; DestDir: {app}\Nero Burning ROM; Components: nero_core; Check: CheckLanguage('chinese_trad')
 Source: Bin\[FILELOCATION]Core\NeroCHT.txt; DestDir: {app}\Nero Burning ROM; Components: nero_core; Check: CheckLanguage('chinese_trad')

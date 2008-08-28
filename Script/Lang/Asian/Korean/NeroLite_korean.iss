@@ -9,10 +9,10 @@ Name: korean; MessagesFile: compiler:Languages\Korean.isl; LicenseFile: Bin\[FIL
 [Files]
 ;Korean
 #ifdef Nero8
-Source: Custom\Help\NeroControlCenter_KOR.chm; DestDir: {cf}\Nero\Nero Web; Check: CheckLanguage('korean'); BeforeInstall: AddLanguage('KOR');
+Source: Custom\Help\NeroControlCenter_KOR.chm; DestDir: {cf}\{#RegPublisherName}\Nero Web; Check: CheckLanguage('korean'); BeforeInstall: AddLanguage('KOR');
 #endif
 #ifdef Nero7
-Source: Custom\Help\NeroControlCenter_KOR.chm; DestName: NeroProductSetup_ENG.chm; DestDir: {cf}\Nero\Nero Web; Check: CheckLanguage('korean'); BeforeInstall: AddLanguage('KOR');
+Source: Custom\Help\NeroControlCenter_KOR.chm; DestName: NeroProductSetup_ENG.chm; DestDir: {cf}\{#RegPublisherName}\Nero Web; Check: CheckLanguage('korean'); BeforeInstall: AddLanguage('KOR');
 #endif
 Source: Custom\Bin\[FILELOCATION]Core\NeroKOR.nls; DestDir: {app}\Nero Burning ROM; Components: nero_core; Check: CheckLanguage('korean')
 Source: Bin\[FILELOCATION]Core\NeroKOR.txt; DestDir: {app}\Nero Burning ROM; Components: nero_core; Check: CheckLanguage('korean')

@@ -11,10 +11,10 @@ Name: portuguese_brazilian; MessagesFile: compiler:Languages\BrazilianPortuguese
 [Files]
 ;Portuguese
 #ifdef Nero8
-Source: Custom\Help\NeroControlCenter_PTG.chm; DestDir: {cf}\Nero\Nero Web; Check: CheckLanguage('portuguese'); BeforeInstall: AddLanguage('PTG');
+Source: Custom\Help\NeroControlCenter_PTG.chm; DestDir: {cf}\{#RegPublisherName}\Nero Web; Check: CheckLanguage('portuguese'); BeforeInstall: AddLanguage('PTG');
 #endif
 #ifdef Nero7
-Source: Custom\Help\NeroControlCenter_PTG.chm; DestName: NeroProductSetup_PTG.chm; DestDir: {cf}\Nero\Nero Web; Check: CheckLanguage('portuguese'); BeforeInstall: AddLanguage('PTG');
+Source: Custom\Help\NeroControlCenter_PTG.chm; DestName: NeroProductSetup_PTG.chm; DestDir: {cf}\{#RegPublisherName}\Nero Web; Check: CheckLanguage('portuguese'); BeforeInstall: AddLanguage('PTG');
 #endif
 Source: Bin\[FILELOCATION]Core\NeroPTG.txt; DestDir: {app}\Nero Burning ROM; Components: nero_core; Check: CheckLanguage('portuguese')
 Source: Custom\Bin\[FILELOCATION]Core\NeroPTG.nls; DestDir: {app}\Nero Burning ROM; Components: nero_core; Check: CheckLanguage('portuguese')
@@ -34,10 +34,10 @@ Source: Custom\Help\NeroDiscSpeed_PTG.chm; DestDir: {app}\Nero Toolkit\Nero Disc
 
 ;Portuguese Brazilian
 #ifdef Nero8
-Source: Custom\Help\NeroControlCenter_PTB.chm; DestDir: {cf}\Nero\Nero Web; Check: CheckLanguage('portuguese_brazilian'); BeforeInstall: AddLanguage('PTB');
+Source: Custom\Help\NeroControlCenter_PTB.chm; DestDir: {cf}\{#RegPublisherName}\Nero Web; Check: CheckLanguage('portuguese_brazilian'); BeforeInstall: AddLanguage('PTB');
 #endif
 #ifdef Nero7
-Source: Custom\Help\NeroControlCenter_PTB.chm; DestName: NeroProductSetup_PTB.chm; DestDir: {cf}\Nero\Nero Web; Check: CheckLanguage('portuguese_brazilian'); BeforeInstall: AddLanguage('PTB');
+Source: Custom\Help\NeroControlCenter_PTB.chm; DestName: NeroProductSetup_PTB.chm; DestDir: {cf}\{#RegPublisherName}\Nero Web; Check: CheckLanguage('portuguese_brazilian'); BeforeInstall: AddLanguage('PTB');
 #endif
 Source: Bin\[FILELOCATION]Core\NeroPTB.txt; DestDir: {app}\Nero Burning ROM; Components: nero_core; Check: CheckLanguage('portuguese_brazilian')
 Source: Custom\Bin\[FILELOCATION]Core\NeroPTB.nls; DestDir: {app}\Nero Burning ROM; Components: nero_core; Check: CheckLanguage('portuguese_brazilian')

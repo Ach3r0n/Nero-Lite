@@ -9,10 +9,10 @@ Name: greek; MessagesFile: compiler:Languages\Greek.isl; LicenseFile: Bin\[FILEL
 [Files]
 ;Greek
 #ifdef Nero8
-Source: Custom\Help\NeroControlCenter_ENG.chm; DestDir: {cf}\Nero\Nero Web; Check: CheckLanguage('greek'); BeforeInstall: AddLanguage('ELL');
+Source: Custom\Help\NeroControlCenter_ENG.chm; DestDir: {cf}\{#RegPublisherName}\Nero Web; Check: CheckLanguage('greek'); BeforeInstall: AddLanguage('ELL');
 #endif
 #ifdef Nero7
-Source: Custom\Help\NeroControlCenter_ENG.chm; DestName: NeroProductSetup_ENG.chm; DestDir: {cf}\Nero\Nero Web; Check: CheckLanguage('greek'); BeforeInstall: AddLanguage('ELL');
+Source: Custom\Help\NeroControlCenter_ENG.chm; DestName: NeroProductSetup_ENG.chm; DestDir: {cf}\{#RegPublisherName}\Nero Web; Check: CheckLanguage('greek'); BeforeInstall: AddLanguage('ELL');
 #endif
 Source: Custom\Bin\[FILELOCATION]Core\NeroELL.nls; DestDir: {app}\Nero Burning ROM; Components: nero_core; Check: CheckLanguage('greek')
 Source: Bin\[FILELOCATION]Core\NeroELL.txt; DestDir: {app}\Nero Burning ROM; Components: nero_core; Check: CheckLanguage('greek')

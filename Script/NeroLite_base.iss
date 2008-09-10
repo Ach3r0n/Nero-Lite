@@ -54,7 +54,7 @@ Source: Setup\Nero{#NeroMajorVersion}\nerosidebarbig.bmp; DestDir: {tmp}; DestNa
 ;AutoItX 3.2.12.1
 Source: Setup\autoitx3.dll; DestDir: {tmp}; Flags: dontcopy
 
-;SQLite 3.6.1
+;SQLite 3.6.2
 Source: Setup\sqlite3.dll; DestDir: {tmp}; Flags: dontcopy
 
 #ifdef Nero7
@@ -66,12 +66,12 @@ Source: Bin\[FILELOCATION]Redist\msvcr71.dll; DestDir: {sys}; Flags: sharedfile 
 #endif
 
 #ifdef Nero8
-;VC++2005 SP1 redistributable (NOTE: .NET 2.0SP1 VC++ redist does not work)
+;VC++2005 SP1 Redistributable (NOTE: .NET 2.0SP1 VC++ redist does not work)
 Source: Setup\vcredist.msi; DestDir: {tmp}; Flags: dontcopy
 #endif
 
-;GDI+
-Source: Bin\[FILELOCATION]Redist\gdiplus.dll; DestDir: {cf}\{#RegPublisherName}\Lib; Components: nero_core; Flags: sharedfile uninsnosharedfileprompt; OnlyBelowVersion: 0,5.01.2600
+;GDI+ Redistributable (5.1.3102.5581)
+Source: Setup\gdiplus.dll; DestDir: {cf}\{#RegPublisherName}\Lib; Components: nero_core; Flags: sharedfile uninsnosharedfileprompt; OnlyBelowVersion: 0,5.01.2600
 
 ;BCGControlBar library
 #ifdef Nero7

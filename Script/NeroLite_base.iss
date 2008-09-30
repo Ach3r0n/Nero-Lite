@@ -37,7 +37,7 @@ VersionInfoCopyright=Klaas Nekeman
 VersionInfoDescription=Nero {#NeroMajorVersion} {#NeroSetupType}
 VersionInfoProductName=Nero {#NeroSetupType}
 VersionInfoProductVersion={#NeroVersion}
-VersionInfoVersion=1.17.1.0
+VersionInfoVersion=1.17.1.2
 
 [Languages]
 #ifdef Nero8
@@ -1011,4 +1011,3 @@ end;
 #expr DeleteFile("Script\Include\" + LocaleIncludeFileName)
 #pragma error "Completed preprocessing script. You can now proceed building " + AddBackslash(SourcePath) + LocaleIncludeFileName
 #endif
-

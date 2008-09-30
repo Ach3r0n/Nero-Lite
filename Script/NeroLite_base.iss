@@ -848,7 +848,7 @@ procedure CloseNeroControlCenter();
 begin
 	AU3_ProcessClose('SetupX.exe');
 	#ifdef Nero7
-	//Don't ask to update Nero components on startup
+//Don't ask to update Nero components on startup
 	RegWriteStringValue(HKLM,'Software\Ahead\Installation\Families\Nero 7\Info',
 		'MissingFilesState', '0');
 	#endif
@@ -934,7 +934,7 @@ begin
 			end;
 		ssPostInstall:
 			begin
-				//Run activation utility if necessary
+			//Run activation utility if necessary
 				if CheckSerialIsNew() then
 					begin
 						#ifdef Nero8
@@ -943,9 +943,9 @@ begin
 						#ifdef Nero7
 						NeroTitle := 'Nero ProductSetup';
 						#endif
-						//Configure AutoIt
+					//Configure AutoIt
 						AU3_AutoItSetOption('WinTitleMatchMode', 4);
-						//Launch Nero ControlCenter
+					//Launch Nero ControlCenter
 						if AU3_ProcessExists('SetupX.exe') <> 0 then
 							CloseNeroControlCenter();
 						NCC_PID := AU3_Run(ExpandConstant('{cf}') + '\{#RegPublisherName}\Nero Web\SetupX.exe MODE="update"', chr(0), 0);
@@ -953,19 +953,16 @@ begin
 							begin
 								if AU3_WinWait('[TITLE:' + NeroTitle + '; CLASS:#32770]', chr(0), 10) <> 0 then
 									begin
-										//Wait before program is initialized
-										Sleep(500);
-										//Press Add Serial button
+									//Press Add Serial button
 										AU3_ControlClick('[LAST]', chr(0), '[CLASS:Button; INSTANCE:12]', chr(0), 1, 0, 0);
-										//Detect Serial dialog
-										if AU3_WinWait('[TITLE:' + NeroTitle + '; CLASS:#32770]', chr(0), 2) <> 0 then
-											begin
-												AU3_ControlSetText('[LAST]', chr(0), '10008', ExpandConstant('{code:getSerial}'));
-												AU3_ControlClick('[LAST]', chr(0), '[CLASS:Button; INSTANCE:1]', chr(0), 1, 0, 0);
-											end;
-										CloseNeroControlCenter();
+									//Detect Serial dialog
+										Sleep(750);
+										AU3_ControlSetText('[TITLE:' + NeroTitle + '; CLASS:#32770]', chr(0), 'Edit1', ExpandConstant('{code:getSerial}'));
+										AU3_ControlClick('[LAST]', chr(0), '[CLASS:Button; INSTANCE:1]', chr(0), 1, 0, 0);
 									end;
 							end;
+					//Close Nero ControlCenter
+						CloseNeroControlCenter();
 					end;
 				FinishedInstall := True;
 			end;
@@ -975,14 +972,14 @@ end;
 procedure ISSI_InitializeWizard();
 begin
 #ifdef Nero8
-	//Detect Windows Installer 2
+//Detect Windows Installer 2
 	if not IsMsiRequiredVersion(2,0) then
 		begin
 			MsgBox('Nero {#NeroMajorVersion} {#NeroSetupType} requires Microsoft Windows Installer 2.0 or newer to be installed first.', mbError, mb_OK);
 			Abort();
 		end;
 #endif
-	//Set global vars
+//Set global vars
 	CommonNeroPath := ExpandConstant('{cf}') + '\Nero';
 	ActivationPath := CommonNeroPath + '\Lib';
 	RollbackDB := ActivationPath + '\Rollback.db';
@@ -993,7 +990,7 @@ end;
 
 procedure DeinitializeSetup();
 begin
-	//Cleanup if setup is aborted
+//Cleanup if setup is aborted
 	if (not FinishedInstall) and (not PrevInstNeroDB) then
 		begin
 			if FileExists(RollbackDB) then
@@ -1001,7 +998,7 @@ begin
 			if RemoveDir(ActivationPath) then
 					RemoveDir(CommonNeroPath);
 		end;
-	//Cleanup setup logs
+//Cleanup setup logs
 	NeroLogPath := ExpandConstant('{%USERPROFILE}') + '\nro.log'
 	if DirExists(NeroLogPath) then
 		DelTree(NeroLogPath, True, True, True);
@@ -1014,3 +1011,4 @@ end;
 #expr DeleteFile("Script\Include\" + LocaleIncludeFileName)
 #pragma error "Completed preprocessing script. You can now proceed building " + AddBackslash(SourcePath) + LocaleIncludeFileName
 #endif
+

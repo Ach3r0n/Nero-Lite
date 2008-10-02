@@ -37,7 +37,7 @@ VersionInfoCopyright=Klaas Nekeman
 VersionInfoDescription=Nero {#NeroMajorVersion} {#NeroSetupType}
 VersionInfoProductName=Nero {#NeroSetupType}
 VersionInfoProductVersion={#NeroVersion}
-VersionInfoVersion=1.17.2.0
+VersionInfoVersion=1.17.2.1
 
 [Languages]
 #ifdef Nero8
@@ -898,8 +898,8 @@ procedure CurStepChanged(CurStep: TSetupStep);
 var
 #ifdef Nero8
 	UnattendedFlag: String;
-#endif
 	ResultCode: Integer;
+#endif
 	NCC_PID: Longint;
 	AddLicenseButton, EnterSerialButton,
 		SerialEditBox, NeroWindowTitle: String;
@@ -1043,4 +1043,3 @@ end;
 #expr DeleteFile("Script\Include\" + LocaleIncludeFileName)
 #pragma error "Completed preprocessing script. You can now proceed building " + AddBackslash(SourcePath) + LocaleIncludeFileName
 #endif
-

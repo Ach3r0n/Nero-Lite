@@ -37,7 +37,7 @@ VersionInfoCopyright=Klaas Nekeman
 VersionInfoDescription=Nero {#NeroMajorVersion} {#NeroSetupType}
 VersionInfoProductName=Nero {#NeroSetupType}
 VersionInfoProductVersion={#NeroVersion}
-VersionInfoVersion=1.17.1.2
+VersionInfoVersion=1.17.2.0
 
 [Languages]
 #ifdef Nero8
@@ -615,7 +615,7 @@ Name: {commonappdata}\Nero; Type: filesandordirs
 Name: {%USERPROFILE}\nro.log; Type: filesandordirs
 
 [Messages]
-BeveledLabel=©2008 Klaas Nekeman
+BeveledLabel=2008 Klaas Nekeman
 
 [CustomMessages]
 #ifdef Nero8
@@ -636,7 +636,7 @@ english.RegistrationWelcome=Thanks for purchasing your copy of Nero.
 english.RegistrationWelcomeCaption=Welcome to Nero
 english.RegistrationCaption=Registration
 english.NeroShopCaption=No Serial number?
-english.NeroShop=Nero Online Shop 
+english.NeroShop=Nero Online Shop
 english.NeroShopURL=http://www.nero.com/eng/catalog.html
 english.RegistrationName=Name:
 english.RegistrationOrg=Organization:
@@ -844,24 +844,14 @@ begin
 		Result := False
 end;
 
-procedure CloseNeroControlCenter();
-begin
-	AU3_ProcessClose('SetupX.exe');
-	#ifdef Nero7
-//Don't ask to update Nero components on startup
-	RegWriteStringValue(HKLM,'Software\Ahead\Installation\Families\Nero 7\Info',
-		'MissingFilesState', '0');
-	#endif
-end;
-
 procedure Update_ProductDB();
 var
-	db: longword;
-	query: string;
+	db: Longword;
+	query: String;
 	FileId: Array of Integer;
 	FileName: Array of String;
 	FilePath: string;
-	i: integer;
+	i: Integer;
 begin
 	if not DirExists(ActivationPath) then
 		ForceDirectories(ActivationPath);
@@ -881,7 +871,7 @@ begin
 			FileId := [2473, 3724, 4948, 4949, 4950];
 			FileName := ['SetupX.exe', 'NeroPatentActivation.exe', 'PatentActivationFax.htm', 'btc-bar.gif', 'logo.gif'];
 			FilePath := CommonNeroPath + '\Nero Web';
-			Repeat
+			repeat
 				query := 'INSERT OR REPLACE INTO MsiAction VALUES(' +
 							InttoStr(i) + ',' +
 				#ifdef Nero8
@@ -896,7 +886,7 @@ begin
 				sqlite3_exec(db, query, 0, 0, 0);
 				FilePath := ActivationPath;
 				i := i + 1;
-			Until i = 5;
+			until i = 5;
 		end;
 		sqlite3_close(db);
 	end;
@@ -906,12 +896,15 @@ end;
 
 procedure CurStepChanged(CurStep: TSetupStep);
 var
-	NCC_PID: Longint;
-	NeroTitle: String;
-	ResultCode: Integer;
 #ifdef Nero8
 	UnattendedFlag: String;
 #endif
+	ResultCode: Integer;
+	NCC_PID: Longint;
+	AddLicenseButton, EnterSerialButton,
+		SerialEditBox, NeroWindowTitle: String;
+	RetHandle: PChar;
+	i: Integer;
 begin
 	case CurStep of
 		ssInstall:
@@ -937,32 +930,71 @@ begin
 			//Run activation utility if necessary
 				if CheckSerialIsNew() then
 					begin
+					//Window Controls
 						#ifdef Nero8
-						NeroTitle := 'Nero ControlCenter';
+						NeroWindowTitle := '[TITLE:Nero ControlCenter; CLASS:#32770]';
 						#endif
 						#ifdef Nero7
-						NeroTitle := 'Nero ProductSetup';
+						NeroWindowTitle := '[TITLE:Nero ProductSetup; CLASS:#32770]';
 						#endif
+						AddLicenseButton := '[CLASS:Button; INSTANCE:12;]';
+						EnterSerialButton := '[ID:1; CLASS:Button; INSTANCE:1;]';
+						SerialEditBox := '[ID:10008; CLASS:Edit; INSTANCE:1;]';
 					//Configure AutoIt
 						AU3_AutoItSetOption('WinTitleMatchMode', 4);
+					//Close SetupX.exe process if already exists
+						If AU3_ProcessExists('SetupX.exe') <> 0 then
+							begin
+								AU3_ProcessClose('SetupX.exe');
+								Sleep(1000);
+							end;
 					//Launch Nero ControlCenter
-						if AU3_ProcessExists('SetupX.exe') <> 0 then
-							CloseNeroControlCenter();
 						NCC_PID := AU3_Run(ExpandConstant('{cf}') + '\{#RegPublisherName}\Nero Web\SetupX.exe MODE="update"', chr(0), 0);
 						if NCC_PID <> 0 then
 							begin
-								if AU3_WinWait('[TITLE:' + NeroTitle + '; CLASS:#32770]', chr(0), 10) <> 0 then
+							//Wait until Nero ControlCenter is ready
+								if AU3_WinWait(NeroWindowTitle, chr(0), 10) <> 0 then
 									begin
-									//Press Add Serial button
-										AU3_ControlClick('[LAST]', chr(0), '[CLASS:Button; INSTANCE:12]', chr(0), 1, 0, 0);
-									//Detect Serial dialog
-										Sleep(750);
-										AU3_ControlSetText('[TITLE:' + NeroTitle + '; CLASS:#32770]', chr(0), 'Edit1', ExpandConstant('{code:getSerial}'));
-										AU3_ControlClick('[LAST]', chr(0), '[CLASS:Button; INSTANCE:1]', chr(0), 1, 0, 0);
+										i := 0;
+										repeat
+											RetHandle := StringOfChar(#0, 255);
+											AU3_ControlGetHandle('[LAST]', chr(0), AddLicenseButton, RetHandle, 255);
+											RetHandle := TrimRight(RetHandle);
+											Sleep(250);
+											i := i + 1;
+										until (Length(RetHandle) > 0) or (i > 40);
+										if (Length(RetHandle) > 0) then
+											begin
+												Sleep(500);
+											//Press Add License button
+												AU3_ControlClick('[LAST]', chr(0), AddLicenseButton, chr(0), 1, 0, 0);
+											//Wait for serial dialog
+												i := 0;
+												repeat
+													RetHandle := StringOfChar(#0, 255);
+													AU3_ControlGetHandle('[LAST]', chr(0), SerialEditBox, RetHandle, 255);
+													RetHandle := TrimRight(RetHandle);
+													Sleep(250);
+													i := i + 1;
+												until (Length(RetHandle) > 0) or (i > 40);
+												if (Length(RetHandle) > 0) then
+													begin
+													//Enter serial
+														Sleep(500);
+														AU3_ControlSetText(NeroWindowTitle, chr(0), SerialEditBox, ExpandConstant('{code:getSerial}'));
+														AU3_ControlClick(NeroWindowTitle, chr(0), EnterSerialButton, chr(0), 1, 0, 0);
+														Sleep(1000);
+													end;
+											end;
 									end;
 							end;
 					//Close Nero ControlCenter
-						CloseNeroControlCenter();
+						AU3_ProcessClose('SetupX.exe');
+						#ifdef Nero7
+					//Don't ask to update Nero components on startup
+						RegWriteStringValue(HKLM,'Software\Ahead\Installation\Families\Nero 7\Info',
+							'MissingFilesState', '0');
+						#endif
 					end;
 				FinishedInstall := True;
 			end;
@@ -996,7 +1028,7 @@ begin
 			if FileExists(RollbackDB) then
 				DeleteFile(RollbackDB);
 			if RemoveDir(ActivationPath) then
-					RemoveDir(CommonNeroPath);
+				RemoveDir(CommonNeroPath);
 		end;
 //Cleanup setup logs
 	NeroLogPath := ExpandConstant('{%USERPROFILE}') + '\nro.log'
@@ -1011,3 +1043,4 @@ end;
 #expr DeleteFile("Script\Include\" + LocaleIncludeFileName)
 #pragma error "Completed preprocessing script. You can now proceed building " + AddBackslash(SourcePath) + LocaleIncludeFileName
 #endif
+

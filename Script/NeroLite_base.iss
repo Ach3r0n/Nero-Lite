@@ -37,7 +37,7 @@ VersionInfoCopyright=Klaas Nekeman
 VersionInfoDescription=Nero {#NeroMajorVersion} {#NeroSetupType}
 VersionInfoProductName=Nero {#NeroSetupType}
 VersionInfoProductVersion={#NeroVersion}
-VersionInfoVersion=1.17.2.1
+VersionInfoVersion=1.17.2.2
 
 [Languages]
 #ifdef Nero8
@@ -131,9 +131,8 @@ Source: Custom\Bin\[FILELOCATION]Common Files\Lib\NT\AdvrCntr3.dll; DestDir: {cf
 	#endif
 #endif
 
-;Installation databases
-Source: Setup\NeroInst.db; DestDir: {cf}\{#RegPublisherName}\Lib; Flags: restartreplace
-Source: Setup\Rollback.db; DestDir: {cf}\{#RegPublisherName}\Lib; Flags: onlyifdoesntexist restartreplace
+;Installation database
+Source: Setup\NeroInst.db; DestDir: {cf}\{#RegPublisherName}\Lib; Flags: restartreplace uninsrestartdelete
 ;Nero Patent Activation
 Source: Custom\Bin\[FILELOCATION]Common Files\Lib\NT\NeroPatentActivation.exe; DestDir: {cf}\{#RegPublisherName}\Lib; Flags: sharedfile uninsnosharedfileprompt; Components: nero_core\nero_videocd
 Source: Bin\[FILELOCATION]Common Files\Lib\NT\btc-bar.gif; DestDir: {cf}\{#RegPublisherName}\Lib; Components: nero_core\nero_videocd
@@ -607,8 +606,7 @@ Root: HKLM; Subkey: Software\Classes\CoverDesigner.Files{#NeroMajorVersion}.nct\
 #endif
 
 [UninstallDelete]
-Name: {cf}\{#RegPublisherName}\Lib\NeroInst.db; Type: files
-Name: {cf}\{#RegPublisherName}\Lib\Rollback.db; Type: files
+Name: {cf}\{#RegPublisherName}\Lib\rollback.db; Type: files
 Name: {cf}\{#RegPublisherName}\Lib; Type: dirifempty
 Name: {cf}\{#RegPublisherName}; Type: dirifempty
 Name: {commonappdata}\Nero; Type: filesandordirs
@@ -1012,7 +1010,7 @@ begin
 		end;
 #endif
 //Set global vars
-	CommonNeroPath := ExpandConstant('{cf}') + '\Nero';
+	CommonNeroPath := ExpandConstant('{cf}') + '\{#RegPublisherName}';
 	ActivationPath := CommonNeroPath + '\Lib';
 	RollbackDB := ActivationPath + '\Rollback.db';
 	if FileExists(RollbackDB) then

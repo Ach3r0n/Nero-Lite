@@ -23,6 +23,3 @@ ISSI version 5.1.90, Copyright (C) Jan Albartus
 
 ISTool version 5.2.1, Copyright (C) Bjørnar Henden
 -> http://www.istool.org/
-
-Shortcut version 1.11, Copyright (C) Marty List
--> http://www.optimumx.com/

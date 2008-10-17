@@ -1,0 +1,109 @@
+[Version]
+Signature = "$Windows NT$"
+
+[DefaultInstall]
+RunPreSetupCommands = InnoSetup.Install:1
+RenFiles            = InnoPP.Rename
+CopyFiles           = InnoPP.CopyFiles,InnoLanguages,EssentialPascal
+UpdateInis          = ISTool.Config
+ProfileItems        = IsToolProgramGroup.Delete,IssiProgramGroup.Delete,IsFDDesktopShortCut.Delete
+ProfileItems        = EPShortCut.Create,InnoSetupShortCut.Create,ISFDShortCut.Create,ISToolShortCut.Create
+
+[PreInstall]
+DelFiles = InnoPP.Delete
+
+[InnoSetup.Install]
+;Remove InnoPP before install to avoid conflicts
+"rundll32.exe advpack.dll,LaunchINFSection %01%\install.inf, PreInstall"
+;Inno Setup 5.2.3
+"""%01%\isetup-5.2.3.exe"" /NORESTART /VERYSILENT /SUPPRESSMSGBOXES /NOICONS /DIR=""%16422%\Inno Setup\Inno Setup 5"""
+;Inno Setup Script Includes 5.1.9.0
+"""%01%\ISSI-Setup-5.1.9.exe"" /NORESTART /VERYSILENT /SUPPRESSMSGBOXES /NOICONS /DIR=""%16422%\Inno Setup\ISSI"""
+;Inno Setup Form Designer 2.0.8
+"""%01%\isfd208.exe"" /NORESTART /VERYSILENT /SUPPRESSMSGBOXES /NOICONS /DIR=""%16422%\Inno Setup\ISFD"""
+;ISTool 5.2.1
+"""%01%\istool-5.2.1.exe"" /NORESTART /VERYSILENT /SUPPRESSMSGBOXES /NOICONS /DIR=""%16422%\Inno Setup\ISTool"""
+
+[DestinationDirs]
+DefaultDestDir  = 16422,"Inno Setup\Inno Setup 5"
+InnoLanguages   = 16422,"Inno Setup\Inno Setup 5\Languages"
+EssentialPascal = 16422,"Inno Setup\Documentation"
+
+[SourceDisksNames]
+1 = "Inno PreProcessor","ISPP-5.2.3.cab"
+2 = "Additonal languages","Languages.cab"
+
+[SourceDisksFiles]
+"Builtins.iss" = 1
+"ISCC.exe" = 1
+"ISCmplr.dll" = 1
+"ISPP.chm" = 1
+ChineseSimpl.isl = 2
+ChineseTrad.isl = 2
+Greek.isl = 2
+Japanese.isl = 2
+Korean.isl = 2
+Serbian.isl = 2 
+Swedish.isl = 2
+Turkish.isl = 2
+
+[InnoPP.Delete]
+"IsCmplr.dls"
+"IsCmplr.dll"
+
+[InnoPP.Rename]
+"IsCmplr.dls","IsCmplr.dll"
+
+[InnoPP.CopyFiles]
+;Inno Setup PreProcessor 5.2.3
+"Builtins.iss"
+"ISCC.exe"
+"ISCmplr.dll"
+"ISPP.chm"
+
+[InnoLanguages]
+;Additional languages
+"ChineseSimpl.isl"
+"ChineseTrad.isl"
+"Greek.isl"
+"Japanese.isl"
+"Korean.isl"
+"Serbian.isl" 
+"Swedish.isl"
+"Turkish.isl"
+
+[EssentialPascal]
+"EssentialPascal.pdf"
+
+[ISTool.Config]
+;Configure path to Inno Setup
+"%16410%\ISTool\ISTool.ini","prefs",,"InnoFolder=%16422%\Inno Setup\Inno Setup 5"
+
+[IsToolProgramGroup.Delete]
+Name = "ISTool",0x6
+
+[IssiProgramGroup.Delete]
+Name = "Inno Setup Script Includes",0x6
+
+[IsFDDesktopShortCut.Delete]
+Name = "Inno Setup Form Designer",0xA,16
+
+[EPShortCut.Create]
+Name = "Essential Pascal"
+Subdir = "Inno Setup"
+CmdLine = 16422,"Inno Setup\Documentation","EssentialPascal.pdf"
+
+[InnoSetupShortCut.Create]
+Name = "Inno Setup Compiler"
+Subdir = "Inno Setup"
+CmdLine = 16422,"Inno Setup\Inno Setup 5","Compil32.exe"
+
+[ISFDShortCut.Create]
+Name = "Inno Setup Form Designer"
+Subdir = "Inno Setup"
+CmdLine = 16422,"Inno Setup\ISFD","ISFD.exe"
+
+[ISToolShortCut.Create]
+Name = "ISTool"
+Subdir = "Inno Setup"
+CmdLine = 16422,"Inno Setup\ISTool","ISTool.exe"

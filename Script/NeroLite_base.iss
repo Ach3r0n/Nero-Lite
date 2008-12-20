@@ -54,7 +54,7 @@ Source: Setup\Nero{#NeroMajorVersion}\nerosidebarbig.bmp; DestDir: {tmp}; DestNa
 ;AutoItX 3.2.12.1
 Source: Setup\autoitx3.dll; DestDir: {tmp}; Flags: dontcopy
 
-;SQLite 3.6.3
+;SQLite 3.6.7
 Source: Setup\sqlite3.dll; DestDir: {tmp}; Flags: dontcopy
 
 #ifdef Nero7

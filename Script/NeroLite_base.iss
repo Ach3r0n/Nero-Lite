@@ -51,7 +51,7 @@ Name: english; MessagesFile: compiler:Default.isl; LicenseFile: Bin\[FILELOCATIO
 ;Hack to fix Final Wizard Dialog Bitmap (ISSI bug)
 Source: Setup\Nero{#NeroMajorVersion}\nerosidebarbig.bmp; DestDir: {tmp}; DestName: WizardBitmapImage2.bmp; Flags: ignoreversion dontcopy noencryption
 
-;AutoItX 3.2.12.1
+;AutoItX 3.2.12.1 (NOTE: AutoItX 3.2.13 no longer supports ANSI calls)
 Source: Setup\autoitx3.dll; DestDir: {tmp}; Flags: dontcopy
 
 ;SQLite 3.6.7
@@ -66,12 +66,12 @@ Source: Bin\[FILELOCATION]Redist\msvcr71.dll; DestDir: {sys}; Flags: sharedfile 
 #endif
 
 #ifdef Nero8
-;VC++2005 SP1 Redistributable (NOTE: .NET 2.0SP1 VC++ redist does not work)
+;VC++ 2005 SP1 Redistributable
 Source: Setup\vcredist.msi; DestDir: {tmp}; Flags: dontcopy
 #endif
 
 ;GDI+ Redistributable (5.1.3102.5581)
-Source: Setup\gdiplus.dll; DestDir: {cf}\{#RegPublisherName}\Lib; Components: nero_core; Flags: sharedfile uninsnosharedfileprompt; OnlyBelowVersion: 0,5.01.2600
+Source: Setup\gdiplus.dll; DestDir: {cf}\{#RegPublisherName}\Lib; Flags: sharedfile restartreplace uninsneveruninstall; OnlyBelowVersion: 0,5.01.2600
 
 ;BCGControlBar library
 #ifdef Nero7
@@ -108,11 +108,6 @@ Source: Custom\Bin\[FILELOCATION]\Nero InfoTool\InfoTool.exe; DestDir: {app}\Ner
 Source: Custom\Bin\[FILELOCATION]\Nero BurnRights\NeroBurnRights.exe; DestDir: {app}\Nero Toolkit\Nero BurnRights; Components: nero_toolkit\nero_burnrights
 Source: Bin\[FILELOCATION]\Nero BurnRights\NeroCo.dll; DestDir: {app}\Nero Toolkit\Nero BurnRights; Components: nero_toolkit\nero_burnrights
 #endif
-
-;Nero Anti-Virus database (Copy from AllUsers\Nero\DrWeb)
-;#ifndef Micro
-;Source: Custom\DrWeb\*; DestDir: {commonappdata}\Nero\DrWeb; Components: nero_core\anti_virus
-;#endif
 
 ;Nero Product Activation
 #ifdef Micro_English
@@ -704,10 +699,6 @@ english.AssocImageFileExt=Associate Nero with standard CD-Image files
 [Components]
 ;Nero Burning ROM
 Name: nero_core; Description: Nero Burning ROM; Types: compact full
-;Anti-Virus libraries
-;#ifndef Micro
-;Name: nero_core\anti_virus; Description: Nero Anti-Virus; Types: full; Flags: dontinheritcheck
-;#endif
 
 ;Nero Audio Plugins
 Name: nero_core\nero_audioplugins; Description: Nero Audio Plug-ins; Types: compact full
@@ -908,7 +899,7 @@ begin
 		ssInstall:
 			begin
 			#ifdef Nero8
-				//Install VC2005SP1 Redist if necessary
+				//Install VC++ 2005 SP1 Redistributable if necessary
 				if MsiQueryProductState('{7299052b-02a4-4627-81f2-1818da5d550d}') <> 5 then
 					begin
 						ExtractTemporaryFile('vcredist.msi');

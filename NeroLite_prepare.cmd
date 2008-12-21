@@ -4,8 +4,9 @@ call Script\Include\getNeroVersion.cmd
 
 Tools\7-zip\7za x -y %nero_setup%.exe -o"%TEMP%\Nero%neroversion:.=%"
 echo.
-echo Choose advanced installation, abort after language selection dialog.
-echo This is necessary otherwise Nero can't be extracted!
+echo The Nero installer will launch to proceed extracting.
+echo Choose Custom Installation method and press next.
+echo When the language list shows up you must abort the installation process.
 echo.
 pause
 "%TEMP%\Nero%neroversion:.=%\SetupX.exe"

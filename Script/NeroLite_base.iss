@@ -2,7 +2,7 @@
 ;Nero 8 Lite Setup script for InnoSetup 5.2.x,
 ;This script also requires ISPP and ISSI!
 ;
-;Copyright (C) 2008 - Klaas Nekeman
+;Copyright (C) 2009 - Klaas Nekeman
 ;
 
 [Setup]
@@ -608,7 +608,7 @@ Name: {commonappdata}\Nero; Type: filesandordirs
 Name: {%USERPROFILE}\nro.log; Type: filesandordirs
 
 [Messages]
-BeveledLabel=2008 Klaas Nekeman
+BeveledLabel=©2009 Klaas Nekeman
 
 [CustomMessages]
 #ifdef Nero8

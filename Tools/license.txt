@@ -1,25 +1,25 @@
-Nero Lite SDK, Copyright (C) Klaas Nekeman
+Nero Lite SDK, Copyright © Klaas Nekeman
 -> http://www.updatepack.nl/
 
 This package includes the following third party software components:
 
-7-Zip Command line 4.57, Copyright (C) Igor Pavlov
+7-Zip Command line 4.65, Copyright © Igor Pavlov
 -> http://www.7-zip.org/
 
-Ebook Essential Pascal, Copyright (C) Marco Cantú
+Ebook Essential Pascal, Copyright © Marco Cantú
 -> http://www.marcocantu.com/epascal/
 
-Inno Setup 5.2.3, Copyright (C) Jordan Russell
+Inno Setup 5.2.3, Copyright © Jordan Russell
 -> http://www.jrsoftware.org/
 
-Inno Setup PreProcessor 5.2.3, Copyright (C) Alex Yackimoff 
+Inno Setup PreProcessor 5.2.3, Copyright © Alex Yackimoff 
 -> http://ispp.sourceforge.net/
 
-Inno Setup Form Designer version 2.0.8, Copyright (C) Marc Hoffmann
+Inno Setup Form Designer version 2.0.8, Copyright © Marc Hoffmann
 -> http://isfd.kaju74.de/
 
-ISSI version 5.1.90, Copyright (C) Jan Albartus
+ISSI version 5.1.90, Copyright © Jan Albartus
 -> http://www.albartus.com/issi/
 
-ISTool version 5.2.1, Copyright (C) Bjørnar Henden
+ISTool version 5.2.1, Copyright © Bjørnar Henden
 -> http://www.istool.org/

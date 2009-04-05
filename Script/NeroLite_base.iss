@@ -810,7 +810,7 @@ begin
 			end
 		else
 			exit;
-	end
+	end;
 	s := s + langid + ';';
 #ifdef Nero8
 	RegWriteStringValue(HKLM,'Software\Nero\Nero8\Shared',
@@ -824,9 +824,8 @@ end;
 
 function CheckLanguage(lang_select: String): Boolean;
 begin
-	if
-		IsComponentSelected('nero_lang\' + lang_select) or
-			(CompareText(lang_select, ActiveLanguage()) = 0)
+	if IsComponentSelected('nero_lang\' + lang_select) or
+		(CompareText(lang_select, ActiveLanguage()) = 0)
 	then
 		Result := True
 	else
@@ -845,40 +844,41 @@ begin
 	if not DirExists(ActivationPath) then
 		ForceDirectories(ActivationPath);
 	if sqlite3_open(RollbackDB,db) = 0 then
-	begin
-		query := 'CREATE TABLE IF NOT EXISTS MsiAction(' +
-					'MsiActionID integer,' +
-					'ProductFamilyID integer,' +
-					'FileID integer,' +
-					'FileName varchar,' +
-					'FilePath varchar,' +
-					'PRIMARY KEY (' +
-						'MsiActionID))';
-		if sqlite3_exec(db, query, 0, 0, 0) = 0 then
 		begin
-			i := 0;
-			FileId := [2473, 3724, 4948, 4949, 4950];
-			FileName := ['SetupX.exe', 'NeroPatentActivation.exe', 'PatentActivationFax.htm', 'btc-bar.gif', 'logo.gif'];
-			FilePath := CommonNeroPath + '\Nero Web';
-			repeat
-				query := 'INSERT OR REPLACE INTO MsiAction VALUES(' +
+			query := 'CREATE TABLE IF NOT EXISTS MsiAction(' +
+				'MsiActionID integer,' +
+				'ProductFamilyID integer,' +
+				'FileID integer,' +
+				'FileName varchar,' +
+				'FilePath varchar,' +
+				'PRIMARY KEY (' +
+				'MsiActionID))';
+			if sqlite3_exec(db, query, 0, 0, 0) = 0 then
+				begin
+					i := 0;
+					FileId := [2473, 3724, 4948, 4949, 4950];
+					FileName := ['SetupX.exe', 'NeroPatentActivation.exe', 'PatentActivationFax.htm', 'btc-bar.gif', 'logo.gif'];
+					FilePath := CommonNeroPath + '\Nero Web';
+					repeat
+						query := 'INSERT OR REPLACE INTO MsiAction VALUES(' +
 							InttoStr(i) + ',' +
-				#ifdef Nero8
+						#ifdef Nero8
 							'65,' +
-				#endif
-				#ifdef Nero7
+						#endif
+						#ifdef Nero7
 							'8,' +
-				#endif
+						#endif
 							InttoStr(FileId[i]) + ',' +
 							'"' + FileName[i] + '",' +
-							'"' + FilePath + '\' + FileName[i] + '")';
-				sqlite3_exec(db, query, 0, 0, 0);
-				FilePath := ActivationPath;
-				i := i + 1;
-			until i = 5;
+							'"' + FilePath + '\' + FileName[i] +
+							'")';
+						sqlite3_exec(db, query, 0, 0, 0);
+						FilePath := ActivationPath;
+						i := i + 1;
+					until i = 5;
+				end;
+			sqlite3_close(db);
 		end;
-		sqlite3_close(db);
-	end;
 end;
 
 #include "Script\Include\customform.iss"
@@ -932,7 +932,7 @@ begin
 					//Configure AutoIt
 						AU3_AutoItSetOption('WinTitleMatchMode', 4);
 					//Close SetupX.exe process if already exists
-						If AU3_ProcessExists('SetupX.exe') <> 0 then
+						if AU3_ProcessExists('SetupX.exe') <> 0 then
 							begin
 								AU3_ProcessClose('SetupX.exe');
 								Sleep(1000);
@@ -963,14 +963,16 @@ begin
 													RetHandle := StringOfChar(#0, 255);
 													AU3_ControlGetHandle('[LAST]', chr(0), SerialEditBox, RetHandle, 255);
 													RetHandle := TrimRight(RetHandle);
-													Sleep(250);
+													Sleep(50);
 													i := i + 1;
-												until (Length(RetHandle) > 0) or (i > 40);
+												until (Length(RetHandle) > 0) or (i > 200);
 												if (Length(RetHandle) > 0) then
 													begin
 													//Enter serial
-														Sleep(500);
+														AU3_WinSetState(NeroWindowTitle, chr(0), chr(0), 0);
+														Sleep(1000);
 														AU3_ControlSetText(NeroWindowTitle, chr(0), SerialEditBox, ExpandConstant('{code:getSerial}'));
+														Sleep(250);
 														AU3_ControlClick(NeroWindowTitle, chr(0), EnterSerialButton, chr(0), 1, 0, 0);
 														Sleep(1000);
 													end;

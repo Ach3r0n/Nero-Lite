@@ -1,1 +1,1 @@
-Tools\CodeSigning\signcode.exe -sha1 "31fb3a52670c49e8a91b647dde61535d9423eb71" -i http://updatepack.nl -t http://timestamp.verisign.com/scripts/timstamp.dll %1
+Tools\CodeSigning\signcode.exe -sha1 "36d47a6bb4eaf4897f82df19442e09d90db3a8bd" -i http://updatepack.nl -t http://timestamp.verisign.com/scripts/timstamp.dll %1

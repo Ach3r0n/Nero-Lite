@@ -73,6 +73,6 @@ function AU3_WinSetState(
 function AU3_WinWait(
 		title: string;
 		text: string;
-		timeout: integer
+		timeout: longint
 		): longint;
 	external 'AU3_WinWait@files:autoitx3.dll';

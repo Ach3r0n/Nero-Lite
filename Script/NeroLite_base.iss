@@ -969,7 +969,7 @@ begin
 												if (Length(RetHandle) > 0) then
 													begin
 													//Enter serial
-														AU3_WinSetState(NeroWindowTitle, chr(0), chr(0), 0);
+														AU3_WinSetState(NeroWindowTitle, chr(0), 0);
 														Sleep(1000);
 														AU3_ControlSetText(NeroWindowTitle, chr(0), SerialEditBox, ExpandConstant('{code:getSerial}'));
 														Sleep(250);
@@ -1034,3 +1034,4 @@ end;
 #expr DeleteFile("Script\Include\" + LocaleIncludeFileName)
 #pragma error "Completed preprocessing script. You can now proceed building " + AddBackslash(SourcePath) + LocaleIncludeFileName
 #endif
+

@@ -15,16 +15,17 @@ AppPublisherURL=http://updatepack.nl
 AppVerName=Nero {#NeroMajorVersion} {#NeroSetupType} {#NeroVersion}
 AppVersion={#NeroVersion}
 ChangesAssociations=true
-Compression=lzma
+Compression=lzma/ultra
 DefaultDirName={pf}\Nero
 DefaultGroupName=Nero
 FlatComponentsList=false
-InternalCompressLevel=max
+InternalCompressLevel=ultra
 MinVersion=0,5.0sp4
 OutputBaseFilename=Nero-{#NeroVersion}_{#NeroSetupLocale}_{#Lowercase(NeroSetupType)}
 OutputDir=.\Output
 SetupIconFile=Custom\Resources\Icons\Nero{#NeroMajorVersion}\nps_dll_128.ico
 ShowLanguageDialog=yes
+ShowComponentSizes=no
 ShowUndisplayableLanguages=no
 SignedUninstaller=true
 SignedUninstallerDir=.\Setup
@@ -37,7 +38,8 @@ VersionInfoCopyright=Klaas Nekeman
 VersionInfoDescription=Nero {#NeroMajorVersion} {#NeroSetupType}
 VersionInfoProductName=Nero {#NeroSetupType}
 VersionInfoProductVersion={#NeroVersion}
-VersionInfoVersion=1.18.0.1
+AppMutex=NeroActiv,NeroSplashScreenMutex
+VersionInfoVersion=1.18.2.1
 
 [Languages]
 #ifdef Nero8
@@ -54,7 +56,7 @@ Source: Setup\Nero{#NeroMajorVersion}\nerosidebarbig.bmp; DestDir: {tmp}; DestNa
 ;AutoItX 3.2.12.1 (NOTE: AutoItX 3.2.13 no longer supports ANSI calls)
 Source: Setup\autoitx3.dll; DestDir: {tmp}; Flags: dontcopy
 
-;SQLite 3.6.7
+;SQLite 3.6.12
 Source: Setup\sqlite3.dll; DestDir: {tmp}; Flags: dontcopy
 
 #ifdef Nero7
@@ -221,6 +223,15 @@ Source: Bin\[FILELOCATION]Core\uNeVCDEngine.dll; DestDir: {app}\Nero Burning ROM
 Source: Bin\[FILELOCATION]Core\uVMpegEnc.dll; DestDir: {app}\Nero Burning ROM; Components: nero_core\nero_videocd
 Source: Bin\[FILELOCATION]Core\uVCDMenu.dll; DestDir: {app}\Nero Burning ROM; Components: nero_core\nero_videocd
 Source: Bin\[FILELOCATION]\Common Files\DSFilter\NeAudio2.ax; DestDir: {cf}\{#RegPublisherName}\DSFilter; Flags: regserver sharedfile uninsnosharedfileprompt uninsrestartdelete restartreplace; Components: nero_core\nero_videocd
+
+;E-AC3/TrueHD Audio Support
+#ifdef Nero7
+Source: Bin\[FILELOCATION]\Common Files\DSFilter\NeDtsDec.dll; DestDir: {cf}\{#RegPublisherName}\DSFilter; Flags: sharedfile uninsnosharedfileprompt; Components: nero_core\nero_videocd
+Source: Bin\[FILELOCATION]\Common Files\DSFilter\NeEacDec.dll; DestDir: {cf}\{#RegPublisherName}\DSFilter; Flags: sharedfile uninsnosharedfileprompt; Components: nero_core\nero_videocd
+Source: Bin\[FILELOCATION]\Common Files\DSFilter\NeMlpDec.dll; DestDir: {cf}\{#RegPublisherName}\DSFilter; Flags: sharedfile uninsnosharedfileprompt; Components: nero_core\nero_videocd
+Source: Bin\[FILELOCATION]\Common Files\DSFilter\Neroapl.dll; DestDir: {cf}\{#RegPublisherName}\DSFilter; Flags: sharedfile uninsnosharedfileprompt; Components: nero_core\nero_videocd
+#endif
+
 Source: Bin\[FILELOCATION]\Common Files\DSFilter\NeSplitter.ax; DestDir: {cf}\{#RegPublisherName}\DSFilter; Flags: regserver sharedfile uninsnosharedfileprompt restartreplace uninsrestartdelete; Components: nero_core\nero_videocd
 Source: Bin\[FILELOCATION]\Common Files\DSFilter\NeMP4Splitter.ax; DestDir: {cf}\{#RegPublisherName}\DSFilter; Flags: regserver sharedfile uninsnosharedfileprompt restartreplace uninsrestartdelete; Components: nero_core\nero_videocd
 Source: Bin\[FILELOCATION]\Common Files\DSFilter\NeVideo.ax; DestDir: {cf}\{#RegPublisherName}\DSFilter; Flags: regserver sharedfile uninsnosharedfileprompt restartreplace uninsrestartdelete; Components: nero_core\nero_videocd
@@ -695,6 +706,8 @@ english.Comp_Nero_Sounds=Sounds
 ;Setup register filetypes
 english.FileAssociations=Register File types:
 english.AssocImageFileExt=Associate Nero with standard CD-Image files
+;Installer mutex
+english.SetupIsRunningWarning=Another instance of this setup is already running!
 
 [Components]
 ;Nero Burning ROM
@@ -708,8 +721,8 @@ Name: nero_core\nero_audioplugins; Description: Nero Audio Plug-ins; Types: comp
 Name: nero_core\nero_audioplugins\mausau; Description: MauSau Audio Plug-ins; Types: full; Flags: dontinheritcheck
 #endif
 
-;Nero VideoCD/SVCD support
-Name: nero_core\nero_videocd; Description: Nero VideoCD Support; Types: compact full; Languages: 
+;Nero VideoCD/SVCD + E-AC3/TrueHD support
+Name: nero_core\nero_videocd; Description: Nero VideoCD and E-AC3/TrueHD Support; Types: compact full; Languages: 
 
 ;Nero CoverDesigner
 #ifndef Micro
@@ -760,6 +773,8 @@ Name: nero_lang\english; Description: {cm:Comp_Nero_lang_english}; Languages: no
 #endif
 
 [Code]
+const installer_mutex_name = 'nero_lite_setup_mutex';
+
 var
 Label1: TLabel;
 Label2: TLabel;
@@ -1027,6 +1042,32 @@ begin
 		DelTree(NeroLogPath, True, True, True);
 end;
 
+function InitializeSetup(): Boolean;
+begin
+	Result := true;
+	if CheckForMutexes(installer_mutex_name) then
+		begin
+			if not WizardSilent() then
+				MsgBox(ExpandConstant('{cm:SetupIsRunningWarning,Nero {#NeroMajorVersion} {#NeroSetupType}}'), mbError, MB_OK)
+			Result := false;
+		end
+	else
+		CreateMutex(installer_mutex_name);
+end;
+
+function InitializeUninstall(): Boolean;
+begin
+	Result := True;
+	if CheckForMutexes(installer_mutex_name) then
+		begin
+			if not WizardSilent() then
+				MsgBox(ExpandConstant('{cm:SetupIsRunningWarning,Nero {#NeroMajorVersion} {#NeroSetupType}}'), mbError, MB_OK);
+			Result := false;
+		end
+	else
+		CreateMutex(installer_mutex_name);
+end;
+
 #include ISSI_IncludePath+"\_issi.isi"
 
 #ifdef LocaleIncludeFileName
@@ -1034,4 +1075,6 @@ end;
 #expr DeleteFile("Script\Include\" + LocaleIncludeFileName)
 #pragma error "Completed preprocessing script. You can now proceed building " + AddBackslash(SourcePath) + LocaleIncludeFileName
 #endif
+
+
 

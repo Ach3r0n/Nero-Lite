@@ -9,24 +9,24 @@ Name: dutch; MessagesFile: compiler:Languages\Dutch.isl; LicenseFile: Bin\[FILEL
 [Files]
 ;Dutch
 #ifdef Nero8
-Source: Custom\Help\NeroControlCenter_NLD.chm; DestDir: {cf}\{#RegPublisherName}\Nero Web; Check: CheckLanguage('dutch'); BeforeInstall: AddLanguage('NLD');
+Source: Custom\Help\NeroControlCenter_NLD.chm; DestDir: {cf}\{#RegPublisherName}\Nero Web; Check: CheckLanguage('dutch'); BeforeInstall: AddLanguage('NLD')
 #endif
 #ifdef Nero7
-Source: Custom\Help\NeroControlCenter_NLD.chm; DestName: NeroProductSetup_NLD.chm; DestDir: {cf}\{#RegPublisherName}\Nero Web; Check: CheckLanguage('dutch'); BeforeInstall: AddLanguage('NLD');
+Source: Custom\Help\NeroControlCenter_NLD.chm; DestName: NeroProductSetup_NLD.chm; DestDir: {cf}\{#RegPublisherName}\Nero Web; Check: CheckLanguage('dutch'); BeforeInstall: AddLanguage('NLD')
 #endif
 Source: Custom\Bin\[FILELOCATION]Core\NeroNLD.nls; DestDir: {app}\Nero Burning ROM; Components: nero_core; Check: CheckLanguage('dutch')
 Source: Bin\[FILELOCATION]Core\NeroNLD.txt; DestDir: {app}\Nero Burning ROM; Components: nero_core; Check: CheckLanguage('dutch')
 Source: Bin\[FILELOCATION]Common Files\Lib\BCGCBProResNLD.nls; DestDir: {app}\Nero Burning ROM; Components: nero_core; Check: CheckLanguage('dutch')
-Source: Custom\Help\NeroBurningRom_NLD.chm; DestDir: {app}\Nero Burning ROM; Components: nero_core; Check: CheckLanguage('dutch');
-Source: Custom\Help\NeroExpress_NLD.chm; DestDir: {app}\Nero Burning ROM; Components: nero_core; Check: CheckLanguage('dutch');
+Source: Custom\Help\NeroBurningRom_NLD.chm; DestDir: {app}\Nero Burning ROM; Components: nero_core; Check: CheckLanguage('dutch')
+Source: Custom\Help\NeroExpress_NLD.chm; DestDir: {app}\Nero Burning ROM; Components: nero_core; Check: CheckLanguage('dutch')
 #ifndef Micro
 Source: Custom\Bin\[FILELOCATION]Nero CoverDesigner\CoverEd-NLD.nls; DestDir: {app}\Nero CoverDesigner; Components: nero_coverdes; Check: CheckLanguage('dutch')
-Source: Custom\Help\NeroCoverDesigner_NLD.chm; DestDir: {app}\Nero CoverDesigner; Components: nero_coverdes; Check: CheckLanguage('dutch');
+Source: Custom\Help\NeroCoverDesigner_NLD.chm; DestDir: {app}\Nero CoverDesigner; Components: nero_coverdes; Check: CheckLanguage('dutch')
 Source: Custom\Bin\[FILELOCATION]Nero WaveEditor\WaveEdit-NLD.nls; DestDir: {app}\Nero WaveEditor; Components: nero_waveedit; Check: CheckLanguage('dutch')
-Source: Custom\Help\NeroWaveEditor_NLD.chm; DestDir: {app}\Nero WaveEditor; Components: nero_waveedit; Check: CheckLanguage('dutch');
-Source: Custom\Help\NeroBurnRights_NLD.chm; DestDir: {app}\Nero Toolkit\Nero BurnRights; Components: nero_toolkit\nero_burnrights; Check: CheckLanguage('dutch');
+Source: Custom\Help\NeroWaveEditor_NLD.chm; DestDir: {app}\Nero WaveEditor; Components: nero_waveedit; Check: CheckLanguage('dutch')
+Source: Custom\Help\NeroBurnRights_NLD.chm; DestDir: {app}\Nero Toolkit\Nero BurnRights; Components: nero_toolkit\nero_burnrights; Check: CheckLanguage('dutch')
 	#ifdef Nero8
-Source: Custom\Help\NeroDiscSpeed_NLD.chm; DestDir: {app}\Nero Toolkit\Nero DiscSpeed; Components: nero_toolkit\nero_discspeed; Check: CheckLanguage('dutch');
+Source: Custom\Help\NeroDiscSpeed_NLD.chm; DestDir: {app}\Nero Toolkit\Nero DiscSpeed; Components: nero_toolkit\nero_discspeed; Check: CheckLanguage('dutch')
 	#endif
 #endif
 
@@ -102,3 +102,5 @@ dutch.Comp_Nero_Sounds=Geluiden
 ;Setup register filetypes
 dutch.FileAssociations=Bestandstypen registreren:
 dutch.AssocImageFileExt=Associeer Nero met standaard CD-Image bestandstypen
+;Installer mutex
+dutch.SetupIsRunningWarning=Er wordt al een andere installatie uitgevoerd!

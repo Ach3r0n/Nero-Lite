@@ -102,3 +102,6 @@ greek.Comp_Nero_Sounds=Ήχοι
 ;Setup register filetypes
 greek.FileAssociations=Ρυθμίστε τους τύπους των αρχείων:
 greek.AssocImageFileExt=Συνδυάστε το Nero με τα CD-Εικονικών Αρχείων
+;Installer mutex
+greek.SetupIsRunningWarning=Η εγκατάσταση τρέχει ήδη!
+

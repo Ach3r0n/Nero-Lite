@@ -616,19 +616,20 @@ Root: HKLM; Subkey: Software\Classes\CoverDesigner.Files{#NeroMajorVersion}.nct\
 #endif
 
 ;Uninstall cleanup
+Root: HKLM; Subkey: Software\Ahead\Shared; ValueType: none; Flags: dontcreatekey uninsdeletekey
+Root: HKLM; Subkey: Software\Ahead; ValueType: none; Flags: dontcreatekey uninsdeletevalue uninsdeletekeyifempty
 Root: HKCU; SubKey: Software\Ahead\CDSpeed; ValueType: none; Flags: dontcreatekey uninsdeletekey
 Root: HKCU; SubKey: Software\Ahead\DriveSpeed; ValueType: none; Flags: dontcreatekey uninsdeletekey
 Root: HKCU; SubKey: Software\Ahead\InfoTool; ValueType: none; Flags: dontcreatekey uninsdeletekey
 Root: HKCU; Subkey: Software\Ahead\NeroFileDialog; ValueType: none; Flags: dontcreatekey uninsdeletekey
 Root: HKCU; SubKey: Software\Ahead\Nero WaveEditor; ValueType: none; Flags: dontcreatekey uninsdeletekey
 Root: HKCU; Subkey: Software\Ahead; ValueType: none; Flags: dontcreatekey uninsdeletekeyifempty
-Root: HKLM; Subkey: Software\Ahead\Shared; ValueType: none; Flags: dontcreatekey uninsdeletekeyifempty
-Root: HKLM; Subkey: Software\Ahead; ValueType: none; Flags: dontcreatekey uninsdeletekeyifempty
 #ifdef Nero8
-Root: HKLM; Subkey: Software\Nero\Shared\AdvrCntr; ValueType: none; Flags: dontcreatekey uninsdeletekey
-Root: HKLM; Subkey: Software\Nero\Shared; ValueType: none; Flags: dontcreatekey uninsdeletekeyifempty
 Root: HKLM; Subkey: Software\Nero\Nero8; ValueType: none; Flags: dontcreatekey uninsdeletekey
-Root: HKLM; Subkey: Software\Nero; ValueType: none; Flags: dontcreatekey uninsdeletekeyifempty
+Root: HKLM; Subkey: Software\Nero; ValueType: none; Flags: dontcreatekey uninsdeletevalue uninsdeletekeyifempty
+Root: HKCU; Subkey: Software\Nero\Nero8; ValueType: none; Flags: dontcreatekey uninsdeletekey
+Root: HKCU; Subkey: Software\Nero\Shared; ValueType: none; Flags: dontcreatekey uninsdeletekey
+Root: HKCU; Subkey: Software\Nero; ValueType: none; Flags: dontcreatekey uninsdeletekeyifempty
 #endif
 
 [UninstallDelete]
@@ -643,8 +644,8 @@ BeveledLabel=©2009 Klaas Nekeman
 
 [CustomMessages]
 #ifdef Nero8
-;Evaluation Serial (July 2008)
-EvalSerial=8K24-0230-0105-7K60-5043-87M4-54K9
+;Evaluation serials expired!
+EvalSerial=
 #endif
 #ifdef Nero7
 EvalSerial=

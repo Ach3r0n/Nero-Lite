@@ -985,7 +985,7 @@ begin
 											begin
 												Sleep(500);
 											//Press Add License button
-												AU3_ControlClick('[LAST]', chr(0), AddLicenseButton, chr(0), 1, 0, 0);
+												AU3_ControlClick(NeroWindowTitle, chr(0), AddLicenseButton, chr(0), 1, 0, 0);
 											//Wait for serial dialog
 												i := 0;
 												repeat

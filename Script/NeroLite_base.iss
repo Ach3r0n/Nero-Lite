@@ -616,14 +616,20 @@ Root: HKLM; Subkey: Software\Classes\CoverDesigner.Files{#NeroMajorVersion}.nct\
 #endif
 
 ;Uninstall cleanup
-Root: HKCU; SubKey: Software\Ahead\CDSpeed; ValueType: none; Flags: uninsdeletekey
-Root: HKCU; SubKey: Software\Ahead\DriveSpeed; ValueType: none; Flags: uninsdeletekey
-Root: HKCU; SubKey: Software\Ahead\InfoTool; ValueType: none; Flags: uninsdeletekey
-Root: HKCU; Subkey: Software\Ahead\NeroFileDialog; ValueType: none; Flags: uninsdeletekey
-Root: HKCU; SubKey: Software\Ahead\Nero WaveEditor; ValueType: none; Flags: uninsdeletekey
-Root: HKCU; Subkey: Software\Ahead; ValueType: none; Flags: uninsdeletekeyifempty
-Root: HKLM; Subkey: Software\Ahead\Shared; ValueType: none; Flags: uninsdeletekeyifempty
-Root: HKLM; Subkey: Software\Ahead; ValueType: none; Flags: uninsdeletekeyifempty
+Root: HKCU; SubKey: Software\Ahead\CDSpeed; ValueType: none; Flags: dontcreatekey uninsdeletekey
+Root: HKCU; SubKey: Software\Ahead\DriveSpeed; ValueType: none; Flags: dontcreatekey uninsdeletekey
+Root: HKCU; SubKey: Software\Ahead\InfoTool; ValueType: none; Flags: dontcreatekey uninsdeletekey
+Root: HKCU; Subkey: Software\Ahead\NeroFileDialog; ValueType: none; Flags: dontcreatekey uninsdeletekey
+Root: HKCU; SubKey: Software\Ahead\Nero WaveEditor; ValueType: none; Flags: dontcreatekey uninsdeletekey
+Root: HKCU; Subkey: Software\Ahead; ValueType: none; Flags: dontcreatekey uninsdeletekeyifempty
+Root: HKLM; Subkey: Software\Ahead\Shared; ValueType: none; Flags: dontcreatekey uninsdeletekeyifempty
+Root: HKLM; Subkey: Software\Ahead; ValueType: none; Flags: dontcreatekey uninsdeletekeyifempty
+#ifdef Nero8
+Root: HKLM; Subkey: Software\Nero\Shared\AdvrCntr; ValueType: none; Flags: dontcreatekey uninsdeletekey
+Root: HKLM; Subkey: Software\Nero\Shared; ValueType: none; Flags: dontcreatekey uninsdeletekeyifempty
+Root: HKLM; Subkey: Software\Nero\Nero8; ValueType: none; Flags: dontcreatekey uninsdeletekey
+Root: HKLM; Subkey: Software\Nero; ValueType: none; Flags: dontcreatekey uninsdeletekeyifempty
+#endif
 
 [UninstallDelete]
 Name: {cf}\{#RegPublisherName}\Lib\rollback.db; Type: files

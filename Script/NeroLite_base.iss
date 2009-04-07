@@ -89,11 +89,11 @@ Source: Bin\[FILELOCATION]Redist\BCGCBPRO860u80.dll; DestDir: {app}\Nero Burning
 Source: Bin\[FILELOCATION]Redist\BCGPOleAcc.dll; DestDir: {cf}\{#RegPublisherName}\Lib; Components: nero_core; Flags: sharedfile uninsnosharedfileprompt
 
 ;Pegasus Imaging Support
-Source: Bin\[FILELOCATION]Redist\imagX7.dll; DestDir: {sys}; Flags: sharedfile uninsnosharedfileprompt; Components: nero_core\nero_videocd {#emit nero_coverdes}
-Source: Bin\[FILELOCATION]Redist\imagXpr7.dll; DestDir: {sys}; Flags: sharedfile uninsnosharedfileprompt; Components: nero_core\nero_videocd {#emit nero_coverdes}
-Source: Bin\[FILELOCATION]Redist\imagXR7.dll; DestDir: {sys}; Flags: sharedfile uninsnosharedfileprompt; Components: nero_core\nero_videocd {#emit nero_coverdes}
-Source: Bin\[FILELOCATION]Redist\imagXRA7.dll; DestDir: {sys}; Flags: sharedfile uninsnosharedfileprompt; Components: nero_core\nero_videocd {#emit nero_coverdes}
-Source: Bin\[FILELOCATION]Redist\TwnLib4.dll; DestDir: {sys}; Flags: sharedfile uninsnosharedfileprompt; Components: nero_core\nero_videocd {#emit nero_coverdes}
+Source: Bin\[FILELOCATION]Redist\imagX7.dll; DestDir: {sys}; Flags: sharedfile restartreplace uninsnosharedfileprompt; Components: nero_core\nero_videocd {#emit nero_coverdes}
+Source: Bin\[FILELOCATION]Redist\imagXpr7.dll; DestDir: {sys}; Flags: sharedfile restartreplace regserver uninsnosharedfileprompt; Components: nero_core\nero_videocd {#emit nero_coverdes}
+Source: Bin\[FILELOCATION]Redist\imagXR7.dll; DestDir: {sys}; Flags: sharedfile restartreplace uninsnosharedfileprompt; Components: nero_core\nero_videocd {#emit nero_coverdes}
+Source: Bin\[FILELOCATION]Redist\imagXRA7.dll; DestDir: {sys}; Flags: sharedfile restartreplace uninsnosharedfileprompt; Components: nero_core\nero_videocd {#emit nero_coverdes}
+Source: Bin\[FILELOCATION]Redist\TwnLib4.dll; DestDir: {sys}; Flags: sharedfile restartreplace uninsnosharedfileprompt; Components: nero_core\nero_videocd {#emit nero_coverdes}
 
 ;Nero Toolkit
 #ifndef Micro
@@ -373,8 +373,6 @@ Name: {group}\Setup\Nero ControlCenter; Filename: {cf}\{#RegPublisherName}\Nero 
 [Registry]
 ;Registration Details
 Root: HKLM; Subkey: Software\{#RegPublisherName}; ValueType: none; Flags: uninsdeletekeyifempty
-Root: HKLM; Subkey: Software\{#RegPublisherName}\Installation; ValueType: none; Flags: uninsdeletekeyifempty
-Root: HKLM; Subkey: Software\{#RegPublisherName}\Installation\Families; ValueType: none; Flags: uninsdeletekeyifempty
 Root: HKLM; Subkey: Software\{#RegPublisherName}\Installation\Families\Nero {#NeroMajorVersion}; ValueType: none; Flags: uninsdeletekey
 Root: HKLM; Subkey: Software\{#RegPublisherName}\Installation\Families\Nero {#NeroMajorVersion}; ValueType: string; ValueName: ProductCode; ValueData: Nero {#NeroMajorVersion} {#NeroSetupType}; Flags: uninsdeletevalue
 Root: HKLM; Subkey: Software\{#RegPublisherName}\Installation\Families\Nero {#NeroMajorVersion}; ValueType: string; ValueName: ProductVersion; ValueData: {#NeroVersion}; Flags: uninsdeletevalue
@@ -386,6 +384,12 @@ Root: HKLM; Subkey: Software\{#RegPublisherName}\Installation\Settings; ValueTyp
 Root: HKLM; Subkey: Software\{#RegPublisherName}\Installation\Settings; ValueType: dword; ValueName: DONOTRUNSETUPX; ValueData: 0; Flags: uninsdeletekey
 Root: HKLM; Subkey: Software\{#RegPublisherName}\Installation\Settings; ValueType: dword; ValueName: LastAutomaticUpdateCheck; ValueData: $ffffffff; Flags: uninsdeletekey
 Root: HKLM; Subkey: Software\{#RegPublisherName}\Installation\Settings; ValueType: dword; ValueName: LastUpdateCheck; ValueData: $ffffffff; Flags: uninsdeletekey
+Root: HKLM; Subkey: Software\{#RegPublisherName}\Installation; ValueType: none; Flags: uninsdeletekey
+
+#ifdef Nero8
+Root: HKCU; Subkey: Software\{#RegPublisherName}; ValueType: none; Flags: uninsdeletekeyifempty
+Root: HKLM; Subkey: Software\{#RegPublisherName}; ValueType: none; Flags: uninsdeletekeyifempty
+#endif
 
 ;Windows Vista Compatibility
 Root: HKLM; Subkey: Software\{#RegPublisherName}\Installation\Info; ValueType: dword; ValueName: OS_MajorVersion; ValueData: 6; Flags: uninsdeletekey; MinVersion: 0,6.0
@@ -610,6 +614,16 @@ Root: HKLM; SubKey: Software\Classes\CoverDesigner.Files{#NeroMajorVersion}.nct;
 Root: HKLM; SubKey: Software\Classes\CoverDesigner.Files{#NeroMajorVersion}.nct\Shell\Open\Command; ValueType: expandsz; ValueData: """{app}\Nero CoverDesigner\CoverDes.exe"" ""%1"""; Flags: uninsdeletekey; Components: nero_coverdes
 Root: HKLM; Subkey: Software\Classes\CoverDesigner.Files{#NeroMajorVersion}.nct\DefaultIcon; ValueType: expandsz; ValueData: {app}\Nero CoverDesigner\CoverDes.exe,1; Flags: uninsdeletekey; Components: nero_coverdes
 #endif
+
+;Uninstall cleanup
+Root: HKCU; SubKey: Software\Ahead\CDSpeed; ValueType: none; Flags: uninsdeletekey
+Root: HKCU; SubKey: Software\Ahead\DriveSpeed; ValueType: none; Flags: uninsdeletekey
+Root: HKCU; SubKey: Software\Ahead\InfoTool; ValueType: none; Flags: uninsdeletekey
+Root: HKCU; Subkey: Software\Ahead\NeroFileDialog; ValueType: none; Flags: uninsdeletekey
+Root: HKCU; SubKey: Software\Ahead\Nero WaveEditor; ValueType: none; Flags: uninsdeletekey
+Root: HKCU; Subkey: Software\Ahead; ValueType: none; Flags: uninsdeletekeyifempty
+Root: HKLM; Subkey: Software\Ahead\Shared; ValueType: none; Flags: uninsdeletekeyifempty
+Root: HKLM; Subkey: Software\Ahead; ValueType: none; Flags: uninsdeletekeyifempty
 
 [UninstallDelete]
 Name: {cf}\{#RegPublisherName}\Lib\rollback.db; Type: files
@@ -976,20 +990,20 @@ begin
 												i := 0;
 												repeat
 													RetHandle := StringOfChar(#0, 255);
-													AU3_ControlGetHandle('[LAST]', chr(0), SerialEditBox, RetHandle, 255);
+													AU3_ControlGetHandle(NeroWindowTitle, chr(0), SerialEditBox, RetHandle, 255);
+													AU3_WinSetState(NeroWindowTitle, chr(0), 0);
 													RetHandle := TrimRight(RetHandle);
-													Sleep(50);
+													Sleep(10);
 													i := i + 1;
-												until (Length(RetHandle) > 0) or (i > 200);
+												until (Length(RetHandle) > 0) or (i > 500);
 												if (Length(RetHandle) > 0) then
 													begin
 													//Enter serial
-														AU3_WinSetState(NeroWindowTitle, chr(0), 0);
-														Sleep(1000);
+														Sleep(100);
 														AU3_ControlSetText(NeroWindowTitle, chr(0), SerialEditBox, ExpandConstant('{code:getSerial}'));
-														Sleep(250);
+														Sleep(100);
 														AU3_ControlClick(NeroWindowTitle, chr(0), EnterSerialButton, chr(0), 1, 0, 0);
-														Sleep(1000);
+														Sleep(2500);
 													end;
 											end;
 									end;
@@ -1075,6 +1089,3 @@ end;
 #expr DeleteFile("Script\Include\" + LocaleIncludeFileName)
 #pragma error "Completed preprocessing script. You can now proceed building " + AddBackslash(SourcePath) + LocaleIncludeFileName
 #endif
-
-
-

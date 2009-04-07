@@ -39,6 +39,7 @@ function CheckSerialIsNew(): Boolean;
 var
 	EvalSerial, UserSerial, S: String;
 begin
+	Result := True;
 	if CompareText(Edit3.Text, 'Demo') = 0 then
 		begin
 			EvalSerial := ExpandConstant('{cm:EvalSerial}');

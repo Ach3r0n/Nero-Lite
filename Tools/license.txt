@@ -23,3 +23,6 @@ ISSI version 5.1.90, Copyright © Jan Albartus
 
 ISTool version 5.2.1, Copyright © Bjørnar Henden
 -> http://www.istool.org/
+
+Resource Hacker version 3.4.0, Copyright © Angus Johnson
+-> http://angusj.com/resourcehacker/

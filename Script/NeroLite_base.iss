@@ -1,5 +1,5 @@
 ;
-;Nero 8 Lite Setup script for InnoSetup 5.2.x,
+;Nero 7/8 Lite Setup script for InnoSetup 5.3.x,
 ;This script also requires ISPP and ISSI!
 ;
 ;Copyright (C) 2009 - Klaas Nekeman
@@ -15,7 +15,8 @@ AppPublisherURL=http://updatepack.nl
 AppVerName=Nero {#NeroMajorVersion} {#NeroSetupType} {#NeroVersion}
 AppVersion={#NeroVersion}
 ChangesAssociations=true
-Compression=lzma/ultra
+;Compression=lzma/ultra
+Compression=none
 DefaultDirName={pf}\Nero
 DefaultGroupName=Nero
 FlatComponentsList=false
@@ -26,7 +27,6 @@ OutputDir=.\Output
 SetupIconFile=Custom\Resources\Icons\Nero{#NeroMajorVersion}\nps_dll_128.ico
 ShowLanguageDialog=yes
 ShowComponentSizes=no
-ShowUndisplayableLanguages=no
 SignedUninstaller=true
 SignedUninstallerDir=.\Setup
 SolidCompression=true
@@ -39,7 +39,7 @@ VersionInfoDescription=Nero {#NeroMajorVersion} {#NeroSetupType}
 VersionInfoProductName=Nero {#NeroSetupType}
 VersionInfoProductVersion={#NeroVersion}
 AppMutex=NeroActiv,NeroSplashScreenMutex
-VersionInfoVersion=1.18.2.1
+VersionInfoVersion=1.19.0.1
 
 [Languages]
 #ifdef Nero8
@@ -53,7 +53,7 @@ Name: english; MessagesFile: compiler:Default.isl; LicenseFile: Bin\[FILELOCATIO
 ;Hack to fix Final Wizard Dialog Bitmap (ISSI bug)
 Source: Setup\Nero{#NeroMajorVersion}\nerosidebarbig.bmp; DestDir: {tmp}; DestName: WizardBitmapImage2.bmp; Flags: ignoreversion dontcopy noencryption
 
-;AutoItX 3.2.12.1 (NOTE: AutoItX 3.2.13 no longer supports ANSI calls)
+;AutoItX 3.3
 Source: Setup\autoitx3.dll; DestDir: {tmp}; Flags: dontcopy
 
 ;SQLite 3.6.14
@@ -1096,3 +1096,4 @@ end;
 #expr DeleteFile("Script\Include\" + LocaleIncludeFileName)
 #pragma error "Completed preprocessing script. You can now proceed building " + AddBackslash(SourcePath) + LocaleIncludeFileName
 #endif
+

@@ -56,7 +56,7 @@ Source: Setup\Nero{#NeroMajorVersion}\nerosidebarbig.bmp; DestDir: {tmp}; DestNa
 ;AutoItX 3.2.12.1 (NOTE: AutoItX 3.2.13 no longer supports ANSI calls)
 Source: Setup\autoitx3.dll; DestDir: {tmp}; Flags: dontcopy
 
-;SQLite 3.6.12
+;SQLite 3.6.14
 Source: Setup\sqlite3.dll; DestDir: {tmp}; Flags: dontcopy
 
 #ifdef Nero7

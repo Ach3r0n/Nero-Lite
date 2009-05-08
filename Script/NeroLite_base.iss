@@ -928,7 +928,7 @@ var
 	NCC_PID: Longint;
 	AddLicenseButton, EnterSerialButton,
 		SerialEditBox, NeroWindowTitle: String;
-	RetHandle: PChar;
+	RetHandle: PWideChar;
 	i: Integer;
 begin
 	case CurStep of
@@ -1069,7 +1069,7 @@ begin
 	if CheckForMutexes(installer_mutex_name) then
 		begin
 			if not WizardSilent() then
-				MsgBox(ExpandConstant('{cm:SetupIsRunningWarning,Nero {#NeroMajorVersion} {#NeroSetupType}}'), mbError, MB_OK)
+				MsgBox(ExpandConstant('{cm:SetupIsRunningWarning,Nero {#NeroMajorVersion} {#NeroSetupType}}'), mbError, MB_OK);
 			Result := false;
 		end
 	else
@@ -1096,4 +1096,3 @@ end;
 #expr DeleteFile("Script\Include\" + LocaleIncludeFileName)
 #pragma error "Completed preprocessing script. You can now proceed building " + AddBackslash(SourcePath) + LocaleIncludeFileName
 #endif
-

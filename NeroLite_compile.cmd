@@ -7,7 +7,7 @@ call "Script\Include\getNeroVersion.cmd"
 for /f "tokens=3 skip=3 delims=	" %%i in (
 	'reg query "HKLM\Software\Microsoft\Windows\CurrentVersion\Uninstall\Inno Setup 5_is1" /v "Inno Setup: App Path"'
 ) do (
-	rem set InnoSetupPath=%%i
+	set InnoSetupPath=%%i
 )
 if not exist "%InnoSetupPath%" set InnoSetupPath=%programfiles%\Inno Setup\Inno Setup 5
 

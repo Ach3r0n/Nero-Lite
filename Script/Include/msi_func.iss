@@ -1,7 +1,7 @@
 function MsiQueryProductState(
 		productcode: string
 		): integer;
-	external 'MsiQueryProductStateA@msi.dll stdcall delayload';
+	external 'MsiQueryProductStateW@msi.dll stdcall delayload';
 
 procedure DecodeVersion(const Version: cardinal; var a, b: word);
 begin

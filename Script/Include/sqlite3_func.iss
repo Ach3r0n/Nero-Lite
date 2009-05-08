@@ -1,5 +1,5 @@
 function sqlite3_open(
-		dbname:	string;
+		dbname:	AnsiString;
 		var db:	longword
 		): integer;
 	external 'sqlite3_open@files:sqlite3.dll cdecl';
@@ -11,10 +11,9 @@ function sqlite3_close(
 
 function sqlite3_exec(
 		db:				longword;
-		SQLStatement:	string;
+		SQLStatement:	AnsiString;
 		CallbackProc: 	integer;
 		Sender:			integer;
 		ErrMsg:			integer
 		): integer;
 	external 'sqlite3_exec@files:sqlite3.dll cdecl';
-

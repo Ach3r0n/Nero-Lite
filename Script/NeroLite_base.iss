@@ -15,8 +15,7 @@ AppPublisherURL=http://updatepack.nl
 AppVerName=Nero {#NeroMajorVersion} {#NeroSetupType} {#NeroVersion}
 AppVersion={#NeroVersion}
 ChangesAssociations=true
-;Compression=lzma/ultra
-Compression=none
+Compression=lzma/ultra
 DefaultDirName={pf}\Nero
 DefaultGroupName=Nero
 FlatComponentsList=false
@@ -928,7 +927,7 @@ var
 	NCC_PID: Longint;
 	AddLicenseButton, EnterSerialButton,
 		SerialEditBox, NeroWindowTitle: String;
-	RetHandle: PWideChar;
+	RetHandle: String;
 	i: Integer;
 begin
 	case CurStep of

@@ -1,4 +1,4 @@
-[Languages]
+﻿[Languages]
 #ifdef Nero8
 Name: korean; MessagesFile: compiler:Languages\Korean.isl; LicenseFile: Bin\[FILELOCATION]Target\Data\Setup\EULA_kor.rtf
 #endif
@@ -60,7 +60,7 @@ korean.RegistrationWelcome=Thanks for purchasing your copy of Nero.
 korean.RegistrationWelcomeCaption=Welcome to Nero
 korean.RegistrationCaption=Registration
 korean.NeroShopCaption=No Serial number?
-korean.NeroShop=Nero Online Shop�
+korean.NeroShop=Nero Online Shop 
 korean.NeroShopURL=http://www.nero.com/kor/catalog.html
 korean.RegistrationName=Name:
 korean.RegistrationOrg=Organization:

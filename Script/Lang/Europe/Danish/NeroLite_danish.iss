@@ -1,4 +1,4 @@
-[Languages]
+﻿[Languages]
 #ifdef Nero8
 Name: danish; MessagesFile: compiler:Languages\Danish.isl; LicenseFile: Bin\[FILELOCATION]Target\Data\Setup\EULA_ene.rtf
 #endif
@@ -60,7 +60,7 @@ danish.RegistrationWelcome=Thanks for purchasing your copy of Nero.
 danish.RegistrationWelcomeCaption=Welcome to Nero
 danish.RegistrationCaption=Registration
 danish.NeroShopCaption=No Serial number?
-danish.NeroShop=Nero Online Shop�
+danish.NeroShop=Nero Online Shop 
 danish.NeroShopURL=http://www.nero.com/eng/catalog.html
 danish.RegistrationName=Name:
 danish.RegistrationOrg=Organization:

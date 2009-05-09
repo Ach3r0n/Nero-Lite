@@ -1,4 +1,4 @@
-[Languages]
+ο»Ώ[Languages]
 #ifdef Nero8
 Name: greek; MessagesFile: compiler:Languages\Greek.isl; LicenseFile: Bin\[FILELOCATION]Target\Data\Setup\EULA_ene.rtf
 #endif
@@ -53,55 +53,55 @@ Name: nero_lang\greek; Description: {cm:Comp_Nero_lang_greek}; Languages: not gr
 [CustomMessages]
 ;Greek
 ;Setup Wizard - Registration dialog
-greek.CustomFormCaption=Πληροφορίες πελάτη
-greek.CustomFormDescription=Παρακαλώ συμπληρώστε τα στοιχεία σας
-greek.RegistrationInfo=Παρακαλώ προσωποποιήστε το αντίγραφο του Nero {#NeroMajorVersion} δηλώνοντας το όνομα σας και%nτον σειριακό σας αριθμό.
-greek.RegistrationWelcomeCaption=Καλώς ήρθατε στο Nero
-greek.RegistrationWelcome=Σας ευχαριστούμε που αγοράσατε το Nero.
-greek.RegistrationCaption=Εγγραφή
-greek.NeroShopCaption=Δεν έχετε σειριακό αριθμό ?
-greek.NeroShop=Nero Online Shop 
+greek.CustomFormCaption=Ξ Ξ»Ξ·ΟΞΏΟ†ΞΏΟΞ―ΞµΟ‚ Ο€ΞµΞ»Ξ¬Ο„Ξ·
+greek.CustomFormDescription=Ξ Ξ±ΟΞ±ΞΊΞ±Ξ»Ο ΟƒΟ…ΞΌΟ€Ξ»Ξ·ΟΟΟƒΟ„Ξµ Ο„Ξ± ΟƒΟ„ΞΏΞΉΟ‡ΞµΞ―Ξ± ΟƒΞ±Ο‚
+greek.RegistrationInfo=Ξ Ξ±ΟΞ±ΞΊΞ±Ξ»Ο Ο€ΟΞΏΟƒΟ‰Ο€ΞΏΟ€ΞΏΞΉΞ®ΟƒΟ„Ξµ Ο„ΞΏ Ξ±Ξ½Ο„Ξ―Ξ³ΟΞ±Ο†ΞΏ Ο„ΞΏΟ… Nero {#NeroMajorVersion} Ξ΄Ξ·Ξ»ΟΞ½ΞΏΞ½Ο„Ξ±Ο‚ Ο„ΞΏ ΟΞ½ΞΏΞΌΞ± ΟƒΞ±Ο‚ ΞΊΞ±ΞΉ%nΟ„ΞΏΞ½ ΟƒΞµΞΉΟΞΉΞ±ΞΊΟ ΟƒΞ±Ο‚ Ξ±ΟΞΉΞΈΞΌΟ.
+greek.RegistrationWelcomeCaption=ΞΞ±Ξ»ΟΟ‚ Ξ®ΟΞΈΞ±Ο„Ξµ ΟƒΟ„ΞΏ Nero
+greek.RegistrationWelcome=Ξ£Ξ±Ο‚ ΞµΟ…Ο‡Ξ±ΟΞΉΟƒΟ„ΞΏΟΞΌΞµ Ο€ΞΏΟ… Ξ±Ξ³ΞΏΟΞ¬ΟƒΞ±Ο„Ξµ Ο„ΞΏ Nero.
+greek.RegistrationCaption=Ξ•Ξ³Ξ³ΟΞ±Ο†Ξ®
+greek.NeroShopCaption=Ξ”ΞµΞ½ Ξ­Ο‡ΞµΟ„Ξµ ΟƒΞµΞΉΟΞΉΞ±ΞΊΟ Ξ±ΟΞΉΞΈΞΌΟ ?
+greek.NeroShop=Nero Online ShopΒ 
 greek.NeroShopURL=http://www.nero.com/eng/catalog.html
-greek.RegistrationName=Όνομα:
-greek.RegistrationOrg=Οργανισμός:
-greek.RegistrationSerial=Σειριακός αριθμός:
+greek.RegistrationName=ΞΞ½ΞΏΞΌΞ±:
+greek.RegistrationOrg=ΞΟΞ³Ξ±Ξ½ΞΉΟƒΞΌΟΟ‚:
+greek.RegistrationSerial=Ξ£ΞµΞΉΟΞΉΞ±ΞΊΟΟ‚ Ξ±ΟΞΉΞΈΞΌΟΟ‚:
 ;Filetype descriptions - Nero CoverDesigner
-greek.CDC_Description=Nero CoverDesigner Έγγραφο
-greek.NCD_Description=Nero CoverDesigner Έγγραφο
-greek.NCT_Description=Nero CoverDesigner Περίγραμμα
+greek.CDC_Description=Nero CoverDesigner ΞΞ³Ξ³ΟΞ±Ο†ΞΏ
+greek.NCD_Description=Nero CoverDesigner ΞΞ³Ξ³ΟΞ±Ο†ΞΏ
+greek.NCT_Description=Nero CoverDesigner Ξ ΞµΟΞ―Ξ³ΟΞ±ΞΌΞΌΞ±
 ;Filetype descriptions - Nero Burning Rom
-greek.CUE_Description=CD-Εικονικό αρχείο
-greek.IMG_Description=CD-Εικονικό αρχείο
-greek.ISO_Description=CD-Εικονικό αρχείο
-greek.NAB_Description=Audiobook CD-ROM Συλλογή
-greek.NHF_Description=HFS-CD Συλλογή
-greek.NHV_Description=HD-BURN-Συλλογή Βίντεο
-greek.NMD_Description=MiniDVD Συλλογή
-greek.NR3_Description=CD-ROM Συλλογή (MP3)
-greek.NR4_Description=CD-ROM Συλλογή (AAC)
-greek.NRA_Description=Audio-CD Συλλογή
-greek.NRB_Description=CD-ROM Συλλογή (Boot)
-greek.NRC_Description=CD-rom Συλλογή (UDF/ISO)
-greek.NRD_Description=DVD-Video Συλλογή
-greek.NRE_Description=CD Extra Συλλογή
-greek.NRG_Description=CD-Εικονικό Αρχείο
-greek.NRH_Description=Hybrid CD-ROM Συλλογή
-greek.NRI_Description=CD-ROM Συλλογή (ISO)
-greek.NRJ_Description=JukeBox Συλλογή
-greek.NRM_Description=Μικτή λειτουργία CD Συλλογή
-greek.NRS_Description=CD-ROM (EFI Boot) Συλλογή
-greek.NRU_Description=CD-ROM Συλλογή (UDF)
-greek.NRV_Description=Video-CD Συλλογή
-greek.NRW_Description=WMA CD-ROM Συλλογή
-greek.NSD_Description=Super Video CD Συλλογή
+greek.CUE_Description=CD-Ξ•ΞΉΞΊΞΏΞ½ΞΉΞΊΟ Ξ±ΟΟ‡ΞµΞ―ΞΏ
+greek.IMG_Description=CD-Ξ•ΞΉΞΊΞΏΞ½ΞΉΞΊΟ Ξ±ΟΟ‡ΞµΞ―ΞΏ
+greek.ISO_Description=CD-Ξ•ΞΉΞΊΞΏΞ½ΞΉΞΊΟ Ξ±ΟΟ‡ΞµΞ―ΞΏ
+greek.NAB_Description=Audiobook CD-ROM Ξ£Ο…Ξ»Ξ»ΞΏΞ³Ξ®
+greek.NHF_Description=HFS-CD Ξ£Ο…Ξ»Ξ»ΞΏΞ³Ξ®
+greek.NHV_Description=HD-BURN-Ξ£Ο…Ξ»Ξ»ΞΏΞ³Ξ® Ξ’Ξ―Ξ½Ο„ΞµΞΏ
+greek.NMD_Description=MiniDVD Ξ£Ο…Ξ»Ξ»ΞΏΞ³Ξ®
+greek.NR3_Description=CD-ROM Ξ£Ο…Ξ»Ξ»ΞΏΞ³Ξ® (MP3)
+greek.NR4_Description=CD-ROM Ξ£Ο…Ξ»Ξ»ΞΏΞ³Ξ® (AAC)
+greek.NRA_Description=Audio-CD Ξ£Ο…Ξ»Ξ»ΞΏΞ³Ξ®
+greek.NRB_Description=CD-ROM Ξ£Ο…Ξ»Ξ»ΞΏΞ³Ξ® (Boot)
+greek.NRC_Description=CD-rom Ξ£Ο…Ξ»Ξ»ΞΏΞ³Ξ® (UDF/ISO)
+greek.NRD_Description=DVD-Video Ξ£Ο…Ξ»Ξ»ΞΏΞ³Ξ®
+greek.NRE_Description=CD Extra Ξ£Ο…Ξ»Ξ»ΞΏΞ³Ξ®
+greek.NRG_Description=CD-Ξ•ΞΉΞΊΞΏΞ½ΞΉΞΊΟ Ξ‘ΟΟ‡ΞµΞ―ΞΏ
+greek.NRH_Description=Hybrid CD-ROM Ξ£Ο…Ξ»Ξ»ΞΏΞ³Ξ®
+greek.NRI_Description=CD-ROM Ξ£Ο…Ξ»Ξ»ΞΏΞ³Ξ® (ISO)
+greek.NRJ_Description=JukeBox Ξ£Ο…Ξ»Ξ»ΞΏΞ³Ξ®
+greek.NRM_Description=ΞΞΉΞΊΟ„Ξ® Ξ»ΞµΞΉΟ„ΞΏΟ…ΟΞ³Ξ―Ξ± CD Ξ£Ο…Ξ»Ξ»ΞΏΞ³Ξ®
+greek.NRS_Description=CD-ROM (EFI Boot) Ξ£Ο…Ξ»Ξ»ΞΏΞ³Ξ®
+greek.NRU_Description=CD-ROM Ξ£Ο…Ξ»Ξ»ΞΏΞ³Ξ® (UDF)
+greek.NRV_Description=Video-CD Ξ£Ο…Ξ»Ξ»ΞΏΞ³Ξ®
+greek.NRW_Description=WMA CD-ROM Ξ£Ο…Ξ»Ξ»ΞΏΞ³Ξ®
+greek.NSD_Description=Super Video CD Ξ£Ο…Ξ»Ξ»ΞΏΞ³Ξ®
 ;Setup Component Description
-greek.Comp_Nero_lang=Γλώσσα
-greek.Comp_Nero_lang_greek=Ελληνικά
-greek.Comp_Nero_lang_greek=Ελληνικά
-greek.Comp_Nero_Sounds=Ήχοι
+greek.Comp_Nero_lang=Ξ“Ξ»ΟΟƒΟƒΞ±
+greek.Comp_Nero_lang_greek=Ξ•Ξ»Ξ»Ξ·Ξ½ΞΉΞΊΞ¬
+greek.Comp_Nero_lang_greek=Ξ•Ξ»Ξ»Ξ·Ξ½ΞΉΞΊΞ¬
+greek.Comp_Nero_Sounds=Ξ‰Ο‡ΞΏΞΉ
 ;Setup register filetypes
-greek.FileAssociations=Ρυθμίστε τους τύπους των αρχείων:
-greek.AssocImageFileExt=Συνδυάστε το Nero με τα CD-Εικονικών Αρχείων
+greek.FileAssociations=Ξ΅Ο…ΞΈΞΌΞ―ΟƒΟ„Ξµ Ο„ΞΏΟ…Ο‚ Ο„ΟΟ€ΞΏΟ…Ο‚ Ο„Ο‰Ξ½ Ξ±ΟΟ‡ΞµΞ―Ο‰Ξ½:
+greek.AssocImageFileExt=Ξ£Ο…Ξ½Ξ΄Ο…Ξ¬ΟƒΟ„Ξµ Ο„ΞΏ Nero ΞΌΞµ Ο„Ξ± CD-Ξ•ΞΉΞΊΞΏΞ½ΞΉΞΊΟΞ½ Ξ‘ΟΟ‡ΞµΞ―Ο‰Ξ½
 ;Installer mutex
-greek.SetupIsRunningWarning=Η εγκατάσταση τρέχει ήδη!
+greek.SetupIsRunningWarning=Ξ— ΞµΞ³ΞΊΞ±Ο„Ξ¬ΟƒΟ„Ξ±ΟƒΞ· Ο„ΟΞ­Ο‡ΞµΞΉ Ξ®Ξ΄Ξ·!
 

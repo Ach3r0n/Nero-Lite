@@ -1,4 +1,4 @@
-[Languages]
+ï»¿[Languages]
 #ifdef Nero8
 Name: spanish; MessagesFile: compiler:Languages\Spanish.isl; LicenseFile: Bin\[FILELOCATION]Target\Data\Setup\EULA_esp.rtf
 Name: spanish_latin_american; MessagesFile: compiler:Languages\Spanish.isl; LicenseFile: Bin\[FILELOCATION]Target\Data\Setup\EULA_esm.rtf
@@ -98,19 +98,19 @@ Name: nero_lang\spanish_latin_american; Description: {cm:Comp_Nero_lang_spanish_
 [CustomMessages]
 ;Spanish
 ;Setup Wizard - Registration dialog
-spanish.CustomFormCaption=Información de Cliente
+spanish.CustomFormCaption=InformaciÃ³n de Cliente
 spanish.CustomFormDescription=Por favor introduzca sus datos.
-spanish.RegistrationInfo=Por favor personalice su copia de Nero {#NeroMajorVersion} introduciendo su nombre y%nsu número de serie a continuación.
+spanish.RegistrationInfo=Por favor personalice su copia de Nero {#NeroMajorVersion} introduciendo su nombre y%nsu nÃºmero de serie a continuaciÃ³n.
 spanish.RegistrationWelcome=Gracias por comprar su copia de Nero.
 spanish.RegistrationWelcomeCaption=Bienvenido a Nero
 spanish.RegistrationCaption=Registro
-spanish.NeroShopCaption=No tiene número de serie?
-spanish.NeroShop=Tienda Online de Nero 
+spanish.NeroShopCaption=No tiene nÃºmero de serie?
+spanish.NeroShop=Tienda Online de NeroÂ 
 spanish.NeroShopURL=http://www.nero.com/esp/catalog.html
 spanish_latin_american.NeroShopURL=http://www.nero.com/esl/catalog.html
 spanish.RegistrationName=Nombre:
-spanish.RegistrationOrg=Organización:
-spanish.RegistrationSerial=Número de Serie:
+spanish.RegistrationOrg=OrganizaciÃ³n:
+spanish.RegistrationSerial=NÃºmero de Serie:
 ;Filetype descriptions - Nero CoverDesigner
 spanish.CDC_Description=Nero Cover Designer Documento
 spanish.NCD_Description=Nero Cover Designer Documento
@@ -119,33 +119,33 @@ spanish.NCT_Description=Nero Cover Designer Plantilla
 spanish.CUE_Description=Archivos de imagen
 spanish.IMG_Description=Archivos de imagen
 spanish.ISO_Description=Archivos de imagen
-spanish.NAB_Description=Compilación de CD Audiobook
-spanish.NHF_Description=Compilación de CD HFS
-spanish.NHV_Description=Compilación de HD-BURN de Vídeo
-spanish.NMD_Description=Compilación de MiniDVD
-spanish.NR3_Description=Compilación de CD-ROM (MP3)
-spanish.NR4_Description=Compilación de CD-ROM (AAC)
-spanish.NRA_Description=Compilación de CD de audio
-spanish.NRB_Description=Compilación de CD-ROM (Arranque)
-spanish.NRC_Description=Compilación de CD-ROM (UDF/ISO)
-spanish.NRD_Description=Compilación de DVD-Vídeo
-spanish.NRE_Description=Compilación de CD EXTRA
-spanish.NRG_Description=Compilación de CD
-spanish.NRH_Description=Compilación de CD-ROM (Híbrida)
-spanish.NRI_Description=Compilación de CD-ROM (ISO)
-spanish.NRJ_Description=Compilación JukeBox
-spanish.NRM_Description=Compilación de CD en modo mixto
-spanish.NRS_Description=Compilación de CD-ROM (Arranque EFI)
-spanish.NRU_Description=Compilación de CD-ROM (UDF)
-spanish.NRV_Description=Compilación de vídeo CD
-spanish.NRW_Description=Compilación de CD-ROM (WMA)
-spanish.NSD_Description=Compilación de CD de supervídeo
+spanish.NAB_Description=CompilaciÃ³n de CD Audiobook
+spanish.NHF_Description=CompilaciÃ³n de CD HFS
+spanish.NHV_Description=CompilaciÃ³n de HD-BURN de VÃ­deo
+spanish.NMD_Description=CompilaciÃ³n de MiniDVD
+spanish.NR3_Description=CompilaciÃ³n de CD-ROM (MP3)
+spanish.NR4_Description=CompilaciÃ³n de CD-ROM (AAC)
+spanish.NRA_Description=CompilaciÃ³n de CD de audio
+spanish.NRB_Description=CompilaciÃ³n de CD-ROM (Arranque)
+spanish.NRC_Description=CompilaciÃ³n de CD-ROM (UDF/ISO)
+spanish.NRD_Description=CompilaciÃ³n de DVD-VÃ­deo
+spanish.NRE_Description=CompilaciÃ³n de CD EXTRA
+spanish.NRG_Description=CompilaciÃ³n de CD
+spanish.NRH_Description=CompilaciÃ³n de CD-ROM (HÃ­brida)
+spanish.NRI_Description=CompilaciÃ³n de CD-ROM (ISO)
+spanish.NRJ_Description=CompilaciÃ³n JukeBox
+spanish.NRM_Description=CompilaciÃ³n de CD en modo mixto
+spanish.NRS_Description=CompilaciÃ³n de CD-ROM (Arranque EFI)
+spanish.NRU_Description=CompilaciÃ³n de CD-ROM (UDF)
+spanish.NRV_Description=CompilaciÃ³n de vÃ­deo CD
+spanish.NRW_Description=CompilaciÃ³n de CD-ROM (WMA)
+spanish.NSD_Description=CompilaciÃ³n de CD de supervÃ­deo
 ;Setup Component Description
 spanish.Comp_Nero_lang=Idiomas
-spanish.Comp_Nero_lang_english=Inglés
-spanish.Comp_Nero_lang_spanish=Español
-spanish.Comp_Nero_lang_spanish_latin_american=Español Latino Americano
+spanish.Comp_Nero_lang_english=InglÃ©s
+spanish.Comp_Nero_lang_spanish=EspaÃ±ol
+spanish.Comp_Nero_lang_spanish_latin_american=EspaÃ±ol Latino Americano
 spanish.Comp_Nero_Sounds=Sonidos
 ;Setup register filetypes
-spanish.FileAssociations=Asociación de archivos:
-spanish.AssocImageFileExt=Asociar Nero con los formatos de Imagen de CD más comunes
+spanish.FileAssociations=AsociaciÃ³n de archivos:
+spanish.AssocImageFileExt=Asociar Nero con los formatos de Imagen de CD mÃ¡s comunes

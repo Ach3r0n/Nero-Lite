@@ -1,4 +1,4 @@
-[Languages]
+Ôªø[Languages]
 #ifdef Nero8
 Name: czech; MessagesFile: compiler:Languages\Czech.isl; LicenseFile: Bin\[FILELOCATION]Target\Data\Setup\EULA_ene.rtf
 #endif
@@ -54,22 +54,22 @@ Name: nero_lang\czech; Description: {cm:Comp_Nero_lang_czech}; Languages: not cz
 [CustomMessages]
 ;Czech
 ;Setup Wizard - Registration dialog
-czech.CustomFormCaption=Z·kaznÌckÈ informace
-czech.CustomFormDescription=Vloûte, prosÌm, vaöe informace.
-czech.RegistrationInfo=Upravte, prosÌm, svoji kopii Nero {#NeroMajorVersion} zad·nÌm vaöeho jmÈna a%nsÈriovÈho cÌsla.
-czech.RegistrationWelcome=Dekujeme v·m za zakoupenÌ kopie Nero.
-czech.RegistrationWelcomeCaption=Nero - VÌtejte...
+czech.CustomFormCaption=Z√°kazn√≠ck√© informace
+czech.CustomFormDescription=Vlo≈æte, pros√≠m, va≈°e informace.
+czech.RegistrationInfo=Upravte, pros√≠m, svoji kopii Nero {#NeroMajorVersion} zad√°n√≠m va≈°eho jm√©na a%ns√©riov√©ho c√≠sla.
+czech.RegistrationWelcome=Dekujeme v√°m za zakoupen√≠ kopie Nero.
+czech.RegistrationWelcomeCaption=Nero - V√≠tejte...
 czech.RegistrationCaption=Registrace
-czech.NeroShopCaption=é·dnÈ sÈriovÈ cÌslo?
-czech.NeroShop=Nero online obchod†
+czech.NeroShopCaption=≈Ω√°dn√© s√©riov√© c√≠slo?
+czech.NeroShop=Nero online obchod¬†
 czech.NeroShopURL=http://www.nero.com/eng/catalog.html
-czech.RegistrationName=JmÈno:
+czech.RegistrationName=Jm√©no:
 czech.RegistrationOrg=Organizace:
-czech.RegistrationSerial=SÈriovÈ cÌslo:
+czech.RegistrationSerial=S√©riov√© c√≠slo:
 ;Filetype descriptions - Nero CoverDesigner
 czech.CDC_Description=Nero CoverDesigner dokument
 czech.NCD_Description=Nero CoverDesigner dokument
-czech.NCT_Description=Nero CoverDesigner öablÛna
+czech.NCT_Description=Nero CoverDesigner ≈°abl√≥na
 ;Filetype descriptions - Nero Burning Rom
 czech.CUE_Description=CD-Image soubor
 czech.IMG_Description=CD-Image soubor
@@ -81,7 +81,7 @@ czech.NMD_Description=Kompilace MiniDVD
 czech.NR3_Description=Kompilace CD-ROM (MP3)
 czech.NR4_Description=Kompilace CD-ROM (AAC)
 czech.NRA_Description=Kompilace Audio-CD
-czech.NRB_Description=Kompilace CD-ROM (bootovateln˝)
+czech.NRB_Description=Kompilace CD-ROM (bootovateln√Ω)
 czech.NRC_Description=Kompilace CD-rom (UDF/ISO)
 czech.NRD_Description=Kompilace DVD-Video
 czech.NRE_Description=Kompilace CD Extra
@@ -97,9 +97,9 @@ czech.NRW_Description=Kompilace WMA CD-ROM
 czech.NSD_Description=Kompilace Super Video CD
 ;Setup Component Description
 czech.Comp_Nero_lang=Jazyk
-czech.Comp_Nero_lang_english=Anglick˝
-czech.Comp_Nero_lang_czech=Cesk˝
+czech.Comp_Nero_lang_english=Anglick√Ω
+czech.Comp_Nero_lang_czech=Cesk√Ω
 czech.Comp_Nero_Sounds=Zvuky
 ;Setup register filetypes
 czech.FileAssociations=Registrovat soubory typu:
-czech.AssocImageFileExt=Priradit Nerovi standardnÌ CD obrazy
+czech.AssocImageFileExt=Priradit Nerovi standardn√≠ CD obrazy

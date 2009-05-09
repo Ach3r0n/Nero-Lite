@@ -1,4 +1,4 @@
-[Languages]
+Ôªø[Languages]
 #ifdef Nero8
 Name: slovak; MessagesFile: compiler:Languages\Slovak.isl; LicenseFile: Bin\[FILELOCATION]Target\Data\Setup\EULA_ene.rtf
 #endif
@@ -53,52 +53,52 @@ Name: nero_lang\slovak; Description: {cm:Comp_Nero_lang_slovak}; Languages: not 
 [CustomMessages]
 ;Slovak
 ;Setup Wizard - Registration dialog
-slovak.CustomFormCaption=Z·kaznÌcke inform·cie
-slovak.CustomFormDescription=Vloûte, prosÌm, vaöe inform·cie.
-slovak.RegistrationInfo=PrispÙsobte, prosÌm, svoju kÛpiu Nero {#NeroMajorVersion} zadanÌm v·öho mena a%nsÈriovÈho cÌsla.
-slovak.RegistrationWelcome=Dakujeme v·m za zak˙penie kÛpie Nero.
+slovak.CustomFormCaption=Z√°kazn√≠cke inform√°cie
+slovak.CustomFormDescription=Vlo≈æte, pros√≠m, va≈°e inform√°cie.
+slovak.RegistrationInfo=Prisp√¥sobte, pros√≠m, svoju k√≥piu Nero {#NeroMajorVersion} zadan√≠m v√°≈°ho mena a%ns√©riov√©ho c√≠sla.
+slovak.RegistrationWelcome=Dakujeme v√°m za zak√∫penie k√≥pie Nero.
 slovak.RegistrationWelcomeCaption=Nero - Vitajte
-slovak.RegistrationCaption=Registr·cia
-slovak.NeroShopCaption=éiadne sÈriovÈ cÌslo?
-slovak.NeroShop=Nero online obchod†
+slovak.RegistrationCaption=Registr√°cia
+slovak.NeroShopCaption=≈Ωiadne s√©riov√© c√≠slo?
+slovak.NeroShop=Nero online obchod¬†
 slovak.NeroShopURL=http://www.nero.com/eng/catalog.html
 slovak.RegistrationName=Meno:
-slovak.RegistrationOrg=Organiz·cia:
-slovak.RegistrationSerial=SÈriovÈ cÌslo:
+slovak.RegistrationOrg=Organiz√°cia:
+slovak.RegistrationSerial=S√©riov√© c√≠slo:
 ;Filetype descriptions - Nero CoverDesigner
 slovak.CDC_Description=Nero CoverDesigner dokument
 slovak.NCD_Description=Nero CoverDesigner dokument
-slovak.NCT_Description=Nero CoverDesigner öablÛna
+slovak.NCT_Description=Nero CoverDesigner ≈°abl√≥na
 ;Filetype descriptions - Nero Burning Rom
-slovak.CUE_Description=CD-Image s˙bor
-slovak.IMG_Description=CD-Image s˙bor
-slovak.ISO_Description=CD-Image s˙bor
-slovak.NAB_Description=Kompil·cia Audiobook CD-ROM
-slovak.NHF_Description=Kompil·cia HFS-CD
-slovak.NHV_Description=Kompil·cia HD-BURN-Video
-slovak.NMD_Description=Kompil·cia MiniDVD
-slovak.NR3_Description=Kompil·cia CD-ROM (MP3)
-slovak.NR4_Description=Kompil·cia CD-ROM (AAC)
-slovak.NRA_Description=Kompil·cia Audio-CD
-slovak.NRB_Description=Kompil·cia CD-ROM (bootovatelnÈ)
-slovak.NRC_Description=Kompil·cia CD-rom (UDF/ISO)
-slovak.NRD_Description=Kompil·cia DVD-Video
-slovak.NRE_Description=Kompil·cia CD Extra
-slovak.NRG_Description=CD-Image s˙bor
-slovak.NRH_Description=Kompil·cia Hybrid CD-ROM
-slovak.NRI_Description=Kompil·cia CD-ROM (ISO)
-slovak.NRJ_Description=Kompil·cia JukeBox
-slovak.NRM_Description=Kompil·cia Mixed-Mode-CD
-slovak.NRS_Description=Kompil·cia CD-ROM (EFI Boot)
-slovak.NRU_Description=Kompil·cia CD-ROM (UDF)
-slovak.NRV_Description=Kompil·cia Video-CD
-slovak.NRW_Description=Kompil·cia WMA CD-ROM
-slovak.NSD_Description=Kompil·cia Super Video CD
+slovak.CUE_Description=CD-Image s√∫bor
+slovak.IMG_Description=CD-Image s√∫bor
+slovak.ISO_Description=CD-Image s√∫bor
+slovak.NAB_Description=Kompil√°cia Audiobook CD-ROM
+slovak.NHF_Description=Kompil√°cia HFS-CD
+slovak.NHV_Description=Kompil√°cia HD-BURN-Video
+slovak.NMD_Description=Kompil√°cia MiniDVD
+slovak.NR3_Description=Kompil√°cia CD-ROM (MP3)
+slovak.NR4_Description=Kompil√°cia CD-ROM (AAC)
+slovak.NRA_Description=Kompil√°cia Audio-CD
+slovak.NRB_Description=Kompil√°cia CD-ROM (bootovateln√©)
+slovak.NRC_Description=Kompil√°cia CD-rom (UDF/ISO)
+slovak.NRD_Description=Kompil√°cia DVD-Video
+slovak.NRE_Description=Kompil√°cia CD Extra
+slovak.NRG_Description=CD-Image s√∫bor
+slovak.NRH_Description=Kompil√°cia Hybrid CD-ROM
+slovak.NRI_Description=Kompil√°cia CD-ROM (ISO)
+slovak.NRJ_Description=Kompil√°cia JukeBox
+slovak.NRM_Description=Kompil√°cia Mixed-Mode-CD
+slovak.NRS_Description=Kompil√°cia CD-ROM (EFI Boot)
+slovak.NRU_Description=Kompil√°cia CD-ROM (UDF)
+slovak.NRV_Description=Kompil√°cia Video-CD
+slovak.NRW_Description=Kompil√°cia WMA CD-ROM
+slovak.NSD_Description=Kompil√°cia Super Video CD
 ;Setup Component Description
 slovak.Comp_Nero_lang=Jazyk
-slovak.Comp_Nero_lang_english=Anglick˝
-slovak.Comp_Nero_lang_slovak=Slovensk˝
+slovak.Comp_Nero_lang_english=Anglick√Ω
+slovak.Comp_Nero_lang_slovak=Slovensk√Ω
 slovak.Comp_Nero_Sounds=Zvuky
 ;Setup register filetypes
-slovak.FileAssociations=Registrovat s˙bory typu:
-slovak.AssocImageFileExt=Priradit Nerovi ötandardnÈ CD obrazy
+slovak.FileAssociations=Registrovat s√∫bory typu:
+slovak.AssocImageFileExt=Priradit Nerovi ≈°tandardn√© CD obrazy

@@ -1,4 +1,4 @@
-[Languages]
+﻿[Languages]
 #ifdef Nero8
 Name: italian; MessagesFile: compiler:Languages\Italian.isl; LicenseFile: Bin\[FILELOCATION]Target\Data\Setup\EULA_ita.rtf
 #endif
@@ -61,7 +61,7 @@ italian.RegistrationWelcome=Grazie per aver acquistato la tua copia di Nero.
 italian.RegistrationWelcomeCaption=Benvenuto a Nero
 italian.RegistrationCaption=Registrazione
 italian.NeroShopCaption=Nessun numero di serie?
-italian.NeroShop=Negozio online di Nero�
+italian.NeroShop=Negozio online di Nero 
 italian.NeroShopURL=http://www.nero.com/ita/catalog.html
 italian.RegistrationName=Nome:
 italian.RegistrationOrg=Organizzazione:

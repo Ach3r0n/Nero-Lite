@@ -1,4 +1,4 @@
-[Languages]
+ï»¿[Languages]
 #ifdef Nero8
 Name: norwegian; MessagesFile: compiler:Languages\Norwegian.isl; LicenseFile: Bin\[FILELOCATION]Target\Data\Setup\EULA_ene.rtf
 #endif
@@ -56,16 +56,16 @@ Name: nero_lang\norwegian; Description: {cm:Comp_Nero_lang_norwegian}; Languages
 ;Setup Wizard - Registration dialog
 norwegian.CustomFormDescription=Vennligst fyll inn din bruker informasjon.
 norwegian.CustomFormCaption=Bruker informasjon
-norwegian.RegistrationInfo=Vennligst gjør din kopi av Nero {#NeroMajorVersion} personlig ved og taste inn navn og %ndin produkt nøkkel.
-norwegian.RegistrationWelcome=Takk for at du har kjøpt en kopi av Nero.
+norwegian.RegistrationInfo=Vennligst gjÃ¸r din kopi av Nero {#NeroMajorVersion} personlig ved og taste inn navn og %ndin produkt nÃ¸kkel.
+norwegian.RegistrationWelcome=Takk for at du har kjÃ¸pt en kopi av Nero.
 norwegian.RegistrationWelcomeCaption=Velkommen til Nero
 norwegian.RegistrationCaption=Registrering
-norwegian.NeroShopCaption=Ingen Produkt nøkkel?
-norwegian.NeroShop=Nero Online nettbutikk 
+norwegian.NeroShopCaption=Ingen Produkt nÃ¸kkel?
+norwegian.NeroShop=Nero Online nettbutikkÂ 
 norwegian.NeroShopURL=http://www.nero.com/eng/catalog.html
 norwegian.RegistrationName=Navn:
 norwegian.RegistrationOrg=Organisasjon:
-norwegian.RegistrationSerial=Produkt nøkkel:
+norwegian.RegistrationSerial=Produkt nÃ¸kkel:
 ;Filetype descriptions - Nero CoverDesigner
 norwegian.CDC_Description=Nero CoverDesigner Dokument
 norwegian.NCD_Description=Nero CoverDesigner Dokument
@@ -95,7 +95,7 @@ norwegian.NRU_Description=Kompilasjon for CD-ROM (UDF)
 norwegian.NRV_Description=Kompilasjon for Video-CD
 norwegian.NRW_Description=Kompilasjon for CD-ROM (WMA)
 norwegian.NSD_Description=Kompilasjon for Super Video CD
-norwegian.Comp_Nero_lang=Språk
+norwegian.Comp_Nero_lang=SprÃ¥k
 norwegian.Comp_Nero_lang_english=Engelsk
 norwegian.Comp_Nero_lang_norwegian=Norsk
 norwegian.Comp_Nero_Sounds=Lyder

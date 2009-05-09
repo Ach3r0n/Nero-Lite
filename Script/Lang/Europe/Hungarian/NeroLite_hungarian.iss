@@ -1,4 +1,4 @@
-[Languages]
+Ôªø[Languages]
 #ifdef Nero8
 Name: hungarian; MessagesFile: compiler:Languages\Hungarian.isl; LicenseFile: Bin\[FILELOCATION]Target\Data\Setup\EULA_ene.rtf
 #endif
@@ -53,52 +53,52 @@ Name: nero_lang\hungarian; Description: {cm:Comp_Nero_lang_hungarian}; Languages
 [CustomMessages]
 ;Hungarian
 ;Setup Wizard - Registration dialog
-hungarian.CustomFormCaption=V·s·rlÛi inform·ciÛ
-hungarian.CustomFormDescription=KÈrem, adja meg az adatokat.
-hungarian.RegistrationInfo=Szabja testre a Nero {#NeroMajorVersion} ezen pÈld·ny·t nevÈnek Ès sorozatsz·m·nak beÌr·s·val.
-hungarian.RegistrationWelcome=Kˆszˆnj¸k, hogy megv·s·rolta a Nero-t!
-hungarian.RegistrationWelcomeCaption=‹dvˆzˆlj¸k a Nero-ban
-hungarian.RegistrationCaption=Regisztr·ciÛ
-hungarian.NeroShopCaption=Nincs szÈriasz·m?
-hungarian.NeroShop=Nero Online V·s·rl·s†
+hungarian.CustomFormCaption=V√°s√°rl√≥i inform√°ci√≥
+hungarian.CustomFormDescription=K√©rem, adja meg az adatokat.
+hungarian.RegistrationInfo=Szabja testre a Nero {#NeroMajorVersion} ezen p√©ld√°ny√°t nev√©nek √©s sorozatsz√°m√°nak be√≠r√°s√°val.
+hungarian.RegistrationWelcome=K√∂sz√∂nj√ºk, hogy megv√°s√°rolta a Nero-t!
+hungarian.RegistrationWelcomeCaption=√údv√∂z√∂lj√ºk a Nero-ban
+hungarian.RegistrationCaption=Regisztr√°ci√≥
+hungarian.NeroShopCaption=Nincs sz√©riasz√°m?
+hungarian.NeroShop=Nero Online V√°s√°rl√°s¬†
 hungarian.NeroShopURL=http://www.nero.com/eng/catalog.html
-hungarian.RegistrationName=NÈv:
-hungarian.RegistrationOrg=CÈg:
-hungarian.RegistrationSerial=SzÈriasz·m:
+hungarian.RegistrationName=N√©v:
+hungarian.RegistrationOrg=C√©g:
+hungarian.RegistrationSerial=Sz√©riasz√°m:
 ;Filetype descriptions - Nero CoverDesigner
 hungarian.CDC_Description=Nero CoverDesigner Dokumentum
 hungarian.NCD_Description=Nero CoverDesigner Dokumentum
-hungarian.NCT_Description=Nero CoverDesigner Sablonf·jl
+hungarian.NCT_Description=Nero CoverDesigner Sablonf√°jl
 ;Filetype descriptions - Nero Burning Rom
-hungarian.CUE_Description=CD-kÈp f·jl
-hungarian.IMG_Description=CD-kÈp f·jl
-hungarian.ISO_Description=CD-kÈp f·jl
-hungarian.NAB_Description=Audiobook CD-ROM ÷ssze·llÌt·s
-hungarian.NHF_Description=HFS-CD ÷ssze·llÌt·s
-hungarian.NHV_Description=HD-BURN-Video ÷ssze·llÌt·s
-hungarian.NMD_Description=MiniDVD ÷ssze·llÌt·s
-hungarian.NR3_Description=CD-ROM ÷ssze·llÌt·s (MP3)
-hungarian.NR4_Description=CD-ROM ÷ssze·llÌt·s (AAC)
-hungarian.NRA_Description=Audio-CD ÷ssze·llÌt·s
-hungarian.NRB_Description=CD-ROM ÷ssze·llÌt·s (Boot)
-hungarian.NRC_Description=CD-rom ÷ssze·llÌt·s (UDF/ISO)
-hungarian.NRD_Description=DVD-Video ÷ssze·llÌt·s
-hungarian.NRE_Description=CD Extra ÷ssze·llÌt·s
-hungarian.NRG_Description=CD-kÈp f·jl
-hungarian.NRH_Description=Hybrid CD-ROM ÷ssze·llÌt·s
-hungarian.NRI_Description=CD-ROM ÷ssze·llÌt·s (ISO)
-hungarian.NRJ_Description=JukeBox ÷ssze·llÌt·s
-hungarian.NRM_Description=Mixed-Mode-CD ÷ssze·llÌt·s
-hungarian.NRS_Description=CD-ROM (EFI Boot) ÷ssze·llÌt·s
-hungarian.NRU_Description=CD-ROM ÷ssze·llÌt·s (UDF)
-hungarian.NRV_Description=Video-CD ÷ssze·llÌt·s
-hungarian.NRW_Description=WMA CD-ROM ÷ssze·llÌt·s
-hungarian.NSD_Description=Super Video CD ÷ssze·llÌt·s
+hungarian.CUE_Description=CD-k√©p f√°jl
+hungarian.IMG_Description=CD-k√©p f√°jl
+hungarian.ISO_Description=CD-k√©p f√°jl
+hungarian.NAB_Description=Audiobook CD-ROM √ñssze√°ll√≠t√°s
+hungarian.NHF_Description=HFS-CD √ñssze√°ll√≠t√°s
+hungarian.NHV_Description=HD-BURN-Video √ñssze√°ll√≠t√°s
+hungarian.NMD_Description=MiniDVD √ñssze√°ll√≠t√°s
+hungarian.NR3_Description=CD-ROM √ñssze√°ll√≠t√°s (MP3)
+hungarian.NR4_Description=CD-ROM √ñssze√°ll√≠t√°s (AAC)
+hungarian.NRA_Description=Audio-CD √ñssze√°ll√≠t√°s
+hungarian.NRB_Description=CD-ROM √ñssze√°ll√≠t√°s (Boot)
+hungarian.NRC_Description=CD-rom √ñssze√°ll√≠t√°s (UDF/ISO)
+hungarian.NRD_Description=DVD-Video √ñssze√°ll√≠t√°s
+hungarian.NRE_Description=CD Extra √ñssze√°ll√≠t√°s
+hungarian.NRG_Description=CD-k√©p f√°jl
+hungarian.NRH_Description=Hybrid CD-ROM √ñssze√°ll√≠t√°s
+hungarian.NRI_Description=CD-ROM √ñssze√°ll√≠t√°s (ISO)
+hungarian.NRJ_Description=JukeBox √ñssze√°ll√≠t√°s
+hungarian.NRM_Description=Mixed-Mode-CD √ñssze√°ll√≠t√°s
+hungarian.NRS_Description=CD-ROM (EFI Boot) √ñssze√°ll√≠t√°s
+hungarian.NRU_Description=CD-ROM √ñssze√°ll√≠t√°s (UDF)
+hungarian.NRV_Description=Video-CD √ñssze√°ll√≠t√°s
+hungarian.NRW_Description=WMA CD-ROM √ñssze√°ll√≠t√°s
+hungarian.NSD_Description=Super Video CD √ñssze√°ll√≠t√°s
 ;Setup Component Description
 hungarian.Comp_Nero_lang=Nyelv
 hungarian.Comp_Nero_lang_english=Angol
 hungarian.Comp_Nero_lang_hungarian=Magyar
 hungarian.Comp_Nero_Sounds=Hangok
 ;Setup register filetypes
-hungarian.FileAssociations=Regisztr·lt F·jltÌpusok:
-hungarian.AssocImageFileExt=Nero t·rsÌt·sa az alapÈrtelmezett CD-kÈp f·jlokkal
+hungarian.FileAssociations=Regisztr√°lt F√°jlt√≠pusok:
+hungarian.AssocImageFileExt=Nero t√°rs√≠t√°sa az alap√©rtelmezett CD-k√©p f√°jlokkal

@@ -1,4 +1,4 @@
-[Languages]
+Ôªø[Languages]
 #ifdef Nero8
 Name: slovenian; MessagesFile: compiler:Languages\Slovenian.isl; LicenseFile: Bin\[FILELOCATION]Target\Data\Setup\EULA_ene.rtf
 #endif
@@ -54,17 +54,17 @@ Name: nero_lang\slovenian; Description: {cm:Comp_Nero_lang_slovenian}; Languages
 ;Slovenian
 ;Setup Wizard - Registration dialog
 slovenian.CustomFormCaption=Podatki o stranki
-slovenian.CustomFormDescription=Prosimo vnesite vaöe podatke.
-slovenian.RegistrationInfo=Prosimo vnesite podatke za vaö Nero {#NeroMajorVersion}, vpiöite ime in%nvaöo serijsko ötevilko.
+slovenian.CustomFormDescription=Prosimo vnesite va≈°e podatke.
+slovenian.RegistrationInfo=Prosimo vnesite podatke za va≈° Nero {#NeroMajorVersion}, vpi≈°ite ime in%nva≈°o serijsko ≈°tevilko.
 slovenian.RegistrationWelcome=Zahvaljujemo se vam za nakup programa.
 slovenian.RegistrationWelcomeCaption=Pozdravljeni v Nero
 slovenian.RegistrationCaption=Registracija
-slovenian.NeroShopCaption=Nimate serijske ötevilke?
-slovenian.NeroShop=Nero spletna trgovina†
+slovenian.NeroShopCaption=Nimate serijske ≈°tevilke?
+slovenian.NeroShop=Nero spletna trgovina¬†
 slovenian.NeroShopURL=http://www.nero.com/eng/catalog.html
 slovenian.RegistrationName=Ime:
 slovenian.RegistrationOrg=Organizacija:
-slovenian.RegistrationSerial=Serijska ötevilka:
+slovenian.RegistrationSerial=Serijska ≈°tevilka:
 ;Filetype descriptions - Nero CoverDesigner
 slovenian.CDC_Description=Nero CoverDesigner Dokument
 slovenian.NCD_Description=Nero CoverDesigner Dokument
@@ -96,8 +96,8 @@ slovenian.NRW_Description=WMA CD-ROM kompilacija
 slovenian.NSD_Description=Super Video CD kompilacija
 ;Setup Component Description
 slovenian.Comp_Nero_lang=Jezik
-slovenian.Comp_Nero_lang_english=Angleöcina
-slovenian.Comp_Nero_lang_slovenian=Slovenöcina
+slovenian.Comp_Nero_lang_english=Angle≈°cina
+slovenian.Comp_Nero_lang_slovenian=Sloven≈°cina
 slovenian.Comp_Nero_Sounds=Zvoki
 ;Setup register filetypes
 slovenian.FileAssociations=Registrirane vrste datotek:

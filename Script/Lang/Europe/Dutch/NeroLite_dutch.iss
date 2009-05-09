@@ -1,4 +1,4 @@
-[Languages]
+﻿[Languages]
 #ifdef Nero8
 Name: dutch; MessagesFile: compiler:Languages\Dutch.isl; LicenseFile: Bin\[FILELOCATION]Target\Data\Setup\EULA_nld.rtf
 #endif
@@ -60,7 +60,7 @@ dutch.RegistrationWelcome=Bedankt voor de aankoop van uw exemplaar van Nero.
 dutch.RegistrationWelcomeCaption=Welkom bij Nero
 dutch.RegistrationCaption=Registratie
 dutch.NeroShopCaption=Geen serienummer?
-dutch.NeroShop=Nero Online Shop�
+dutch.NeroShop=Nero Online Shop 
 dutch.NeroShopURL=http://www.nero.com/eng/catalog.html
 dutch.RegistrationName=Naam:
 dutch.RegistrationOrg=Firma:

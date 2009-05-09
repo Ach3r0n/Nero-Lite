@@ -1,4 +1,4 @@
-[Languages]
+п»ї[Languages]
 #ifdef Nero8
 Name: russian; MessagesFile: compiler:Languages\Russian.isl; LicenseFile: Bin\[FILELOCATION]Target\Data\Setup\EULA_ene.rtf
 #endif
@@ -53,52 +53,52 @@ Name: nero_lang\russian; Description: {cm:Comp_Nero_lang_russian}; Languages: no
 [CustomMessages]
 ;Russian
 ;Setup Wizard - Registration dialog
-russian.CustomFormCaption=Информация о потребителе
-russian.CustomFormDescription=Пожалуйста, введите информацию о себе.
-russian.RegistrationInfo=Персонализируйте Вашу копию Nero {#NeroMajorVersion} введя свое имя и%nсвой серийный номер.
-russian.RegistrationWelcome=Спасибо за приобретение Вашей копии  Nero.
-russian.RegistrationWelcomeCaption=Добро пожаловать в Nero
-russian.RegistrationCaption=Регистрация
-russian.NeroShopCaption=Без серийного номера?
-russian.NeroShop=Онлайн магазин Nero 
+russian.CustomFormCaption=РРЅС„РѕСЂРјР°С†РёСЏ Рѕ РїРѕС‚СЂРµР±РёС‚РµР»Рµ
+russian.CustomFormDescription=РџРѕР¶Р°Р»СѓР№СЃС‚Р°, РІРІРµРґРёС‚Рµ РёРЅС„РѕСЂРјР°С†РёСЋ Рѕ СЃРµР±Рµ.
+russian.RegistrationInfo=РџРµСЂСЃРѕРЅР°Р»РёР·РёСЂСѓР№С‚Рµ Р’Р°С€Сѓ РєРѕРїРёСЋ Nero {#NeroMajorVersion} РІРІРµРґСЏ СЃРІРѕРµ РёРјСЏ Рё%nСЃРІРѕР№ СЃРµСЂРёР№РЅС‹Р№ РЅРѕРјРµСЂ.
+russian.RegistrationWelcome=РЎРїР°СЃРёР±Рѕ Р·Р° РїСЂРёРѕР±СЂРµС‚РµРЅРёРµ Р’Р°С€РµР№ РєРѕРїРёРё  Nero.
+russian.RegistrationWelcomeCaption=Р”РѕР±СЂРѕ РїРѕР¶Р°Р»РѕРІР°С‚СЊ РІ Nero
+russian.RegistrationCaption=Р РµРіРёСЃС‚СЂР°С†РёСЏ
+russian.NeroShopCaption=Р‘РµР· СЃРµСЂРёР№РЅРѕРіРѕ РЅРѕРјРµСЂР°?
+russian.NeroShop=РћРЅР»Р°Р№РЅ РјР°РіР°Р·РёРЅ NeroВ 
 russian.NeroShopURL=http://www.nero.com/ena/catalog.html
-russian.RegistrationName=Имя:
-russian.RegistrationOrg=Организация:
-russian.RegistrationSerial=Серийный номер:
+russian.RegistrationName=РРјСЏ:
+russian.RegistrationOrg=РћСЂРіР°РЅРёР·Р°С†РёСЏ:
+russian.RegistrationSerial=РЎРµСЂРёР№РЅС‹Р№ РЅРѕРјРµСЂ:
 ;Filetype descriptions - Nero CoverDesigner
-russian.CDC_Description=Документ Nero CoverDesigner
-russian.NCD_Description=Документ Nero CoverDesigner
-russian.NCT_Description=Шаблон Nero CoverDesigner
+russian.CDC_Description=Р”РѕРєСѓРјРµРЅС‚ Nero CoverDesigner
+russian.NCD_Description=Р”РѕРєСѓРјРµРЅС‚ Nero CoverDesigner
+russian.NCT_Description=РЁР°Р±Р»РѕРЅ Nero CoverDesigner
 ;Filetype descriptions - Nero Burning Rom
-russian.CUE_Description=Файл образа CD
-russian.IMG_Description=Файл образа CD
-russian.ISO_Description=Файл образа CD
-russian.NAB_Description=Компиляция Audiobook CD-ROM
-russian.NHF_Description=Компиляция HFS-CD
+russian.CUE_Description=Р¤Р°Р№Р» РѕР±СЂР°Р·Р° CD
+russian.IMG_Description=Р¤Р°Р№Р» РѕР±СЂР°Р·Р° CD
+russian.ISO_Description=Р¤Р°Р№Р» РѕР±СЂР°Р·Р° CD
+russian.NAB_Description=РљРѕРјРїРёР»СЏС†РёСЏ Audiobook CD-ROM
+russian.NHF_Description=РљРѕРјРїРёР»СЏС†РёСЏ HFS-CD
 russian.NHV_Description=HD-BURN-Video
-russian.NMD_Description=Компиляция MiniDVD
-russian.NR3_Description=Компиляция CD-ROM (MP3)
-russian.NR4_Description=Компиляция CD-ROM (AAC)
-russian.NRA_Description=Компиляция Audio-CD
-russian.NRB_Description=Компиляция CD-ROM (Boot)
-russian.NRC_Description=Компиляция CD-rom (UDF/ISO)
-russian.NRD_Description=Компиляция DVD-Video
-russian.NRE_Description=Компиляция CD Extra
-russian.NRG_Description=Файл образа CD
-russian.NRH_Description=Компиляция Hybrid CD-ROM
-russian.NRI_Description=Компиляция CD-ROM (ISO)
-russian.NRJ_Description=Компиляция JukeBox
-russian.NRM_Description=Компиляция Mixed-Mode-CD
-russian.NRS_Description=Компиляция CD-ROM (EFI Boot)
-russian.NRU_Description=Компиляция CD-ROM (UDF)
-russian.NRV_Description=Компиляция Video-CD
-russian.NRW_Description=Компиляция WMA CD-ROM
-russian.NSD_Description=Компиляция Super Video CD
+russian.NMD_Description=РљРѕРјРїРёР»СЏС†РёСЏ MiniDVD
+russian.NR3_Description=РљРѕРјРїРёР»СЏС†РёСЏ CD-ROM (MP3)
+russian.NR4_Description=РљРѕРјРїРёР»СЏС†РёСЏ CD-ROM (AAC)
+russian.NRA_Description=РљРѕРјРїРёР»СЏС†РёСЏ Audio-CD
+russian.NRB_Description=РљРѕРјРїРёР»СЏС†РёСЏ CD-ROM (Boot)
+russian.NRC_Description=РљРѕРјРїРёР»СЏС†РёСЏ CD-rom (UDF/ISO)
+russian.NRD_Description=РљРѕРјРїРёР»СЏС†РёСЏ DVD-Video
+russian.NRE_Description=РљРѕРјРїРёР»СЏС†РёСЏ CD Extra
+russian.NRG_Description=Р¤Р°Р№Р» РѕР±СЂР°Р·Р° CD
+russian.NRH_Description=РљРѕРјРїРёР»СЏС†РёСЏ Hybrid CD-ROM
+russian.NRI_Description=РљРѕРјРїРёР»СЏС†РёСЏ CD-ROM (ISO)
+russian.NRJ_Description=РљРѕРјРїРёР»СЏС†РёСЏ JukeBox
+russian.NRM_Description=РљРѕРјРїРёР»СЏС†РёСЏ Mixed-Mode-CD
+russian.NRS_Description=РљРѕРјРїРёР»СЏС†РёСЏ CD-ROM (EFI Boot)
+russian.NRU_Description=РљРѕРјРїРёР»СЏС†РёСЏ CD-ROM (UDF)
+russian.NRV_Description=РљРѕРјРїРёР»СЏС†РёСЏ Video-CD
+russian.NRW_Description=РљРѕРјРїРёР»СЏС†РёСЏ WMA CD-ROM
+russian.NSD_Description=РљРѕРјРїРёР»СЏС†РёСЏ Super Video CD
 ;Setup Component Description
-russian.Comp_Nero_lang=Язык
-russian.Comp_Nero_lang_english=Английский
-russian.Comp_Nero_lang_russian=Русский
-russian.Comp_Nero_Sounds=Звуки
+russian.Comp_Nero_lang=РЇР·С‹Рє
+russian.Comp_Nero_lang_english=РђРЅРіР»РёР№СЃРєРёР№
+russian.Comp_Nero_lang_russian=Р СѓСЃСЃРєРёР№
+russian.Comp_Nero_Sounds=Р—РІСѓРєРё
 ;Setup register filetypes
-russian.FileAssociations=Регистрация типов файлов:
-russian.AssocImageFileExt=Ассоциировать Nero со стандартными файлами образов CD
+russian.FileAssociations=Р РµРіРёСЃС‚СЂР°С†РёСЏ С‚РёРїРѕРІ С„Р°Р№Р»РѕРІ:
+russian.AssocImageFileExt=РђСЃСЃРѕС†РёРёСЂРѕРІР°С‚СЊ Nero СЃРѕ СЃС‚Р°РЅРґР°СЂС‚РЅС‹РјРё С„Р°Р№Р»Р°РјРё РѕР±СЂР°Р·РѕРІ CD

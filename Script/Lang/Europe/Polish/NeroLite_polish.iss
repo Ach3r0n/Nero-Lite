@@ -1,4 +1,4 @@
-[Languages]
+ï»¿[Languages]
 #ifdef Nero8
 Name: polish; MessagesFile: compiler:Languages\Polish.isl; LicenseFile: Bin\[FILELOCATION]Target\Data\Setup\EULA_ene.rtf
 #endif
@@ -60,7 +60,7 @@ polish.RegistrationWelcome=Dziekuje za zakupienie Nero.
 polish.RegistrationWelcomeCaption=Witaj w Nero
 polish.RegistrationCaption=Rejestracja
 polish.NeroShopCaption=Brak numeru?
-polish.NeroShop=Nero Online Shop 
+polish.NeroShop=Nero Online ShopÂ 
 polish.NeroShopURL=http://www.nero.com/plk/catalog.html
 polish.RegistrationName=Imie:
 polish.RegistrationOrg=Organizacja:
@@ -100,5 +100,5 @@ polish.Comp_Nero_lang_english=Angielsko
 polish.Comp_Nero_lang_polish=Polski
 polish.Comp_Nero_Sounds=Dzwieki
 ;Setup register filetypes
-polish.FileAssociations=Skojarz Typy Plików:
+polish.FileAssociations=Skojarz Typy PlikÃ³w:
 polish.AssocImageFileExt=Skojarz z Nero standardowe pliki CD-Image

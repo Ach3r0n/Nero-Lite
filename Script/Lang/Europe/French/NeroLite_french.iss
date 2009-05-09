@@ -1,4 +1,4 @@
-[Languages]
+ï»¿[Languages]
 #ifdef Nero8
 Name: french; MessagesFile: compiler:Languages\French.isl; LicenseFile: Bin\[FILELOCATION]Target\Data\Setup\EULA_fra.rtf
 #endif
@@ -54,18 +54,18 @@ Name: nero_lang\french; Description: {cm:Comp_Nero_lang_french}; Languages: not 
 [CustomMessages]
 ;French
 ;Setup Wizard - Registration dialog
-french.NeroShop=Boutique en ligne Nero 
+french.NeroShop=Boutique en ligne NeroÂ 
 french.CustomFormCaption=Information Utilisateur
 french.CustomFormDescription=Veuillez entrer vos informations.
-french.RegistrationInfo=Veuillez personnaliser votre copie de Nero {#NeroMajorVersion} en saisissant votre nom%net votre numéro de série.
+french.RegistrationInfo=Veuillez personnaliser votre copie de Nero {#NeroMajorVersion} en saisissant votre nom%net votre numÃ©ro de sÃ©rie.
 french.RegistrationWelcome=Merci d'enregistrer votre copie de Nero.
 french.RegistrationWelcomeCaption=Nero vous souhaite la bienvenue
 french.RegistrationCaption=Enregistrement
-french.NeroShopCaption=Pas de numéro de série?
+french.NeroShopCaption=Pas de numÃ©ro de sÃ©rie?
 french.NeroShopURL=http://www.nero.com/fra/catalog.html
 french.RegistrationName=Nom:
-french.RegistrationOrg=Société:
-french.RegistrationSerial=Numéro de série:
+french.RegistrationOrg=SociÃ©tÃ©:
+french.RegistrationSerial=NumÃ©ro de sÃ©rie:
 ;Filetype descriptions - Nero CoverDesigner
 french.CDC_Description=Document de jaquette CD Nero
 french.NCD_Description=Document de jaquette CD Nero
@@ -76,28 +76,28 @@ french.IMG_Description=Fichiers Image
 french.ISO_Description=Fichiers Image
 french.NAB_Description=Compilation CD Audiobook
 french.NHF_Description=Compilation CD HFS
-french.NHV_Description=Compilation HD-BURN-Vidéo
+french.NHV_Description=Compilation HD-BURN-VidÃ©o
 french.NMD_Description=Compilation mini-DVD
 french.NR3_Description=Compilation CD-ROM (MP3)
 french.NR4_Description=Compilation CD-ROM (AAC)
 french.NRA_Description=Compilation CD audio
 french.NRB_Description=CD-ROM (Amorce) Compilation
 french.NRC_Description=CD-ROM (UDF/ISO) Compilation
-french.NRD_Description=Compilation DVD-Vidéo
+french.NRD_Description=Compilation DVD-VidÃ©o
 french.NRE_Description=Compilation CD EXTRA
 french.NRG_Description=Fichiers Image
 french.NRH_Description=Compilation CD-ROM (hybride)
 french.NRI_Description=Compilation CD-ROM (ISO)
 french.NRJ_Description=Compilation JukeBox
 french.NRM_Description=Compilation CD mode mixte
-french.NRS_Description=Compilation CD-ROM (Amorçage EFI)
+french.NRS_Description=Compilation CD-ROM (AmorÃ§age EFI)
 french.NRU_Description=Compilation CD-ROM (UDF)
-french.NRV_Description=Compilation CD Vidéo
+french.NRV_Description=Compilation CD VidÃ©o
 french.NRW_Description=Compilation CD-ROM (WMA)
-french.NSD_Description=Compilation Super Vidéo CD
+french.NSD_Description=Compilation Super VidÃ©o CD
 ;Setup Wizard Component Description
 french.Comp_Nero_lang=Langue
-french.Comp_Nero_lang_french=Français
+french.Comp_Nero_lang_french=FranÃ§ais
 french.Comp_Nero_lang_english=Anglais
 french.Comp_Nero_Sounds=Sons
 ;Setup Wizard Extra Tasks

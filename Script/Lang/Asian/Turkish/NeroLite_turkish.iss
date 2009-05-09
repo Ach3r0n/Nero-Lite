@@ -1,4 +1,4 @@
-[Languages]
+ï»¿[Languages]
 #ifdef Nero8
 Name: turkish; MessagesFile: compiler:Languages\Turkish.isl; LicenseFile: Bin\[FILELOCATION]Target\Data\Setup\EULA_ene.rtf
 #endif
@@ -53,14 +53,14 @@ Name: nero_lang\turkish; Description: {cm:Comp_Nero_lang_turkish}; Languages: no
 [CustomMessages]
 ;Turkish
 ;Setup Wizard - Registration dialog
-turkish.CustomFormCaption=Müsteri Bilgisi
+turkish.CustomFormCaption=MÃ¼steri Bilgisi
 turkish.CustomFormDescription=Bilgilerinizi giriniz
 turkish.RegistrationInfo=Kullanici adinizi ve seri numaranizi girerek Nero'yu kisisellestirin.
-turkish.RegistrationWelcome=Nero'yu satin aldiginiz için tesekkürler.
+turkish.RegistrationWelcome=Nero'yu satin aldiginiz iÃ§in tesekkÃ¼rler.
 turkish.RegistrationWelcomeCaption=Nero'ya hosgeldiniz
 turkish.RegistrationCaption=Kayit
 turkish.NeroShopCaption=Seri numarasi yok mu?
-turkish.NeroShop=Nero Online Satis 
+turkish.NeroShop=Nero Online SatisÂ 
 turkish.NeroShopURL=http://www.nero.com/eng/catalog.html
 turkish.RegistrationName=Isim:
 turkish.RegistrationOrg=Organizasyon:
@@ -97,8 +97,8 @@ turkish.NSD_Description=Super Video CD Derlemesi
 ;Setup Component Description
 turkish.Comp_Nero_lang=Dil
 turkish.Comp_Nero_lang_english=Ingilizce
-turkish.Comp_Nero_lang_turkish=Türkçe
+turkish.Comp_Nero_lang_turkish=TÃ¼rkÃ§e
 turkish.Comp_Nero_Sounds=Ses
 ;Setup register filetypes
-turkish.FileAssociations=Dosya türlerini kaydet:
+turkish.FileAssociations=Dosya tÃ¼rlerini kaydet:
 turkish.AssocImageFileExt=Nero'yu Standard CD kaliplariyla iliskilendir

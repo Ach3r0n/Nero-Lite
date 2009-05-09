@@ -1,4 +1,4 @@
-[Languages]
+Ôªø[Languages]
 #ifdef Nero8
 Name: german; MessagesFile: compiler:Languages\German.isl; LicenseFile: Bin\[FILELOCATION]Target\Data\Setup\EULA_deu.rtf
 #endif
@@ -96,10 +96,10 @@ german.NRW_Description=CD-ROM (WMA)-Zusammenstellung
 german.NSD_Description=Super Video-CD-Zusammenstellung
 ;Setup Wizard Component Description
 german.Comp_Nero_lang=Sprache
-german.Comp_Nero_lang_dutch=Holl‰ndisch
+german.Comp_Nero_lang_dutch=Holl√§ndisch
 german.Comp_Nero_lang_english=Englisch
 german.Comp_Nero_lang_german=Deutsch
-german.Comp_Nero_Sounds=Kl‰nge
+german.Comp_Nero_Sounds=Kl√§nge
 ;Setup Wizard Extra Tasks
-german.FileAssociations=Dateiverkn¸pfungen w‰hlen:
-german.AssocImageFileExt=Nero mit Standard CD-Images verkn¸pfen
+german.FileAssociations=Dateiverkn√ºpfungen w√§hlen:
+german.AssocImageFileExt=Nero mit Standard CD-Images verkn√ºpfen

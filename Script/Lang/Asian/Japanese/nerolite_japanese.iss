@@ -1,4 +1,4 @@
-[Languages]
+ï»¿[Languages]
 #ifdef Nero8
 Name: japanese; MessagesFile: compiler:Languages\Japanese.isl; LicenseFile: Bin\[FILELOCATION]Target\Data\Setup\EULA_jpn.rtf
 #endif
@@ -53,52 +53,52 @@ Name: nero_lang\japanese; Description: {cm:Comp_Nero_lang_japanese}; Languages: 
 [CustomMessages]
 ;Japanese
 ;Setup Wizard - Registration dialog
-japanese.CustomFormCaption=‚¨‹q‚³‚ñ‚Ì“o˜^î•ñ
-japanese.CustomFormDescription=“o˜^î•ñ‚ğ“ü—Í‚µ‚Ä‚­‚¾‚³‚¢B
-japanese.RegistrationInfo=‚¨–¼‘O‚ÆƒVƒŠƒAƒ‹ƒiƒ“ƒo[‚ğ“ü—Í‚µ‚Ä‚­‚¾‚³‚¢B
-japanese.RegistrationWelcome=Nero ‚Ì‚²w“ü‚ ‚è‚ª‚Æ‚¤‚²‚´‚¢‚Ü‚·B
-japanese.RegistrationWelcomeCaption=Nero ‚Ö‚æ‚¤‚±‚»
-japanese.RegistrationCaption=“o˜^
-japanese.NeroShopCaption=ƒVƒŠƒAƒ‹ƒiƒ“ƒo[‚ğ‚¨‚¿‚Ü‚¹‚ñ‚©?
-japanese.NeroShop=Nero ƒIƒ“ƒ‰ƒCƒ“ƒXƒgƒA[i‰pŒêj
+japanese.CustomFormCaption=ãŠå®¢ã•ã‚“ã®ç™»éŒ²æƒ…å ±
+japanese.CustomFormDescription=ç™»éŒ²æƒ…å ±ã‚’å…¥åŠ›ã—ã¦ãã ã•ã„ã€‚
+japanese.RegistrationInfo=ãŠåå‰ã¨ã‚·ãƒªã‚¢ãƒ«ãƒŠãƒ³ãƒãƒ¼ã‚’å…¥åŠ›ã—ã¦ãã ã•ã„ã€‚
+japanese.RegistrationWelcome=Nero ã®ã”è³¼å…¥ã‚ã‚ŠãŒã¨ã†ã”ã–ã„ã¾ã™ã€‚
+japanese.RegistrationWelcomeCaption=Nero ã¸ã‚ˆã†ã“ã
+japanese.RegistrationCaption=ç™»éŒ²
+japanese.NeroShopCaption=ã‚·ãƒªã‚¢ãƒ«ãƒŠãƒ³ãƒãƒ¼ã‚’ãŠæŒã¡ã¾ã›ã‚“ã‹?
+japanese.NeroShop=Nero ã‚ªãƒ³ãƒ©ã‚¤ãƒ³ã‚¹ãƒˆã‚¢ãƒ¼ï¼ˆè‹±èªï¼‰
 japanese.NeroShopURL=http://www.nero.com/jpn/catalog.html
-japanese.RegistrationName=‚¨–¼‘OF
-japanese.RegistrationOrg=Š‘®F
-japanese.RegistrationSerial=ƒVƒŠƒAƒ‹ƒiƒ“ƒo[
+japanese.RegistrationName=ãŠåå‰ï¼š
+japanese.RegistrationOrg=æ‰€å±ï¼š
+japanese.RegistrationSerial=ã‚·ãƒªã‚¢ãƒ«ãƒŠãƒ³ãƒãƒ¼
 ;Filetype descriptions - Nero CoverDesigner
-japanese.CDC_Description=Nero CoverDesigner ƒtƒ@ƒCƒ‹
-japanese.NCD_Description=Nero CoverDesigner ƒtƒ@ƒCƒ‹
-japanese.NCT_Description=Nero CoverDesigner ƒTƒ“ƒvƒ‹ƒtƒ@ƒCƒ‹
+japanese.CDC_Description=Nero CoverDesigner ãƒ•ã‚¡ã‚¤ãƒ«
+japanese.NCD_Description=Nero CoverDesigner ãƒ•ã‚¡ã‚¤ãƒ«
+japanese.NCT_Description=Nero CoverDesigner ã‚µãƒ³ãƒ—ãƒ«ãƒ•ã‚¡ã‚¤ãƒ«
 ;Filetype descriptions - Nero Burning Rom
-japanese.CUE_Description=CD ƒCƒ[ƒWƒtƒ@ƒCƒ‹
-japanese.IMG_Description=CD ƒCƒ[ƒWƒtƒ@ƒCƒ‹
-japanese.ISO_Description=CD ƒCƒ[ƒWƒtƒ@ƒCƒ‹
-japanese.NAB_Description=Audiobook CD-ROM •ÒW
-japanese.NHF_Description=HFS-CD •ÒWƒc[ƒ‹
-japanese.NHV_Description=HD-BURN-Video •ÒW
-japanese.NMD_Description=MiniDVD •ÒW
-japanese.NR3_Description=CD-ROM •ÒW (MP3)
-japanese.NR4_Description=CD-ROM •ÒW (AAC)
-japanese.NRA_Description=Audio-CD •ÒW
-japanese.NRB_Description=CD-ROM •ÒW (Boot)
-japanese.NRC_Description=CD-ROM •ÒW (UDF/ISO)
-japanese.NRD_Description=DVD-Video •ÒW
-japanese.NRE_Description=CD Extra •ÒW
-japanese.NRG_Description=CD ƒCƒ[ƒWƒtƒ@ƒCƒ‹
-japanese.NRH_Description=Hybrid CD-ROM •ÒW
-japanese.NRI_Description=CD-ROM •ÒW (ISO)
-japanese.NRJ_Description=JukeBox •ÒW
-japanese.NRM_Description=ƒ~ƒbƒNƒXƒ‚[ƒh•ÒW
-japanese.NRS_Description=CD-ROM (EFI Boot) •ÒW
-japanese.NRU_Description=CD-ROM •ÒW (UDF)
-japanese.NRV_Description=Video CD •ÒW
-japanese.NRW_Description=WMA CD-ROM •ÒW
-japanese.NSD_Description=Super Video CD •ÒW
+japanese.CUE_Description=CD ã‚¤ãƒ¡ãƒ¼ã‚¸ãƒ•ã‚¡ã‚¤ãƒ«
+japanese.IMG_Description=CD ã‚¤ãƒ¡ãƒ¼ã‚¸ãƒ•ã‚¡ã‚¤ãƒ«
+japanese.ISO_Description=CD ã‚¤ãƒ¡ãƒ¼ã‚¸ãƒ•ã‚¡ã‚¤ãƒ«
+japanese.NAB_Description=Audiobook CD-ROM ç·¨é›†
+japanese.NHF_Description=HFS-CD ç·¨é›†ãƒ„ãƒ¼ãƒ«
+japanese.NHV_Description=HD-BURN-Video ç·¨é›†
+japanese.NMD_Description=MiniDVD ç·¨é›†
+japanese.NR3_Description=CD-ROM ç·¨é›† (MP3)
+japanese.NR4_Description=CD-ROM ç·¨é›† (AAC)
+japanese.NRA_Description=Audio-CD ç·¨é›†
+japanese.NRB_Description=CD-ROM ç·¨é›† (Boot)
+japanese.NRC_Description=CD-ROM ç·¨é›† (UDF/ISO)
+japanese.NRD_Description=DVD-Video ç·¨é›†
+japanese.NRE_Description=CD Extra ç·¨é›†
+japanese.NRG_Description=CD ã‚¤ãƒ¡ãƒ¼ã‚¸ãƒ•ã‚¡ã‚¤ãƒ«
+japanese.NRH_Description=Hybrid CD-ROM ç·¨é›†
+japanese.NRI_Description=CD-ROM ç·¨é›† (ISO)
+japanese.NRJ_Description=JukeBox ç·¨é›†
+japanese.NRM_Description=ãƒŸãƒƒã‚¯ã‚¹ãƒ¢ãƒ¼ãƒ‰ç·¨é›†
+japanese.NRS_Description=CD-ROM (EFI Boot) ç·¨é›†
+japanese.NRU_Description=CD-ROM ç·¨é›† (UDF)
+japanese.NRV_Description=Video CD ç·¨é›†
+japanese.NRW_Description=WMA CD-ROM ç·¨é›†
+japanese.NSD_Description=Super Video CD ç·¨é›†
 ;Setup Component Description
-japanese.Comp_Nero_lang=Œ¾Œê
-japanese.Comp_Nero_lang_english=‰pŒê
-japanese.Comp_Nero_lang_japanese=“ú–{Œê
-japanese.Comp_Nero_Sounds=ƒTƒEƒ“ƒh
+japanese.Comp_Nero_lang=è¨€èª
+japanese.Comp_Nero_lang_english=è‹±èª
+japanese.Comp_Nero_lang_japanese=æ—¥æœ¬èª
+japanese.Comp_Nero_Sounds=ã‚µã‚¦ãƒ³ãƒ‰
 ;Setup register filetypes
-japanese.FileAssociations=ƒtƒ@ƒCƒ‹‚ÌŠÖ˜A‚ğ•t‚«‚Ü‚·F
-japanese.AssocImageFileExt=ƒCƒ[ƒWƒtƒ@ƒCƒ‹‚Æ Nero ‚ÌŠÖ˜AB
+japanese.FileAssociations=ãƒ•ã‚¡ã‚¤ãƒ«ã®é–¢é€£ã‚’ä»˜ãã¾ã™ï¼š
+japanese.AssocImageFileExt=ã‚¤ãƒ¡ãƒ¼ã‚¸ãƒ•ã‚¡ã‚¤ãƒ«ã¨ Nero ã®é–¢é€£ã€‚

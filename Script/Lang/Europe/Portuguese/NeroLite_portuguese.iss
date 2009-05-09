@@ -1,4 +1,4 @@
-[Languages]
+Ôªø[Languages]
 #ifdef Nero8
 Name: portuguese; MessagesFile: compiler:Languages\Portuguese.isl; LicenseFile: Bin\[FILELOCATION]Target\Data\Setup\EULA_ptg.rtf
 Name: portuguese_brazilian; MessagesFile: compiler:Languages\BrazilianPortuguese.isl; LicenseFile: Bin\[FILELOCATION]Target\Data\Setup\EULA_ptg.rtf
@@ -95,18 +95,18 @@ Name: nero_lang\portuguese_brazilian; Description: {cm:Comp_Nero_lang_portuguese
 [CustomMessages]
 ;Portuguese Brazilian
 ;Setup Wizard - Registration dialog
-portuguese_brazilian.CustomFormCaption=InformaÁıes sobre o cliente
-portuguese_brazilian.CustomFormDescription=Por favor digite suas informaÁıes
-portuguese_brazilian.RegistrationInfo=Personalize sua cÛpia do Nero {#NeroMajorVersion} fornecendo seu nome e seu n˙mero serial.
-portuguese_brazilian.RegistrationWelcome=Obrigado por registrar sua cÛpia do Nero.
+portuguese_brazilian.CustomFormCaption=Informa√ß√µes sobre o cliente
+portuguese_brazilian.CustomFormDescription=Por favor digite suas informa√ß√µes
+portuguese_brazilian.RegistrationInfo=Personalize sua c√≥pia do Nero {#NeroMajorVersion} fornecendo seu nome e seu n√∫mero serial.
+portuguese_brazilian.RegistrationWelcome=Obrigado por registrar sua c√≥pia do Nero.
 portuguese_brazilian.RegistrationWelcomeCaption=Bem Vindo ao Nero
 portuguese_brazilian.RegistrationCaption=Registro
-portuguese_brazilian.NeroShopCaption=Sem o n˙mero serial?
-portuguese_brazilian.NeroShop=Loja Online do Nero†
+portuguese_brazilian.NeroShopCaption=Sem o n√∫mero serial?
+portuguese_brazilian.NeroShop=Loja Online do Nero¬†
 portuguese_brazilian.NeroShopURL=http://www.nero.com/ptb/catalog.html
 portuguese_brazilian.RegistrationName=Nome:
 portuguese_brazilian.RegistrationOrg=Empresa:
-portuguese_brazilian.RegistrationSerial=N˙mero serial:
+portuguese_brazilian.RegistrationSerial=N√∫mero serial:
 ;Filetype descriptions - Nero CoverDesigner
 portuguese_brazilian.CDC_Description=Documentos do Nero CoverDesigner
 portuguese_brazilian.NCD_Description=Documentos do Nero CoverDesigne
@@ -115,33 +115,33 @@ portuguese_brazilian.NCT_Description=Modelos do Nero CoverDesigner
 portuguese_brazilian.CUE_Description=Arquivos de Imagem
 portuguese_brazilian.IMG_Description=Arquivos de Imagem
 portuguese_brazilian.ISO_Description=Arquivos de Imagem
-portuguese_brazilian.NAB_Description=CompilaÁ„o de CD-ROM (Audiobook)
-portuguese_brazilian.NHF_Description=CompilaÁ„o de CD HFS
-portuguese_brazilian.NHV_Description=CompilaÁ„o de VÌdeo HD-BURN
-portuguese_brazilian.NMD_Description=CompilaÁ„o de miniDVD
-portuguese_brazilian.NR3_Description=CompilaÁ„o de CD-ROM (MP3)
-portuguese_brazilian.NR4_Description=CompilaÁ„o de CD-ROM (AAC)
-portuguese_brazilian.NRA_Description=CompilaÁ„o de CD de ¡udio
-portuguese_brazilian.NRB_Description=CompilaÁ„o de CD-ROM (InicializaÁ„o)
-portuguese_brazilian.NRC_Description=CompilaÁ„o de CD-ROM (UDF/ISO)
-portuguese_brazilian.NRD_Description=CompilaÁ„o de DVD de VÌdeo
-portuguese_brazilian.NRE_Description=CompilaÁ„o de CD Extra
+portuguese_brazilian.NAB_Description=Compila√ß√£o de CD-ROM (Audiobook)
+portuguese_brazilian.NHF_Description=Compila√ß√£o de CD HFS
+portuguese_brazilian.NHV_Description=Compila√ß√£o de V√≠deo HD-BURN
+portuguese_brazilian.NMD_Description=Compila√ß√£o de miniDVD
+portuguese_brazilian.NR3_Description=Compila√ß√£o de CD-ROM (MP3)
+portuguese_brazilian.NR4_Description=Compila√ß√£o de CD-ROM (AAC)
+portuguese_brazilian.NRA_Description=Compila√ß√£o de CD de √Åudio
+portuguese_brazilian.NRB_Description=Compila√ß√£o de CD-ROM (Inicializa√ß√£o)
+portuguese_brazilian.NRC_Description=Compila√ß√£o de CD-ROM (UDF/ISO)
+portuguese_brazilian.NRD_Description=Compila√ß√£o de DVD de V√≠deo
+portuguese_brazilian.NRE_Description=Compila√ß√£o de CD Extra
 portuguese_brazilian.NRG_Description=Arquivos de Imagem
-portuguese_brazilian.NRH_Description=CompilaÁ„o de CD-ROM (HÌbrido)
-portuguese_brazilian.NRI_Description=CompilaÁ„o de CD-ROM (ISO)
-portuguese_brazilian.NRJ_Description=CompilaÁ„o de JukeBox
-portuguese_brazilian.NRM_Description=CompilaÁ„o de CD Mixed Mode
-portuguese_brazilian.NRS_Description=CompilaÁ„o de CD-ROM (InicializaÁ„o EFI)
-portuguese_brazilian.NRU_Description=CompilaÁ„o de CD-ROM (UDF)
-portuguese_brazilian.NRV_Description=CompilaÁ„o de CD de VÌdeo
-portuguese_brazilian.NRW_Description=CompilaÁ„o de CD-ROM (WMA)
-portuguese_brazilian.NSD_Description=CompilaÁ„o de CD de Super VÌdeo
+portuguese_brazilian.NRH_Description=Compila√ß√£o de CD-ROM (H√≠brido)
+portuguese_brazilian.NRI_Description=Compila√ß√£o de CD-ROM (ISO)
+portuguese_brazilian.NRJ_Description=Compila√ß√£o de JukeBox
+portuguese_brazilian.NRM_Description=Compila√ß√£o de CD Mixed Mode
+portuguese_brazilian.NRS_Description=Compila√ß√£o de CD-ROM (Inicializa√ß√£o EFI)
+portuguese_brazilian.NRU_Description=Compila√ß√£o de CD-ROM (UDF)
+portuguese_brazilian.NRV_Description=Compila√ß√£o de CD de V√≠deo
+portuguese_brazilian.NRW_Description=Compila√ß√£o de CD-ROM (WMA)
+portuguese_brazilian.NSD_Description=Compila√ß√£o de CD de Super V√≠deo
 ;Setup Component Description
 portuguese_brazilian.Comp_Nero_lang=Idioma
-portuguese_brazilian.Comp_Nero_lang_english=InglÍs
-portuguese_brazilian.Comp_Nero_lang_portuguese_brazilian=PortuguÍs Brasileiro
-portuguese_brazilian.Comp_Nero_lang_portuguese=PortuguÍs
+portuguese_brazilian.Comp_Nero_lang_english=Ingl√™s
+portuguese_brazilian.Comp_Nero_lang_portuguese_brazilian=Portugu√™s Brasileiro
+portuguese_brazilian.Comp_Nero_lang_portuguese=Portugu√™s
 portuguese_brazilian.Comp_Nero_Sounds=Sons
 ;Setup register filetypes
 portuguese_brazilian.FileAssociations=Registrar arquivos do tipo:
-portuguese_brazilian.AssocImageFileExt=Associar o Nero aos Arquivos de Imagem Padr„o
+portuguese_brazilian.AssocImageFileExt=Associar o Nero aos Arquivos de Imagem Padr√£o

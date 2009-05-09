@@ -1,4 +1,4 @@
-[Languages]
+ï»¿[Languages]
 #ifdef Nero8
 Name: chinese_simpl; MessagesFile: compiler:Languages\ChineseSimpl.isl; LicenseFile: Bin\[FILELOCATION]Target\Data\Setup\EULA_chs.rtf
 Name: chinese_trad; MessagesFile: compiler:Languages\ChineseTrad.isl; LicenseFile: Bin\[FILELOCATION]Target\Data\Setup\EULA_cht.rtf
@@ -96,104 +96,105 @@ Name: nero_lang\chinese_trad; Description: {cm:Comp_Nero_lang_chinese_trad}; Lan
 [CustomMessages]
 ;Chinese (Simpl.)
 ;Setup Wizard - Registration dialog
-chinese_simpl.CustomFormCaption=ÓÃ»§ĞÅÏ¢
-chinese_simpl.CustomFormDescription=ÇëÊäÈëÄúµÄĞÅÏ¢¡£
-chinese_simpl.RegistrationInfo=Çë¸öĞÔ»¯ÄúµÄ Nero {#NeroMajorVersion} ¸±±¾£¬·½·¨ÊÇÊäÈëÄúµÄĞÕÃûºÍĞòÁĞºÅ¡£
-chinese_simpl.RegistrationWelcome=¸ĞĞ»Äú¹ºÂò Nero ¸±±¾¡£
-chinese_simpl.RegistrationWelcomeCaption=»¶Ó­Ê¹ÓÃ Nero
-chinese_simpl.RegistrationCaption=×¢²á
-chinese_simpl.NeroShopCaption=Ã»ÓĞĞòÁĞºÅÔõÃ´°ì£¿
-chinese_simpl.NeroShop=Nero ÔÚÏßÉÌµê 
+chinese_simpl.CustomFormCaption=ç”¨æˆ·ä¿¡æ¯
+chinese_simpl.CustomFormDescription=è¯·è¾“å…¥æ‚¨çš„ä¿¡æ¯ã€‚
+chinese_simpl.RegistrationInfo=è¯·ä¸ªæ€§åŒ–æ‚¨çš„ Nero {#NeroMajorVersion} å‰¯æœ¬ï¼Œæ–¹æ³•æ˜¯è¾“å…¥æ‚¨çš„å§“åå’Œåºåˆ—å·ã€‚
+chinese_simpl.RegistrationWelcome=æ„Ÿè°¢æ‚¨è´­ä¹° Nero å‰¯æœ¬ã€‚
+chinese_simpl.RegistrationWelcomeCaption=æ¬¢è¿ä½¿ç”¨ Nero
+chinese_simpl.RegistrationCaption=æ³¨å†Œ
+chinese_simpl.NeroShopCaption=æ²¡æœ‰åºåˆ—å·æ€ä¹ˆåŠï¼Ÿ
+chinese_simpl.NeroShop=Nero åœ¨çº¿å•†åº—?
 chinese_simpl.NeroShopURL=http://www.nero.com/chs/catalog.html
-chinese_simpl.RegistrationName=Ãû×Ö:
-chinese_simpl.RegistrationOrg=¹«Ë¾:
-chinese_simpl.RegistrationSerial=ĞòÁĞºÅ:
+chinese_simpl.RegistrationName=åå­—:
+chinese_simpl.RegistrationOrg=å…¬å¸:
+chinese_simpl.RegistrationSerial=åºåˆ—å·:
 ;Filetype descriptions - Nero CoverDesigner
-chinese_simpl.CDC_Description=Nero CD·âÃæÎÄµµ
-chinese_simpl.NCD_Description=Nero CD·âÃæÎÄµµ
-chinese_simpl.NCT_Description=Nero CD·âÃæÄ£°å
+chinese_simpl.CDC_Description=Nero CDå°é¢æ–‡æ¡£
+chinese_simpl.NCD_Description=Nero CDå°é¢æ–‡æ¡£
+chinese_simpl.NCT_Description=Nero CDå°é¢æ¨¡æ¿
 ;Filetype descriptions - Nero Burning Rom
-chinese_simpl.CUE_Description=Ó³ÏñÎÄ¼ş
-chinese_simpl.IMG_Description=Ó³ÏñÎÄ¼ş
-chinese_simpl.ISO_Description=Ó³ÏñÎÄ¼ş
-chinese_simpl.NAB_Description=ÓĞÉù¶ÁÎï CD ±àÒë
-chinese_simpl.NHF_Description=HFS ¹âÅÌ±àÒë
-chinese_simpl.NHV_Description=HD-BURN ÊÓÆµ±àÒë
-chinese_simpl.NMD_Description=miniDVD ±àÒë
-chinese_simpl.NR3_Description=MP3 CD ±àÒë
-chinese_simpl.NR4_Description=AAC CD ±àÒë
-chinese_simpl.NRA_Description=ÒôÀÖ CD ±àÒë
-chinese_simpl.NRB_Description=¿ÉÒıµ¼ CD ±àÒë
-chinese_simpl.NRC_Description=CD ±àÒë(UDF/ISO)
-chinese_simpl.NRD_Description=DVD ÊÓÆµ±àÒë
-chinese_simpl.NRE_Description=CD-Extra ±àÒë
-chinese_simpl.NRG_Description=Nero Ó³ÏñÎÄ¼ş
-chinese_simpl.NRH_Description=Hybird CD ±àÒë
-chinese_simpl.NRI_Description=CD ±àÒë(ISO)
-chinese_simpl.NRJ_Description=JukeBox ±àÒë
-chinese_simpl.NRM_Description=»ìºÏÄ£Ê½ CD ±àÒë
-chinese_simpl.NRS_Description=EFI ¿ÉÒıµ¼ CD ±àÒë
-chinese_simpl.NRU_Description=CD ±àÒë(UDF)
-chinese_simpl.NRV_Description=VCD ±àÒë
-chinese_simpl.NRW_Description=WMA CD ±àÒë
-chinese_simpl.NSD_Description=³¬¼¶ VCD ±àÒë
+chinese_simpl.CUE_Description=æ˜ åƒæ–‡ä»¶
+chinese_simpl.IMG_Description=æ˜ åƒæ–‡ä»¶
+chinese_simpl.ISO_Description=æ˜ åƒæ–‡ä»¶
+chinese_simpl.NAB_Description=æœ‰å£°è¯»ç‰© CD ç¼–è¯‘
+chinese_simpl.NHF_Description=HFS å…‰ç›˜ç¼–è¯‘
+chinese_simpl.NHV_Description=HD-BURN è§†é¢‘ç¼–è¯‘
+chinese_simpl.NMD_Description=miniDVD ç¼–è¯‘
+chinese_simpl.NR3_Description=MP3 CD ç¼–è¯‘
+chinese_simpl.NR4_Description=AAC CD ç¼–è¯‘
+chinese_simpl.NRA_Description=éŸ³ä¹ CD ç¼–è¯‘
+chinese_simpl.NRB_Description=å¯å¼•å¯¼ CD ç¼–è¯‘
+chinese_simpl.NRC_Description=CD ç¼–è¯‘(UDF/ISO)
+chinese_simpl.NRD_Description=DVD è§†é¢‘ç¼–è¯‘
+chinese_simpl.NRE_Description=CD-Extra ç¼–è¯‘
+chinese_simpl.NRG_Description=Nero æ˜ åƒæ–‡ä»¶
+chinese_simpl.NRH_Description=Hybird CD ç¼–è¯‘
+chinese_simpl.NRI_Description=CD ç¼–è¯‘(ISO)
+chinese_simpl.NRJ_Description=JukeBox ç¼–è¯‘
+chinese_simpl.NRM_Description=æ··åˆæ¨¡å¼ CD ç¼–è¯‘
+chinese_simpl.NRS_Description=EFI å¯å¼•å¯¼ CD ç¼–è¯‘
+chinese_simpl.NRU_Description=CD ç¼–è¯‘(UDF)
+chinese_simpl.NRV_Description=VCD ç¼–è¯‘
+chinese_simpl.NRW_Description=WMA CD ç¼–è¯‘
+chinese_simpl.NSD_Description=è¶…çº§ VCD ç¼–è¯‘
 ;Setup Component Description
-chinese_simpl.Comp_Nero_lang=ÓïÑÔ
-chinese_simpl.Comp_Nero_lang_english=Ó¢ÎÄ
-chinese_simpl.Comp_Nero_lang_chinese_simpl=¼òÌåÖĞÎÄ
-chinese_simpl.Comp_Nero_Sounds=ÉùÒô
+chinese_simpl.Comp_Nero_lang=è¯­è¨€
+chinese_simpl.Comp_Nero_lang_english=è‹±æ–‡
+chinese_simpl.Comp_Nero_lang_chinese_simpl=ç®€ä½“ä¸­æ–‡
+chinese_simpl.Comp_Nero_Sounds=å£°éŸ³
 ;Setup register filetypes
-chinese_simpl.FileAssociations=×¢²áÎÄ¼şÀàĞÍ:
-chinese_simpl.AssocImageFileExt=½«±ê×¼µÄÓ³ÏñÎÄ¼ş¹ØÁªµ½ Nero
+chinese_simpl.FileAssociations=æ³¨å†Œæ–‡ä»¶ç±»å‹:
+chinese_simpl.AssocImageFileExt=å°†æ ‡å‡†çš„æ˜ åƒæ–‡ä»¶å…³è”åˆ° Nero
 
 ;Chinese (Trad.)
 ;Setup Wizard - Registration dialog
-chinese_trad.CustomFormCaption=«È¤á¸ê°T
-chinese_trad.CustomFormDescription=½Ğ¿é¤J±zªºµù¥U¸ê°T¡C
-chinese_trad.RegistrationInfo=½Ğ¿é¤J±zªº¨Ï¥ÎªÌ¦WºÙ©M±zªº Nero {#NeroMajorVersion} §Ç¸¹¡C
-chinese_trad.RegistrationWelcome=·PÁÂ±zÁÊ¶R Nero¡C
-chinese_trad.RegistrationWelcomeCaption=Åwªï¨Ï¥Î Nero
-chinese_trad.RegistrationCaption=µù¥U
-chinese_trad.NeroShopCaption=¨S¦³µù¥U§Ç¸¹¶Ü?
-chinese_trad.NeroShop=Nero ½u¤W°Ó©± (­^¤å) 
+chinese_trad.CustomFormCaption=å®¢æˆ¶è³‡è¨Š
+chinese_trad.CustomFormDescription=è«‹è¼¸å…¥æ‚¨çš„è¨»å†Šè³‡è¨Šã€‚
+chinese_trad.RegistrationInfo=è«‹è¼¸å…¥æ‚¨çš„ä½¿ç”¨è€…åç¨±å’Œæ‚¨çš„ Nero {#NeroMajorVersion} åºè™Ÿã€‚
+chinese_trad.RegistrationWelcome=æ„Ÿè¬æ‚¨è³¼è²· Neroã€‚
+chinese_trad.RegistrationWelcomeCaption=æ­¡è¿ä½¿ç”¨ Nero
+chinese_trad.RegistrationCaption=è¨»å†Š
+chinese_trad.NeroShopCaption=æ²’æœ‰è¨»å†Šåºè™Ÿå—?
+chinese_trad.NeroShop=Nero ç·šä¸Šå•†åº— (è‹±æ–‡)?
 chinese_trad.NeroShopURL=http://www.nero.com/cht/catalog.html
-chinese_trad.RegistrationName=¨Ï¥ÎªÌ¦WºÙ:
-chinese_trad.RegistrationOrg=²ÕÂ´:
-chinese_trad.RegistrationSerial=§Ç¸¹:
+chinese_trad.RegistrationName=ä½¿ç”¨è€…åç¨±:
+chinese_trad.RegistrationOrg=çµ„ç¹”:
+chinese_trad.RegistrationSerial=åºè™Ÿ:
 ;Filetype descriptions - Nero CoverDesigner
-chinese_trad.CDC_Description=Nero CoverDesigner ¤å¥ó
-chinese_trad.NCD_Description=Nero CoverDesigner ¤å¥ó
-chinese_trad.NCT_Description=Nero CoverDesigner ½d¥»
+chinese_trad.CDC_Description=Nero CoverDesigner æ–‡ä»¶
+chinese_trad.NCD_Description=Nero CoverDesigner æ–‡ä»¶
+chinese_trad.NCT_Description=Nero CoverDesigner ç¯„æœ¬
 ;Filetype descriptions - Nero Burning Rom
-chinese_trad.CUE_Description=¥úºĞ¬M¹³ÀÉ®×
-chinese_trad.IMG_Description=¥úºĞ¬M¹³ÀÉ®×
-chinese_trad.ISO_Description=¥úºĞ¬M¹³ÀÉ®×
-chinese_trad.NAB_Description=Audiobook CD-ROM ½s¿è
-chinese_trad.NHF_Description=HFS-CD ½s¿è¾¹
-chinese_trad.NHV_Description=HD-BURN-Video ½s¿è
-chinese_trad.NMD_Description=MiniDVD ½s¿è
-chinese_trad.NR3_Description=CD-ROM ½s¿è (MP3)
-chinese_trad.NR4_Description=CD-ROM ½s¿è (AAC)
-chinese_trad.NRA_Description=Audio-CD ½s¿è
-chinese_trad.NRB_Description=CD-ROM ½s¿è (Boot)
-chinese_trad.NRC_Description=CD-ROM ½s¿è (UDF/ISO)
-chinese_trad.NRD_Description=DVD-Video ½s¿è
-chinese_trad.NRE_Description=CD Extra ½s¿è
-chinese_trad.NRG_Description=¥úºĞ¬M¹³ÀÉ®×
-chinese_trad.NRH_Description=Hybrid CD-ROM ½s¿è
-chinese_trad.NRI_Description=CD-ROM ½s¿è (ISO)
-chinese_trad.NRJ_Description=JukeBox ½s¿è
-chinese_trad.NRM_Description=²V¦X¼Ò¦¡ CD ½s¿è
-chinese_trad.NRS_Description=CD-ROM (EFI Boot) ½s¿è
-chinese_trad.NRU_Description=CD-ROM ½s¿è (UDF)
-chinese_trad.NRV_Description=¼v¹³ CD ½s¿è
-chinese_trad.NRW_Description=WMA CD-ROM ½s¿è
-chinese_trad.NSD_Description=Super Video CD ½s¿è
+chinese_trad.CUE_Description=å…‰ç¢Ÿæ˜ åƒæª”æ¡ˆ
+chinese_trad.IMG_Description=å…‰ç¢Ÿæ˜ åƒæª”æ¡ˆ
+chinese_trad.ISO_Description=å…‰ç¢Ÿæ˜ åƒæª”æ¡ˆ
+chinese_trad.NAB_Description=Audiobook CD-ROM ç·¨è¼¯
+chinese_trad.NHF_Description=HFS-CD ç·¨è¼¯å™¨
+chinese_trad.NHV_Description=HD-BURN-Video ç·¨è¼¯
+chinese_trad.NMD_Description=MiniDVD ç·¨è¼¯
+chinese_trad.NR3_Description=CD-ROM ç·¨è¼¯ (MP3)
+chinese_trad.NR4_Description=CD-ROM ç·¨è¼¯ (AAC)
+chinese_trad.NRA_Description=Audio-CD ç·¨è¼¯
+chinese_trad.NRB_Description=CD-ROM ç·¨è¼¯ (Boot)
+chinese_trad.NRC_Description=CD-ROM ç·¨è¼¯ (UDF/ISO)
+chinese_trad.NRD_Description=DVD-Video ç·¨è¼¯
+chinese_trad.NRE_Description=CD Extra ç·¨è¼¯
+chinese_trad.NRG_Description=å…‰ç¢Ÿæ˜ åƒæª”æ¡ˆ
+chinese_trad.NRH_Description=Hybrid CD-ROM ç·¨è¼¯
+chinese_trad.NRI_Description=CD-ROM ç·¨è¼¯ (ISO)
+chinese_trad.NRJ_Description=JukeBox ç·¨è¼¯
+chinese_trad.NRM_Description=æ··åˆæ¨¡å¼ CD ç·¨è¼¯
+chinese_trad.NRS_Description=CD-ROM (EFI Boot) ç·¨è¼¯
+chinese_trad.NRU_Description=CD-ROM ç·¨è¼¯ (UDF)
+chinese_trad.NRV_Description=å½±åƒ CD ç·¨è¼¯
+chinese_trad.NRW_Description=WMA CD-ROM ç·¨è¼¯
+chinese_trad.NSD_Description=Super Video CD ç·¨è¼¯
 ;Setup Component Description
-chinese_trad.Comp_Nero_lang=»y¨¥
-chinese_trad.Comp_Nero_lang_english=­^¤å
-chinese_trad.Comp_Nero_lang_chinese_trad=¤¤¤å (ÁcÅé)
-chinese_trad.Comp_Nero_Sounds=­µ®Ä
+chinese_trad.Comp_Nero_lang=èªè¨€
+chinese_trad.Comp_Nero_lang_english=è‹±æ–‡
+chinese_trad.Comp_Nero_lang_chinese_trad=ä¸­æ–‡ (ç¹é«”)
+chinese_trad.Comp_Nero_Sounds=éŸ³æ•ˆ
 ;Setup register filetypes
-chinese_trad.FileAssociations=µù¥UÀÉ®×ÃöÁp:
-chinese_trad.AssocImageFileExt=±N¥úºĞ¬M¹³ÀÉ©M Nero ÃöÁp¡C
+chinese_trad.FileAssociations=è¨»å†Šæª”æ¡ˆé—œè¯:
+chinese_trad.AssocImageFileExt=å°‡å…‰ç¢Ÿæ˜ åƒæª”å’Œ Nero é—œè¯ã€‚
+

@@ -1,4 +1,4 @@
-[Languages]
+ï»¿[Languages]
 #ifdef Nero8
 Name: swedish; MessagesFile: compiler:Languages\Swedish.isl; LicenseFile: Bin\[FILELOCATION]Target\Data\Setup\EULA_sve.rtf
 #endif
@@ -55,15 +55,15 @@ Name: nero_lang\swedish; Description: {cm:Comp_Nero_lang_swedish}; Languages: no
 ;Setup Wizard - Registration dialog
 swedish.CustomFormCaption=Personlig information
 swedish.CustomFormDescription=Ange dina uppgifter.
-swedish.RegistrationInfo=Ange personlig information (namn och serienummer) för din version%n av Nero {#NeroMajorVersion}.
-swedish.RegistrationWelcome=Tack för ditt köp av en kopia av Nero.
-swedish.RegistrationWelcomeCaption=Välkommen till Nero
+swedish.RegistrationInfo=Ange personlig information (namn och serienummer) fÃ¶r din version%n av Nero {#NeroMajorVersion}.
+swedish.RegistrationWelcome=Tack fÃ¶r ditt kÃ¶p av en kopia av Nero.
+swedish.RegistrationWelcomeCaption=VÃ¤lkommen till Nero
 swedish.RegistrationCaption=Registrering
 swedish.NeroShopCaption=Har du inget serienummer?
-swedish.NeroShop=Neros onlinebutik 
+swedish.NeroShop=Neros onlinebutikÂ 
 swedish.NeroShopURL=http://www.nero.com/eng/catalog.html
 swedish.RegistrationName=Namn:
-swedish.RegistrationOrg=Företag:
+swedish.RegistrationOrg=FÃ¶retag:
 swedish.RegistrationSerial=Serienummer:
 ;Filetype descriptions - Nero CoverDesigner
 swedish.CDC_Description=Nero CD-omslagsdokument
@@ -95,10 +95,10 @@ swedish.NRV_Description=Video-CD kompilering
 swedish.NRW_Description=CD-ROM-kompilering (WMA)
 swedish.NSD_Description=Super Video CD-kompilering
 ;Setup Component Description
-swedish.Comp_Nero_lang=Språk
+swedish.Comp_Nero_lang=SprÃ¥k
 swedish.Comp_Nero_lang_english=Engelska
 swedish.Comp_Nero_lang_swedish=Svenska
 swedish.Comp_Nero_Sounds=Ljud
 ;Setup register filetypes
 swedish.FileAssociations=Registrera filtyper:
-swedish.AssocImageFileExt=Associera Nero med standardfiltyper för imagefiler
+swedish.AssocImageFileExt=Associera Nero med standardfiltyper fÃ¶r imagefiler

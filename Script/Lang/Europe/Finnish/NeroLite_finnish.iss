@@ -1,4 +1,4 @@
-[Languages]
+Ôªø[Languages]
 #ifdef Nero8
 Name: finnish; MessagesFile: compiler:Languages\Finnish.isl; LicenseFile: Bin\[FILELOCATION]Target\Data\Setup\EULA_ene.rtf
 #endif
@@ -55,12 +55,12 @@ Name: nero_lang\finnish; Description: {cm:Comp_Nero_lang_finnish}; Languages: no
 ;Setup Wizard - Registration dialog
 finnish.CustomFormCaption=Asiakastiedot
 finnish.CustomFormDescription=Kirjoita tietosi.
-finnish.RegistrationInfo=Yksilˆi Nero kirjoittamalla nimesi ja sarjanumerosi.
+finnish.RegistrationInfo=Yksil√∂i Nero kirjoittamalla nimesi ja sarjanumerosi.
 finnish.RegistrationWelcome=Kiitos Neron hankinnasta.
-finnish.RegistrationWelcomeCaption=Tervetuloa k‰ytt‰m‰‰n Neroa
-finnish.RegistrationCaption=Rekisterˆinti
+finnish.RegistrationWelcomeCaption=Tervetuloa k√§ytt√§m√§√§n Neroa
+finnish.RegistrationCaption=Rekister√∂inti
 finnish.NeroShopCaption=Ei sarjanumeroa?
-finnish.NeroShop=Nero Online Kauppa†
+finnish.NeroShop=Nero Online Kauppa¬†
 finnish.NeroShopURL=http://www.nero.com/eng/catalog.html
 finnish.RegistrationName=Nimi:
 finnish.RegistrationOrg=Yritys:
@@ -98,7 +98,7 @@ finnish.NSD_Description=Super Video CD kokoelma
 finnish.Comp_Nero_lang=Kieli
 finnish.Comp_Nero_lang_english=Englanti
 finnish.Comp_Nero_lang_finnish=Suomi
-finnish.Comp_Nero_Sounds=ƒ‰net
+finnish.Comp_Nero_Sounds=√Ñ√§net
 ;Setup register filetypes
-finnish.FileAssociations=Rekisterˆi tiedostop‰‰tteet:
-finnish.AssocImageFileExt=M‰‰rit‰ Nerolle yleiset levykuvatiedostot
+finnish.FileAssociations=Rekister√∂i tiedostop√§√§tteet:
+finnish.AssocImageFileExt=M√§√§rit√§ Nerolle yleiset levykuvatiedostot

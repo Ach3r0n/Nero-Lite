@@ -1,4 +1,4 @@
-[Languages]
+﻿[Languages]
 #ifdef Nero8
 Name: thai; MessagesFile: compiler:Default.isl; LicenseFile: Bin\[FILELOCATION]Target\Data\Setup\EULA_ene.rtf
 #endif
@@ -58,18 +58,18 @@ Name: nero_lang\thai; Description: {cm:Comp_Nero_lang_thai}; Languages: not thai
 [CustomMessages]
 ;Thai
 ;Setup Wizard - Registration dialog
-thai.CustomFormCaption=�����ż����ҹ
-thai.CustomFormDescription=��سҡ�͡�����Ţͧ�س
-thai.RegistrationInfo=��س�ŧ����¹��Ե�ѳ����ª�����������Ţ������Ţͧ��ҹ
-thai.RegistrationWelcome=�ͺ�س���سʹѺʹع��Ե�ѳ��ͧ Nero
-thai.RegistrationWelcomeCaption=�Թ�յ�͹�Ѻ��� Nero
-thai.RegistrationCaption=���ŧ����¹
-thai.NeroShopCaption=�س�������Ţ��������������
-thai.NeroShop=��ҹ����͹�Ź�ͧ Nero�
+thai.CustomFormCaption=ข้อมูลผู้ใช้งาน
+thai.CustomFormDescription=กรุณากรอกข้อมูลของคุณ
+thai.RegistrationInfo=กรุณาลงทะเบียนผลิตภัณฑ์ด้วยชื่อและหมายเลขซีเรียลของท่าน
+thai.RegistrationWelcome=ขอบคุณที่คุณสนับสนุนผลิตภัณฑ์ของ Nero
+thai.RegistrationWelcomeCaption=ยินดีต้อนรับสู่ Nero
+thai.RegistrationCaption=การลงทะเบียน
+thai.NeroShopCaption=คุณมีหมายเลขซีเรียลหรือไม่
+thai.NeroShop=ร้านค้าออนไลน์ของ Nero 
 thai.NeroShopURL=http://www.nero.com/eng/catalog.html
-thai.RegistrationName=����:
-thai.RegistrationOrg=˹��§ҹ:
-thai.RegistrationSerial=�����Ţ�������:
+thai.RegistrationName=ชื่อ:
+thai.RegistrationOrg=หน่วยงาน:
+thai.RegistrationSerial=หมายเลขซีเรียล:
 ;Filetype descriptions - Nero CoverDesigner
 thai.CDC_Description=Nero CoverDesigner Document
 thai.NCD_Description=Nero CoverDesigner Document
@@ -100,10 +100,10 @@ thai.NRV_Description=Video-CD Compilation
 thai.NRW_Description=WMA CD-ROM Compilation
 thai.NSD_Description=Super Video CD Compilation
 ;Setup Component Description
-thai.Comp_Nero_lang=����
-thai.Comp_Nero_lang_english=�����ѧ���
-thai.Comp_Nero_lang_thai=������
-thai.Comp_Nero_Sounds=���§
+thai.Comp_Nero_lang=ภาษา
+thai.Comp_Nero_lang_english=ภาษาอังกฤษ
+thai.Comp_Nero_lang_thai=ภาษาไทย
+thai.Comp_Nero_Sounds=เสียง
 ;Setup register filetypes
-thai.FileAssociations=ŧ����¹���ʡ�Ţͧ���:
-thai.AssocImageFileExt=�Դ���մ�����ͨ���¹���
+thai.FileAssociations=ลงทะเบียนนามสกุลของไฟล์:
+thai.AssocImageFileExt=เปิดไฟล์ซีดีอิมเอจด้วยนีโร

@@ -19,7 +19,7 @@ procedure AU3_ControlGetHandle(
 		title: string;
 		text: string;
 		control: string;
-		rethandle: string;
+		var rethandle: PAnsiChar;
 		buffersize: integer
 		);
 	external 'AU3_ControlGetHandle@files:autoitx3.dll';
@@ -58,7 +58,7 @@ function AU3_WinExists(
 procedure AU3_WinGetHandle(
 		title: string;
 		text: string;
-		rethandle: string;
+		var rethandle: PAnsiChar;
 		buffersize: integer
 		);
 	external 'AU3_WinGetHandle@files:autoitx3.dll';
@@ -76,5 +76,3 @@ function AU3_WinWait(
 		timeout: longint
 		): longint;
 	external 'AU3_WinWait@files:autoitx3.dll';
-
-

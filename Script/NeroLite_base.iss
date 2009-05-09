@@ -927,7 +927,7 @@ var
 	NCC_PID: Longint;
 	AddLicenseButton, EnterSerialButton,
 		SerialEditBox, NeroWindowTitle: String;
-	RetHandle: String;
+	RetHandle: PAnsiChar;
 	i: Integer;
 begin
 	case CurStep of

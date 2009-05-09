@@ -1,4 +1,4 @@
-﻿[Languages]
+[Languages]
 #ifdef Nero8
 Name: dutch; MessagesFile: compiler:Languages\Dutch.isl; LicenseFile: Bin\[FILELOCATION]Target\Data\Setup\EULA_nld.rtf
 #endif

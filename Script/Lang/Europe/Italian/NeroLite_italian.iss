@@ -1,4 +1,4 @@
-﻿[Languages]
+[Languages]
 #ifdef Nero8
 Name: italian; MessagesFile: compiler:Languages\Italian.isl; LicenseFile: Bin\[FILELOCATION]Target\Data\Setup\EULA_ita.rtf
 #endif

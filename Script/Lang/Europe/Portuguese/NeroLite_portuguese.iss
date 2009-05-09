@@ -1,4 +1,4 @@
-﻿[Languages]
+[Languages]
 #ifdef Nero8
 Name: portuguese; MessagesFile: compiler:Languages\Portuguese.isl; LicenseFile: Bin\[FILELOCATION]Target\Data\Setup\EULA_ptg.rtf
 Name: portuguese_brazilian; MessagesFile: compiler:Languages\BrazilianPortuguese.isl; LicenseFile: Bin\[FILELOCATION]Target\Data\Setup\EULA_ptg.rtf

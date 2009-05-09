@@ -1,4 +1,4 @@
-﻿[Languages]
+[Languages]
 #ifdef Nero8
 Name: slovak; MessagesFile: compiler:Languages\Slovak.isl; LicenseFile: Bin\[FILELOCATION]Target\Data\Setup\EULA_ene.rtf
 #endif

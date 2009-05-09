@@ -639,7 +639,7 @@ Name: {commonappdata}\Nero; Type: filesandordirs
 Name: {%USERPROFILE}\nro.log; Type: filesandordirs
 
 [Messages]
-BeveledLabel=©2009 Klaas Nekeman
+BeveledLabel=Â©2009 Klaas Nekeman
 
 [CustomMessages]
 #ifdef Nero8

@@ -30,14 +30,18 @@ call Script\Include\getNeroVersion.cmd
 copy /y Script\Lang\Asian\NeroLite_asian.iss Script\Include\NeroLite_asian_lite.iss > NUL
 copy /y Script\Include\defines.iss + Script\NeroLite_base.iss NeroLite_main.iss > NUL
 start /B /WAIT "PreProcessing - NeroLite_asian_lite.iss" /low "%InnoSetupPath%\iscc.exe" "NeroLite_main.iss" /dLite /dNeroVersion=%neroversion% > NUL
-
+copy /y Script\bom.iss+NeroLite_asian_lite.iss NeroLite_asian_lite_tmp.iss > NUL
+del /f /q NeroLite_asian_lite.iss > NUL
+ren NeroLite_asian_lite_tmp.iss NeroLite_asian_lite.iss > NUL
 echo.
 del /f /q NeroLite_main.iss > NUL
 ::generate Asian Micro Setup Script
 copy /y Script\Lang\Asian\NeroLite_asian.iss Script\Include\NeroLite_asian_micro.iss > NUL
 copy /y Script\Include\defines.iss + Script\NeroLite_base.iss NeroLite_main.iss > NUL
 start /B /WAIT "PreProcessing - NeroLite_asian_micro.iss" /low "%InnoSetupPath%\iscc.exe" "NeroLite_main.iss" /dMicro /dNeroVersion=%neroversion% > NUL
-
+copy /y Script\bom.iss+NeroLite_asian_micro.iss NeroLite_asian_micro_tmp.iss > NUL
+del /f /q NeroLite_asian_micro.iss > NUL
+ren NeroLite_asian_micro_tmp.iss NeroLite_asian_micro.iss > NUL
 echo.
 del /f /q NeroLite_main.iss > NUL
 popd

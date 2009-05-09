@@ -30,12 +30,18 @@ call Script\Include\getNeroVersion.cmd
 copy /y Script\Lang\Europe\NeroLite_europe.iss Script\Include\NeroLite_europe_lite.iss > NUL
 copy /y Script\Include\defines.iss + Script\NeroLite_base.iss NeroLite_main.iss > NUL
 start /B /WAIT "PreProcessing - NeroLite_europe_lite.iss" /low "%InnoSetupPath%\iscc.exe" "NeroLite_main.iss" /dLite /dNeroVersion=%neroversion% > NUL
+copy /y Script\bom.iss+NeroLite_europe_lite.iss NeroLite_europe_lite_tmp.iss > NUL
+del /f /q NeroLite_europe_lite.iss > NUL
+ren NeroLite_europe_lite_tmp.iss NeroLite_europe_lite.iss > NUL
 echo.
 del /f /q NeroLite_main.iss > NUL
 ::generate European Micro Setup Script
 copy /y Script\Lang\Europe\NeroLite_europe.iss Script\Include\NeroLite_europe_micro.iss > NUL
 copy /y Script\Include\defines.iss + Script\NeroLite_base.iss NeroLite_main.iss > NUL
 start /B /WAIT "PreProcessing - NeroLite_europe_micro.iss" /low "%InnoSetupPath%\iscc.exe" "NeroLite_main.iss" /dMicro /dNeroVersion=%neroversion% > NUL
+copy /y Script\bom.iss+NeroLite_europe_micro.iss NeroLite_europe_micro_tmp.iss > NUL
+del /f /q NeroLite_europe_micro.iss > NUL
+ren NeroLite_europe_micro_tmp.iss NeroLite_europe_micro.iss > NUL
 echo.
 del /f /q NeroLite_main.iss > NUL
 popd

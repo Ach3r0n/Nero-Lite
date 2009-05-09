@@ -1,4 +1,4 @@
-﻿[Files]
+[Files]
 ;English
 #ifdef Nero8
 Source: Custom\Help\NeroControlCenter_ENG.chm; DestDir: {cf}\{#RegPublisherName}\Nero Web; Check: CheckLanguage('english'); BeforeInstall: AddLanguage('ENG');

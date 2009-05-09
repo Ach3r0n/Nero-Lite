@@ -1,4 +1,4 @@
-﻿[Languages]
+[Languages]
 #ifdef Nero8
 Name: spanish; MessagesFile: compiler:Languages\Spanish.isl; LicenseFile: Bin\[FILELOCATION]Target\Data\Setup\EULA_esp.rtf
 Name: spanish_latin_american; MessagesFile: compiler:Languages\Spanish.isl; LicenseFile: Bin\[FILELOCATION]Target\Data\Setup\EULA_esm.rtf

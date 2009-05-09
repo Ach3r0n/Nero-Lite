@@ -1,4 +1,4 @@
-﻿[Languages]
+[Languages]
 #ifdef Nero8
 Name: korean; MessagesFile: compiler:Languages\Korean.isl; LicenseFile: Bin\[FILELOCATION]Target\Data\Setup\EULA_kor.rtf
 #endif

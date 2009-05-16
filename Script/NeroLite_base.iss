@@ -965,7 +965,7 @@ begin
 						EnterSerialButton := '[ID:1; CLASS:Button; INSTANCE:1;]';
 						SerialEditBox := '[ID:10008; CLASS:Edit; INSTANCE:1;]';
 					//Configure AutoIt
-						AU3_AutoItSetOption('WinTitleMatchMode', 4);
+						//AU3_AutoItSetOption('WinTitleMatchMode', 4);
 					//Close SetupX.exe process if already exists
 						if AU3_ProcessExists('SetupX.exe') <> 0 then
 							begin
@@ -984,9 +984,9 @@ begin
 											RetHandle := StringOfChar(#0, 255);
 											AU3_ControlGetHandle('[LAST]', chr(0), AddLicenseButton, RetHandle, 255);
 											RetHandle := TrimRight(RetHandle);
-											Sleep(250);
+											Sleep(10);
 											i := i + 1;
-										until (Length(RetHandle) > 0) or (i > 40);
+										until (Length(RetHandle) > 0) or (i > 500);
 										if (Length(RetHandle) > 0) then
 											begin
 												Sleep(500);

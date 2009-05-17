@@ -15,11 +15,11 @@ AppPublisherURL=http://updatepack.nl
 AppVerName=Nero {#NeroMajorVersion} {#NeroSetupType} {#NeroVersion}
 AppVersion={#NeroVersion}
 ChangesAssociations=true
-Compression=lzma/ultra
+Compression=lzma/ultra64
 DefaultDirName={pf}\Nero
 DefaultGroupName=Nero
 FlatComponentsList=false
-InternalCompressLevel=ultra
+InternalCompressLevel=ultra64
 MinVersion=0,5.0sp4
 OutputBaseFilename=Nero-{#NeroVersion}_{#NeroSetupLocale}_{#Lowercase(NeroSetupType)}
 OutputDir=.\Output
@@ -637,9 +637,15 @@ Name: {cf}\{#RegPublisherName}\Lib; Type: dirifempty
 Name: {cf}\{#RegPublisherName}; Type: dirifempty
 Name: {commonappdata}\Nero; Type: filesandordirs
 Name: {%USERPROFILE}\nro.log; Type: filesandordirs
+#ifdef Nero8
+Name: {userappdata}\Nero\Nero8\Nero Burning ROM\UserImages.bmp; Type: files
+Name: {userappdata}\Nero\Nero8\Nero Burning ROM; Type: dirifempty
+Name: {userappdata}\Nero\Nero8; Type: dirifempty
+Name: {userappdata}\Nero; Type: dirifempty
+#endif
 
 [Messages]
-BeveledLabel=Â©2009 Klaas Nekeman
+BeveledLabel=©2009 Klaas Nekeman
 
 [CustomMessages]
 #ifdef Nero8
@@ -742,7 +748,11 @@ Name: nero_core\nero_audioplugins\mausau; Description: MauSau Audio Plug-ins; Ty
 #endif
 
 ;Nero VideoCD/SVCD + E-AC3/TrueHD support
-Name: nero_core\nero_videocd; Description: Nero VideoCD and E-AC3/TrueHD Support; Types: compact full; Languages: 
+#ifdef Nero7
+Name: nero_core\nero_videocd; Description: Nero VideoCD and E-AC3/TrueHD Support; Types: compact full
+#else
+Name: nero_core\nero_videocd; Description: Nero VideoCD Support; Types: compact full
+#endif
 
 ;Nero CoverDesigner
 #ifndef Micro
@@ -751,7 +761,7 @@ Name: nero_coverdes; Description: Nero CoverDesigner; Types: full
 
 ;Nero WaveEditor
 #ifndef Micro
-Name: nero_waveedit; Description: Nero WaveEditor; Types: full; Languages: 
+Name: nero_waveedit; Description: Nero WaveEditor; Types: full
 #endif
 
 ;Nero Toolkit

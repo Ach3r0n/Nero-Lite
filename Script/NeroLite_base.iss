@@ -297,7 +297,8 @@ Source: Bin\[FILELOCATION]Common Files\AudioPlugins\NeroDigital.dll; DestDir: {c
 ;Nero Audio Plugins - Lame MP3 Encoder
 #ifndef Micro
 Source: Bin\[FILELOCATION]Common Files\AudioPlugins\mp3PP.dll; DestDir: {cf}\{#RegPublisherName}\AudioPlugins; Components: nero_core\nero_audioplugins {#emit nero_waveedit}; Flags: sharedfile uninsnosharedfileprompt
-Source: Bin\[FILELOCATION]Common Files\AudioPlugins\lame_enc.dll; DestDir: {cf}\{#RegPublisherName}\AudioPlugins; Components: nero_core\nero_audioplugins {#emit nero_waveedit}; Flags: sharedfile uninsnosharedfileprompt
+;Lame 3.98
+Source: Custom\AudioPlugins\lame_enc.dll; DestDir: {cf}\{#RegPublisherName}\AudioPlugins; Components: nero_core\nero_audioplugins {#emit nero_waveedit}; Flags: sharedfile uninsnosharedfileprompt
 #endif
 
 ;Nero Audio Plugins - MauSau

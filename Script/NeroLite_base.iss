@@ -38,7 +38,7 @@ VersionInfoDescription=Nero {#NeroMajorVersion} {#NeroSetupType}
 VersionInfoProductName=Nero {#NeroSetupType}
 VersionInfoProductVersion={#NeroVersion}
 AppMutex=NeroActiv,NeroSplashScreenMutex
-VersionInfoVersion=1.19.0.1
+VersionInfoVersion=1.19.0.2
 
 [Languages]
 #ifdef Nero8

@@ -645,7 +645,7 @@ Name: {userappdata}\Nero; Type: dirifempty
 #endif
 
 [Messages]
-BeveledLabel=©2009 Klaas Nekeman
+BeveledLabel=Â©2009 Klaas Nekeman
 
 [CustomMessages]
 #ifdef Nero8

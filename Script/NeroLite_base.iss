@@ -38,7 +38,7 @@ VersionInfoDescription=Nero {#NeroMajorVersion} {#NeroSetupType}
 VersionInfoProductName=Nero {#NeroSetupType}
 VersionInfoProductVersion={#NeroVersion}
 AppMutex=NeroActiv,NeroSplashScreenMutex
-VersionInfoVersion=1.19.0.2
+VersionInfoVersion=1.19.1.0
 
 [Languages]
 #ifdef Nero8
@@ -55,7 +55,7 @@ Source: Setup\Nero{#NeroMajorVersion}\nerosidebarbig.bmp; DestDir: {tmp}; DestNa
 ;AutoItX 3.3
 Source: Setup\autoitx3.dll; DestDir: {tmp}; Flags: dontcopy
 
-;SQLite 3.6.14
+;SQLite 3.6.14.1
 Source: Setup\sqlite3.dll; DestDir: {tmp}; Flags: dontcopy
 
 #ifdef Nero7
@@ -975,8 +975,6 @@ begin
 						AddLicenseButton := '[CLASS:Button; INSTANCE:12;]';
 						EnterSerialButton := '[ID:1; CLASS:Button; INSTANCE:1;]';
 						SerialEditBox := '[ID:10008; CLASS:Edit; INSTANCE:1;]';
-					//Configure AutoIt
-						//AU3_AutoItSetOption('WinTitleMatchMode', 4);
 					//Close SetupX.exe process if already exists
 						if AU3_ProcessExists('SetupX.exe') <> 0 then
 							begin

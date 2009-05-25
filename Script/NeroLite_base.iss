@@ -72,7 +72,7 @@ Source: Setup\vcredist.msi; DestDir: {tmp}; Flags: dontcopy
 #endif
 
 ;GDI+ Redistributable (5.1.3102.5581)
-Source: Setup\gdiplus.dll; DestDir: {cf}\{#RegPublisherName}\Lib; Flags: sharedfile restartreplace uninsneveruninstall; OnlyBelowVersion: 0,5.01.2600
+Source: Setup\gdiplus.dll; DestDir: {sys}; Flags: sharedfile restartreplace uninsneveruninstall; OnlyBelowVersion: 0,5.01.2600
 
 ;BCGControlBar library
 #ifdef Nero7
@@ -1104,3 +1104,4 @@ end;
 #expr DeleteFile("Script\Include\" + LocaleIncludeFileName)
 #pragma error "Completed preprocessing script. You can now proceed building " + AddBackslash(SourcePath) + LocaleIncludeFileName
 #endif
+

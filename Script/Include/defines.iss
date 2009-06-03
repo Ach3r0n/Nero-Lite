@@ -8,13 +8,12 @@
 
 #ifdef NeroVersion
 	#define NeroMajorVersion Int(Copy(NeroVersion,1,1))
+	#define Nero + NeroMajorVersion
 #endif
 
-#if NeroMajorVersion == 7
-	#define Nero7
+#ifdef Nero7
 	#define RegPublisherName "Ahead"
 #else
-	#define Nero8
 	#define RegPublisherName "Nero"
 #endif
 

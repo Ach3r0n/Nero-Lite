@@ -2,19 +2,28 @@
 #define ISSI_IncludePath ReadReg(HKLM, "Software\Microsoft\Windows\CurrentVersion\Uninstall\Inno Setup Script Includes_is1","InstallLocation", GetEnv("ProgramFiles") + "\Inno Setup\ISSI")
 
 ;Detect Nero Version
-#ifndef NeroVersion
+#if FileExists("Bin\[FILELOCATION]Core\nero.exe")
 	#define NeroVersion GetFileVersion("Bin\[FILELOCATION]Core\nero.exe")
+#elif FileExists("Bin\PFiles\Nero\Nero 9\Nero Burning ROM\nero.exe")
+	#define NeroVersion	GetFileVersion("Bin\PFiles\Nero\Nero 9\Nero Burning ROM\nero.exe")
 #endif
 
 #ifdef NeroVersion
 	#define NeroMajorVersion Int(Copy(NeroVersion,1,1))
-	#define Nero + NeroMajorVersion
 #endif
 
-#ifdef Nero7
+#if NeroMajorVersion <= 7
 	#define RegPublisherName "Ahead"
 #else
 	#define RegPublisherName "Nero"
+#endif
+
+#if NeroMajorVersion == 7
+	#define Nero7
+#elif NeroMajorVersion == 8
+	#define Nero8
+#elif NeroMajorVersion == 9
+	#define Nero9
 #endif
 
 #define ISSI_UseMyInitializeWizard

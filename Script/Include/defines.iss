@@ -26,6 +26,41 @@
 	#define Nero9
 #endif
 
+#ifdef Nero7
+	#define NeroSetup_MsiFilePath "Bin\[FILELOCATION]Target\Setup"
+	#define DriveSpeed_MsiFilePath "Bin\[FILELOCATION]\Nero DriveSpeed"
+#endif
+
+#ifdef Nero8
+	#define NeroSetup_MsiFilePath "Bin\[FILELOCATION]Target\Data\Setup"
+	#define DriveSpeed_MsiFilePath "Bin\[FILELOCATION]\Nero Toolkit DriveSpeed"
+#endif
+
+#ifndef Nero9
+	#ifdef Micro
+	#define ImagXPress_MsiFilePath "Bin\[FILELOCATION]Redist"
+	#define NeroCore_MsiFilePath "Bin\[FILELOCATION]Core"
+	#define CoverDesigner_MsiFilePath "Bin\[FILELOCATION]Nero CoverDesigner"
+	#define WaveEditor_MsiFilePath "Bin\[FILELOCATION]Nero WaveEditor"
+	#define CommonFilesLibNT_MsiFilePath "Bin\[FILELOCATION]Common Files\Lib\NT"
+	#define CommonFilesLib_MsiFilePath "Bin\[FILELOCATION]Common Files\Lib"
+	#define DiscSpeed_MsiFilePath "Bin\[FILELOCATION]\Nero CD-DVD Speed"
+	#define InfoTool_MsiFilePath "Bin\[FILELOCATION]\Nero InfoTool"
+	#define BurnRights_MsiFilePath "Bin\[FILELOCATION]\Nero BurnRights"
+#endif
+
+#ifdef Nero9
+	#define NeroSetup_MsiFilePath "Bin\Nero\AdvrCntr4"
+	#define ImagXPress_MsiFilePath "Bin\ImagXPress"
+	#define NeroCore_MsiFilePath "Bin\PFiles\Nero\Nero 9\Nero Burning ROM"
+	#define CoverDesigner_MsiFilePath "Bin\PFiles\Nero\Nero 9\Nero CoverDesigner"
+	#define WaveEditor_MsiFilePath "Bin\Nero\Nero 9\Nero WaveEditor"
+	#define BurnRights_MsiFilePath "Bin\Nero\Nero 9\Nero BurnRights"
+	#define DiscSpeed_MsiFilePath "Bin\Nero\Nero 9\Nero DiscSpeed"
+	#define DriveSpeed_MsiFilePath "Bin\Nero\Nero 9\Nero DriveSpeed"
+	#define InfoTool_MsiFilePath "Bin\Nero\Nero 9\Nero InfoTool"
+#endif
+
 #define ISSI_UseMyInitializeWizard
 #define ISSI_WizardSmallBitmapImage_x 206
 #define ISSI_WizardSmallBitmapImage "Setup\Nero" + str(NeroMajorVersion) + "\nerotopbar.bmp"

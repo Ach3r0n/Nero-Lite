@@ -6,10 +6,14 @@ set neroversion=9
 pushd Custom
 
 ::merge version specific files
-if %neroversion% LSS 8 (
+if %neroversion% == 7 (
 copy /y ResourceScripts\Nero7\*.txt ResourceScripts\ > NUL
-) else (
+)
+if %neroversion% == 8 (
 copy /y ResourceScripts\Nero8\*.txt ResourceScripts\ > NUL
+)
+if %neroversion% == 9 (
+copy /y ResourceScripts\Nero9\*.txt ResourceScripts\ > NUL
 )
 echo Micromize:
 

@@ -24,13 +24,21 @@ InternalCompressLevel=ultra64
 MinVersion=0,5.0sp4
 OutputBaseFilename=Nero-{#NeroVersion}_{#NeroSetupLocale}_{#Lowercase(NeroSetupType)}
 OutputDir=.\Output
+#ifdef Nero9
+SetupIconFile=Custom\Resources\Icons\ncc_exe_128.ico
+#else
 SetupIconFile=Custom\Resources\Icons\Nero{#NeroMajorVersion}\nps_dll_128.ico
+#endif
 ShowLanguageDialog=yes
 ShowComponentSizes=no
 SignedUninstaller=true
 SignedUninstallerDir=.\Setup
 SolidCompression=true
+#ifdef Nero9
+UninstallDisplayIcon={pf}\{#RegPublisherName}\Nero ControlCenter 4\ncc.exe
+#else
 UninstallDisplayIcon={cf}\{#RegPublisherName}\Nero Web\nps.dll
+#endif
 UninstallDisplayName=Nero {#NeroMajorVersion} {#NeroSetupType}
 UserInfoPage=false
 VersionInfoCompany=UpdatePack.nl

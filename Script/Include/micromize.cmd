@@ -49,12 +49,17 @@ if %neroversion% == 7 (
 
 
 ::Nero shared files
-if %neroversion% LSS 8 (
+if %neroversion% == 7 (
 	call :MICROMIZE advrcntr2.dll "%CommonFiles.MsiFilePath%" english
 	call :MICROMIZE advrcntr2.dll "%CommonFiles.MsiFilePath%"
-) else (
+)
+if %neroversion% == 8 (
 	call :MICROMIZE advrcntr3.dll "%CommonFiles.MsiFilePath%" english
 	call :MICROMIZE advrcntr3.dll "%CommonFiles.MsiFilePath%"
+)
+if %neroversion% == 9 (
+	call :MICROMIZE advrcntr4.dll "%NeroSetup.MsiFilePath%" english
+	call :MICROMIZE advrcntr4.dll "%NeroSetup.MsiFilePath%"
 )
 call :MICROMIZE neropatentactivation.exe "%CommonFiles.MsiFilePath%"
 call :MICROMIZE nerofiledialog.dll "%HomeComponents.MsiFilePath%" english

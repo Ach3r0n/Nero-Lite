@@ -4,7 +4,7 @@ SaveAs="advrcntr2.dll"
 Log="Log\advrcntr2_dll.log"
 
 [COMMANDS]
--addoverwrite "Resources\Bitmaps\108.bmp", BITMAP,108,
+-addoverwrite "Resources\Bitmaps\Nero7\108.bmp", BITMAP,108,
 -addoverwrite "Resources\Bitmaps\Nero7\110.bmp", BITMAP,110,
 -addoverwrite "Resources\Bitmaps\Nero7\118.bmp", BITMAP,118,
 -addoverwrite "Resources\Bitmaps\Nero7\589.bmp", BITMAP,589,

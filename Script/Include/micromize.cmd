@@ -1,7 +1,7 @@
 @echo off
 setlocal enabledelayedexpansion enableextensions
 title Micromize...
-
+set neroversion=9
 ::push to subdirectory
 pushd Custom
 
@@ -14,6 +14,20 @@ copy /y ResourceScripts\Nero8\*.txt ResourceScripts\ > NUL
 echo Micromize:
 
 ::MSI FilePaths
+if %neroversion% == 9 (
+::set CommonFiles.MsiFilePath=^[FILELOCATION^]Common Files\Lib\NT
+set HomeComponents.MsiFilePath=PFiles\Nero\Nero 9\Nero Burning ROM\NFD
+set NeroSetup.MsiFilePath=Nero\AdvrCntr4
+set SetupX.MsiFilePath=Nero\Nero ProductInstaller 4
+set NeroCore.MsiFilePath=PFiles\Nero\Nero 9\Nero Burning ROM
+set CoverDesigner.MsiFilePath=PFiles\Nero\Nero 9\Nero CoverDesigner
+set WaveEditor.MsiFilePath=Nero\Nero 9\Nero WaveEditor
+set BurnRights.MsiFilePath=Nero\Nero 9\Nero BurnRights
+set DiscSpeed.MsiFilePath=Nero\Nero 9\Nero DiscSpeed
+set DriveSpeed.MsiFilePath=Nero\Nero 9\Nero DriveSpeed
+set InfoTool.MsiFilePath=Nero\Nero 9\Nero InfoTool
+)
+if %neroversion% LSS 9 (
 set CommonFiles.MsiFilePath=^[FILELOCATION^]Common Files\Lib\NT
 set HomeComponents.MsiFilePath=^[FILELOCATION^]Nero Home Components\NT
 set NeroSetup.MsiFilePath=^[FILELOCATION^]\Setup
@@ -22,14 +36,17 @@ set NeroCore.MsiFilePath=^[FILELOCATION^]Core
 set CoverDesigner.MsiFilePath=^[FILELOCATION^]Nero CoverDesigner
 set WaveEditor.MsiFilePath=^[FILELOCATION^]Nero WaveEditor
 set BurnRights.MsiFilePath=^[FILELOCATION^]\Nero BurnRights
-if %neroversion% LSS 8 (
+set InfoTool.MsiFilePath=^[FILELOCATION^]\Nero InfoTool
+)
+if %neroversion% == 8 (
+set DiscSpeed.MsiFilePath=^[FILELOCATION^]\Nero CD-DVD Speed
+set DriveSpeed.MsiFilePath=^[FILELOCATION^]\Nero Toolkit DriveSpeed
+)
+if %neroversion% == 7 (
 	set CDSpeed.MsiFilePath=^[FILELOCATION^]\Nero CD-DVD Speed
 	set DriveSpeed.MsiFilePath=^[FILELOCATION^]\Nero DriveSpeed
-) else (
-	set DiscSpeed.MsiFilePath=^[FILELOCATION^]\Nero CD-DVD Speed
-	set DriveSpeed.MsiFilePath=^[FILELOCATION^]\Nero Toolkit DriveSpeed
 )
-set InfoTool.MsiFilePath=^[FILELOCATION^]\Nero InfoTool
+
 
 ::Nero shared files
 if %neroversion% LSS 8 (
@@ -44,10 +61,12 @@ call :MICROMIZE nerofiledialog.dll "%HomeComponents.MsiFilePath%" english
 call :MICROMIZE nerofiledialog.dll "%HomeComponents.MsiFilePath%"
 
 ::Nero ControlCenter
-if %neroversion% GEQ 8 (
+if %neroversion% == 8 (
 	call :MICROMIZE nps.dll "%NeroSetup.MsiFilePath%" english
 )
+if %neroversion% LSS 9 (
 call :MICROMIZE nps.dll "%NeroSetup.MsiFilePath%"
+)
 call :MICROMIZE setupx.exe "%SetupX.MsiFilePath%" english
 call :MICROMIZE setupx.exe "%SetupX.MsiFilePath%"
 

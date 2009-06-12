@@ -37,7 +37,6 @@
 #endif
 
 #ifndef Nero9
-	#ifdef Micro
 	#define ImagXPress_MsiFilePath "Bin\[FILELOCATION]Redist"
 	#define NeroCore_MsiFilePath "Bin\[FILELOCATION]Core"
 	#define CoverDesigner_MsiFilePath "Bin\[FILELOCATION]Nero CoverDesigner"

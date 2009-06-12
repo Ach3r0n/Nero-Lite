@@ -1,7 +1,8 @@
 @echo off
 setlocal enabledelayedexpansion
 ::get Nero Version
-call "Script\Include\getNeroVersion.cmd"
+set neroversion=9
+rem call "Script\Include\getNeroVersion.cmd"
 
 ::set path to inno setup
 for /f "tokens=3 skip=3 delims=	" %%i in (

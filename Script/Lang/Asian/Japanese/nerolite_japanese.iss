@@ -1,17 +1,17 @@
 [Languages]
-#ifdef Nero8
+#if NeroVersion == 8
 Name: japanese; MessagesFile: compiler:Languages\Japanese.isl; LicenseFile: Bin\[FILELOCATION]Target\Data\Setup\EULA_jpn.rtf
 #endif
-#ifdef Nero7
+#if NeroVersion == 7
 Name: japanese; MessagesFile: compiler:Languages\Japanese.isl; LicenseFile: Bin\[FILELOCATION]Target\Setup\EULA_jpn.rtf
 #endif
 
 [Files]
 ;Japanese
-#ifdef Nero8
+#if NeroVersion == 8
 Source: Custom\Help\NeroControlCenter_ENG.chm; DestDir: {cf}\{#RegPublisherName}\Nero Web; Check: CheckLanguage('japanese'); BeforeInstall: AddLanguage('JPN');
 #endif
-#ifdef Nero7
+#if NeroVersion == 7
 Source: Custom\Help\NeroControlCenter_ENG.chm; DestName: NeroProductSetup_ENG.chm; DestDir: {cf}\{#RegPublisherName}\Nero Web; Check: CheckLanguage('japanese'); BeforeInstall: AddLanguage('JPN');
 #endif
 Source: Custom\Bin\[FILELOCATION]Core\NeroJPN.nls; DestDir: {app}\Nero Burning ROM; Components: nero_core; Check: CheckLanguage('japanese')
@@ -25,17 +25,17 @@ Source: Custom\Help\NeroCoverDesigner_JPN.chm; DestDir: {app}\Nero CoverDesigner
 Source: Custom\Bin\[FILELOCATION]Nero WaveEditor\WaveEdit-JPN.nls; DestDir: {app}\Nero WaveEditor; Components: nero_waveedit; Check: CheckLanguage('japanese')
 Source: Custom\Help\NeroWaveEditor_JPN.chm; DestDir: {app}\Nero WaveEditor; Components: nero_waveedit; Check: CheckLanguage('japanese');
 Source: Custom\Help\NeroBurnRights_JPN.chm; DestDir: {app}\Nero Toolkit\Nero BurnRights; Components: nero_toolkit\nero_burnrights; Check: CheckLanguage('japanese');
-	#ifdef Nero8
+	#if NeroVersion == 8
 Source: Custom\Help\NeroDiscSpeed_JPN.chm; DestDir: {app}\Nero Toolkit\Nero DiscSpeed; Components: nero_toolkit\nero_discspeed; Check: CheckLanguage('japanese');
 	#endif
 #endif
 
 [Registry]
 ;Japanese
-#ifdef Nero8
+#if NeroVersion == 8
 Root: HKLM; Subkey: Software\Nero\Nero8\Shared; ValueType: string; ValueName: FamilyLanguage; ValueData: JPN; Languages: japanese; Flags: uninsdeletekey
 #endif
-#ifdef Nero7
+#if NeroVersion == 7
 Root: HKCU; Subkey: Software\Ahead\Nero - Burning Rom\General; ValueType: string; ValueName: Language; ValueData: JPN; Components: nero_core; Languages: japanese; Flags: uninsdeletekey
 Root: HKCU; Subkey: Software\Ahead\Shared; ValueType: string; ValueName: Language; ValueData: JPN; Languages: japanese; Flags: uninsdeletekey deletekey
 	#ifndef Micro

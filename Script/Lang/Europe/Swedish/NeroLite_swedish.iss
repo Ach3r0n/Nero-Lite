@@ -1,17 +1,17 @@
 [Languages]
-#ifdef Nero8
+#if NeroVersion == 8
 Name: swedish; MessagesFile: compiler:Languages\Swedish.isl; LicenseFile: Bin\[FILELOCATION]Target\Data\Setup\EULA_sve.rtf
 #endif
-#ifdef Nero7
+#if NeroVersion == 7
 Name: swedish; MessagesFile: compiler:Languages\Swedish.isl; LicenseFile: Bin\[FILELOCATION]Target\Setup\EULA_sve.rtf
 #endif
 
 [Files]
 ;Swedish
-#ifdef Nero8
+#if NeroVersion == 8
 Source: Custom\Help\NeroControlCenter_SVE.chm; DestDir: {cf}\{#RegPublisherName}\Nero Web; Check: CheckLanguage('swedish'); BeforeInstall: AddLanguage('SVE');
 #endif
-#ifdef Nero7
+#if NeroVersion == 7
 Source: Custom\Help\NeroControlCenter_SVE.chm; DestName: NeroProductSetup_SVE.chm; DestDir: {cf}\{#RegPublisherName}\Nero Web; Check: CheckLanguage('swedish'); BeforeInstall: AddLanguage('SVE');
 #endif
 Source: Custom\Bin\[FILELOCATION]Core\NeroSVE.nls; DestDir: {app}\Nero Burning ROM; Components: nero_core; Check: CheckLanguage('swedish')
@@ -25,17 +25,17 @@ Source: Custom\Help\NeroCoverDesigner_SVE.chm; DestDir: {app}\Nero CoverDesigner
 Source: Custom\Bin\[FILELOCATION]Nero WaveEditor\WaveEdit-SVE.nls; DestDir: {app}\Nero WaveEditor; Components: nero_waveedit; Check: CheckLanguage('swedish')
 Source: Custom\Help\NeroWaveEditor_SVE.chm; DestDir: {app}\Nero WaveEditor; Components: nero_waveedit; Check: CheckLanguage('swedish');
 Source: Custom\Help\NeroBurnRights_ENG.chm; DestDir: {app}\Nero Toolkit\Nero BurnRights; Components: nero_toolkit\nero_burnrights; Check: CheckLanguage('swedish');
-	#ifdef Nero8
+	#if NeroVersion == 8
 Source: Custom\Help\NeroDiscSpeed_SVE.chm; DestDir: {app}\Nero Toolkit\Nero DiscSpeed; Components: nero_toolkit\nero_discspeed; Check: CheckLanguage('swedish');
 	#endif
 #endif
 
 [Registry]
 ;Swedish
-#ifdef Nero8
+#if NeroVersion == 8
 Root: HKLM; Subkey: Software\Nero\Nero8\Shared; ValueType: string; ValueName: FamilyLanguage; ValueData: SVE; Languages: swedish; Flags: uninsdeletekey
 #endif
-#ifdef Nero7
+#if NeroVersion == 7
 Root: HKCU; Subkey: Software\Ahead\Nero - Burning Rom\General; ValueType: string; ValueName: Language; ValueData: SVE; Components: nero_core; Languages: swedish; Flags: uninsdeletekey
 Root: HKCU; Subkey: Software\Ahead\Shared; ValueType: string; ValueName: Language; ValueData: SVE; Languages: swedish; Flags: uninsdeletekey deletekey
 	#ifndef Micro

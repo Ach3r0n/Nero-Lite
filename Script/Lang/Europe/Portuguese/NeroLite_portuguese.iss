@@ -1,19 +1,19 @@
 [Languages]
-#ifdef Nero8
+#if NeroVersion == 8
 Name: portuguese; MessagesFile: compiler:Languages\Portuguese.isl; LicenseFile: Bin\[FILELOCATION]Target\Data\Setup\EULA_ptg.rtf
 Name: portuguese_brazilian; MessagesFile: compiler:Languages\BrazilianPortuguese.isl; LicenseFile: Bin\[FILELOCATION]Target\Data\Setup\EULA_ptg.rtf
 #endif
-#ifdef Nero7
+#if NeroVersion == 7
 Name: portuguese; MessagesFile: compiler:Languages\Portuguese.isl; LicenseFile: Bin\[FILELOCATION]Target\Setup\EULA_ptg.rtf
 Name: portuguese_brazilian; MessagesFile: compiler:Languages\BrazilianPortuguese.isl; LicenseFile: Bin\[FILELOCATION]Target\Setup\EULA_ptg.rtf
 #endif
 
 [Files]
 ;Portuguese
-#ifdef Nero8
+#if NeroVersion == 8
 Source: Custom\Help\NeroControlCenter_PTG.chm; DestDir: {cf}\{#RegPublisherName}\Nero Web; Check: CheckLanguage('portuguese'); BeforeInstall: AddLanguage('PTG');
 #endif
-#ifdef Nero7
+#if NeroVersion == 7
 Source: Custom\Help\NeroControlCenter_PTG.chm; DestName: NeroProductSetup_PTG.chm; DestDir: {cf}\{#RegPublisherName}\Nero Web; Check: CheckLanguage('portuguese'); BeforeInstall: AddLanguage('PTG');
 #endif
 Source: Bin\[FILELOCATION]Core\NeroPTG.txt; DestDir: {app}\Nero Burning ROM; Components: nero_core; Check: CheckLanguage('portuguese')
@@ -27,16 +27,16 @@ Source: Custom\Help\NeroCoverDesigner_PTG.chm; DestDir: {app}\Nero CoverDesigner
 Source: Custom\Bin\[FILELOCATION]Nero WaveEditor\WaveEdit-PTG.nls; DestDir: {app}\Nero WaveEditor; Components: nero_waveedit; Check: CheckLanguage('portuguese')
 Source: Custom\Help\NeroWaveEditor_PTG.chm; DestDir: {app}\Nero WaveEditor; Components: nero_waveedit; Check: CheckLanguage('portuguese');
 Source: Custom\Help\NeroBurnRights_PTG.chm; DestDir: {app}\Nero Toolkit\Nero BurnRights; Components: nero_toolkit\nero_burnrights; Check: CheckLanguage('portuguese');
-	#ifdef Nero8
+	#if NeroVersion == 8
 Source: Custom\Help\NeroDiscSpeed_PTG.chm; DestDir: {app}\Nero Toolkit\Nero DiscSpeed; Components: nero_toolkit\nero_discspeed; Check: CheckLanguage('portuguese');
 	#endif
 #endif
 
 ;Portuguese Brazilian
-#ifdef Nero8
+#if NeroVersion == 8
 Source: Custom\Help\NeroControlCenter_PTB.chm; DestDir: {cf}\{#RegPublisherName}\Nero Web; Check: CheckLanguage('portuguese_brazilian'); BeforeInstall: AddLanguage('PTB');
 #endif
-#ifdef Nero7
+#if NeroVersion == 7
 Source: Custom\Help\NeroControlCenter_PTB.chm; DestName: NeroProductSetup_PTB.chm; DestDir: {cf}\{#RegPublisherName}\Nero Web; Check: CheckLanguage('portuguese_brazilian'); BeforeInstall: AddLanguage('PTB');
 #endif
 Source: Bin\[FILELOCATION]Core\NeroPTB.txt; DestDir: {app}\Nero Burning ROM; Components: nero_core; Check: CheckLanguage('portuguese_brazilian')
@@ -50,17 +50,17 @@ Source: Custom\Help\NeroCoverDesigner_PTB.chm; DestDir: {app}\Nero CoverDesigner
 Source: Custom\Bin\[FILELOCATION]Nero WaveEditor\WaveEdit-PTB.nls; DestDir: {app}\Nero WaveEditor; Components: nero_waveedit; Check: CheckLanguage('portuguese_brazilian')
 Source: Custom\Help\NeroWaveEditor_PTG.chm; DestDir: {app}\Nero WaveEditor; Components: nero_waveedit; Check: CheckLanguage('portuguese_brazilian');
 Source: Custom\Help\NeroBurnRights_PTG.chm; DestDir: {app}\Nero Toolkit\Nero BurnRights; Components: nero_toolkit\nero_burnrights; Check: CheckLanguage('portuguese_brazilian');
-	#ifdef Nero8
+	#if NeroVersion == 8
 Source: Custom\Help\NeroDiscSpeed_PTG.chm; DestDir: {app}\Nero Toolkit\Nero DiscSpeed; Components: nero_toolkit\nero_discspeed; Check: CheckLanguage('portuguese_brazilian');
 	#endif
 #endif
 
 [Registry]
 ;Portuguese
-#ifdef Nero8
+#if NeroVersion == 8
 Root: HKLM; Subkey: Software\Nero\Nero8\Shared; ValueType: string; ValueName: FamilyLanguage; ValueData: PTG; Languages: portuguese; Flags: uninsdeletekey
 #endif
-#ifdef Nero7
+#if NeroVersion == 7
 Root: HKCU; Subkey: Software\Ahead\Nero - Burning Rom\General; ValueType: string; ValueName: Language; ValueData: PTG; Components: nero_core; Languages: portuguese; Flags: uninsdeletekey
 Root: HKCU; Subkey: Software\Ahead\Shared; ValueType: string; ValueName: Language; ValueData: PTG; Languages: portuguese; Flags: uninsdeletekey deletekey
 	#ifndef Micro
@@ -72,10 +72,10 @@ Root: HKCU; Subkey: Software\Ahead\Nero WaveEditor\General; ValueType: string; V
 #endif
 
 ;Portuguese Brazilian
-#ifdef Nero8
+#if NeroVersion == 8
 Root: HKLM; Subkey: Software\Nero\Nero8\Shared; ValueType: string; ValueName: FamilyLanguage; ValueData: PTB; Languages: portuguese_brazilian; Flags: uninsdeletekey
 #endif
-#ifdef Nero7
+#if NeroVersion == 7
 Root: HKCU; Subkey: Software\Ahead\Nero - Burning Rom\General; ValueType: string; ValueName: Language; ValueData: PTB; Components: nero_core; Languages: portuguese_brazilian; Flags: uninsdeletekey
 Root: HKCU; Subkey: Software\Ahead\Shared; ValueType: string; ValueName: Language; ValueData: PTB; Languages: portuguese_brazilian; Flags: uninsdeletekey deletekey
 	#ifndef Micro

@@ -2,7 +2,7 @@ function getNeroInfo(ValueName: String): String;
 var
 	ValueData:	String;
 begin
-	RegQueryStringValue(HKLM,'Software\{#RegPublisherName}\Installation\Families\Nero {#NeroMajorVersion}\Info',
+	RegQueryStringValue(HKLM,'Software\{#RegPublisherName}\Installation\Families\Nero {#NeroVersion}\Info',
 		ValueName, ValueData);
 	Result := ValueData;
 end;
@@ -13,14 +13,14 @@ var
 	ValueData:  String;
 	i: Integer;
 begin
-	if RegGetValueNames(HKLM,'Software\{#RegPublisherName}\Installation\Families\Nero {#NeroMajorVersion}\Info',
+	if RegGetValueNames(HKLM,'Software\{#RegPublisherName}\Installation\Families\Nero {#NeroVersion}\Info',
 		ValueName) then
 	begin
 		for i := 0 to GetArrayLength(ValueName)-1
-			do if Comparetext('Serial{#NeroMajorVersion}',copy(ValueName[i],1,7)) = 0 then
+			do if Comparetext('Serial{#NeroVersion}',copy(ValueName[i],1,7)) = 0 then
 			begin
 				//Check if detected serial is in Nero Product Key range
-				if RegQueryStringValue(HKLM,'Software\{#RegPublisherName}\Installation\Families\Nero {#NeroMajorVersion}\Info',
+				if RegQueryStringValue(HKLM,'Software\{#RegPublisherName}\Installation\Families\Nero {#NeroVersion}\Info',
 					ValueName[i], ValueData) then
 				begin
 				#ifdef Nero7
@@ -55,6 +55,6 @@ begin
 			if (Length(S) > 0) and (CompareText(Edit3.Text, getNeroInfo(getSerialValueName())) <> 0) then
 				Result := True
 			else if Length(S) = 0 then
-				RegDeleteValue(HKLM,'Software\{#RegPublisherName}\Installation\Families\Nero {#NeroMajorVersion}\Info',getSerialValueName());
+				RegDeleteValue(HKLM,'Software\{#RegPublisherName}\Installation\Families\Nero {#NeroVersion}\Info',getSerialValueName());
 		end
 end;

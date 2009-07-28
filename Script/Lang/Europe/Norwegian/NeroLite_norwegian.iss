@@ -1,17 +1,17 @@
 [Languages]
-#ifdef Nero8
+#if NeroVersion == 8
 Name: norwegian; MessagesFile: compiler:Languages\Norwegian.isl; LicenseFile: Bin\[FILELOCATION]Target\Data\Setup\EULA_ene.rtf
 #endif
-#ifdef Nero7
+#if NeroVersion == 7
 Name: norwegian; MessagesFile: compiler:Languages\Norwegian.isl; LicenseFile: Bin\[FILELOCATION]Target\Setup\EULA_ene.rtf
 #endif
 
 [Files]
 ;Norwegian
-#ifdef Nero8
+#if NeroVersion == 8
 Source: Custom\Help\NeroControlCenter_ENG.chm; DestDir: {cf}\{#RegPublisherName}\Nero Web; Check: CheckLanguage('norwegian'); BeforeInstall: AddLanguage('NOR');
 #endif
-#ifdef Nero7
+#if NeroVersion == 7
 Source: Custom\Help\NeroControlCenter_ENG.chm; DestName: NeroProductSetup_ENG.chm; DestDir: {cf}\{#RegPublisherName}\Nero Web; Check: CheckLanguage('norwegian'); BeforeInstall: AddLanguage('NOR');
 #endif
 Source: Custom\Bin\[FILELOCATION]Core\NeroNOR.nls; DestDir: {app}\Nero Burning ROM; Components: nero_core; Check: CheckLanguage('norwegian')
@@ -25,7 +25,7 @@ Source: Custom\Help\NeroCoverDesigner_ENG.chm; DestDir: {app}\Nero CoverDesigner
 Source: Custom\Bin\[FILELOCATION]Nero WaveEditor\WaveEdit-NOR.nls; DestDir: {app}\Nero WaveEditor; Components: nero_waveedit; Check: CheckLanguage('norwegian')
 Source: Custom\Help\NeroWaveEditor_ENG.chm; DestDir: {app}\Nero WaveEditor; Components: nero_waveedit; Check: CheckLanguage('norwegian');
 Source: Custom\Help\NeroBurnRights_ENG.chm; DestDir: {app}\Nero Toolkit\Nero BurnRights; Components: nero_toolkit\nero_burnrights; Check: CheckLanguage('norwegian');
-	#ifdef Nero8
+	#if NeroVersion == 8
 Source: Custom\Help\NeroDiscSpeed_ENG.chm; DestDir: {app}\Nero Toolkit\Nero DiscSpeed; Components: nero_toolkit\nero_discspeed; Check: CheckLanguage('norwegian');
 	#endif
 #endif
@@ -33,10 +33,10 @@ Source: Custom\Help\NeroDiscSpeed_ENG.chm; DestDir: {app}\Nero Toolkit\Nero Disc
 [Registry]
 ;Norwegian
 Root: HKLM; Subkey: Software\Nero\Nero8\Shared; ValueType: string; ValueName: FamilyLanguage; ValueData: NOR; Languages: norwegian; Flags: uninsdeletekey
-#ifdef Nero8
+#if NeroVersion == 8
 Root: HKLM; Subkey: Software\Nero\Nero8\Shared; ValueType: string; ValueName: FamilyLanguage; ValueData: NOR; Languages: norwegian; Flags: uninsdeletekey
 #endif
-#ifdef Nero7
+#if NeroVersion == 7
 Root: HKCU; Subkey: Software\Ahead\Nero - Burning Rom\General; ValueType: string; ValueName: Language; ValueData: NOR; Components: nero_core; Languages: norwegian; Flags: uninsdeletekey
 Root: HKCU; Subkey: Software\Ahead\Shared; ValueType: string; ValueName: Language; ValueData: NOR; Languages: norwegian; Flags: uninsdeletekey deletekey
 	#ifndef Micro

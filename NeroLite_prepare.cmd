@@ -1,6 +1,6 @@
 @echo off
 ::get Nero Version
-call Script\Include\getNeroVersion.cmd
+rem call Script\Include\getNeroVersion.cmd
 
 Tools\7-zip\7za x -y %nero_setup%.exe -o"%TEMP%\Nero%neroversion:.=%"
 echo.

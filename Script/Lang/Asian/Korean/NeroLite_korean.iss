@@ -1,17 +1,17 @@
 [Languages]
-#ifdef Nero8
+#if NeroVersion == 8
 Name: korean; MessagesFile: compiler:Languages\Korean.isl; LicenseFile: Bin\[FILELOCATION]Target\Data\Setup\EULA_kor.rtf
 #endif
-#ifdef Nero7
+#if NeroVersion == 7
 Name: korean; MessagesFile: compiler:Languages\Korean.isl; LicenseFile: Bin\[FILELOCATION]Target\Setup\EULA_kor.rtf
 #endif
 
 [Files]
 ;Korean
-#ifdef Nero8
+#if NeroVersion == 8
 Source: Custom\Help\NeroControlCenter_KOR.chm; DestDir: {cf}\{#RegPublisherName}\Nero Web; Check: CheckLanguage('korean'); BeforeInstall: AddLanguage('KOR');
 #endif
-#ifdef Nero7
+#if NeroVersion == 7
 Source: Custom\Help\NeroControlCenter_KOR.chm; DestName: NeroProductSetup_ENG.chm; DestDir: {cf}\{#RegPublisherName}\Nero Web; Check: CheckLanguage('korean'); BeforeInstall: AddLanguage('KOR');
 #endif
 Source: Custom\Bin\[FILELOCATION]Core\NeroKOR.nls; DestDir: {app}\Nero Burning ROM; Components: nero_core; Check: CheckLanguage('korean')
@@ -25,17 +25,17 @@ Source: Custom\Help\NeroCoverDesigner_KOR.chm; DestDir: {app}\Nero CoverDesigner
 Source: Custom\Bin\[FILELOCATION]Nero WaveEditor\WaveEdit-KOR.nls; DestDir: {app}\Nero WaveEditor; Components: nero_waveedit; Check: CheckLanguage('korean')
 Source: Custom\Help\NeroWaveEditor_KOR.chm; DestDir: {app}\Nero WaveEditor; Components: nero_waveedit; Check: CheckLanguage('korean');
 Source: Custom\Help\NeroBurnRights_KOR.chm; DestDir: {app}\Nero Toolkit\Nero BurnRights; Components: nero_toolkit\nero_burnrights; Check: CheckLanguage('korean');
-	#ifdef Nero8
+	#if NeroVersion == 8
 Source: Custom\Help\NeroDiscSpeed_KOR.chm; DestDir: {app}\Nero Toolkit\Nero DiscSpeed; Components: nero_toolkit\nero_discspeed; Check: CheckLanguage('korean');
 	#endif
 #endif
 
 [Registry]
 ;Korean
-#ifdef Nero8
+#if NeroVersion == 8
 Root: HKLM; Subkey: Software\Nero\Nero8\Shared; ValueType: string; ValueName: FamilyLanguage; ValueData: KOR; Languages: korean; Flags: uninsdeletekey
 #endif
-#ifdef Nero7
+#if NeroVersion == 7
 Root: HKCU; Subkey: Software\Ahead\Nero - Burning Rom\General; ValueType: string; ValueName: Language; ValueData: KOR; Components: nero_core; Languages: korean; Flags: uninsdeletekey
 Root: HKCU; Subkey: Software\Ahead\Shared; ValueType: string; ValueName: Language; ValueData: KOR; Languages: korean; Flags: uninsdeletekey deletekey
 	#ifndef Micro

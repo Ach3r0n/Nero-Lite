@@ -1,17 +1,17 @@
 [Languages]
-#ifdef Nero8
+#if NeroVersion == 8
 Name: german; MessagesFile: compiler:Languages\German.isl; LicenseFile: Bin\[FILELOCATION]Target\Data\Setup\EULA_deu.rtf
 #endif
-#ifdef Nero7
+#if NeroVersion == 7
 Name: german; MessagesFile: compiler:Languages\German.isl; LicenseFile: Bin\[FILELOCATION]Target\Setup\EULA_deu.rtf
 #endif
 
 [Files]
 ;German
-#ifdef Nero8
+#if NeroVersion == 8
 Source: Custom\Help\NeroControlCenter_DEU.chm; DestDir: {cf}\{#RegPublisherName}\Nero Web; Check: CheckLanguage('german'); BeforeInstall: AddLanguage('DEU');
 #endif
-#ifdef Nero7
+#if NeroVersion == 7
 Source: Custom\Help\NeroControlCenter_DEU.chm; DestName: NeroProductSetup_DEU.chm; DestDir: {cf}\{#RegPublisherName}\Nero Web; Check: CheckLanguage('german'); BeforeInstall: AddLanguage('DEU');
 #endif
 Source: Custom\Bin\[FILELOCATION]Core\NeroDEU.nls; DestDir: {app}\Nero Burning ROM; Components: nero_core; Check: CheckLanguage('german')
@@ -25,7 +25,7 @@ Source: Custom\Help\NeroCoverDesigner_DEU.chm; DestDir: {app}\Nero CoverDesigner
 Source: Custom\Bin\[FILELOCATION]Nero WaveEditor\WaveEdit-DEU.nls; DestDir: {app}\Nero WaveEditor; Components: nero_waveedit; Check: CheckLanguage('german')
 Source: Custom\Help\NeroWaveEditor_DEU.chm; DestDir: {app}\Nero WaveEditor; Components: nero_waveedit; Check: CheckLanguage('german');
 Source: Custom\Help\NeroBurnRights_DEU.chm; DestDir: {app}\Nero Toolkit\Nero BurnRights; Components: nero_toolkit\nero_burnrights; Check: CheckLanguage('german');
-	#ifdef Nero8
+	#if NeroVersion == 8
 Source: Custom\Help\NeroDiscSpeed_DEU.chm; DestDir: {app}\Nero Toolkit\Nero DiscSpeed; Components: nero_toolkit\nero_discspeed; Check: CheckLanguage('german');
 	#endif
 #endif
@@ -33,10 +33,10 @@ Source: Custom\Help\NeroDiscSpeed_DEU.chm; DestDir: {app}\Nero Toolkit\Nero Disc
 [Registry]
 ;German
 Root: HKLM; Subkey: Software\Nero\Nero8\Shared; ValueType: string; ValueName: FamilyLanguage; ValueData: DEU; Languages: german; Flags: uninsdeletekey
-#ifdef Nero8
+#if NeroVersion == 8
 Root: HKLM; Subkey: Software\Nero\Nero8\Shared; ValueType: string; ValueName: FamilyLanguage; ValueData: DEU; Languages: german; Flags: uninsdeletekey
 #endif
-#ifdef Nero7
+#if NeroVersion == 7
 Root: HKCU; Subkey: Software\Ahead\Nero - Burning Rom\General; ValueType: string; ValueName: Language; ValueData: DEU; Components: nero_core; Languages: german; Flags: uninsdeletekey
 Root: HKCU; Subkey: Software\Ahead\Shared; ValueType: string; ValueName: Language; ValueData: DEU; Languages: german; Flags: uninsdeletekey deletekey
 	#ifndef Micro

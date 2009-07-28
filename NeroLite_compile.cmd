@@ -1,7 +1,7 @@
 @echo off
 setlocal enabledelayedexpansion
 ::get Nero Version
-set neroversion=9
+set neroversion=9.4.13.100
 rem call "Script\Include\getNeroVersion.cmd"
 
 ::set path to inno setup

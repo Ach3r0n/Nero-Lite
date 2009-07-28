@@ -160,19 +160,6 @@ Source: {#CommonFilesLib_MsiFilePath}\DriveLocker.dll; DestDir: {cf}\{#RegPublis
 Source: {#CommonFilesLib_MsiFilePath}\NeroVMRModules.dll; DestDir: {cf}\{#RegPublisherName}\Lib; Flags: sharedfile uninsnosharedfileprompt; Components: nero_core
 #endif
 
-;Nero Extended FileDialog
-#if NeroVersion <= 8
-#ifdef Micro_English
-Source: Custom\Bin\[FILELOCATION]Nero Home Components\NT\English\NeroFileDialog.dll; DestDir: {cf}\{#RegPublisherName}\Lib; Flags: regserver sharedfile uninsnosharedfileprompt; Components: nero_core
-#else
-Source: Custom\Bin\[FILELOCATION]Nero Home Components\NT\NeroFileDialog.dll; DestDir: {cf}\{#RegPublisherName}\Lib; Flags: regserver sharedfile uninsnosharedfileprompt; Components: nero_core
-#endif
-Source: Bin\[FILELOCATION]Nero Home Components\NT\NeroFileDialogCF.dll; DestDir: {cf}\{#RegPublisherName}\Lib; Flags: regserver sharedfile uninsnosharedfileprompt; Components: nero_core
-;Nero Extended FileDialog (Vista)
-Source: Bin\[FILELOCATION]Nero Home Components\NT\NeroFileDialogIDLPS.dll; DestDir: {cf}\{#RegPublisherName}\Lib; Flags: regserver sharedfile uninsnosharedfileprompt; Components: nero_core; MinVersion: 0,6.0
-Source: Bin\[FILELOCATION]Nero Home Components\NT\NeroFileDialogVista.dll; DestDir: {cf}\{#RegPublisherName}\Lib; Flags: regserver sharedfile uninsnosharedfileprompt; Components: nero_core; MinVersion: 0,6.0
-#endif
-
 ;Nero Control Center
 #if NeroVersion <= 8
 #ifdef Micro_English
@@ -190,24 +177,32 @@ Source: Custom\Bin\[FILELOCATION]\Setup\nps.dll; DestDir: {cf}\{#RegPublisherNam
 #if NeroVersion >= 9
 Source: Bin\Nero\Nero ControlCenter 4\ncc.exe; DestDir: {pf}\{#RegPublisherName}\Nero ControlCenter 4; Flags: restartreplace
 Source: Bin\Nero\Nero ControlCenter 4\ncc.dll; DestDir: {pf}\{#RegPublisherName}\Nero ControlCenter 4; Flags: restartreplace
+Source: Bin\Nero\Nero ControlCenter 4\OnlineServices\iconv.dll; DestDir: {pf}\{#RegPublisherName}\Nero ControlCenter 4\OnlineServices
+Source: Bin\Nero\Nero ControlCenter 4\OnlineServices\NOSMyNeroRegistration.dll; DestDir: {pf}\{#RegPublisherName}\Nero ControlCenter 4\OnlineServices; Flags: regserver
+Source: Bin\Nero\Nero ControlCenter 4\OnlineServices\OnlineServices.manifest; DestDir: {pf}\{#RegPublisherName}\Nero ControlCenter 4\OnlineServices
+#endif
+
+;Nero Extended FileDialog
+#if NeroVersion <= 8
+#ifdef Micro_English
+Source: Custom\Bin\[FILELOCATION]Nero Home Components\NT\English\NeroFileDialog.dll; DestDir: {cf}\{#RegPublisherName}\Lib; Flags: regserver sharedfile uninsnosharedfileprompt; Components: nero_core
+#else
+Source: Custom\Bin\[FILELOCATION]Nero Home Components\NT\NeroFileDialog.dll; DestDir: {cf}\{#RegPublisherName}\Lib; Flags: regserver sharedfile uninsnosharedfileprompt; Components: nero_core
+#endif
+Source: Bin\[FILELOCATION]Nero Home Components\NT\NeroFileDialogCF.dll; DestDir: {cf}\{#RegPublisherName}\Lib; Flags: regserver sharedfile uninsnosharedfileprompt; Components: nero_core
+;Nero Extended FileDialog (Vista)
+Source: Bin\[FILELOCATION]Nero Home Components\NT\NeroFileDialogIDLPS.dll; DestDir: {cf}\{#RegPublisherName}\Lib; Flags: regserver sharedfile uninsnosharedfileprompt; Components: nero_core; MinVersion: 0,6.0
+Source: Bin\[FILELOCATION]Nero Home Components\NT\NeroFileDialogVista.dll; DestDir: {cf}\{#RegPublisherName}\Lib; Flags: regserver sharedfile uninsnosharedfileprompt; Components: nero_core; MinVersion: 0,6.0
 #endif
 
 ;Nero Core
+Source: Custom\{#NeroCore_MsiFilePath}\nero.exe; DestDir: {app}\Nero Burning ROM; Components: nero_core
 Source: {#NeroCore_MsiFilePath}\CDI\*; DestDir: {app}\Nero Burning ROM\CDI; Components: nero_core
 Source: {#NeroCore_MsiFilePath}\DosBootimage.IMA; DestDir: {app}\Nero Burning ROM; Components: nero_core
-Source: Custom\{#NeroCore_MsiFilePath}\nero.exe; DestDir: {app}\Nero Burning ROM; Components: nero_core
 Source: {#NeroCore_MsiFilePath}\nero.txt; DestDir: {app}\Nero Burning ROM; Components: nero_core
 Source: {#NeroCore_MsiFilePath}\uCDCopy.dll; DestDir: {app}\Nero Burning ROM; Components: nero_core
-Source: {#NeroCore_MsiFilePath}\uMMC.dll; DestDir: {app}\Nero Burning ROM; Components: nero_core
-Source: {#NeroCore_MsiFilePath}\uNeroErr.dll; DestDir: {app}\Nero Burning ROM; Components: nero_core
-#if NeroVersion <= 8
-Source: {#NeroCore_MsiFilePath}\uNeRSDB.dll; DestDir: {app}\Nero Burning ROM; Components: nero_core
-Source: {#NeroCore_MsiFilePath}\uneroDB.dll; DestDir: {app}\Nero Burning ROM; Components: nero_core
-#endif
-Source: {#NeroCore_MsiFilePath}\unewtrf.dll; DestDir: {app}\Nero Burning ROM; Components: nero_core
-Source: {#NeroCore_MsiFilePath}\uUDFImporter.dll; DestDir: {app}\Nero Burning ROM; Components: nero_core
 Source: {#NeroCore_MsiFilePath}\uDVDREALLOC.DLL; DestDir: {app}\Nero Burning ROM; Components: nero_core
-Source: {#NeroCore_MsiFilePath}\uISOFS.dll; DestDir: {app}\Nero Burning ROM; Components: nero_core
+Source: {#NeroCore_MsiFilePath}\uFATImporter.dll; DestDir: {app}\Nero Burning ROM; Components: nero_core
 Source: {#NeroCore_MsiFilePath}\uGENCUSH.dll; DestDir: {app}\Nero Burning ROM; Components: nero_core
 Source: {#NeroCore_MsiFilePath}\uGeneratr.dll; DestDir: {app}\Nero Burning ROM; Components: nero_core
 Source: {#NeroCore_MsiFilePath}\uGenFAT.dll; DestDir: {app}\Nero Burning ROM; Components: nero_core
@@ -216,7 +211,47 @@ Source: {#NeroCore_MsiFilePath}\uGenUDF.dll; DestDir: {app}\Nero Burning ROM; Co
 Source: {#NeroCore_MsiFilePath}\uGenUDF2.dll; DestDir: {app}\Nero Burning ROM; Components: nero_core
 Source: {#NeroCore_MsiFilePath}\uimage.dll; DestDir: {app}\Nero Burning ROM; Components: nero_core
 Source: {#NeroCore_MsiFilePath}\uImageGen.dll; DestDir: {app}\Nero Burning ROM; Components: nero_core
+Source: {#NeroCore_MsiFilePath}\uISOFS.dll; DestDir: {app}\Nero Burning ROM; Components: nero_core
+Source: {#NeroCore_MsiFilePath}\uMMC.dll; DestDir: {app}\Nero Burning ROM; Components: nero_core
+Source: {#NeroCore_MsiFilePath}\uNeroErr.dll; DestDir: {app}\Nero Burning ROM; Components: nero_core
+Source: {#NeroCore_MsiFilePath}\unewtrf.dll; DestDir: {app}\Nero Burning ROM; Components: nero_core
+Source: {#NeroCore_MsiFilePath}\uTMPVImporter.dll; DestDir: {app}\Nero Burning ROM; Components: nero_core
+Source: {#NeroCore_MsiFilePath}\uUDFImporter.dll; DestDir: {app}\Nero Burning ROM; Components: nero_core
+#if NeroVersion >= 9
+Source: {#NeroCore_MsiFilePath}\InFAudioRippingServer.dll; DestDir: {app}\Nero Burning ROM; Components: nero_core
+Source: {#NeroCore_MsiFilePath}\*.manifest; DestDir: {app}\Nero Burning ROM; Components: nero_core
+Source: {#NeroCore_MsiFilePath}\Nero.BDGraphic\NeBDGraphic.ax; DestDir: {app}\Nero Burning ROM\Nero.BDGraphic; Components: nero_core
+Source: {#NeroCore_MsiFilePath}\Nero.BDGraphic\Nero.BDGraphic.manifest; DestDir: {app}\Nero Burning ROM\Nero.BDGraphic; Components: nero_core
+Source: {#NeroCore_MsiFilePath}\Nero.BDThumbnail\NeBDThumbnail.ax; DestDir: {app}\Nero Burning ROM\Nero.BDThumbnail; Components: nero_core
+Source: {#NeroCore_MsiFilePath}\Nero.BDThumbnail\Nero.BDThumbnail.manifest; DestDir: {app}\Nero Burning ROM\Nero.BDThumbnail; Components: nero_core
+Source: {#NeroCore_MsiFilePath}\Nero.DiscNavBD\DiscNavBD.ax; DestDir: {app}\Nero Burning ROM\Nero.DiscNavBD; Components: nero_core
+Source: {#NeroCore_MsiFilePath}\Nero.DiscNavBD\Nero.DiscNavBD.manifest; DestDir: {app}\Nero Burning ROM\Nero.DiscNavBD; Components: nero_core
+Source: {#NeroCore_MsiFilePath}\Nero.DiscNavDVD\DiscNavDVD.ax; DestDir: {app}\Nero Burning ROM\Nero.DiscNavDVD; Components: nero_core
+Source: {#NeroCore_MsiFilePath}\Nero.DiscNavDVD\Nero.DiscNavDVD.manifest; DestDir: {app}\Nero Burning ROM\Nero.DiscNavDVD; Components: nero_core
+Source: {#NeroCore_MsiFilePath}\Nero.DiscNavVCD\DiscNavVCD.ax; DestDir: {app}\Nero Burning ROM\Nero.DiscNavVCD; Components: nero_core
+Source: {#NeroCore_MsiFilePath}\Nero.DiscNavVCD\Nero.DiscNavVCD.manifest; DestDir: {app}\Nero Burning ROM\Nero.DiscNavVCD; Components: nero_core
+Source: {#NeroCore_MsiFilePath}\Nero.HttpManager\NeHttpManager.dll; DestDir: {app}\Nero Burning ROM\Nero.HttpManager; Components: nero_core
+Source: {#NeroCore_MsiFilePath}\Nero.HttpManager\Nero.HttpManager.manifest; DestDir: {app}\Nero Burning ROM\Nero.HttpManager; Components: nero_core
+Source: {#NeroCore_MsiFilePath}\Nero.NeDiscManager\NeDiscManager.dll; DestDir: {app}\Nero Burning ROM\Nero.NeDiscManager; Components: nero_core
+Source: {#NeroCore_MsiFilePath}\Nero.NeDiscManager\Nero.NeDiscManager.manifest; DestDir: {app}\Nero Burning ROM\Nero.NeDiscManager; Components: nero_core
+Source: {#NeroCore_MsiFilePath}\Nero.NeDiscRecog\NeDiscRecog.dll; DestDir: {app}\Nero Burning ROM\Nero.NeDiscRecog; Components: nero_core
+Source: {#NeroCore_MsiFilePath}\Nero.NeDiscRecog\Nero.NeDiscRecog.manifest; DestDir: {app}\Nero Burning ROM\Nero.NeDiscRecog; Components: nero_core
+Source: {#NeroCore_MsiFilePath}\NFD\NeroFileDialog.dll; DestDir: {app}\Nero Burning ROM\NFD; Components: nero_core
+Source: {#NeroCore_MsiFilePath}\NFD\NeroFileDialogCF.dll; DestDir: {app}\Nero Burning ROM\NFD; Components: nero_core
+Source: {#NeroCore_MsiFilePath}\NFD\NeroFileDialogIDLPS.dll; DestDir: {app}\Nero Burning ROM\NFD; Components: nero_core; MinVersion: 0,6.0
+Source: {#NeroCore_MsiFilePath}\NFD\NeroFileDialogVista.dll; DestDir: {app}\Nero Burning ROM\NFD; Components: nero_core; MinVersion: 0,6.0
+Source: {#NeroCore_MsiFilePath}\NFD\NFD.manifest; DestDir: {app}\Nero Burning ROM\NFD; Components: nero_core
+Source: {#NeroCore_MsiFilePath}\MPGEnc.dll; DestDir: {app}\Nero Burning ROM; Components: nero_core
+Source: {#NeroCore_MsiFilePath}\NeroAPI.dll; DestDir: {app}\Nero Burning ROM; Components: nero_core
+Source: {#NeroCore_MsiFilePath}\NeroAPIEngine.dll; DestDir: {app}\Nero Burning ROM; Components: nero_core
+Source: {#NeroCore_MsiFilePath}\NeroAPIGlueLayerUnicode.dll; DestDir: {app}\Nero Burning ROM; Components: nero_core
+Source: {#NeroCore_MsiFilePath}\NeroAPIUnicode.dll; DestDir: {app}\Nero Burning ROM; Components: nero_core
+Source: {#NeroCore_MsiFilePath}\NeroCMD.exe; DestDir: {app}\Nero Burning ROM; Components: nero_core
+Source: {#NeroCore_MsiFilePath}\NeroStarter.dll; DestDir: {app}\Nero Burning ROM; Components: nero_core
+#endif
 #if NeroVersion <= 8
+Source: {#NeroCore_MsiFilePath}\uneroDB.dll; DestDir: {app}\Nero Burning ROM; Components: nero_core
+Source: {#NeroCore_MsiFilePath}\uNeRSDB.dll; DestDir: {app}\Nero Burning ROM; Components: nero_core
 Source: {#NeroCore_MsiFilePath}\wnaspi32.dll; DestDir: {app}\Nero Burning ROM; Components: nero_core
 #endif
 
@@ -228,10 +263,9 @@ Source: {#NeroCore_MsiFilePath}\NeDwFileHelper.exe; DestDir: {app}\Nero Burning 
 Source: {#NeroCore_MsiFilePath}\LLS.dll; DestDir: {app}\Nero Burning ROM; Components: nero_core
 #endif
 
-
 ;Nero Audio Filters
-Source: {#NeroCore_MsiFilePath}\uEqualize.dll; DestDir: {app}\Nero Burning ROM; Components: nero_core\nero_audioplugins
 Source: {#NeroCore_MsiFilePath}\KARAOKE.DLL; DestDir: {app}\Nero Burning ROM; Components: nero_core\nero_audioplugins
+Source: {#NeroCore_MsiFilePath}\uEqualize.dll; DestDir: {app}\Nero Burning ROM; Components: nero_core\nero_audioplugins
 
 ;Nero Sounds
 Source: {#NeroCore_MsiFilePath}\Boo.wav; DestDir: {app}\Nero Burning ROM; Components: nero_core
@@ -240,8 +274,8 @@ Source: {#NeroCore_MsiFilePath}\Trumpet1.wav; DestDir: {app}\Nero Burning ROM; C
 
 ;Nero VideoCD Support
 Source: {#NeroCore_MsiFilePath}\uNeVCDEngine.dll; DestDir: {app}\Nero Burning ROM; Components: nero_core\nero_videocd
-Source: {#NeroCore_MsiFilePath}\uVMpegEnc.dll; DestDir: {app}\Nero Burning ROM; Components: nero_core\nero_videocd
 Source: {#NeroCore_MsiFilePath}\uVCDMenu.dll; DestDir: {app}\Nero Burning ROM; Components: nero_core\nero_videocd
+Source: {#NeroCore_MsiFilePath}\uVMpegEnc.dll; DestDir: {app}\Nero Burning ROM; Components: nero_core\nero_videocd
 #if NeroVersion <= 8
 Source: Bin\[FILELOCATION]\Common Files\DSFilter\NeAudio2.ax; DestDir: {cf}\{#RegPublisherName}\DSFilter; Flags: regserver sharedfile uninsnosharedfileprompt uninsrestartdelete restartreplace; Components: nero_core\nero_videocd
 #endif
@@ -422,6 +456,11 @@ Root: HKLM; Subkey: Software\{#RegPublisherName}\Installation\Settings; ValueTyp
 Root: HKLM; Subkey: Software\{#RegPublisherName}\Installation\Settings; ValueType: dword; ValueName: LastAutomaticUpdateCheck; ValueData: $ffffffff; Flags: uninsdeletekey
 Root: HKLM; Subkey: Software\{#RegPublisherName}\Installation\Settings; ValueType: dword; ValueName: LastUpdateCheck; ValueData: $ffffffff; Flags: uninsdeletekey
 Root: HKLM; Subkey: Software\{#RegPublisherName}\Installation; ValueType: none; Flags: uninsdeletekey
+#if NeroVersion == 9
+Root: HKLM; SubKey: Software\Nero\Shared\NL9; ValueType: binary; ValueName: ProductId; ValueData: "15 03 06 09 9f ec 70 5d d5 67 5f 47 23 c2 11 06 20 22 24 2a 28 2a 54 52 50 52 54 4a 48 4a 44 42 40 42 44 4a 48 4a 54 52 50 52 54 aa a8 aa a4 a2 a0 a2 a4 aa a8 aa 94 92 90 92 94 8a 88 8a 84 82 80 82 84 8a 88 8a 94 92 90 92 94 aa a8 aa a4 a2 a0 a2 a4 aa a8 aa 54 52 50 52 54 4a 48 4a 44 42 40 42 44 4a 48 4a 54 52 50 52 54 2a 28 2a 24 22 20 22 24 2a 28 2a 14 12 10 12 14 0a 08 0a 04 02 00 02 04 0a 08 0a 14 12 10 12 14 2a 28 2a 24 22 20 22 24 2a 28 2a 54 52 50 52 54 4a 48 4a 44 42 40 42 44 4a 48 4a 54 52 50 52 54 aa a8 aa a4 a2 a0 a2 a4 aa a8 aa 94 92 90 92 94 8a 88 8a 84 82 80 82 84 8a 88 8a 94 92 90 92 94 aa a8 aa a4 a2 a0 a2 a4 aa a8 aa 54 52 50 52 54 4a 48 4a 44 42 40 42 44 4a 48 4a 54 52 50 52 54 2a 28 2a 24 22 20 22 24 2a 28 2a 14 12 10 12 14 0a 08 0a 04 02 "; Flags: uninsdeletekey
+Root: HKLM; SubKey: Software\Nero\Shared\NL9; ValueType: string; ValueName: Serial9; ValueData: {cm:EvalSerial}; Flags: uninsdeletekey
+#endif
+
 
 #if NeroVersion == 8
 Root: HKCU; Subkey: Software\{#RegPublisherName}; ValueType: none; Flags: uninsdeletekeyifempty
@@ -686,9 +725,9 @@ Name: {userappdata}\Nero; Type: dirifempty
 BeveledLabel=©2009 Klaas Nekeman
 
 [CustomMessages]
-;Evaluation serial June 2009
+;Evaluation serial July 2009
 #if NeroVersion == 9
-EvalSerial=8M01-209M-AH6P-5UW0-WHAW-C53X-473X-79MH
+EvalSerial=8M01-2085-KK25-2LEE-0UHL-8MPA-6H4U-EHAL
 #else
 ;Evaluation serials expired!
 EvalSerial=
@@ -982,7 +1021,7 @@ begin
 			begin
 			#if NeroVersion >= 8
 				//Install VC++ 2005 SP1 Redistributable if necessary
-				if MsiQueryProductState('{7299052b-02a4-4627-81f2-1818da5d550d}') <> 5 then
+				if MsiQueryProductState('{837b34e3-7c30-493c-8f6a-2b0f04e2912c}') <> 5 then
 					begin
 						ExtractTemporaryFile('vcredist.msi');
 						if WizardSilent() then

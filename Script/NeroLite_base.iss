@@ -74,7 +74,7 @@ Source: Bin\[FILELOCATION]Redist\msvcp71.dll; DestDir: {sys}; Flags: sharedfile 
 Source: Bin\[FILELOCATION]Redist\msvcr71.dll; DestDir: {sys}; Flags: sharedfile restartreplace uninsneveruninstall
 #endif
 
-#ifdef Nero8
+#ifndef Nero7
 ;VC++ 2005 SP1 Redistributable
 Source: Setup\vcredist.msi; DestDir: {tmp}; Flags: dontcopy
 #endif
@@ -127,7 +127,6 @@ Source: {#BurnRights_MsiFilePath}\NeroCo.dll; DestDir: {app}\Nero Toolkit\Nero B
 ;Nero Product Activation
 #ifdef Nero9
 Source: {#NeroSetup_MsiFilePath}\AdvrCntr4.dll; DestDir: {cf}\{#RegPublisherName}\AdvrCntr4; Flags: regserver
-Source: {#NeroSetup_MsiFilePath}\iconv.dll; DestDir: {cf}\{#RegPublisherName}\AdvrCntr4
 Source: {#NeroSetup_MsiFilePath}\NeroPatentActivation.exe; DestDir: {cf}\{#RegPublisherName}\AdvrCntr4
 #endif
 
@@ -971,7 +970,7 @@ end;
 
 procedure CurStepChanged(CurStep: TSetupStep);
 var
-#ifdef Nero8
+#ifndef Nero7
 	UnattendedFlag: String;
 	ResultCode: Integer;
 #endif
@@ -984,7 +983,7 @@ begin
 	case CurStep of
 		ssInstall:
 			begin
-			#ifdef Nero8
+			#ifndef Nero7
 				//Install VC++ 2005 SP1 Redistributable if necessary
 				if MsiQueryProductState('{7299052b-02a4-4627-81f2-1818da5d550d}') <> 5 then
 					begin

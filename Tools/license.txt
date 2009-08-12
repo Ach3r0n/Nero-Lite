@@ -9,10 +9,10 @@ This package includes the following third party software components:
 Ebook Essential Pascal, Copyright © Marco Cantú
 -> http://www.marcocantu.com/epascal/
 
-Inno Setup 5.3.0 beta, Copyright © Jordan Russell
+Inno Setup 5.3.3, Copyright © Jordan Russell
 -> http://www.jrsoftware.org/
 
-Inno Setup PreProcessor 5.3.0 beta, Copyright © Alex Yackimoff 
+Inno Setup PreProcessor 5.3.3, Copyright © Alex Yackimoff 
 -> http://ispp.sourceforge.net/
 
 Inno Setup Form Designer version 2.0.8, Copyright © Marc Hoffmann
@@ -21,7 +21,7 @@ Inno Setup Form Designer version 2.0.8, Copyright © Marc Hoffmann
 ISSI version 5.1.90, Copyright © Jan Albartus
 -> http://www.albartus.com/issi/
 
-ISTool version 5.2.1, Copyright © Bjørnar Henden
+ISTool version 5.3.0, Copyright © Bjørnar Henden
 -> http://www.istool.org/
 
 Resource Hacker version 3.4.0, Copyright © Angus Johnson

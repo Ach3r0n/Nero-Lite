@@ -12,7 +12,7 @@ if not exist "%InnoSetupPath%" set InnoSetupPath=%programfiles%\Inno Setup\Inno 
 pushd ".."
 
 ::get Nero Version
-rem call Script\Include\getNeroVersion.cmd
+call Script\Include\getNeroVersion.cmd
 
 ::generate English Lite Setup Script
 copy /y Script\Lang\English\NeroLite_english.iss Script\Include\NeroLite_english_lite.iss > NUL

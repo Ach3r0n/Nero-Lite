@@ -9,30 +9,29 @@ Name: french; MessagesFile: compiler:Languages\French.isl; LicenseFile: Bin\[FIL
 [Files]
 ;French
 #if NeroVersion == 8
-Source: Custom\Help\NeroControlCenter_FRA.chm; DestDir: {cf}\{#RegPublisherName}\Nero Web; Check: CheckLanguage('french'); BeforeInstall: AddLanguage('FRA');
+Source: Custom\Help\NeroControlCenter_FRA.chm; DestDir: {cf}\{#RegPublisherName}\Nero Web; Check: CheckLanguage('french'); BeforeInstall: AddLanguage('FRA')
 #endif
 #if NeroVersion == 7
-Source: Custom\Help\NeroControlCenter_FRA.chm; DestName: NeroProductSetup_FRA.chm; DestDir: {cf}\{#RegPublisherName}\Nero Web; Check: CheckLanguage('french'); BeforeInstall: AddLanguage('FRA');
+Source: Custom\Help\NeroControlCenter_FRA.chm; DestName: NeroProductSetup_FRA.chm; DestDir: {cf}\{#RegPublisherName}\Nero Web; Check: CheckLanguage('french'); BeforeInstall: AddLanguage('FRA')
 #endif
 Source: Custom\Bin\[FILELOCATION]Core\NeroFRA.nls; DestDir: {app}\Nero Burning ROM; Components: nero_core; Check: CheckLanguage('french')
 Source: Bin\[FILELOCATION]Core\NeroFRA.txt; DestDir: {app}\Nero Burning ROM; Components: nero_core; Check: CheckLanguage('french')
 Source: Bin\[FILELOCATION]Common Files\Lib\BCGCBProResFRA.nls; DestDir: {app}\Nero Burning ROM; Components: nero_core; Check: CheckLanguage('french')
-Source: Custom\Help\NeroBurningRom_FRA.chm; DestDir: {app}\Nero Burning ROM; Components: nero_core; Check: CheckLanguage('french');
-Source: Custom\Help\NeroExpress_FRA.chm; DestDir: {app}\Nero Burning ROM; Components: nero_core; Check: CheckLanguage('french');
+Source: Custom\Help\NeroBurningRom_FRA.chm; DestDir: {app}\Nero Burning ROM; Components: nero_core; Check: CheckLanguage('french')
+Source: Custom\Help\NeroExpress_FRA.chm; DestDir: {app}\Nero Burning ROM; Components: nero_core; Check: CheckLanguage('french')
 #ifndef Micro
 Source: Custom\Bin\[FILELOCATION]Nero CoverDesigner\CoverEd-FRA.nls; DestDir: {app}\Nero CoverDesigner; Components: nero_coverdes; Check: CheckLanguage('french')
-Source: Custom\Help\NeroCoverDesigner_FRA.chm; DestDir: {app}\Nero CoverDesigner; Components: nero_coverdes; Check: CheckLanguage('french');
+Source: Custom\Help\NeroCoverDesigner_FRA.chm; DestDir: {app}\Nero CoverDesigner; Components: nero_coverdes; Check: CheckLanguage('french')
 Source: Custom\Bin\[FILELOCATION]Nero WaveEditor\WaveEdit-FRA.nls; DestDir: {app}\Nero WaveEditor; Components: nero_waveedit; Check: CheckLanguage('french')
-Source: Custom\Help\NeroWaveEditor_FRA.chm; DestDir: {app}\Nero WaveEditor; Components: nero_waveedit; Check: CheckLanguage('french');
-Source: Custom\Help\NeroBurnRights_FRA.chm; DestDir: {app}\Nero Toolkit\Nero BurnRights; Components: nero_toolkit\nero_burnrights; Check: CheckLanguage('french');
+Source: Custom\Help\NeroWaveEditor_FRA.chm; DestDir: {app}\Nero WaveEditor; Components: nero_waveedit; Check: CheckLanguage('french')
+Source: Custom\Help\NeroBurnRights_FRA.chm; DestDir: {app}\Nero Toolkit\Nero BurnRights; Components: nero_toolkit\nero_burnrights; Check: CheckLanguage('french')
 	#if NeroVersion == 8
-Source: Custom\Help\NeroDiscSpeed_FRA.chm; DestDir: {app}\Nero Toolkit\Nero DiscSpeed; Components: nero_toolkit\nero_discspeed; Check: CheckLanguage('french');
+Source: Custom\Help\NeroDiscSpeed_FRA.chm; DestDir: {app}\Nero Toolkit\Nero DiscSpeed; Components: nero_toolkit\nero_discspeed; Check: CheckLanguage('french')
 	#endif
 #endif
 
 [Registry]
 ;French
-Root: HKLM; Subkey: Software\Nero\Nero8\Shared; ValueType: string; ValueName: FamilyLanguage; ValueData: FRA; Languages: french; Flags: uninsdeletekey
 #if NeroVersion == 8
 Root: HKLM; Subkey: Software\Nero\Nero8\Shared; ValueType: string; ValueName: FamilyLanguage; ValueData: FRA; Languages: french; Flags: uninsdeletekey
 #endif
@@ -103,3 +102,4 @@ french.Comp_Nero_Sounds=Sons
 ;Setup Wizard Extra Tasks
 french.FileAssociations=Enregistrement types de fichiers:
 french.AssocImageFileExt=Associer Nero avec les Fichiers Image standard.
+

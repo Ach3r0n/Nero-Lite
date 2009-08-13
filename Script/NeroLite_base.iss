@@ -1,8 +1,7 @@
 ;
-;Nero 7/8/9 Lite Setup script for InnoSetup 5.3.x,
-;This script also requires ISPP and ISSI!
+;Nero 7/8 Lite Setup script for InnoSetup 5.3.x, depending on ISPP and ISSI.
 ;
-;Copyright (C) 2009 - Klaas Nekeman
+;Copyright (C) 2007-2009 Klaas Nekeman
 ;
 
 [Setup]
@@ -24,21 +23,13 @@ InternalCompressLevel=ultra64
 MinVersion=0,5.0sp4
 OutputBaseFilename=Nero-{#NeroFileVersion}_{#NeroSetupLocale}_{#Lowercase(NeroSetupType)}
 OutputDir=.\Output
-#if NeroVersion == 9
-SetupIconFile=Custom\Resources\Icons\ncc_exe_128.ico
-#else
 SetupIconFile=Custom\Resources\Icons\Nero{#NeroVersion}\nps_dll_128.ico
-#endif
 ShowLanguageDialog=yes
 ShowComponentSizes=no
 SignedUninstaller=true
 SignedUninstallerDir=.\Setup
 SolidCompression=true
-#if NeroVersion == 9
-UninstallDisplayIcon={pf}\{#RegPublisherName}\Nero ControlCenter 4\ncc.exe
-#else
 UninstallDisplayIcon={cf}\{#RegPublisherName}\Nero Web\nps.dll
-#endif
 UninstallDisplayName=Nero {#NeroVersion} {#NeroSetupType}
 UserInfoPage=false
 VersionInfoCompany=UpdatePack.nl
@@ -50,11 +41,7 @@ AppMutex=NeroActiv,NeroSplashScreenMutex
 VersionInfoVersion=1.20.0.0
 
 [Languages]
-#if NeroVersion == 9
-Name: english; MessagesFile: compiler:Default.isl; LicenseFile: {#NeroSetup_MsiFilePath}\EULA_Nero_eng.rtf
-#else
 Name: english; MessagesFile: compiler:Default.isl; LicenseFile: {#NeroSetup_MsiFilePath}\EULA_eng.rtf
-#endif
 
 [Files]
 ;Hack to fix Final Wizard Dialog Bitmap (ISSI bug)
@@ -74,34 +61,25 @@ Source: Bin\[FILELOCATION]Redist\msvcp71.dll; DestDir: {sys}; Flags: sharedfile 
 Source: Bin\[FILELOCATION]Redist\msvcr71.dll; DestDir: {sys}; Flags: sharedfile restartreplace uninsneveruninstall
 #endif
 
-#if NeroVersion > 7
 ;VC++ 2005 SP1 Redistributable
+#if NeroVersion > 7
 Source: Setup\vcredist.msi; DestDir: {tmp}; Flags: dontcopy
 #endif
 
 ;GDI+ Redistributable (5.1.3102.5581)
-#if NeroVersion < 9
 Source: Setup\gdiplus.dll; DestDir: {sys}; Flags: sharedfile restartreplace uninsneveruninstall; OnlyBelowVersion: 0,5.01.2600
-#endif
 
 ;BCGControlBar library
 #if NeroVersion == 7
 Source: Bin\[FILELOCATION]Redist\BCGCBPRO86071.dll; DestDir: {cf}\{#RegPublisherName}\Lib; Components: nero_core; Flags: sharedfile uninsnosharedfileprompt
 Source: Bin\[FILELOCATION]Redist\BCGCBPRO860un71.dll; DestDir: {cf}\{#RegPublisherName}\Lib; Components: nero_core; Flags: sharedfile uninsnosharedfileprompt
 Source: Bin\[FILELOCATION]Redist\BCGCBPRO860un71.dll; DestDir: {app}\Nero Burning ROM; Components: nero_core; Flags: sharedfile uninsnosharedfileprompt
-#endif
-#if NeroVersion == 8
+#else
 Source: Bin\[FILELOCATION]Redist\BCGCBPRO86080.dll; DestDir: {cf}\{#RegPublisherName}\Lib; Components: nero_core; Flags: sharedfile uninsnosharedfileprompt
 Source: Bin\[FILELOCATION]Redist\BCGCBPRO860u80.dll; DestDir: {cf}\{#RegPublisherName}\Lib; Components: nero_core; Flags: sharedfile uninsnosharedfileprompt
 Source: Bin\[FILELOCATION]Redist\BCGCBPRO860u80.dll; DestDir: {app}\Nero Burning ROM; Components: nero_core; Flags: sharedfile uninsnosharedfileprompt
 #endif
-#if NeroVersion <= 8
 Source: Bin\[FILELOCATION]Redist\BCGPOleAcc.dll; DestDir: {cf}\{#RegPublisherName}\Lib; Components: nero_core; Flags: sharedfile uninsnosharedfileprompt
-#endif
-#if NeroVersion == 9
-Source: Bin\PFiles\Nero\Nero 9\Nero Burning ROM\BCGCBPRO860u80.dll; DestDir: {app}\Nero Burning ROM; Components: nero_core
-Source: Bin\PFiles\Nero\Nero 9\Nero Burning ROM\BCGPOleAcc.dll; DestDir: {app}\Nero Burning ROM; Components: nero_core
-#endif
 
 ;Pegasus Imaging Support
 Source: {#ImagXPress_MsiFilePath}\imagX7.dll; DestDir: {sys}; Flags: sharedfile restartreplace uninsnosharedfileprompt; Components: nero_core\nero_videocd {#emit nero_coverdes}
@@ -125,12 +103,6 @@ Source: {#BurnRights_MsiFilePath}\NeroCo.dll; DestDir: {app}\Nero Toolkit\Nero B
 #endif
 
 ;Nero Product Activation
-#if NeroVersion == 9
-Source: {#NeroSetup_MsiFilePath}\AdvrCntr4.dll; DestDir: {cf}\{#RegPublisherName}\AdvrCntr4; Flags: regserver
-Source: {#NeroSetup_MsiFilePath}\NeroPatentActivation.exe; DestDir: {cf}\{#RegPublisherName}\AdvrCntr4
-#endif
-
-#if NeroVersion <= 8
 #ifdef Micro_English
 Source: Custom\{#CommonFilesLibNT_MsiFilePath}\English\AdvrCntr?.dll; DestDir: {cf}\{#RegPublisherName}\Lib; Flags: restartreplace regserver sharedfile uninsnosharedfileprompt
 #else
@@ -146,22 +118,17 @@ Source: {#CommonFilesLibNT_MsiFilePath}\patentactivationfax.htm; DestDir: {cf}\{
 #if NeroVersion == 8
 Source: {#CommonFilesLibNT_MsiFilePath}\NeroAPIGlueLayerUnicode.dll; DestDir: {cf}\{#RegPublisherName}\Lib; Flags: sharedfile uninsnosharedfileprompt
 #endif
-#endif
 
 ;Nero Lib
 #if NeroVersion == 7
 Source: {#CommonFilesLib_MsiFilePath}\ShellManager.dll; DestDir: {cf}\{#RegPublisherName}\Lib; Flags: regserver sharedfile uninsnosharedfileprompt; Components: nero_core
-#endif
-#if NeroVersion == 8
+#else
 Source: {#CommonFilesLib_MsiFilePath}\ShellManager3.dll; DestDir: {cf}\{#RegPublisherName}\Lib; Flags: regserver sharedfile uninsnosharedfileprompt; Components: nero_core
 #endif
-#if NeroVersion <= 8
 Source: {#CommonFilesLib_MsiFilePath}\DriveLocker.dll; DestDir: {cf}\{#RegPublisherName}\Lib; Flags: regserver sharedfile uninsnosharedfileprompt; Components: nero_core
 Source: {#CommonFilesLib_MsiFilePath}\NeroVMRModules.dll; DestDir: {cf}\{#RegPublisherName}\Lib; Flags: sharedfile uninsnosharedfileprompt; Components: nero_core
-#endif
 
 ;Nero Control Center
-#if NeroVersion <= 8
 #ifdef Micro_English
 Source: Custom\Bin\[FILELOCATION]\English\SetupX.exe; DestDir: {cf}\{#RegPublisherName}\Nero Web; Flags: restartreplace
 	#if NeroVersion == 8
@@ -172,14 +139,6 @@ Source: Custom\Bin\[FILELOCATION]\Setup\nps.dll; DestDir: {cf}\{#RegPublisherNam
 #else
 Source: Custom\Bin\[FILELOCATION]\SetupX.exe; DestDir: {cf}\{#RegPublisherName}\Nero Web; Flags: restartreplace
 Source: Custom\Bin\[FILELOCATION]\Setup\nps.dll; DestDir: {cf}\{#RegPublisherName}\Nero Web; Flags: restartreplace
-#endif
-#endif
-#if NeroVersion >= 9
-Source: Bin\Nero\Nero ControlCenter 4\ncc.exe; DestDir: {pf}\{#RegPublisherName}\Nero ControlCenter 4; Flags: restartreplace
-Source: Bin\Nero\Nero ControlCenter 4\ncc.dll; DestDir: {pf}\{#RegPublisherName}\Nero ControlCenter 4; Flags: restartreplace
-Source: Bin\Nero\Nero ControlCenter 4\OnlineServices\iconv.dll; DestDir: {pf}\{#RegPublisherName}\Nero ControlCenter 4\OnlineServices
-Source: Bin\Nero\Nero ControlCenter 4\OnlineServices\NOSMyNeroRegistration.dll; DestDir: {pf}\{#RegPublisherName}\Nero ControlCenter 4\OnlineServices; Flags: regserver
-Source: Bin\Nero\Nero ControlCenter 4\OnlineServices\OnlineServices.manifest; DestDir: {pf}\{#RegPublisherName}\Nero ControlCenter 4\OnlineServices
 #endif
 
 ;Nero Extended FileDialog
@@ -217,43 +176,9 @@ Source: {#NeroCore_MsiFilePath}\uNeroErr.dll; DestDir: {app}\Nero Burning ROM; C
 Source: {#NeroCore_MsiFilePath}\unewtrf.dll; DestDir: {app}\Nero Burning ROM; Components: nero_core
 Source: {#NeroCore_MsiFilePath}\uTMPVImporter.dll; DestDir: {app}\Nero Burning ROM; Components: nero_core
 Source: {#NeroCore_MsiFilePath}\uUDFImporter.dll; DestDir: {app}\Nero Burning ROM; Components: nero_core
-#if NeroVersion >= 9
-Source: {#NeroCore_MsiFilePath}\InFAudioRippingServer.dll; DestDir: {app}\Nero Burning ROM; Components: nero_core
-Source: {#NeroCore_MsiFilePath}\*.manifest; DestDir: {app}\Nero Burning ROM; Components: nero_core
-Source: {#NeroCore_MsiFilePath}\Nero.BDGraphic\NeBDGraphic.ax; DestDir: {app}\Nero Burning ROM\Nero.BDGraphic; Components: nero_core
-Source: {#NeroCore_MsiFilePath}\Nero.BDGraphic\Nero.BDGraphic.manifest; DestDir: {app}\Nero Burning ROM\Nero.BDGraphic; Components: nero_core
-Source: {#NeroCore_MsiFilePath}\Nero.BDThumbnail\NeBDThumbnail.ax; DestDir: {app}\Nero Burning ROM\Nero.BDThumbnail; Components: nero_core
-Source: {#NeroCore_MsiFilePath}\Nero.BDThumbnail\Nero.BDThumbnail.manifest; DestDir: {app}\Nero Burning ROM\Nero.BDThumbnail; Components: nero_core
-Source: {#NeroCore_MsiFilePath}\Nero.DiscNavBD\DiscNavBD.ax; DestDir: {app}\Nero Burning ROM\Nero.DiscNavBD; Components: nero_core
-Source: {#NeroCore_MsiFilePath}\Nero.DiscNavBD\Nero.DiscNavBD.manifest; DestDir: {app}\Nero Burning ROM\Nero.DiscNavBD; Components: nero_core
-Source: {#NeroCore_MsiFilePath}\Nero.DiscNavDVD\DiscNavDVD.ax; DestDir: {app}\Nero Burning ROM\Nero.DiscNavDVD; Components: nero_core
-Source: {#NeroCore_MsiFilePath}\Nero.DiscNavDVD\Nero.DiscNavDVD.manifest; DestDir: {app}\Nero Burning ROM\Nero.DiscNavDVD; Components: nero_core
-Source: {#NeroCore_MsiFilePath}\Nero.DiscNavVCD\DiscNavVCD.ax; DestDir: {app}\Nero Burning ROM\Nero.DiscNavVCD; Components: nero_core
-Source: {#NeroCore_MsiFilePath}\Nero.DiscNavVCD\Nero.DiscNavVCD.manifest; DestDir: {app}\Nero Burning ROM\Nero.DiscNavVCD; Components: nero_core
-Source: {#NeroCore_MsiFilePath}\Nero.HttpManager\NeHttpManager.dll; DestDir: {app}\Nero Burning ROM\Nero.HttpManager; Components: nero_core
-Source: {#NeroCore_MsiFilePath}\Nero.HttpManager\Nero.HttpManager.manifest; DestDir: {app}\Nero Burning ROM\Nero.HttpManager; Components: nero_core
-Source: {#NeroCore_MsiFilePath}\Nero.NeDiscManager\NeDiscManager.dll; DestDir: {app}\Nero Burning ROM\Nero.NeDiscManager; Components: nero_core
-Source: {#NeroCore_MsiFilePath}\Nero.NeDiscManager\Nero.NeDiscManager.manifest; DestDir: {app}\Nero Burning ROM\Nero.NeDiscManager; Components: nero_core
-Source: {#NeroCore_MsiFilePath}\Nero.NeDiscRecog\NeDiscRecog.dll; DestDir: {app}\Nero Burning ROM\Nero.NeDiscRecog; Components: nero_core
-Source: {#NeroCore_MsiFilePath}\Nero.NeDiscRecog\Nero.NeDiscRecog.manifest; DestDir: {app}\Nero Burning ROM\Nero.NeDiscRecog; Components: nero_core
-Source: {#NeroCore_MsiFilePath}\NFD\NeroFileDialog.dll; DestDir: {app}\Nero Burning ROM\NFD; Components: nero_core
-Source: {#NeroCore_MsiFilePath}\NFD\NeroFileDialogCF.dll; DestDir: {app}\Nero Burning ROM\NFD; Components: nero_core
-Source: {#NeroCore_MsiFilePath}\NFD\NeroFileDialogIDLPS.dll; DestDir: {app}\Nero Burning ROM\NFD; Components: nero_core; MinVersion: 0,6.0
-Source: {#NeroCore_MsiFilePath}\NFD\NeroFileDialogVista.dll; DestDir: {app}\Nero Burning ROM\NFD; Components: nero_core; MinVersion: 0,6.0
-Source: {#NeroCore_MsiFilePath}\NFD\NFD.manifest; DestDir: {app}\Nero Burning ROM\NFD; Components: nero_core
-Source: {#NeroCore_MsiFilePath}\MPGEnc.dll; DestDir: {app}\Nero Burning ROM; Components: nero_core
-Source: {#NeroCore_MsiFilePath}\NeroAPI.dll; DestDir: {app}\Nero Burning ROM; Components: nero_core
-Source: {#NeroCore_MsiFilePath}\NeroAPIEngine.dll; DestDir: {app}\Nero Burning ROM; Components: nero_core
-Source: {#NeroCore_MsiFilePath}\NeroAPIGlueLayerUnicode.dll; DestDir: {app}\Nero Burning ROM; Components: nero_core
-Source: {#NeroCore_MsiFilePath}\NeroAPIUnicode.dll; DestDir: {app}\Nero Burning ROM; Components: nero_core
-Source: {#NeroCore_MsiFilePath}\NeroCMD.exe; DestDir: {app}\Nero Burning ROM; Components: nero_core
-Source: {#NeroCore_MsiFilePath}\NeroStarter.dll; DestDir: {app}\Nero Burning ROM; Components: nero_core
-#endif
-#if NeroVersion <= 8
 Source: {#NeroCore_MsiFilePath}\uneroDB.dll; DestDir: {app}\Nero Burning ROM; Components: nero_core
 Source: {#NeroCore_MsiFilePath}\uNeRSDB.dll; DestDir: {app}\Nero Burning ROM; Components: nero_core
 Source: {#NeroCore_MsiFilePath}\wnaspi32.dll; DestDir: {app}\Nero Burning ROM; Components: nero_core
-#endif
 
 ;Nero Anti-Virus support
 Source: {#NeroCore_MsiFilePath}\NeDwFileHelper.exe; DestDir: {app}\Nero Burning ROM; Components: nero_core
@@ -276,9 +201,7 @@ Source: {#NeroCore_MsiFilePath}\Trumpet1.wav; DestDir: {app}\Nero Burning ROM; C
 Source: {#NeroCore_MsiFilePath}\uNeVCDEngine.dll; DestDir: {app}\Nero Burning ROM; Components: nero_core\nero_videocd
 Source: {#NeroCore_MsiFilePath}\uVCDMenu.dll; DestDir: {app}\Nero Burning ROM; Components: nero_core\nero_videocd
 Source: {#NeroCore_MsiFilePath}\uVMpegEnc.dll; DestDir: {app}\Nero Burning ROM; Components: nero_core\nero_videocd
-#if NeroVersion <= 8
 Source: Bin\[FILELOCATION]\Common Files\DSFilter\NeAudio2.ax; DestDir: {cf}\{#RegPublisherName}\DSFilter; Flags: regserver sharedfile uninsnosharedfileprompt uninsrestartdelete restartreplace; Components: nero_core\nero_videocd
-#endif
 
 ;E-AC3/TrueHD Audio Support
 #if NeroVersion == 7
@@ -318,7 +241,6 @@ Source: Bin\[FILELOCATION]Common Files\AudioPlugins\AudioPluginMgr.dll; DestDir:
 Source: Bin\[FILELOCATION]Common Files\AudioPlugins\AudioPluginMgr.dll; DestDir: {app}\Nero Burning ROM; Components: nero_core\nero_audioplugins {#emit nero_waveedit}
 #endif
 
-#if NeroVersion <= 8
 ;Nero Audio Plugins - AC3
 Source: Bin\[FILELOCATION]Common Files\AudioPlugins\AC3.dll; DestDir: {cf}\{#RegPublisherName}\AudioPlugins; Components: nero_core\nero_audioplugins {#emit nero_waveedit}; Flags: sharedfile uninsnosharedfileprompt
 
@@ -347,30 +269,23 @@ Source: Bin\[FILELOCATION]Common Files\AudioPlugins\DefConvertor.dll; DestDir: {
 
 ;Nero Audio Plugins - Windows Media
 Source: Bin\[FILELOCATION]Common Files\AudioPlugins\msaxp.dll; DestDir: {cf}\{#RegPublisherName}\AudioPlugins; Components: nero_core\nero_audioplugins {#emit nero_waveedit}; Flags: sharedfile uninsnosharedfileprompt
-#endif
 
 ;Nero Audio Plugins - Nero Digital
-#if NeroVersion <= 8
 Source: {#CommonFilesLib_MsiFilePath}\ndaudio.dll; DestDir: {cf}\{#RegPublisherName}\Lib; Components: nero_core\nero_audioplugins {#emit nero_waveedit}; Flags: sharedfile uninsnosharedfileprompt
 Source: {#CommonFilesLib_MsiFilePath}\NeroIPP.dll; DestDir: {cf}\{#RegPublisherName}\Lib; Components: nero_core\nero_audioplugins {#emit nero_waveedit}; Flags: sharedfile uninsnosharedfileprompt
 Source: {#CommonFilesLib_MsiFilePath}\NeroDigitalExt.dll; DestDir: {cf}\{#RegPublisherName}\Lib; Components: nero_core\nero_audioplugins {#emit nero_waveedit}; Flags: restartreplace regserver sharedfile uninsrestartdelete uninsnosharedfileprompt
 Source: Bin\[FILELOCATION]Common Files\AudioPlugins\NeroDigital.dll; DestDir: {cf}\{#RegPublisherName}\AudioPlugins; Components: nero_core\nero_audioplugins {#emit nero_waveedit}; Flags: sharedfile uninsnosharedfileprompt
-#endif
 
 ;Nero Audio Plugins - Lame MP3 Encoder
-#if NeroVersion <= 8
 #ifndef Micro
 Source: Bin\[FILELOCATION]Common Files\AudioPlugins\mp3PP.dll; DestDir: {cf}\{#RegPublisherName}\AudioPlugins; Components: nero_core\nero_audioplugins {#emit nero_waveedit}; Flags: sharedfile uninsnosharedfileprompt
 ;Lame 3.98
 Source: Custom\AudioPlugins\lame_enc.dll; DestDir: {cf}\{#RegPublisherName}\AudioPlugins; Components: nero_core\nero_audioplugins {#emit nero_waveedit}; Flags: sharedfile uninsnosharedfileprompt
 #endif
-#endif
 
 ;Nero Audio Plugins - MauSau
-#if NeroVersion <= 8
 #ifndef Micro
 Source: Custom\MauSau\*; DestDir: {cf}\{#RegPublisherName}\AudioPlugins; Components: nero_core\nero_audioplugins\mausau; Flags: sharedfile uninsnosharedfileprompt
-#endif
 #endif
 
 ;Nero CoverDesigner
@@ -383,7 +298,6 @@ Source: {#CoverDesigner_MsiFilePath}\Templates\*; DestDir: {app}\Nero CoverDesig
 
 ;Nero WaveEditor
 #ifndef Micro
-#if NeroVersion <= 8
 Source: Custom\{#WaveEditor_MsiFilePath}\AudioEffectLibrary.dll; DestDir: {app}\Nero WaveEditor; Flags: regserver; Components: nero_waveedit
 Source: Custom\{#WaveEditor_MsiFilePath}\Controls.dll; DestDir: {app}\Nero WaveEditor; Flags: regserver; Components: nero_waveedit
 
@@ -392,7 +306,6 @@ Source: Custom\{#WaveEditor_MsiFilePath}\DXEnum.exe; DestDir: {app}\Nero WaveEdi
 Source: Custom\{#WaveEditor_MsiFilePath}\VSTBridge.dll; DestDir: {app}\Nero WaveEditor; Flags: regserver; Components: nero_waveedit
 
 Source: Custom\{#WaveEditor_MsiFilePath}\waveedit.dll; DestDir: {app}\Nero WaveEditor; Flags: regserver; Components: nero_waveedit
-#endif
 Source: Custom\{#WaveEditor_MsiFilePath}\waveedit.exe; DestDir: {app}\Nero WaveEditor; Components: nero_waveedit
 #endif
 
@@ -435,8 +348,7 @@ Name: {group}\Nero WaveEditor; Filename: {app}\Nero WaveEditor\waveedit.exe; Com
 #if NeroVersion == 7
 ;Nero ProductSetup
 Name: {group}\Setup\Nero ProductSetup; Filename: {cf}\{#RegPublisherName}\Nero Web\SetupX.exe; Parameters: "MODE=""update"""; IconFilename: {cf}\{#RegPublisherName}\Nero Web\nps.dll; IconIndex: 0
-#endif
-#if NeroVersion == 8
+#else
 ;Nero ControlCenter
 Name: {group}\Setup\Nero ControlCenter; Filename: {cf}\{#RegPublisherName}\Nero Web\SetupX.exe; Parameters: "MODE=""update"""; IconFilename: {cf}\{#RegPublisherName}\Nero Web\nps.dll; IconIndex: 0
 #endif
@@ -456,11 +368,6 @@ Root: HKLM; Subkey: Software\{#RegPublisherName}\Installation\Settings; ValueTyp
 Root: HKLM; Subkey: Software\{#RegPublisherName}\Installation\Settings; ValueType: dword; ValueName: LastAutomaticUpdateCheck; ValueData: $ffffffff; Flags: uninsdeletekey
 Root: HKLM; Subkey: Software\{#RegPublisherName}\Installation\Settings; ValueType: dword; ValueName: LastUpdateCheck; ValueData: $ffffffff; Flags: uninsdeletekey
 Root: HKLM; Subkey: Software\{#RegPublisherName}\Installation; ValueType: none; Flags: uninsdeletekey
-#if NeroVersion == 9
-Root: HKLM; SubKey: Software\Nero\Shared\NL9; ValueType: binary; ValueName: ProductId; ValueData: "15 03 06 09 9f ec 70 5d d5 67 5f 47 23 c2 11 06 20 22 24 2a 28 2a 54 52 50 52 54 4a 48 4a 44 42 40 42 44 4a 48 4a 54 52 50 52 54 aa a8 aa a4 a2 a0 a2 a4 aa a8 aa 94 92 90 92 94 8a 88 8a 84 82 80 82 84 8a 88 8a 94 92 90 92 94 aa a8 aa a4 a2 a0 a2 a4 aa a8 aa 54 52 50 52 54 4a 48 4a 44 42 40 42 44 4a 48 4a 54 52 50 52 54 2a 28 2a 24 22 20 22 24 2a 28 2a 14 12 10 12 14 0a 08 0a 04 02 00 02 04 0a 08 0a 14 12 10 12 14 2a 28 2a 24 22 20 22 24 2a 28 2a 54 52 50 52 54 4a 48 4a 44 42 40 42 44 4a 48 4a 54 52 50 52 54 aa a8 aa a4 a2 a0 a2 a4 aa a8 aa 94 92 90 92 94 8a 88 8a 84 82 80 82 84 8a 88 8a 94 92 90 92 94 aa a8 aa a4 a2 a0 a2 a4 aa a8 aa 54 52 50 52 54 4a 48 4a 44 42 40 42 44 4a 48 4a 54 52 50 52 54 2a 28 2a 24 22 20 22 24 2a 28 2a 14 12 10 12 14 0a 08 0a 04 02 "; Flags: uninsdeletekey
-Root: HKLM; SubKey: Software\Nero\Shared\NL9; ValueType: string; ValueName: Serial9; ValueData: {cm:EvalSerial}; Flags: uninsdeletekey
-#endif
-
 
 #if NeroVersion == 8
 Root: HKCU; Subkey: Software\{#RegPublisherName}; ValueType: none; Flags: uninsdeletekeyifempty
@@ -518,7 +425,7 @@ Root: HKLM; Subkey: Software\{#RegPublisherName}\Shared; ValueType: string; Valu
 #if NeroVersion == 8
 Root: HKLM; Subkey: Software\{#RegPublisherName}\Shared; ValueType: string; ValueName: AudioPluginManager; ValueData: {cf}\{#RegPublisherName}\AudioPlugins\Mgr; Components: nero_core\nero_audioplugins {#emit nero_waveedit}; Flags: uninsdeletekey
 #endif
-#if neroVersion == 7
+#if NeroVersion == 7
 Root: HKLM; Subkey: Software\{#RegPublisherName}\Shared; ValueType: string; ValueName: AudioPluginManager; ValueData: {app}\Nero Burning ROM; Components: nero_core\nero_audioplugins {#emit nero_waveedit}; Flags: uninsdeletekey
 #endif
 #ifndef Micro
@@ -669,8 +576,8 @@ Root: HKLM; SubKey: Software\Classes\NeroBurningROM.Files{#NeroVersion}.nsd; Val
 Root: HKLM; SubKey: Software\Classes\NeroBurningROM.Files{#NeroVersion}.nsd\DefaultIcon; ValueType: expandsz; ValueData: {app}\Nero Burning ROM\nero.exe,8; Flags: uninsdeletekey; Components: nero_core
 Root: HKLM; SubKey: Software\Classes\NeroBurningROM.Files{#NeroVersion}.nsd\Shell\Open\Command; ValueType: expandsz; ValueData: """{app}\Nero Burning ROM\nero.exe"" ""%1"""; Flags: uninsdeletekey; Components: nero_core
 
-#ifndef Micro
 ;Nero file associations - Nero CoverDesigner
+#ifndef Micro
 Root: HKLM; Subkey: Software\Classes\Applications\coverdes.exe\Shell\Open; ValueType: string; ValueData: Nero CoverDesigner; Components: nero_coverdes; ValueName: FriendlyAppName; Flags: uninsdeletekey
 Root: HKLM; Subkey: Software\Classes\Applications\coverdes.exe\Shell\Open\Command; ValueType: string; ValueData: """{app}\Nero CoverDesigner\CoverDes.exe"" ""%1"""; Components: nero_coverdes; Flags: uninsdeletekey
 
@@ -725,13 +632,8 @@ Name: {userappdata}\Nero; Type: dirifempty
 BeveledLabel=©2009 Klaas Nekeman
 
 [CustomMessages]
-;Evaluation serial July 2009
-#if NeroVersion == 9
-EvalSerial=8M01-2085-KK25-2LEE-0UHL-8MPA-6H4U-EHAL
-#else
 ;Evaluation serials expired!
 EvalSerial=
-#endif
 issiUrl=http://updatepack.nl
 issiUrlText=UpdatePack.nl
 ;English
@@ -845,7 +747,7 @@ Name: nero_waveedit; Description: Nero WaveEditor; Types: full
 #ifndef Micro
 Name: nero_toolkit; Description: Nero Toolkit; Types: full
 Name: nero_toolkit\nero_burnrights; Description: Nero BurnRights; Types: full
-#if NeroVersion < 8
+#if NeroVersion <= 7
 Name: nero_toolkit\nero_cdspeed; Description: Nero CD-DVD Speed; Types: full
 #else
 Name: nero_toolkit\nero_discspeed; Description: Nero DiscSpeed; Types: full
@@ -1041,10 +943,9 @@ begin
 				if CheckSerialIsNew() then
 					begin
 					//Window Controls
-						#if NeroVersion == 8
+						#if NeroVersion >= 8
 						NeroWindowTitle := '[TITLE:Nero ControlCenter; CLASS:#32770]';
-						#endif
-						#if NeroVersion == 7
+						#else
 						NeroWindowTitle := '[TITLE:Nero ProductSetup; CLASS:#32770]';
 						#endif
 						AddLicenseButton := '[CLASS:Button; INSTANCE:12;]';

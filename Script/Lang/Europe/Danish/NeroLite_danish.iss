@@ -9,24 +9,24 @@ Name: danish; MessagesFile: compiler:Languages\Danish.isl; LicenseFile: Bin\[FIL
 [Files]
 ;Danish
 #if NeroVersion == 8
-Source: Custom\Help\NeroControlCenter_ENG.chm; DestDir: {cf}\{#RegPublisherName}\Nero Web; Check: CheckLanguage('danish'); BeforeInstall: AddLanguage('DAN');
+Source: Custom\Help\NeroControlCenter_ENG.chm; DestDir: {cf}\{#RegPublisherName}\Nero Web; Check: CheckLanguage('danish'); BeforeInstall: AddLanguage('DAN')
 #endif
 #if NeroVersion == 7
-Source: Custom\Help\NeroControlCenter_ENG.chm; DestName: NeroProductSetup_ENG.chm; DestDir: {cf}\{#RegPublisherName}\Nero Web; Check: CheckLanguage('danish'); BeforeInstall: AddLanguage('DAN');
+Source: Custom\Help\NeroControlCenter_ENG.chm; DestName: NeroProductSetup_ENG.chm; DestDir: {cf}\{#RegPublisherName}\Nero Web; Check: CheckLanguage('danish'); BeforeInstall: AddLanguage('DAN')
 #endif
 Source: Custom\Bin\[FILELOCATION]Core\NeroDAN.nls; DestDir: {app}\Nero Burning ROM; Components: nero_core; Check: CheckLanguage('danish')
 Source: Bin\[FILELOCATION]Core\NeroDAN.txt; DestDir: {app}\Nero Burning ROM; Components: nero_core; Check: CheckLanguage('danish')
 Source: Bin\[FILELOCATION]Common Files\Lib\BCGCBProResDAN.nls; DestDir: {app}\Nero Burning ROM; Components: nero_core; Check: CheckLanguage('danish')
-Source: Custom\Help\NeroBurningRom_ENG.chm; DestDir: {app}\Nero Burning ROM; Components: nero_core; Check: CheckLanguage('danish');
-Source: Custom\Help\NeroExpress_ENG.chm; DestDir: {app}\Nero Burning ROM; Components: nero_core; Check: CheckLanguage('danish');
+Source: Custom\Help\NeroBurningRom_ENG.chm; DestDir: {app}\Nero Burning ROM; Components: nero_core; Check: CheckLanguage('danish')
+Source: Custom\Help\NeroExpress_ENG.chm; DestDir: {app}\Nero Burning ROM; Components: nero_core; Check: CheckLanguage('danish')
 #ifndef Micro
 Source: Custom\Bin\[FILELOCATION]Nero CoverDesigner\CoverEd-DAN.nls; DestDir: {app}\Nero CoverDesigner; Components: nero_coverdes; Check: CheckLanguage('danish')
-Source: Custom\Help\NeroCoverDesigner_ENG.chm; DestDir: {app}\Nero CoverDesigner; Components: nero_coverdes; Check: CheckLanguage('danish');
+Source: Custom\Help\NeroCoverDesigner_ENG.chm; DestDir: {app}\Nero CoverDesigner; Components: nero_coverdes; Check: CheckLanguage('danish')
 Source: Custom\Bin\[FILELOCATION]Nero WaveEditor\WaveEdit-DAN.nls; DestDir: {app}\Nero WaveEditor; Components: nero_waveedit; Check: CheckLanguage('danish')
-Source: Custom\Help\NeroWaveEditor_ENG.chm; DestDir: {app}\Nero WaveEditor; Components: nero_waveedit; Check: CheckLanguage('danish');
-Source: Custom\Help\NeroBurnRights_ENG.chm; DestDir: {app}\Nero Toolkit\Nero BurnRights; Components: nero_toolkit\nero_burnrights; Check: CheckLanguage('danish');
+Source: Custom\Help\NeroWaveEditor_ENG.chm; DestDir: {app}\Nero WaveEditor; Components: nero_waveedit; Check: CheckLanguage('danish')
+Source: Custom\Help\NeroBurnRights_ENG.chm; DestDir: {app}\Nero Toolkit\Nero BurnRights; Components: nero_toolkit\nero_burnrights; Check: CheckLanguage('danish')
 	#if NeroVersion == 8
-Source: Custom\Help\NeroDiscSpeed_ENG.chm; DestDir: {app}\Nero Toolkit\Nero DiscSpeed; Components: nero_toolkit\nero_discspeed; Check: CheckLanguage('danish');
+Source: Custom\Help\NeroDiscSpeed_ENG.chm; DestDir: {app}\Nero Toolkit\Nero DiscSpeed; Components: nero_toolkit\nero_discspeed; Check: CheckLanguage('danish')
 	#endif
 #endif
 

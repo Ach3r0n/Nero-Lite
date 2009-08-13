@@ -55,7 +55,7 @@ Name: nero_lang\danish; Description: {cm:Comp_Nero_lang_danish}; Languages: not 
 ;Setup Wizard - Registration dialog
 danish.CustomFormCaption=Customer Information
 danish.CustomFormDescription=Please enter your information.
-danish.RegistrationInfo=Please personalize your copy of Nero {#NeroMajorVersion} by entering your name and%nyour serial number.
+danish.RegistrationInfo=Please personalize your copy of Nero {#NeroVersion} by entering your name and%nyour serial number.
 danish.RegistrationWelcome=Thanks for purchasing your copy of Nero.
 danish.RegistrationWelcomeCaption=Welcome to Nero
 danish.RegistrationCaption=Registration

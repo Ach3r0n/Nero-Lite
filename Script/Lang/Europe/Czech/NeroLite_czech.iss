@@ -55,7 +55,7 @@ Name: nero_lang\czech; Description: {cm:Comp_Nero_lang_czech}; Languages: not cz
 ;Setup Wizard - Registration dialog
 czech.CustomFormCaption=Zákaznícké informace
 czech.CustomFormDescription=Vložte, prosím, vaše informace.
-czech.RegistrationInfo=Upravte, prosím, svoji kopii Nero {#NeroMajorVersion} zadáním vašeho jména a%nsériového císla.
+czech.RegistrationInfo=Upravte, prosím, svoji kopii Nero {#NeroVersion} zadáním vašeho jména a%nsériového císla.
 czech.RegistrationWelcome=Dekujeme vám za zakoupení kopie Nero.
 czech.RegistrationWelcomeCaption=Nero - Vítejte...
 czech.RegistrationCaption=Registrace

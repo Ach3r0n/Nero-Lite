@@ -55,7 +55,7 @@ Name: nero_lang\korean; Description: {cm:Comp_Nero_lang_korean}; Languages: not 
 ;Setup Wizard - Registration dialog
 korean.CustomFormCaption=Customer Information
 korean.CustomFormDescription=Please enter your information.
-korean.RegistrationInfo=Please personalize your copy of Nero {#NeroMajorVersion} by entering your name and%nyour serial number.
+korean.RegistrationInfo=Please personalize your copy of Nero {#NeroVersion} by entering your name and%nyour serial number.
 korean.RegistrationWelcome=Thanks for purchasing your copy of Nero.
 korean.RegistrationWelcomeCaption=Welcome to Nero
 korean.RegistrationCaption=Registration

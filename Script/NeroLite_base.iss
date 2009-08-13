@@ -14,8 +14,7 @@ AppPublisherURL=http://updatepack.nl
 AppVerName=Nero {#NeroVersion} {#NeroSetupType} {#NeroFileVersion}
 AppVersion={#NeroFileVersion}
 ChangesAssociations=true
-;Compression=lzma/ultra64
-Compression=none
+Compression=lzma/ultra64
 DefaultDirName={pf}\Nero
 DefaultGroupName=Nero
 FlatComponentsList=false
@@ -126,7 +125,7 @@ Source: {#CommonFilesLib_MsiFilePath}\ShellManager.dll; DestDir: {cf}\{#RegPubli
 Source: {#CommonFilesLib_MsiFilePath}\ShellManager3.dll; DestDir: {cf}\{#RegPublisherName}\Lib; Flags: regserver sharedfile uninsnosharedfileprompt; Components: nero_core
 #endif
 Source: {#CommonFilesLib_MsiFilePath}\DriveLocker.dll; DestDir: {cf}\{#RegPublisherName}\Lib; Flags: regserver sharedfile uninsnosharedfileprompt; Components: nero_core
-Source: {#CommonFilesLib_MsiFilePath}\NeroVMRModules.dll; DestDir: {cf}\{#RegPublisherName}\Lib; Flags: sharedfile uninsnosharedfileprompt; Components: nero_core
+Source: {#CommonFilesLib2_MsiFilePath}\NeroVMRModules.dll; DestDir: {cf}\{#RegPublisherName}\Lib; Flags: sharedfile uninsnosharedfileprompt; Components: nero_core
 
 ;Nero Control Center
 #ifdef Micro_English
@@ -215,9 +214,9 @@ Source: Bin\[FILELOCATION]\Common Files\DSFilter\Neroapl.dll; DestDir: {cf}\{#Re
 Source: Bin\[FILELOCATION]\Common Files\DSFilter\NeSplitter.ax; DestDir: {cf}\{#RegPublisherName}\DSFilter; Flags: regserver sharedfile uninsnosharedfileprompt restartreplace uninsrestartdelete; Components: nero_core\nero_videocd
 Source: Bin\[FILELOCATION]\Common Files\DSFilter\NeMP4Splitter.ax; DestDir: {cf}\{#RegPublisherName}\DSFilter; Flags: regserver sharedfile uninsnosharedfileprompt restartreplace uninsrestartdelete; Components: nero_core\nero_videocd
 Source: Bin\[FILELOCATION]\Common Files\DSFilter\NeVideo.ax; DestDir: {cf}\{#RegPublisherName}\DSFilter; Flags: regserver sharedfile uninsnosharedfileprompt restartreplace uninsrestartdelete; Components: nero_core\nero_videocd
-Source: {#CommonFilesLib_MsiFilePath}\NeEm2a.dll; DestDir: {cf}\{#RegPublisherName}\Lib; Components: nero_core\nero_videocd; Flags: sharedfile uninsnosharedfileprompt
-Source: {#CommonFilesLib_MsiFilePath}\NeEm2v.dll; DestDir: {cf}\{#RegPublisherName}\Lib; Components: nero_core\nero_videocd; Flags: sharedfile uninsnosharedfileprompt
-Source: {#CommonFilesLib_MsiFilePath}\uNeroMediaCon.dll; DestDir: {cf}\{#RegPublisherName}\Lib; Components: nero_core\nero_videocd; Flags: sharedfile uninsnosharedfileprompt
+Source: {#CommonFilesLib2_MsiFilePath}\NeEm2a.dll; DestDir: {cf}\{#RegPublisherName}\Lib; Components: nero_core\nero_videocd; Flags: sharedfile uninsnosharedfileprompt
+Source: {#CommonFilesLib2_MsiFilePath}\NeEm2v.dll; DestDir: {cf}\{#RegPublisherName}\Lib; Components: nero_core\nero_videocd; Flags: sharedfile uninsnosharedfileprompt
+Source: {#CommonFilesLib2_MsiFilePath}\uNeroMediaCon.dll; DestDir: {cf}\{#RegPublisherName}\Lib; Components: nero_core\nero_videocd; Flags: sharedfile uninsnosharedfileprompt
 #endif
 #if NeroVersion == 7
 Source: Bin\[FILELOCATION]\Common Files\DSFilter\NDParser.ax; DestDir: {cf}\{#RegPublisherName}\DSFilter; Flags: regserver sharedfile uninsnosharedfileprompt restartreplace uninsrestartdelete; Components: nero_core\nero_videocd

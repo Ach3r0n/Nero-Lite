@@ -55,7 +55,7 @@ Name: nero_lang\slovak; Description: {cm:Comp_Nero_lang_slovak}; Languages: not 
 ;Setup Wizard - Registration dialog
 slovak.CustomFormCaption=Zákaznícke informácie
 slovak.CustomFormDescription=Vložte, prosím, vaše informácie.
-slovak.RegistrationInfo=Prispôsobte, prosím, svoju kópiu Nero {#NeroMajorVersion} zadaním vášho mena a%nsériového císla.
+slovak.RegistrationInfo=Prispôsobte, prosím, svoju kópiu Nero {#NeroVersion} zadaním vášho mena a%nsériového císla.
 slovak.RegistrationWelcome=Dakujeme vám za zakúpenie kópie Nero.
 slovak.RegistrationWelcomeCaption=Nero - Vitajte
 slovak.RegistrationCaption=Registrácia

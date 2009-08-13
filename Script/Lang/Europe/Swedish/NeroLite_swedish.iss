@@ -55,7 +55,7 @@ Name: nero_lang\swedish; Description: {cm:Comp_Nero_lang_swedish}; Languages: no
 ;Setup Wizard - Registration dialog
 swedish.CustomFormCaption=Personlig information
 swedish.CustomFormDescription=Ange dina uppgifter.
-swedish.RegistrationInfo=Ange personlig information (namn och serienummer) för din version%n av Nero {#NeroMajorVersion}.
+swedish.RegistrationInfo=Ange personlig information (namn och serienummer) för din version%n av Nero {#NeroVersion}.
 swedish.RegistrationWelcome=Tack för ditt köp av en kopia av Nero.
 swedish.RegistrationWelcomeCaption=Välkommen till Nero
 swedish.RegistrationCaption=Registrering

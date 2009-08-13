@@ -97,7 +97,7 @@ Name: nero_lang\chinese_trad; Description: {cm:Comp_Nero_lang_chinese_trad}; Lan
 ;Setup Wizard - Registration dialog
 chinese_simpl.CustomFormCaption=用户信息
 chinese_simpl.CustomFormDescription=请输入您的信息。
-chinese_simpl.RegistrationInfo=请个性化您的 Nero {#NeroMajorVersion} 副本，方法是输入您的姓名和序列号。
+chinese_simpl.RegistrationInfo=请个性化您的 Nero {#NeroVersion} 副本，方法是输入您的姓名和序列号。
 chinese_simpl.RegistrationWelcome=感谢您购买 Nero 副本。
 chinese_simpl.RegistrationWelcomeCaption=欢迎使用 Nero
 chinese_simpl.RegistrationCaption=注册
@@ -149,7 +149,7 @@ chinese_simpl.AssocImageFileExt=将标准的映像文件关联到 Nero
 ;Setup Wizard - Registration dialog
 chinese_trad.CustomFormCaption=客戶資訊
 chinese_trad.CustomFormDescription=請輸入您的註冊資訊。
-chinese_trad.RegistrationInfo=請輸入您的使用者名稱和您的 Nero {#NeroMajorVersion} 序號。
+chinese_trad.RegistrationInfo=請輸入您的使用者名稱和您的 Nero {#NeroVersion} 序號。
 chinese_trad.RegistrationWelcome=感謝您購買 Nero。
 chinese_trad.RegistrationWelcomeCaption=歡迎使用 Nero
 chinese_trad.RegistrationCaption=註冊

@@ -97,7 +97,7 @@ Name: nero_lang\portuguese_brazilian; Description: {cm:Comp_Nero_lang_portuguese
 ;Setup Wizard - Registration dialog
 portuguese_brazilian.CustomFormCaption=Informações sobre o cliente
 portuguese_brazilian.CustomFormDescription=Por favor digite suas informações
-portuguese_brazilian.RegistrationInfo=Personalize sua cópia do Nero {#NeroMajorVersion} fornecendo seu nome e seu número serial.
+portuguese_brazilian.RegistrationInfo=Personalize sua cópia do Nero {#NeroVersion} fornecendo seu nome e seu número serial.
 portuguese_brazilian.RegistrationWelcome=Obrigado por registrar sua cópia do Nero.
 portuguese_brazilian.RegistrationWelcomeCaption=Bem Vindo ao Nero
 portuguese_brazilian.RegistrationCaption=Registro

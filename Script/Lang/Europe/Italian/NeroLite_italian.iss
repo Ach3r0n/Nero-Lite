@@ -55,7 +55,7 @@ Name: nero_lang\italian; Description: {cm:Comp_Nero_lang_italian}; Languages: no
 ;Setup Wizard - Registration dialog
 italian.CustomFormCaption=Informazioni proprietario
 italian.CustomFormDescription=Per favore inserisci le tue informazioni.
-italian.RegistrationInfo=Per favore personalizza la tua copia di Nero {#NeroMajorVersion} inserendo il tuo nome ed%nil tuo numero di serie.
+italian.RegistrationInfo=Per favore personalizza la tua copia di Nero {#NeroVersion} inserendo il tuo nome ed%nil tuo numero di serie.
 italian.RegistrationWelcome=Grazie per aver acquistato la tua copia di Nero.
 italian.RegistrationWelcomeCaption=Benvenuto a Nero
 italian.RegistrationCaption=Registrazione

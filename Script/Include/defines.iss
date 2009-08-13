@@ -35,6 +35,7 @@
 	#define WaveEditor_MsiFilePath "Bin\[FILELOCATION]Nero WaveEditor"
 	#define CommonFilesLibNT_MsiFilePath "Bin\[FILELOCATION]Common Files\Lib\NT"
 	#define CommonFilesLib_MsiFilePath "Bin\[FILELOCATION]Common Files\Lib"
+	#define CommonFilesLib2_MsiFilePath "Bin\[FILELOCATION]\Common Files\Lib"
 	#define DiscSpeed_MsiFilePath "Bin\[FILELOCATION]\Nero CD-DVD Speed"
 	#define InfoTool_MsiFilePath "Bin\[FILELOCATION]\Nero InfoTool"
 	#define BurnRights_MsiFilePath "Bin\[FILELOCATION]\Nero BurnRights"

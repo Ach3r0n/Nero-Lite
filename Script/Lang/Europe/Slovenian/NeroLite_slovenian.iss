@@ -55,7 +55,7 @@ Name: nero_lang\slovenian; Description: {cm:Comp_Nero_lang_slovenian}; Languages
 ;Setup Wizard - Registration dialog
 slovenian.CustomFormCaption=Podatki o stranki
 slovenian.CustomFormDescription=Prosimo vnesite vaše podatke.
-slovenian.RegistrationInfo=Prosimo vnesite podatke za vaš Nero {#NeroMajorVersion}, vpišite ime in%nvašo serijsko številko.
+slovenian.RegistrationInfo=Prosimo vnesite podatke za vaš Nero {#NeroVersion}, vpišite ime in%nvašo serijsko številko.
 slovenian.RegistrationWelcome=Zahvaljujemo se vam za nakup programa.
 slovenian.RegistrationWelcomeCaption=Pozdravljeni v Nero
 slovenian.RegistrationCaption=Registracija

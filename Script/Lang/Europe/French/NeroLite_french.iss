@@ -56,7 +56,7 @@ Name: nero_lang\french; Description: {cm:Comp_Nero_lang_french}; Languages: not 
 french.NeroShop=Boutique en ligne Nero 
 french.CustomFormCaption=Information Utilisateur
 french.CustomFormDescription=Veuillez entrer vos informations.
-french.RegistrationInfo=Veuillez personnaliser votre copie de Nero {#NeroMajorVersion} en saisissant votre nom%net votre numéro de série.
+french.RegistrationInfo=Veuillez personnaliser votre copie de Nero {#NeroVersion} en saisissant votre nom%net votre numéro de série.
 french.RegistrationWelcome=Merci d'enregistrer votre copie de Nero.
 french.RegistrationWelcomeCaption=Nero vous souhaite la bienvenue
 french.RegistrationCaption=Enregistrement

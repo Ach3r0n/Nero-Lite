@@ -55,7 +55,7 @@ Name: nero_lang\hungarian; Description: {cm:Comp_Nero_lang_hungarian}; Languages
 ;Setup Wizard - Registration dialog
 hungarian.CustomFormCaption=Vásárlói információ
 hungarian.CustomFormDescription=Kérem, adja meg az adatokat.
-hungarian.RegistrationInfo=Szabja testre a Nero {#NeroMajorVersion} ezen példányát nevének és sorozatszámának beírásával.
+hungarian.RegistrationInfo=Szabja testre a Nero {#NeroVersion} ezen példányát nevének és sorozatszámának beírásával.
 hungarian.RegistrationWelcome=Köszönjük, hogy megvásárolta a Nero-t!
 hungarian.RegistrationWelcomeCaption=Üdvözöljük a Nero-ban
 hungarian.RegistrationCaption=Regisztráció

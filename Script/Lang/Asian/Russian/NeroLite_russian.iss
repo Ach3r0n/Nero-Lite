@@ -55,7 +55,7 @@ Name: nero_lang\russian; Description: {cm:Comp_Nero_lang_russian}; Languages: no
 ;Setup Wizard - Registration dialog
 russian.CustomFormCaption=Информация о потребителе
 russian.CustomFormDescription=Пожалуйста, введите информацию о себе.
-russian.RegistrationInfo=Персонализируйте Вашу копию Nero {#NeroMajorVersion} введя свое имя и%nсвой серийный номер.
+russian.RegistrationInfo=Персонализируйте Вашу копию Nero {#NeroVersion} введя свое имя и%nсвой серийный номер.
 russian.RegistrationWelcome=Спасибо за приобретение Вашей копии  Nero.
 russian.RegistrationWelcomeCaption=Добро пожаловать в Nero
 russian.RegistrationCaption=Регистрация

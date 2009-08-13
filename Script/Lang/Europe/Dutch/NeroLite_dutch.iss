@@ -55,7 +55,7 @@ Name: nero_lang\dutch; Description: {cm:Comp_Nero_lang_dutch}; Languages: not du
 ;Setup Wizard - Registration dialog
 dutch.CustomFormCaption=Klantgegevens
 dutch.CustomFormDescription=Geef de benodigde gebruikersgegevens op.
-dutch.RegistrationInfo=Registreer uw exemplaar van Nero {#NeroMajorVersion} door uw naam en%nserienummer in te voeren.
+dutch.RegistrationInfo=Registreer uw exemplaar van Nero {#NeroVersion} door uw naam en%nserienummer in te voeren.
 dutch.RegistrationWelcome=Bedankt voor de aankoop van uw exemplaar van Nero.
 dutch.RegistrationWelcomeCaption=Welkom bij Nero
 dutch.RegistrationCaption=Registratie

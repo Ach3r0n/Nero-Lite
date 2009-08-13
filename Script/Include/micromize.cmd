@@ -1,7 +1,7 @@
 @echo off
 setlocal enabledelayedexpansion enableextensions
 title Micromize...
-set neroversion=9
+
 ::push to subdirectory
 pushd Custom
 

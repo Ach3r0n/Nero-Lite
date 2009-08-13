@@ -100,7 +100,7 @@ Name: nero_lang\spanish_latin_american; Description: {cm:Comp_Nero_lang_spanish_
 ;Setup Wizard - Registration dialog
 spanish.CustomFormCaption=Información de Cliente
 spanish.CustomFormDescription=Por favor introduzca sus datos.
-spanish.RegistrationInfo=Por favor personalice su copia de Nero {#NeroMajorVersion} introduciendo su nombre y%nsu número de serie a continuación.
+spanish.RegistrationInfo=Por favor personalice su copia de Nero {#NeroVersion} introduciendo su nombre y%nsu número de serie a continuación.
 spanish.RegistrationWelcome=Gracias por comprar su copia de Nero.
 spanish.RegistrationWelcomeCaption=Bienvenido a Nero
 spanish.RegistrationCaption=Registro

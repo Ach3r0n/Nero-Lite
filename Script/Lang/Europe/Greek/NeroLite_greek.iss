@@ -55,7 +55,7 @@ Name: nero_lang\greek; Description: {cm:Comp_Nero_lang_greek}; Languages: not gr
 ;Setup Wizard - Registration dialog
 greek.CustomFormCaption=Πληροφορίες πελάτη
 greek.CustomFormDescription=Παρακαλώ συμπληρώστε τα στοιχεία σας
-greek.RegistrationInfo=Παρακαλώ προσωποποιήστε το αντίγραφο του Nero {#NeroMajorVersion} δηλώνοντας το όνομα σας και%nτον σειριακό σας αριθμό.
+greek.RegistrationInfo=Παρακαλώ προσωποποιήστε το αντίγραφο του Nero {#NeroVersion} δηλώνοντας το όνομα σας και%nτον σειριακό σας αριθμό.
 greek.RegistrationWelcomeCaption=Καλώς ήρθατε στο Nero
 greek.RegistrationWelcome=Σας ευχαριστούμε που αγοράσατε το Nero.
 greek.RegistrationCaption=Εγγραφή

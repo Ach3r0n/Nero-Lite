@@ -55,7 +55,7 @@ Name: nero_lang\norwegian; Description: {cm:Comp_Nero_lang_norwegian}; Languages
 ;Setup Wizard - Registration dialog
 norwegian.CustomFormDescription=Vennligst fyll inn din bruker informasjon.
 norwegian.CustomFormCaption=Bruker informasjon
-norwegian.RegistrationInfo=Vennligst gjør din kopi av Nero {#NeroMajorVersion} personlig ved og taste inn navn og %ndin produkt nøkkel.
+norwegian.RegistrationInfo=Vennligst gjør din kopi av Nero {#NeroVersion} personlig ved og taste inn navn og %ndin produkt nøkkel.
 norwegian.RegistrationWelcome=Takk for at du har kjøpt en kopi av Nero.
 norwegian.RegistrationWelcomeCaption=Velkommen til Nero
 norwegian.RegistrationCaption=Registrering

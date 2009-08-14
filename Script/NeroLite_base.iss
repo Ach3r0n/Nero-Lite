@@ -61,7 +61,7 @@ Source: Bin\[FILELOCATION]Redist\msvcr71.dll; DestDir: {sys}; Flags: sharedfile 
 #endif
 
 ;VC++ 2005 SP1 Redistributable
-#if NeroVersion > 7
+#if NeroVersion >= 8
 Source: Setup\vcredist.msi; DestDir: {tmp}; Flags: dontcopy
 #endif
 

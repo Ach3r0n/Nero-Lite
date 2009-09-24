@@ -4,8 +4,6 @@
 ;Detect Nero Version
 #if FileExists("Bin\[FILELOCATION]Core\nero.exe")
 	#define NeroFileVersion GetFileVersion("Bin\[FILELOCATION]Core\nero.exe")
-#elif FileExists("Bin\PFiles\Nero\Nero 9\Nero Burning ROM\nero.exe")
-	#define NeroFileVersion	GetFileVersion("Bin\PFiles\Nero\Nero 9\Nero Burning ROM\nero.exe")
 #endif
 
 #ifdef NeroFileVersion
@@ -39,18 +37,6 @@
 	#define DiscSpeed_MsiFilePath "Bin\[FILELOCATION]\Nero CD-DVD Speed"
 	#define InfoTool_MsiFilePath "Bin\[FILELOCATION]\Nero InfoTool"
 	#define BurnRights_MsiFilePath "Bin\[FILELOCATION]\Nero BurnRights"
-#endif
-
-#if NeroVersion >= 9
-	#define NeroSetup_MsiFilePath "Bin\Nero\AdvrCntr4"
-	#define ImagXPress_MsiFilePath "Bin\ImagXPress"
-	#define NeroCore_MsiFilePath "Bin\PFiles\Nero\Nero 9\Nero Burning ROM"
-	#define CoverDesigner_MsiFilePath "Bin\PFiles\Nero\Nero 9\Nero CoverDesigner"
-	#define WaveEditor_MsiFilePath "Bin\Nero\Nero 9\Nero WaveEditor"
-	#define BurnRights_MsiFilePath "Bin\Nero\Nero 9\Nero BurnRights"
-	#define DiscSpeed_MsiFilePath "Bin\Nero\Nero 9\Nero DiscSpeed"
-	#define DriveSpeed_MsiFilePath "Bin\Nero\Nero 9\Nero DriveSpeed"
-	#define InfoTool_MsiFilePath "Bin\Nero\Nero 9\Nero InfoTool"
 #endif
 
 #define ISSI_UseMyInitializeWizard

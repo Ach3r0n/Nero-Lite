@@ -16,8 +16,7 @@ if not exist "%InnoSetupPath%" set InnoSetupPath=%programfiles%\Inno Setup\Inno 
 	set setupname=!setupname:~8!
 	set setupname=Nero-%neroversion%!setupname!.exe
 	title Compiling !setupname!...
-	start /B /WAIT "Compiling !setupname!" /low "%InnoSetupPath%\iscc.exe" "%%~fi"
-	call "Script\Include\signfile.cmd" "Output\!setupname!"
+	start /B /WAIT "Compiling !setupname!" /low "%InnoSetupPath%\iscc.exe" /S"signcode=Tools\CodeSigning\signcode.exe $p -t http://timestamp.verisign.com/scripts/timstamp.dll $f" "%%~fi"
 	del %%i
 )
 pause

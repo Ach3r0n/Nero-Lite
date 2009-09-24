@@ -25,6 +25,7 @@ OutputDir=.\Output
 SetupIconFile=Custom\Resources\Icons\Nero{#NeroVersion}\nps_dll_128.ico
 ShowLanguageDialog=yes
 ShowComponentSizes=no
+SignTool=signcode -cn "Klaas Nekeman" -i http://updatepack.nl
 SignedUninstaller=true
 SignedUninstallerDir=.\Setup
 SolidCompression=true
@@ -49,7 +50,7 @@ Source: Setup\Nero{#NeroVersion}\nerosidebarbig.bmp; DestDir: {tmp}; DestName: W
 ;AutoItX 3.3
 Source: Setup\autoitx3.dll; DestDir: {tmp}; Flags: dontcopy
 
-;SQLite 3.6.17
+;SQLite 3.6.18
 Source: Setup\sqlite3.dll; DestDir: {tmp}; Flags: dontcopy
 
 ;MFC71 Redistributable

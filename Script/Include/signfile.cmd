@@ -1,1 +1,1 @@
-Tools\CodeSigning\signcode.exe -sha1 "bcf99dc84178b5df3a4bd6d64d2f56004baa77aa" -i http://updatepack.nl -t http://timestamp.verisign.com/scripts/timstamp.dll %1
+Tools\CodeSigning\signcode.exe -cn "Klaas Nekeman" -i http://updatepack.nl -t http://timestamp.verisign.com/scripts/timstamp.dll %1

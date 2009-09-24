@@ -3,6 +3,7 @@ Signature = "$Windows NT$"
 
 [DefaultInstall]
 RunPreSetupCommands = InnoSetup.Install:1
+AddReg              = InnoSetup.AddReg
 RenFiles            = InnoPP.Rename
 CopyFiles           = InnoPP.CopyFiles,InnoLanguages,EssentialPascal
 UpdateInis          = ISTool.Config
@@ -14,9 +15,9 @@ DelFiles = InnoPP.Delete
 
 [InnoSetup.Install]
 ;Remove InnoPP before install to avoid conflicts
-"rundll32.exe advpack.dll,LaunchINFSection %01%\install.inf, PreInstall"
-;Inno Setup 5.3.4 unicode
-"""%01%\isetup-5.3.4-unicode.exe"" /NORESTART /VERYSILENT /SUPPRESSMSGBOXES /NOICONS /DIR=""%16422%\Inno Setup\Inno Setup 5"""
+"rundll32.exe advpack.dll,LaunchINFSection %01%\install.inf,PreInstall"
+;Inno Setup 5.3.5 unicode
+"""%01%\isetup-5.3.5-unicode.exe"" /NORESTART /VERYSILENT /SUPPRESSMSGBOXES /NOICONS /DIR=""%16422%\Inno Setup\Inno Setup 5"""
 ;Inno Setup Script Includes 5.1.9.0
 """%01%\ISSI-Setup-5.1.9.exe"" /NORESTART /VERYSILENT /SUPPRESSMSGBOXES /NOICONS /DIR=""%16422%\Inno Setup\ISSI"""
 ;Inno Setup Form Designer 2.0.8
@@ -24,13 +25,17 @@ DelFiles = InnoPP.Delete
 ;ISTool 5.3.0
 """%01%\istool-5.3.0.exe"" /NORESTART /VERYSILENT /SUPPRESSMSGBOXES /NOICONS /DIR=""%16422%\Inno Setup\ISTool"""
 
+[InnoSetup.AddReg]
+HKCU,"Software\Jordan Russell\Inno Setup\Options","LowPriorityDuringCompile",0x0,"1"
+HKCU,"Software\Jordan Russell\Inno Setup\SignTools","SignTool0",0x0,"signcode=signcode.exe $p -t http://timestamp.verisign.com/scripts/timstamp.dll $f"
+
 [DestinationDirs]
 DefaultDestDir  = 16422,"Inno Setup\Inno Setup 5"
 InnoLanguages   = 16422,"Inno Setup\Inno Setup 5\Languages"
 EssentialPascal = 16422,"Inno Setup\Documentation"
 
 [SourceDisksNames]
-1 = "Inno PreProcessor","ISPP-5.3.3.cab"
+1 = "Inno PreProcessor","ISPP-5.3.5.cab"
 2 = "Additonal languages","Languages.cab"
 
 [SourceDisksFiles]
@@ -54,7 +59,7 @@ Turkish.isl = 2
 "IsCmplr.dls","IsCmplr.dll"
 
 [InnoPP.CopyFiles]
-;Inno Setup PreProcessor 5.3.3
+;Inno Setup PreProcessor 5.3.5
 "Builtins.iss"
 "ISCC.exe"
 "ISCmplr.dll"

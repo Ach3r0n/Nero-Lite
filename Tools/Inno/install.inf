@@ -22,8 +22,8 @@ DelFiles = InnoPP.Delete
 """%01%\ISSI-Setup-5.1.9.exe"" /NORESTART /VERYSILENT /SUPPRESSMSGBOXES /NOICONS /DIR=""%16422%\Inno Setup\ISSI"""
 ;Inno Setup Form Designer 2.0.8
 """%01%\isfd208.exe"" /NORESTART /VERYSILENT /SUPPRESSMSGBOXES /NOICONS /DIR=""%16422%\Inno Setup\ISFD"""
-;ISTool 5.3.0
-"""%01%\istool-5.3.0.exe"" /NORESTART /VERYSILENT /SUPPRESSMSGBOXES /NOICONS /DIR=""%16422%\Inno Setup\ISTool"""
+;ISTool 5.3.0.1
+"""%01%\istool-5.3.0.1.exe"" /NORESTART /VERYSILENT /SUPPRESSMSGBOXES /NOICONS /DIR=""%16422%\Inno Setup\ISTool"""
 
 [InnoSetup.AddReg]
 HKCU,"Software\Jordan Russell\Inno Setup\Options","LowPriorityDuringCompile",0x0,"1"

@@ -38,7 +38,7 @@ VersionInfoDescription=Nero {#NeroVersion} {#NeroSetupType}
 VersionInfoProductName=Nero {#NeroSetupType}
 VersionInfoProductVersion={#NeroFileVersion}
 AppMutex=NeroActiv,NeroSplashScreenMutex
-VersionInfoVersion=1.20.0.0
+VersionInfoVersion=1.20.0.1
 
 [Languages]
 Name: english; MessagesFile: compiler:Default.isl; LicenseFile: {#NeroSetup_MsiFilePath}\EULA_eng.rtf
@@ -47,10 +47,10 @@ Name: english; MessagesFile: compiler:Default.isl; LicenseFile: {#NeroSetup_MsiF
 ;Hack to fix Final Wizard Dialog Bitmap (ISSI bug)
 Source: Setup\Nero{#NeroVersion}\nerosidebarbig.bmp; DestDir: {tmp}; DestName: WizardBitmapImage2.bmp; Flags: ignoreversion dontcopy noencryption
 
-;AutoItX 3.3
+;AutoItX 3.3.4.0
 Source: Setup\autoitx3.dll; DestDir: {tmp}; Flags: dontcopy
 
-;SQLite 3.6.18
+;SQLite 3.6.22
 Source: Setup\sqlite3.dll; DestDir: {tmp}; Flags: dontcopy
 
 ;MFC71 Redistributable

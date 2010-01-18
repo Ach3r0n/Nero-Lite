@@ -6,31 +6,16 @@ title Micromize...
 pushd Custom
 
 ::merge version specific files
-if %neroversion% == 7 (
+if %neroversion:~0,1% == 7 (
 copy /y ResourceScripts\Nero7\*.txt ResourceScripts\ > NUL
 )
-if %neroversion% == 8 (
+if %neroversion:~0,1% == 8 (
 copy /y ResourceScripts\Nero8\*.txt ResourceScripts\ > NUL
-)
-if %neroversion% == 9 (
-copy /y ResourceScripts\Nero9\*.txt ResourceScripts\ > NUL
 )
 echo Micromize:
 
 ::MSI FilePaths
-if %neroversion% == 9 (
-set HomeComponents.MsiFilePath=PFiles\Nero\Nero 9\Nero Burning ROM\NFD
-set NeroSetup.MsiFilePath=Nero\AdvrCntr4
-set SetupX.MsiFilePath=Nero\Nero ProductInstaller 4
-set NeroCore.MsiFilePath=PFiles\Nero\Nero 9\Nero Burning ROM
-set CoverDesigner.MsiFilePath=PFiles\Nero\Nero 9\Nero CoverDesigner
-set WaveEditor.MsiFilePath=Nero\Nero 9\Nero WaveEditor
-set BurnRights.MsiFilePath=Nero\Nero 9\Nero BurnRights
-set DiscSpeed.MsiFilePath=Nero\Nero 9\Nero DiscSpeed
-set DriveSpeed.MsiFilePath=Nero\Nero 9\Nero DriveSpeed
-set InfoTool.MsiFilePath=Nero\Nero 9\Nero InfoTool
-)
-if %neroversion% LSS 9 (
+if %neroversion:~0,1% LSS 9 (
 set CommonFiles.MsiFilePath=^[FILELOCATION^]Common Files\Lib\NT
 set HomeComponents.MsiFilePath=^[FILELOCATION^]Nero Home Components\NT
 set NeroSetup.MsiFilePath=^[FILELOCATION^]\Setup
@@ -42,29 +27,29 @@ set BurnRights.MsiFilePath=^[FILELOCATION^]\Nero BurnRights
 set InfoTool.MsiFilePath=^[FILELOCATION^]\Nero InfoTool
 set DiscSpeed.MsiFilePath=^[FILELOCATION^]\Nero CD-DVD Speed
 )
-if %neroversion% == 8 (
+if %neroversion:~0,1% == 8 (
 set DriveSpeed.MsiFilePath=^[FILELOCATION^]\Nero Toolkit DriveSpeed
 )
-if %neroversion% == 7 (
+if %neroversion:~0,1% == 7 (
 set DriveSpeed.MsiFilePath=^[FILELOCATION^]\Nero DriveSpeed
 )
 
 
 ::Nero shared files
-if %neroversion% == 7 (
+if %neroversion:~0,1% == 7 (
 	call :MICROMIZE advrcntr2.dll "%CommonFiles.MsiFilePath%" english
 	call :MICROMIZE advrcntr2.dll "%CommonFiles.MsiFilePath%"
 )
-if %neroversion% == 8 (
+if %neroversion:~0,1% == 8 (
 	call :MICROMIZE advrcntr3.dll "%CommonFiles.MsiFilePath%" english
 	call :MICROMIZE advrcntr3.dll "%CommonFiles.MsiFilePath%"
 )
-if %neroversion% == 9 (
+if %neroversion:~0,1% == 9 (
 	call :MICROMIZE advrcntr4.dll "%NeroSetup.MsiFilePath%" english
 	call :MICROMIZE advrcntr4.dll "%NeroSetup.MsiFilePath%"
 )
 
-if %neroversion% LSS 9 (
+if %neroversion:~0,1% LSS 9 (
 call :MICROMIZE neropatentactivation.exe "%CommonFiles.MsiFilePath%"
 ) else (
 call :MICROMIZE neropatentactivation.exe "%NeroSetup.MsiFilePath%"
@@ -74,10 +59,10 @@ call :MICROMIZE nerofiledialog.dll "%HomeComponents.MsiFilePath%" english
 call :MICROMIZE nerofiledialog.dll "%HomeComponents.MsiFilePath%"
 
 ::Nero ControlCenter
-if %neroversion% == 8 (
+if %neroversion:~0,1% == 8 (
 	call :MICROMIZE nps.dll "%NeroSetup.MsiFilePath%" english
 )
-if %neroversion% LSS 9 (
+if %neroversion:~0,1% LSS 9 (
 call :MICROMIZE nps.dll "%NeroSetup.MsiFilePath%"
 )
 call :MICROMIZE setupx.exe "%SetupX.MsiFilePath%" english
@@ -106,7 +91,7 @@ call :MICROMIZE *.nls "%WaveEditor.MsiFilePath%"
 ::Nero Toolkit
 call :MICROMIZE neroburnrights.cpl "%BurnRights.MsiFilePath%"
 call :MICROMIZE neroburnrights.exe "%BurnRights.MsiFilePath%"
-if %neroversion% LSS 8 (
+if %neroversion:~0,1% LSS 8 (
 	call :MICROMIZE cdspeed.exe "%DiscSpeed.MsiFilePath%"
 ) else (
 	call :MICROMIZE discspeed.exe "%DiscSpeed.MsiFilePath%"
@@ -177,7 +162,7 @@ move /y "%filename%" "Bin\%outputpath%" > NUL
 goto :EOF
 
 :CHECKFILE
-if %neroversion% LSS 8 (
+if %neroversion:~0,1% LSS 8 (
 	if not %filename%==cdspeed.exe (
 		goto :SIGNINGPROBLEM
 	)

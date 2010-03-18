@@ -1,7 +1,7 @@
 ;
 ;Nero 7/8 Lite Setup script for InnoSetup 5.3.x, depending on ISPP and ISSI.
 ;
-;Copyright (C) 2007-2009 Klaas Nekeman
+;Copyright (C) 2007-2010 Klaas Nekeman
 ;
 
 [Setup]
@@ -38,7 +38,7 @@ VersionInfoDescription=Nero {#NeroVersion} {#NeroSetupType}
 VersionInfoProductName=Nero {#NeroSetupType}
 VersionInfoProductVersion={#NeroFileVersion}
 AppMutex=NeroActiv,NeroSplashScreenMutex
-VersionInfoVersion=1.20.0.1
+VersionInfoVersion=1.20.0.2
 
 [Languages]
 Name: english; MessagesFile: compiler:Default.isl; LicenseFile: {#NeroSetup_MsiFilePath}\EULA_eng.rtf
@@ -47,10 +47,10 @@ Name: english; MessagesFile: compiler:Default.isl; LicenseFile: {#NeroSetup_MsiF
 ;Hack to fix Final Wizard Dialog Bitmap (ISSI bug)
 Source: Setup\Nero{#NeroVersion}\nerosidebarbig.bmp; DestDir: {tmp}; DestName: WizardBitmapImage2.bmp; Flags: ignoreversion dontcopy noencryption
 
-;AutoItX 3.3.4.0
+;AutoItX 3.3.6.0
 Source: Setup\autoitx3.dll; DestDir: {tmp}; Flags: dontcopy
 
-;SQLite 3.6.22
+;SQLite 3.6.23
 Source: Setup\sqlite3.dll; DestDir: {tmp}; Flags: dontcopy
 
 ;MFC71 Redistributable

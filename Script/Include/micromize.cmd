@@ -15,8 +15,9 @@ copy /y ResourceScripts\Nero8\*.txt ResourceScripts\ > NUL
 echo Micromize:
 
 ::MSI FilePaths
-if %neroversion:~0,1% LSS 9 (
 set CommonFiles.MsiFilePath=^[FILELOCATION^]Common Files\Lib\NT
+set CommonFilesLibNT.MsiFilePath=^[FILELOCATION^]Common Files\Lib\NT
+set CommonFilesLib.MsiFilePath=^[FILELOCATION^]Common Files\Lib
 set HomeComponents.MsiFilePath=^[FILELOCATION^]Nero Home Components\NT
 set NeroSetup.MsiFilePath=^[FILELOCATION^]\Setup
 set SetupX.MsiFilePath=^[FILELOCATION^]
@@ -26,7 +27,7 @@ set WaveEditor.MsiFilePath=^[FILELOCATION^]Nero WaveEditor
 set BurnRights.MsiFilePath=^[FILELOCATION^]\Nero BurnRights
 set InfoTool.MsiFilePath=^[FILELOCATION^]\Nero InfoTool
 set DiscSpeed.MsiFilePath=^[FILELOCATION^]\Nero CD-DVD Speed
-)
+
 if %neroversion:~0,1% == 8 (
 set DriveSpeed.MsiFilePath=^[FILELOCATION^]\Nero Toolkit DriveSpeed
 )
@@ -34,37 +35,28 @@ if %neroversion:~0,1% == 7 (
 set DriveSpeed.MsiFilePath=^[FILELOCATION^]\Nero DriveSpeed
 )
 
-
 ::Nero shared files
 if %neroversion:~0,1% == 7 (
-	call :MICROMIZE advrcntr2.dll "%CommonFiles.MsiFilePath%" english
-	call :MICROMIZE advrcntr2.dll "%CommonFiles.MsiFilePath%"
+	call :MICROMIZE advrcntr2.dll "%CommonFilesLibNT.MsiFilePath%" english
+	call :MICROMIZE advrcntr2.dll "%CommonFilesLibNT.MsiFilePath%"
 )
 if %neroversion:~0,1% == 8 (
-	call :MICROMIZE advrcntr3.dll "%CommonFiles.MsiFilePath%" english
-	call :MICROMIZE advrcntr3.dll "%CommonFiles.MsiFilePath%"
-)
-if %neroversion:~0,1% == 9 (
-	call :MICROMIZE advrcntr4.dll "%NeroSetup.MsiFilePath%" english
-	call :MICROMIZE advrcntr4.dll "%NeroSetup.MsiFilePath%"
+	call :MICROMIZE advrcntr3.dll "%CommonFilesLibNT.MsiFilePath%" english
+	call :MICROMIZE advrcntr3.dll "%CommonFilesLibNT.MsiFilePath%"
 )
 
-if %neroversion:~0,1% LSS 9 (
-call :MICROMIZE neropatentactivation.exe "%CommonFiles.MsiFilePath%"
-) else (
-call :MICROMIZE neropatentactivation.exe "%NeroSetup.MsiFilePath%"
-)
+call :MICROMIZE neropatentactivation.exe "%CommonFilesLibNT.MsiFilePath%"
 
 call :MICROMIZE nerofiledialog.dll "%HomeComponents.MsiFilePath%" english
 call :MICROMIZE nerofiledialog.dll "%HomeComponents.MsiFilePath%"
+
+call :MICROMIZE NeroDigitalExt.dll "%CommonFilesLib.MsiFilePath%"
 
 ::Nero ControlCenter
 if %neroversion:~0,1% == 8 (
 	call :MICROMIZE nps.dll "%NeroSetup.MsiFilePath%" english
 )
-if %neroversion:~0,1% LSS 9 (
 call :MICROMIZE nps.dll "%NeroSetup.MsiFilePath%"
-)
 call :MICROMIZE setupx.exe "%SetupX.MsiFilePath%" english
 call :MICROMIZE setupx.exe "%SetupX.MsiFilePath%"
 

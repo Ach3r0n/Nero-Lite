@@ -1,0 +1,8 @@
+[FILENAMES]
+Exe=NeroDigitalExt.dll
+SaveAs=NeroDigitalExt.dll
+Log="Log\NeroDigitalExt_dll.log"
+
+[COMMANDS]
+-modify "Resources\Registry\103.rc", REGISTRY,103,
+-modify "Resources\Registry\305.rc", REGISTRY,305,

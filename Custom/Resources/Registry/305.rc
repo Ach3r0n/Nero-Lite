@@ -1,0 +1,27 @@
+HKCR
+{
+	NeroDigitalExt.NeroDigitalThumbnailHa.1 = s 'NeroDigitalThumbnailHandler Class'
+	{
+		CLSID = s '{77A8B956-4FDC-4217-8E4D-AC7620F7AFCF}'
+	}
+	NeroDigitalExt.NeroDigitalThumbnailHand = s 'NeroDigitalThumbnailHandler Class'
+	{
+		CLSID = s '{77A8B956-4FDC-4217-8E4D-AC7620F7AFCF}'
+		CurVer = s 'NeroDigitalExt.NeroDigitalThumbnailHa.1'
+	}
+	NoRemove CLSID
+	{
+		ForceRemove {77A8B956-4FDC-4217-8E4D-AC7620F7AFCF} = s 'NeroDigitalThumbnailHandler Class'
+		{
+			ProgID = s 'NeroDigitalExt.NeroDigitalThumbnailHa.1'
+			VersionIndependentProgID = s 'NeroDigitalExt.NeroDigitalThumbnailHand'
+			ForceRemove 'Programmable'
+			InprocServer32 = s '%MODULE%'
+			{
+				val ThreadingModel = s 'Apartment'
+			}
+			val AppID = s '%APPID%'
+			'TypeLib' = s '{8042010C-0400-41A1-B344-85F0D08F4F41}'
+		}
+	}
+}

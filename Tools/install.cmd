@@ -1,2 +1,2 @@
 ::Install Inno Setup silently
-start rundll32.exe advpack.dll,LaunchINFSection Inno\install.inf,,1
+start rundll32.exe advpack.dll,LaunchINFSection Inno\install.inf

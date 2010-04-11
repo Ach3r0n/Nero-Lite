@@ -24,8 +24,8 @@ MinVersion=0,5.0sp4
 OutputBaseFilename=Nero-{#NeroFileVersion}_{#NeroSetupLocale}_{#Lowercase(NeroSetupType)}
 OutputDir=.\Output
 SetupIconFile=Custom\Resources\Icons\Nero{#NeroVersion}\nps_dll_128.ico
-ShowLanguageDialog=yes
-ShowComponentSizes=no
+ShowLanguageDialog=auto
+ShowComponentSizes=false
 SignTool=signcode -cn "Klaas Nekeman" -i http://updatepack.nl
 SignedUninstaller=true
 SignedUninstallerDir=.\Setup
@@ -40,6 +40,7 @@ VersionInfoProductName=Nero {#NeroSetupType}
 VersionInfoProductVersion={#NeroFileVersion}
 AppMutex=NeroActiv,NeroSplashScreenMutex
 VersionInfoVersion=1.20.1.1
+DisableReadyMemo=true
 
 [Languages]
 Name: english; MessagesFile: compiler:Default.isl; LicenseFile: {#NeroSetup_MsiFilePath}\EULA_eng.rtf

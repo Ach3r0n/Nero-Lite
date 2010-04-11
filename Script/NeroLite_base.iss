@@ -41,6 +41,7 @@ VersionInfoProductVersion={#NeroFileVersion}
 AppMutex=NeroActiv,NeroSplashScreenMutex
 VersionInfoVersion=1.20.1.1
 DisableReadyMemo=true
+UninstallFilesDir={app}\Installer
 
 [Languages]
 Name: english; MessagesFile: compiler:Default.isl; LicenseFile: {#NeroSetup_MsiFilePath}\EULA_eng.rtf

@@ -1,15 +1,10 @@
 [Languages]
 #if NeroVersion == 8
-Name: thai; MessagesFile: compiler:Default.isl; LicenseFile: Bin\[FILELOCATION]Target\Data\Setup\EULA_ene.rtf
+Name: thai; MessagesFile: compiler:Languages\Thai.isl; LicenseFile: Bin\[FILELOCATION]Target\Data\Setup\EULA_ene.rtf
 #endif
 #if NeroVersion == 7
-Name: thai; MessagesFile: compiler:Default.isl; LicenseFile: Bin\[FILELOCATION]Target\Setup\EULA_ene.rtf
+Name: thai; MessagesFile: compiler:Languages\Thai.isl; LicenseFile: Bin\[FILELOCATION]Target\Setup\EULA_ene.rtf
 #endif
-
-[LangOptions]
-thai.LanguageName=Thai
-thai.LanguageID=$041E
-thai.LanguageCodepage=874
 
 [Files]
 ;Thai

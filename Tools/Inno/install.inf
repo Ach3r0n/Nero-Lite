@@ -4,20 +4,14 @@ Signature = "$Windows NT$"
 [DefaultInstall]
 RunPreSetupCommands = InnoSetup.Install
 AddReg              = InnoSetup.AddReg
-RenFiles            = InnoPP.Rename
-CopyFiles           = InnoPP.CopyFiles,InnoLanguages,EssentialPascal
+CopyFiles           = InnoLanguages,EssentialPascal
 UpdateInis          = ISTool.Config
-ProfileItems        = IsToolProgramGroup.Delete,IssiProgramGroup.Delete,IsFDDesktopShortCut.Delete
-ProfileItems        = EPShortCut.Create,InnoSetupShortCut.Create,ISFDShortCut.Create,ISToolShortCut.Create
-
-[PreInstall]
-DelFiles = InnoPP.Delete
+ProfileItems        = ISTool.ProgramGroup.Delete,ISSI.ProgramGroup.Delete,ISFD.DesktopShortCut.Delete
+ProfileItems        = EP.ShortCut.Create,InnoSetup.ShortCut.Create,ISFD.ShortCut.Create,ISTool.ShortCut.Create
 
 [InnoSetup.Install]
-;Remove InnoPP before install to avoid conflicts
-"rundll32.exe advpack.dll,LaunchINFSection %01%\install.inf,PreInstall"
-;Inno Setup 5.3.9 unicode
-"""%01%\isetup-5.3.9-unicode.exe"" /NORESTART /SILENT /SUPPRESSMSGBOXES /NOICONS /DIR=""%16422%\Inno Setup\Inno Setup 5"""
+;Inno Setup 5.4.1 unicode
+"""%01%\isetup-5.4.1-unicode.exe"" /NORESTART /SILENT /SUPPRESSMSGBOXES /NOICONS /DIR=""%16422%\Inno Setup\Inno Setup 5"""
 ;Inno Setup Script Includes 5.1.9.0
 """%01%\ISSI-Setup-5.1.9.exe"" /NORESTART /SILENT /SUPPRESSMSGBOXES /NOICONS /DIR=""%16422%\Inno Setup\ISSI"""
 ;Inno Setup Form Designer 2.0.8
@@ -35,34 +29,16 @@ InnoLanguages   = 16422,"Inno Setup\Inno Setup 5\Languages"
 EssentialPascal = 16422,"Inno Setup\Documentation"
 
 [SourceDisksNames]
-1 = "Inno PreProcessor","ISPP-5.3.9.cab"
-2 = "Additonal languages","Languages.cab"
+1 = "Additonal languages","Languages.cab"
 
 [SourceDisksFiles]
-"Builtins.iss" = 1
-"ISCC.exe" = 1
-"ISCmplr.dll" = 1
-"ISPP.chm" = 1
-ChineseSimpl.isl = 2
-ChineseTrad.isl = 2
-Greek.isl = 2
-Korean.isl = 2
-Swedish.isl = 2
-Turkish.isl = 2
-
-[InnoPP.Delete]
-"IsCmplr.dls"
-"IsCmplr.dll"
-
-[InnoPP.Rename]
-"IsCmplr.dls","IsCmplr.dll"
-
-[InnoPP.CopyFiles]
-;Inno Setup PreProcessor 5.3.9
-"Builtins.iss"
-"ISCC.exe"
-"ISCmplr.dll"
-"ISPP.chm"
+ChineseSimpl.isl = 1
+ChineseTrad.isl = 1
+Greek.isl = 1
+Korean.isl = 1
+Swedish.isl = 1
+Thai.isl = 1
+Turkish.isl = 1
 
 [InnoLanguages]
 ;Additional languages
@@ -71,6 +47,7 @@ Turkish.isl = 2
 "Greek.isl"
 "Korean.isl"
 "Swedish.isl"
+"Thai.isl"
 "Turkish.isl"
 
 [EssentialPascal]
@@ -80,31 +57,31 @@ Turkish.isl = 2
 ;Configure path to Inno Setup
 "%16410%\ISTool\ISTool.ini","prefs",,"InnoFolder=%16422%\Inno Setup\Inno Setup 5"
 
-[IsToolProgramGroup.Delete]
+[ISTool.ProgramGroup.Delete]
 Name = "ISTool",0x6
 
-[IssiProgramGroup.Delete]
+[ISSI.ProgramGroup.Delete]
 Name = "Inno Setup Script Includes",0x6
 
-[IsFDDesktopShortCut.Delete]
+[ISFD.DesktopShortCut.Delete]
 Name = "Inno Setup Form Designer",0xA,16
 
-[EPShortCut.Create]
+[EP.ShortCut.Create]
 Name = "Essential Pascal"
 Subdir = "Inno Setup"
 CmdLine = 16422,"Inno Setup\Documentation","EssentialPascal.pdf"
 
-[InnoSetupShortCut.Create]
+[InnoSetup.ShortCut.Create]
 Name = "Inno Setup Compiler"
 Subdir = "Inno Setup"
 CmdLine = 16422,"Inno Setup\Inno Setup 5","Compil32.exe"
 
-[ISFDShortCut.Create]
+[ISFD.ShortCut.Create]
 Name = "Inno Setup Form Designer"
 Subdir = "Inno Setup"
 CmdLine = 16422,"Inno Setup\ISFD","ISFD.exe"
 
-[ISToolShortCut.Create]
+[ISTool.ShortCut.Create]
 Name = "ISTool"
 Subdir = "Inno Setup"
 CmdLine = 16422,"Inno Setup\ISTool","ISTool.exe"

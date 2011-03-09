@@ -15,7 +15,6 @@ copy /y ResourceScripts\Nero8\*.txt ResourceScripts\ > NUL
 echo Micromize:
 
 ::MSI FilePaths
-set CommonFiles.MsiFilePath=^[FILELOCATION^]Common Files\Lib\NT
 set CommonFilesLibNT.MsiFilePath=^[FILELOCATION^]Common Files\Lib\NT
 set CommonFilesLib.MsiFilePath=^[FILELOCATION^]Common Files\Lib
 set HomeComponents.MsiFilePath=^[FILELOCATION^]Nero Home Components\NT

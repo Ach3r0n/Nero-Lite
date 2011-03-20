@@ -154,18 +154,16 @@ goto :EOF
 
 :CHECKFILE
 if %neroversion:~0,1% LSS 8 (
-	if not %filename%==cdspeed.exe (
-		goto :SIGNINGPROBLEM
-	)
-) else (
-	goto :SIGNINGPROBLEM
+	if %filename%==cdspeed.exe GOTO :EOF
+)
+call :SIGNINGPROBLEM
 )
 GOTO :EOF
 
 :RESHACKPROBLEM
 echo Error: failed reshacking file %filename%
 pause
-goto :EOF
+GOTO :EOF
 
 :SIGNINGPROBLEM
 echo Warning: failed signing file %filename%

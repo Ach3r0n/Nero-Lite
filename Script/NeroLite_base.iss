@@ -64,12 +64,12 @@ Source: Bin\[FILELOCATION]Redist\msvcp71.dll; DestDir: {sys}; Flags: sharedfile 
 Source: Bin\[FILELOCATION]Redist\msvcr71.dll; DestDir: {sys}; Flags: sharedfile restartreplace uninsneveruninstall
 #endif
 
-;VC++ 2005 SP1 Redistributable
+;VC++ 2005 SP1 Redistributable (KB2467175)
 #if NeroVersion >= 8
 Source: Setup\vcredist.msi; DestDir: {tmp}; Flags: dontcopy
 #endif
 
-;GDI+ Redistributable (5.1.3102.5581)
+;GDI+ Redistributable (KB975337)
 Source: Setup\gdiplus.dll; DestDir: {sys}; Flags: sharedfile restartreplace uninsneveruninstall; OnlyBelowVersion: 0,5.01.2600
 
 ;BCGControlBar library

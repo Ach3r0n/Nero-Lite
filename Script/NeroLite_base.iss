@@ -50,10 +50,10 @@ Name: english; MessagesFile: compiler:Default.isl; LicenseFile: {#NeroSetup_MsiF
 ;Hack to fix Final Wizard Dialog Bitmap (ISSI bug)
 Source: Setup\Nero{#NeroVersion}\nerosidebarbig.bmp; DestDir: {tmp}; DestName: WizardBitmapImage2.bmp; Flags: ignoreversion dontcopy noencryption
 
-;AutoItX 3.3.6.0
+;AutoItX 3.3.6.1
 Source: Setup\autoitx3.dll; DestDir: {tmp}; Flags: dontcopy
 
-;SQLite 3.6.23
+;SQLite 3.7.6.1
 Source: Setup\sqlite3.dll; DestDir: {tmp}; Flags: dontcopy
 
 ;MFC71 Redistributable
@@ -1083,4 +1083,3 @@ end;
 #expr DeleteFile("Script\Include\" + LocaleIncludeFileName)
 #pragma error "Completed preprocessing script. You can now proceed building " + AddBackslash(SourcePath) + LocaleIncludeFileName
 #endif
-

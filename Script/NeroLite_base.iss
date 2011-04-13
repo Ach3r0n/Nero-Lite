@@ -926,7 +926,7 @@ begin
 			begin
 			#if NeroVersion >= 8
 				//Install VC++ 2005 SP1 Redistributable if necessary
-				if MsiQueryProductState('{837b34e3-7c30-493c-8f6a-2b0f04e2912c}') <> 5 then
+				if MsiQueryProductState('{a0fe116e-9a8a-466f-aee0-625cb7c207e3}') <> 5 then
 					begin
 						ExtractTemporaryFile('vcredist.msi');
 						if WizardSilent() then
@@ -1083,3 +1083,4 @@ end;
 #expr DeleteFile("Script\Include\" + LocaleIncludeFileName)
 #pragma error "Completed preprocessing script. You can now proceed building " + AddBackslash(SourcePath) + LocaleIncludeFileName
 #endif
+

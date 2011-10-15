@@ -53,7 +53,7 @@ Source: Setup\Nero{#NeroVersion}\nerosidebarbig.bmp; DestDir: {tmp}; DestName: W
 ;AutoItX 3.3.6.1
 Source: Setup\autoitx3.dll; DestDir: {tmp}; Flags: dontcopy
 
-;SQLite 3.7.6.1
+;SQLite 3.7.8
 Source: Setup\sqlite3.dll; DestDir: {tmp}; Flags: dontcopy
 
 ;MFC71 Redistributable
@@ -64,7 +64,7 @@ Source: Bin\[FILELOCATION]Redist\msvcp71.dll; DestDir: {sys}; Flags: sharedfile 
 Source: Bin\[FILELOCATION]Redist\msvcr71.dll; DestDir: {sys}; Flags: sharedfile restartreplace uninsneveruninstall
 #endif
 
-;VC++ 2005 SP1 Redistributable (KB2467175)
+;VC++ 2005 SP1 Redistributable (KB2538242)
 #if NeroVersion >= 8
 Source: Setup\vcredist.msi; DestDir: {tmp}; Flags: dontcopy
 #endif
@@ -1083,4 +1083,3 @@ end;
 #expr DeleteFile("Script\Include\" + LocaleIncludeFileName)
 #pragma error "Completed preprocessing script. You can now proceed building " + AddBackslash(SourcePath) + LocaleIncludeFileName
 #endif
-

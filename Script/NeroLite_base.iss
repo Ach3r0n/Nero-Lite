@@ -1,7 +1,7 @@
 ;
 ;Nero 7/8 Lite Setup script for InnoSetup 5.3.x, depending on ISPP and ISSI.
 ;
-;Copyright (C) 2007-2010 Klaas Nekeman
+;Copyright (C) 2007-2011 Klaas Nekeman
 ;
 
 [Setup]
@@ -39,7 +39,7 @@ VersionInfoDescription=Nero {#NeroVersion} {#NeroSetupType}
 VersionInfoProductName=Nero {#NeroSetupType}
 VersionInfoProductVersion={#NeroFileVersion}
 AppMutex=NeroActiv,NeroSplashScreenMutex
-VersionInfoVersion=1.20.1.1
+VersionInfoVersion=1.20.2.0
 DisableReadyMemo=true
 UninstallFilesDir={app}\Installer
 
@@ -632,7 +632,7 @@ Name: {userappdata}\Nero; Type: dirifempty
 #endif
 
 [Messages]
-BeveledLabel=©2010 Klaas Nekeman
+BeveledLabel=©2011 Klaas Nekeman
 
 [CustomMessages]
 ;Evaluation serials expired!
@@ -926,7 +926,7 @@ begin
 			begin
 			#if NeroVersion >= 8
 				//Install VC++ 2005 SP1 Redistributable if necessary
-				if MsiQueryProductState('{a0fe116e-9a8a-466f-aee0-625cb7c207e3}') <> 5 then
+				if MsiQueryProductState('{710f4c1c-cc18-4c49-8cbf-51240c89a1a2}') <> 5 then
 					begin
 						ExtractTemporaryFile('vcredist.msi');
 						if WizardSilent() then
@@ -1083,3 +1083,4 @@ end;
 #expr DeleteFile("Script\Include\" + LocaleIncludeFileName)
 #pragma error "Completed preprocessing script. You can now proceed building " + AddBackslash(SourcePath) + LocaleIncludeFileName
 #endif
+

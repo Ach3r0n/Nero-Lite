@@ -39,7 +39,7 @@ VersionInfoDescription=Nero {#NeroVersion} {#NeroSetupType}
 VersionInfoProductName=Nero {#NeroSetupType}
 VersionInfoProductVersion={#NeroFileVersion}
 AppMutex=NeroActiv,NeroSplashScreenMutex
-VersionInfoVersion=1.20.2.0
+VersionInfoVersion=1.20.2.1
 DisableReadyMemo=true
 UninstallFilesDir={app}\Installer
 

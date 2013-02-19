@@ -10,8 +10,8 @@ ProfileItems        = ISTool.ProgramGroup.Delete,ISSI.ProgramGroup.Delete,ISFD.D
 ProfileItems        = EP.ShortCut.Create,InnoSetup.ShortCut.Create,ISFD.ShortCut.Create,ISTool.ShortCut.Create
 
 [InnoSetup.Install]
-;Inno Setup 5.4.2 unicode
-"""%01%\isetup-5.4.2-unicode.exe"" /NORESTART /SILENT /SUPPRESSMSGBOXES /NOICONS /DIR=""%16422%\Inno Setup\Inno Setup 5"""
+;Inno Setup 5.5.3 unicode
+"""%01%\isetup-5.5.3-unicode.exe"" /NORESTART /SILENT /SUPPRESSMSGBOXES /NOICONS /DIR=""%16422%\Inno Setup\Inno Setup 5"""
 ;Inno Setup Script Includes 5.1.9.0
 """%01%\ISSI-Setup-5.1.9.exe"" /NORESTART /SILENT /SUPPRESSMSGBOXES /NOICONS /DIR=""%16422%\Inno Setup\ISSI"""
 ;Inno Setup Form Designer 2.0.8
@@ -34,8 +34,8 @@ EssentialPascal = 16422,"Inno Setup\Documentation"
 [SourceDisksFiles]
 ChineseSimpl.isl = 1
 ChineseTrad.isl = 1
-Greek.isl = 1
 Korean.isl = 1
+Slovak.isl = 1
 Swedish.isl = 1
 Thai.isl = 1
 Turkish.isl = 1
@@ -44,8 +44,8 @@ Turkish.isl = 1
 ;Additional languages
 "ChineseSimpl.isl"
 "ChineseTrad.isl"
-"Greek.isl"
 "Korean.isl"
+"Slovak.isl"
 "Swedish.isl"
 "Thai.isl"
 "Turkish.isl"

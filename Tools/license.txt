@@ -9,7 +9,7 @@ This package includes the following third party software components:
 Ebook Essential Pascal, Copyright © Marco Cantú
 -> http://www.marcocantu.com/epascal/
 
-Inno Setup 5.4.2, Copyright © Jordan Russell
+Inno Setup 5.5.3, Copyright © Jordan Russell
 -> http://www.jrsoftware.org/
 
 Inno Setup Form Designer version 2.0.8, Copyright © Marc Hoffmann

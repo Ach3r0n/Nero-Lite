@@ -1,7 +1,7 @@
 ;
 ;Nero 7/8 Lite Setup script for InnoSetup 5.3.x, depending on ISPP and ISSI.
 ;
-;Copyright (C) 2007-2011 Klaas Nekeman
+;Copyright (C) 2007-2013 Klaas Nekeman
 ;
 
 [Setup]
@@ -69,7 +69,7 @@ Source: Bin\[FILELOCATION]Redist\msvcr71.dll; DestDir: {sys}; Flags: sharedfile 
 Source: Setup\vcredist.msi; DestDir: {tmp}; Flags: dontcopy
 #endif
 
-;GDI+ Redistributable (KB975337)
+;GDI+ Redistributable (KB2659262)
 Source: Setup\gdiplus.dll; DestDir: {sys}; Flags: sharedfile restartreplace uninsneveruninstall; OnlyBelowVersion: 0,5.01.2600
 
 ;BCGControlBar library

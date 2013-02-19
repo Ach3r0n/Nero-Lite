@@ -632,7 +632,7 @@ Name: {userappdata}\Nero; Type: dirifempty
 #endif
 
 [Messages]
-BeveledLabel=©2011 Klaas Nekeman
+BeveledLabel=©2013 Klaas Nekeman
 
 [CustomMessages]
 ;Evaluation serials expired!

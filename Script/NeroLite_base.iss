@@ -53,7 +53,7 @@ Source: Setup\Nero{#NeroVersion}\nerosidebarbig.bmp; DestDir: {tmp}; DestName: W
 ;AutoItX 3.3.8.1
 Source: Setup\autoitx3.dll; DestDir: {tmp}; Flags: dontcopy
 
-;SQLite 3.7.9
+;SQLite 3.7.15.2
 Source: Setup\sqlite3.dll; DestDir: {tmp}; Flags: dontcopy
 
 ;MFC71 Redistributable

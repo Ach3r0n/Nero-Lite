@@ -1,6 +1,3 @@
-[ISSI]
-#define ISSI_IncludePath ReadReg(HKLM, "Software\Microsoft\Windows\CurrentVersion\Uninstall\Inno Setup Script Includes_is1","InstallLocation", GetEnv("ProgramFiles") + "\Inno Setup\ISSI")
-
 ;Detect Nero Version
 #if FileExists("Bin\[FILELOCATION]Core\nero.exe")
 	#define NeroFileVersion GetFileVersion("Bin\[FILELOCATION]Core\nero.exe")
@@ -39,13 +36,15 @@
 	#define BurnRights_MsiFilePath "Bin\[FILELOCATION]\Nero BurnRights"
 #endif
 
-#define ISSI_UseMyInitializeWizard
-#define ISSI_WizardSmallBitmapImage_x 206
-#define ISSI_WizardSmallBitmapImage "Setup\Nero" + str(NeroVersion) + "\nerotopbar.bmp"
-#define ISSI_WizardBitmapImage "Setup\Nero" + str(NeroVersion) + "\nerosidebarbig.bmp"
-#define ISSI_WizardBitmapImage_x 190
 #define ISSI_URL
 #define ISSI_URLText
+
+#define ISSI_UseMyInitializeWizard
+
+#define ISSI_WizardBitmapImage "Setup\Nero" + str(NeroVersion) + "\nerosidebarbig.bmp"
+#define ISSI_WizardBitmapImage_x 190
+#define ISSI_WizardSmallBitmapImage "Setup\Nero" + str(NeroVersion) + "\nerotopbar.bmp"
+#define ISSI_WizardSmallBitmapImage_x 206
 
 #sub ProcessFoundFile
 	#define public LocaleIncludeFileName Lowercase(FindGetFileName(FindHandle))

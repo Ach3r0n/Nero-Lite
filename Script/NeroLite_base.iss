@@ -1,5 +1,5 @@
 ;
-;Nero 7/8 Lite Setup script for InnoSetup 5.3.x, depending on ISPP and ISSI.
+;Nero 7/8 Lite Setup script for InnoSetup 5.3.x
 ;
 ;Copyright (C) 2007-2013 Klaas Nekeman
 ;
@@ -38,6 +38,8 @@ VersionInfoCopyright=Klaas Nekeman
 VersionInfoDescription=Nero {#NeroVersion} {#NeroSetupType}
 VersionInfoProductName=Nero {#NeroSetupType}
 VersionInfoProductVersion={#NeroFileVersion}
+WizardImageFile={#ISSI_WizardBitmapImage}
+WizardSmallImageFile={#ISSI_WizardSmallBitmapImage}
 AppMutex=NeroActiv,NeroSplashScreenMutex
 VersionInfoVersion=1.20.2.1
 DisableReadyMemo=true
@@ -47,8 +49,8 @@ UninstallFilesDir={app}\Installer
 Name: english; MessagesFile: compiler:Default.isl; LicenseFile: {#NeroSetup_MsiFilePath}\EULA_eng.rtf
 
 [Files]
-;Hack to fix Final Wizard Dialog Bitmap (ISSI bug)
-Source: Setup\Nero{#NeroVersion}\nerosidebarbig.bmp; DestDir: {tmp}; DestName: WizardBitmapImage2.bmp; Flags: ignoreversion dontcopy noencryption
+;Custom Wizard Image
+Source: {#ISSI_WizardBitmapImage}; DestDir: {tmp}; DestName: WizardBitmapImage2.bmp; Flags: ignoreversion dontcopy noencryption
 
 ;AutoItX 3.3.8.1
 Source: Setup\autoitx3.dll; DestDir: {tmp}; Flags: dontcopy
@@ -1076,7 +1078,7 @@ begin
 		CreateMutex(installer_mutex_name);
 end;
 
-#include ISSI_IncludePath+"\_issi.isi"
+#include "Script\Include\issi.iss"
 
 #ifdef LocaleIncludeFileName
 #expr SaveToFile(AddBackslash(SourcePath) + LocaleIncludeFileName)

@@ -41,7 +41,7 @@ VersionInfoProductVersion={#NeroFileVersion}
 WizardImageFile={#ISSI_WizardBitmapImage}
 WizardSmallImageFile={#ISSI_WizardSmallBitmapImage}
 AppMutex=NeroActiv,NeroSplashScreenMutex
-VersionInfoVersion=1.20.2.1
+VersionInfoVersion=1.20.3.1
 DisableReadyMemo=true
 UninstallFilesDir={app}\Installer
 
@@ -66,7 +66,7 @@ Source: Bin\[FILELOCATION]Redist\msvcp71.dll; DestDir: {sys}; Flags: sharedfile 
 Source: Bin\[FILELOCATION]Redist\msvcr71.dll; DestDir: {sys}; Flags: sharedfile restartreplace uninsneveruninstall
 #endif
 
-;VC++ 2005 SP1 Redistributable (KB2538242)
+;VC++ 2005 SP1 Redistributable (KB2643995)
 #if NeroVersion >= 8
 Source: Setup\vcredist.msi; DestDir: {tmp}; Flags: dontcopy
 #endif

@@ -55,7 +55,7 @@ Source: {#ISSI_WizardBitmapImage}; DestDir: {tmp}; DestName: WizardBitmapImage2.
 ;AutoItX 3.3.8.1
 Source: Setup\autoitx3.dll; DestDir: {tmp}; Flags: dontcopy
 
-;SQLite 3.7.15.2
+;SQLite 3.7.16.2
 Source: Setup\sqlite3.dll; DestDir: {tmp}; Flags: dontcopy
 
 ;MFC71 Redistributable

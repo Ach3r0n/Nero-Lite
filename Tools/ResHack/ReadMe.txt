@@ -1,18 +1,17 @@
 ----------------------------------------------
 
-Resource Hacker™ - Version 3.4.0
+Resource Hacker™ - Version 3.6.0
 
-24 march 2002.
-Copyright 1999-2002 Angus Johnson
+16 September 2011.
+Copyright 1999-2011 Angus Johnson
 
-http://rpi.net.au/~ajohnson/resourcehacker
-email: ajohnson@rpi.net.au
+http://www.angusj.com/resourcehacker
 
 FREEWARE utility to view, modify, add, rename 
-and delete resources in Win32 executables and
+and delete resources in Windows executables and
 resource files. Incorporates an internal 
 resource compiler and decompiler. Works on 
-Win9x, WinNT, Win2000 and WinXP.
+Win9x, WinNT, Win2000 and WinXP, Vista & Win7.
 
 ----------------------------------------------
 Summary:
@@ -61,23 +60,7 @@ Removing these unused resources can reduce an
 application's size.
 
 ----------------------------------------------
-Latest changes:
-----------------------------------------------
-
-  * 32bit Resource Files (*.res) can now also 
-  be viewed and edited.
-  * Added support for the following Dialog 
-  extended style flags: WS_EX_LAYERED,
-  WS_EX_NOINHERITLAYOUT, WS_EX_LAYOUTRTL and  
-  WS_EX_NOACTIVATE.
-  * All resource language ids (except those for 
-  cursors and icons) can now be easily changed.
-  * Bug Fix: LBS_NOINTEGRALHEIGHT and 
-  LBS_MULTICOLUMN listbox style flags in dialogs 
-  previously could not be combined.
-
-----------------------------------------------
-Note regarding WinXP and Visual Styles:
+Note regarding WinXP - Win7 and Visual Styles:
 ----------------------------------------------
 
   * Adding a manifest resource to Resource Hacker™

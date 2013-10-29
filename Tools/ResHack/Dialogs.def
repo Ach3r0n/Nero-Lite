@@ -1,8 +1,8 @@
-//Definitions of CONTROL classes for the dialog designer:
-//This is a text file to enable easy customization by the knowledgeable user
+//Definitions of default DIALOG and CONTROL classes for the dialog editor.
+//This is a text file to enable simple customization and the addition of custom controls
 
 [DIALOG]
-//default values for new dialogs...
+//default values for dialogs...
 width=300
 height=150
 fontname=Arial
@@ -71,7 +71,7 @@ esf=WS_EX_NOACTIVATE
 
 
 [BUTTON]
-//default new values ...
+//default values ...
 width=60
 height=14
 style= WS_CHILD | WS_VISIBLE | WS_TABSTOP
@@ -102,7 +102,7 @@ sf=BS_NOTIFY
 sf=BS_FLAT
 
 [CHECKBOX]
-//default new values ...
+//default values ...
 width=60
 height=14
 style= BS_CHECKBOX | WS_CHILD | WS_VISIBLE | WS_TABSTOP
@@ -125,7 +125,7 @@ sf=BS_NOTIFY
 sf=BS_FLAT
 
 [RADIOBUTTON]
-//default new values ...
+//default values ...
 width=60
 height=14
 style= BS_RADIOBUTTON | WS_CHILD | WS_VISIBLE | WS_TABSTOP
@@ -146,7 +146,7 @@ sf=BS_NOTIFY
 sf=BS_FLAT
 
 [GROUPBOX]
-//default new values ...
+//default values ...
 width=60
 height=60
 style= BS_GROUPBOX | WS_CHILD | WS_VISIBLE
@@ -160,7 +160,7 @@ sf=BS_NOTIFY
 sf=BS_FLAT
 
 [COMBOBOX]
-//default new values ...
+//default values ...
 width=60
 height=60
 style= WS_CHILD | WS_VISIBLE | WS_TABSTOP | CBS_DROPDOWN
@@ -180,7 +180,7 @@ sf=CBS_UPPERCASE
 sf=CBS_LOWERCASE
 
 [EDIT]
-//default new values ...
+//default values ...
 width=60
 height=14
 style= WS_CHILD | WS_VISIBLE | WS_BORDER | WS_TABSTOP
@@ -201,7 +201,7 @@ sf=ES_WANTRETURN
 sf=ES_NUMBER
 
 [MEMO]
-//default new values ...
+//default values ...
 width=60
 height=60
 classname=EDIT
@@ -223,7 +223,7 @@ sf=ES_WANTRETURN
 sf=ES_NUMBER
 
 [LISTBOX]
-//default new values ...
+//default values ...
 width=60
 height=60
 style= WS_CHILD | WS_VISIBLE | WS_TABSTOP | LBS_STANDARD
@@ -246,7 +246,7 @@ sf=LBS_NODATA
 sf=LBS_NOSEL
 
 [SCROLLBAR]
-//default new values ...
+//default values ...
 width=30
 height=14
 style= WS_CHILD | WS_VISIBLE
@@ -263,7 +263,7 @@ sf=SBS_SIZEBOX
 sf=SBS_SIZEGRIP
 
 [STATIC]
-//default new values ...
+//default values ...
 width=32
 height=32
 style= WS_CHILD | WS_VISIBLE | WS_GROUP
@@ -298,7 +298,7 @@ sf=SS_PATHELLIPSIS,	SS_ELLIPSISMASK
 sf=SS_WORDELLIPSIS,	SS_ELLIPSISMASK
 
 [LTEXT]
-//default new values ...
+//default values ...
 width=60
 height=18
 classname=STATIC
@@ -311,7 +311,7 @@ sf=SS_RIGHTJUST
 sf=SS_SUNKEN
 
 [ICON]
-//default new values ...
+//default values ...
 width=20
 height=20
 classname=STATIC
@@ -326,7 +326,7 @@ sf=SS_REALSIZEIMAGE
 sf=SS_SUNKEN
 
 [BITMAP]
-//default new values ...
+//default values ...
 width=60
 height=60
 classname=STATIC
@@ -341,7 +341,7 @@ sf=SS_REALSIZEIMAGE
 sf=SS_SUNKEN
 
 ["RICHEDIT"]
-//default new values ...
+//default values ...
 width=60
 height=60
 style= ES_MULTILINE | ES_AUTOVSCROLL | ES_AUTOHSCROLL | ES_WANTRETURN | WS_CHILD | WS_VISIBLE | WS_BORDER | WS_VSCROLL | WS_HSCROLL | WS_TABSTOP
@@ -368,7 +368,7 @@ sf=ES_SELFIME
 esf=ES_EX_NOCALLOLEINIT
 
 ["SysAnimate32"]
-//default new values ...
+//default values ...
 width=60
 height=60
 style= WS_CHILD | WS_VISIBLE
@@ -378,7 +378,7 @@ sf=ACS_AUTOPLAY
 sf=ACS_TIMER
 
 ["SysDateTimePick32"]
-//default new values ...
+//default values ...
 width=80
 height=14
 style= WS_CHILD | WS_VISIBLE
@@ -391,7 +391,7 @@ sf=DTS_APPCANPARSE
 sf=DTS_RIGHTALIGN
 
 ["SysHeader32"]
-//default new values ...
+//default values ...
 width=60
 height=12
 style= WS_CHILD | WS_VISIBLE
@@ -414,7 +414,7 @@ sf=CCS_RIGHT
 sf=CCS_NOMOVEX
 
 ["SysListView32"]
-//default new values ...
+//default values ...
 width=60
 height=60
 style= WS_CHILD | WS_VISIBLE | WS_BORDER | WS_TABSTOP
@@ -449,7 +449,7 @@ esf=LVS_EX_ONECLICKACTIVATE
 esf=LVS_EX_TWOCLICKACTIVATE
 
 ["SysMonthCal32"]
-//default new values ...
+//default values ...
 width=130
 height=100
 style= WS_CHILD | WS_VISIBLE
@@ -459,7 +459,7 @@ sf=MCS_WEEKNUMBERS
 sf=MCS_NOTODAY
 
 ["SysPager"]
-//default new values ...
+//default values ...
 width=60
 height=20
 style= WS_CHILD | WS_VISIBLE
@@ -470,7 +470,7 @@ sf=PGS_AUTOSCROLL
 sf=PGS_DRAGNDROP
 
 ["SysTabControl32"]
-//default new values ...
+//default values ...
 width=60
 height=60
 style= WS_CHILD | WS_VISIBLE | TCS_RAGGEDRIGHT
@@ -497,7 +497,7 @@ esf=TCS_EX_FLATSEPARATORS
 esf=TCS_EX_REGISTERDROP
 
 ["SysTreeView32"]
-//default new values ...
+//default values ...
 width=60
 height=60
 style= WS_CHILD | WS_VISIBLE | WS_BORDER | WS_TABSTOP
@@ -510,13 +510,13 @@ sf=TVS_DISABLEDRAGDROP
 sf=TVS_SHOWSELALWAYS
 
 ["msctls_hotkey32"]
-//default new values ...
+//default values ...
 width=60
 height=14
 style= WS_CHILD | WS_VISIBLE
 
 ["msctls_progress32"]
-//default new values ...
+//default values ...
 width=60
 height=12
 style= WS_CHILD | WS_VISIBLE
@@ -524,7 +524,7 @@ sf=PBS_SMOOTH
 sf=PBS_VERTICAL
 
 ["msctls_statusbar32"]
-//default new values ...
+//default values ...
 width=60
 height=12
 style= WS_CHILD | WS_VISIBLE | SBARS_SIZEGRIP
@@ -543,7 +543,7 @@ sf=CCS_RIGHT
 sf=CCS_NOMOVEX
 
 ["msctls_trackbar32"]
-//default new values ...
+//default values ...
 width=60
 height=18
 style= WS_CHILD | WS_VISIBLE | WS_TABSTOP
@@ -562,7 +562,7 @@ sf=TBS_FIXEDLENGTH
 sf=TBS_NOTHUMB
 
 ["msctls_updown32"]
-//default new values ...
+//default values ...
 width=12
 height=20
 style= WS_CHILD | WS_VISIBLE
@@ -577,7 +577,7 @@ sf=UDS_HORZ
 sf=UDS_NOTHOUSANDS
 
 ["ComboBoxEx32"]
-//default new values ...
+//default values ...
 width=60
 height=60
 style= WS_CHILD | WS_VISIBLE | WS_TABSTOP
@@ -601,7 +601,7 @@ esf=CBES_EX_NOSIZELIMIT
 esf=CBES_EX_PATHWORDBREAKPROC
 
 ["ReBarWindow32"]
-//default new values ...
+//default values ...
 width=60
 height=12
 style= WS_CHILD | WS_VISIBLE
@@ -627,7 +627,7 @@ sf=CCS_RIGHT
 sf=CCS_NOMOVEX
 
 ["ToolbarWindow32"]
-//default new values ...
+//default values ...
 width=60
 height=12
 style= WS_CHILD | WS_VISIBLE
@@ -657,7 +657,7 @@ esf=TBSTYLE_EX_DRAWDDARROWS
 //esf=TBSTYLE_EX_MIXEDBUTTONS        
 
 ["RichEdit20A"]
-//default new values ...
+//default values ...
 width=60
 height=60
 style= ES_MULTILINE | ES_AUTOVSCROLL | ES_AUTOHSCROLL | ES_WANTRETURN | WS_CHILD | WS_VISIBLE | WS_BORDER | WS_VSCROLL | WS_HSCROLL | WS_TABSTOP

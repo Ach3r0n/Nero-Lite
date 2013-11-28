@@ -1,5 +1,5 @@
 ;
-;Nero 7/8 Lite Setup script for InnoSetup 5.3.x
+;Nero 7/8 Lite Setup script for InnoSetup 5.3.x or newer
 ;
 ;Copyright (C) 2007-2013 Klaas Nekeman
 ;
@@ -55,7 +55,7 @@ Source: {#ISSI_WizardBitmapImage}; DestDir: {tmp}; DestName: WizardBitmapImage2.
 ;AutoItX 3.3.8.1
 Source: Setup\autoitx3.dll; DestDir: {tmp}; Flags: dontcopy
 
-;SQLite 3.7.16.2
+;SQLite 3.8.1
 Source: Setup\sqlite3.dll; DestDir: {tmp}; Flags: dontcopy
 
 ;MFC71 Redistributable

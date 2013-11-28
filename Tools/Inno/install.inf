@@ -10,10 +10,10 @@ ProfileItems        = ISTool.ProgramGroup.Delete,ISFD.DesktopShortCut.Delete
 ProfileItems        = EP.ShortCut.Create,InnoSetup.ShortCut.Create,ISFD.ShortCut.Create,ISTool.ShortCut.Create
 
 [InnoSetup.Install]
-;Inno Setup 5.5.3 unicode
-"""%01%\isetup-5.5.3-unicode.exe"" /NORESTART /SILENT /SUPPRESSMSGBOXES /NOICONS /DIR=""%16422%\Inno Setup\Inno Setup 5"""
+;Inno Setup 5.5.4 unicode
+"""%01%\isetup-5.5.4-unicode.exe"" /NORESTART /SILENT /SUPPRESSMSGBOXES /NOICONS /DIR=""%16422%\Inno Setup\Inno Setup 5"""
 ;Inno Setup Form Designer 2.0.8
-"""%01%\isfd208.exe"" /NORESTART /SILENT /SUPPRESSMSGBOXES /NOICONS /DIR=""%16422%\Inno Setup\ISFD"""
+"""%01%\isfd208.exe"" /NORESTART /SILENT /SUPPRESSMSGBOXES"
 ;ISTool 5.3.0.1
 """%01%\istool-5.3.0.1.exe"" /NORESTART /SILENT /SUPPRESSMSGBOXES /NOICONS /DIR=""%16422%\Inno Setup\ISTool"""
 
@@ -70,11 +70,6 @@ CmdLine = 16422,"Inno Setup\Documentation","EssentialPascal.pdf"
 Name = "Inno Setup Compiler"
 Subdir = "Inno Setup"
 CmdLine = 16422,"Inno Setup\Inno Setup 5","Compil32.exe"
-
-[ISFD.ShortCut.Create]
-Name = "Inno Setup Form Designer"
-Subdir = "Inno Setup"
-CmdLine = 16422,"Inno Setup\ISFD","ISFD.exe"
 
 [ISTool.ShortCut.Create]
 Name = "ISTool"

@@ -41,7 +41,7 @@ VersionInfoProductVersion={#NeroFileVersion}
 WizardImageFile={#ISSI_WizardBitmapImage}
 WizardSmallImageFile={#ISSI_WizardSmallBitmapImage}
 AppMutex=NeroActiv,NeroSplashScreenMutex
-VersionInfoVersion=1.20.3.1
+VersionInfoVersion=1.20.3.2
 DisableReadyMemo=true
 UninstallFilesDir={app}\Installer
 
@@ -315,6 +315,8 @@ Source: Custom\{#WaveEditor_MsiFilePath}\waveedit.exe; DestDir: {app}\Nero WaveE
 #endif
 
 [Dirs]
+;Compress installer files
+Name: {app}\Installer; Flags: setntfscompression
 ;Force creation of DrWeb subdirectory, otherwise Anti-Virus libs don't get installed
 Name: {commonappdata}\Nero\DrWeb; Components: nero_core
 

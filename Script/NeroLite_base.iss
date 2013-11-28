@@ -71,7 +71,7 @@ Source: Bin\[FILELOCATION]Redist\msvcr71.dll; DestDir: {sys}; Flags: sharedfile 
 Source: Setup\vcredist.msi; DestDir: {tmp}; Flags: dontcopy
 #endif
 
-;GDI+ Redistributable (KB2659262)
+;GDI+ Redistributable (KB2834886)
 Source: Setup\gdiplus.dll; DestDir: {sys}; Flags: sharedfile restartreplace uninsneveruninstall; OnlyBelowVersion: 0,5.01.2600
 
 ;BCGControlBar library
